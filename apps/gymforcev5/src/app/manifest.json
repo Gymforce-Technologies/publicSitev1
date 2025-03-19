@@ -1,0 +1,29 @@
+{
+  "id":"8",
+  "name": "Gymforce - Ultimate Gym Management Solution",
+  "short_name": "Gymforce",
+  "description": "Experience the ultimate gym management solution with Gymforce. Our AI-powered platform simplifies billing, enrollment, member management, and marketing, helping you grow your gym effortlessly. Start your free trial today—no credit card required—and discover how Gymforce can transform your business. Stay updated by subscribing to our newsletter and enjoy continuous support from our dedicated team.",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-384.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#FFFFFF",
+  "background_color": "#000",
+  "start_url": "/dashboard",
+  "display": "standalone",
+  "orientation": "portrait"
+}

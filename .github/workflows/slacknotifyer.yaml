@@ -1,0 +1,33 @@
+name: slack_github_action
+on:
+  push:
+    branches:    
+      - '*'  
+jobs:
+  slack_notifier:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Git
+        run: |
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Actions"
+
+      - name: Get commit message and author
+        run: |
+          COMMIT_MESSAGE=$(git log --format=%B -n 1 $GITHUB_SHA)
+          COMMIT_AUTHOR=$(git log -n 1 --pretty=format:'%an' $GITHUB_SHA)
+          echo "COMMIT_MESSAGE=${COMMIT_MESSAGE}" >> $GITHUB_ENV
+          echo "COMMIT_AUTHOR=${COMMIT_AUTHOR}" >> $GITHUB_ENV
+
+      - name: Send notification on Slack using Webhooks
+        uses: slackapi/slack-github-action@v1.26.0
+        with:
+          payload: |
+            {
+              "text": "Git push done in the repo, frontend_v5_production \nCommit Message: ${{ env.COMMIT_MESSAGE }} \nPushed By: ${{ env.COMMIT_AUTHOR }}"
+            }
+        env:
+          SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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
