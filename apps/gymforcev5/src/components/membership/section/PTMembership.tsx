@@ -24,7 +24,7 @@ import {
   pageSizeOptions,
   setPageSize,
 } from "@/components/pageSize";
-import { filterOptions } from "../../../app/[locale]/(home)/Filter";
+import { filterOptions } from "../../../app/[locale]/Filter";
 import { retrieveGymId } from "@/app/[locale]/auth/InfoCookies";
 
 export type Membership = {

@@ -47,7 +47,7 @@ import toast from "react-hot-toast";
 // import { retrieveGymId } from "@/app/[locale]/auth/InfoCookies";
 import cn from "@core/utils/class-names";
 import DateCell from "@core/ui/date-cell";
-import { filterOptions } from "../../app/[locale]/(home)/Filter";
+import { filterOptions } from "../../app/[locale]/Filter";
 // import DropdownAction from "@components/charts/dropdown-action";
 import { isStaff } from "@/app/[locale]/auth/Staff";
 // import { DatePicker } from "@ui/datepicker";

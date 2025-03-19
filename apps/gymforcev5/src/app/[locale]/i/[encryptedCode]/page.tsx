@@ -5,30 +5,19 @@ import Image from "next/image";
 import { QRCodeSVG } from "qrcode.react";
 import { Title, Text, Button } from "rizzui";
 import Table from "@/app/shared/table";
-// import LogoMain from "@/../public/svg/icon/gymforce-icon-black.svg";
-// import LogoMainText from "@/../public/svg/gymforce-text/gymforce-text-black.svg";
-// import LogoMainDark from "@/../public/svg/icon/gymforce-icon-white.svg";
-// import LogoMainTextDark from "@/../public/svg/gymforce-text/gymforce-text-white.svg";
+
 // import { useTheme } from "next-themes";
 import { usePDF } from "react-to-pdf";
-import {
-  useParams,
-  // usePathname,
-  // useRouter,
-  // useSearchParams,
-} from "next/navigation";
-// import { AxiosPrivate, newID } from "@/app/[locale]/auth/AxiosPrivate";
-// import { retrieveGymId } from "@/app/[locale]/auth/InfoCookies";
+import { useParams } from "next/navigation";
+
 import { formatDate } from "@core/utils/format-date";
 // import { IoMdPersonAdd } from "react-icons/io";
 // import { PiArrowCircleLeft } from "react-icons/pi";
 import Loading from "@/app/[locale]/loading";
 import DateCell from "@core/ui/date-cell";
-// import InvoiceMail from "@/components/Invoice/InvoiceMail";
-import axios from "axios";
 import { MdOutlineFileDownload } from "react-icons/md";
 import AvatarCard from "@core/ui/avatar-card";
-import { getDateFormat } from "../../auth/DateFormat";
+// import { getDateFormat } from "../../auth/DateFormat";
 import { AxiosPublic } from "../../auth/AxiosPrivate";
 import dayjs from "dayjs";
 
@@ -278,7 +267,7 @@ export default function InvoiceDetails() {
         <DateCell
           date={new Date(start_date)}
           timeClassName="hidden"
-          dateFormat={getDateFormat()}
+          // dateFormat={getDateFormat()}
         />
       ),
     },
@@ -291,7 +280,7 @@ export default function InvoiceDetails() {
         <DateCell
           date={new Date(end_date)}
           timeClassName="hidden"
-          dateFormat={getDateFormat()}
+          // dateFormat={getDateFormat()}
         />
       ),
     },
@@ -553,7 +542,7 @@ function InvoiceContent({
             <DateCell
               date={new Date(membershipData.created_at)}
               timeClassName="hidden"
-              dateFormat={getDateFormat()}
+              // dateFormat={getDateFormat()}
             />
           </Text>
         </div>
@@ -646,7 +635,7 @@ function InvoiceContent({
                         <DateCell
                           date={new Date(membershipData.due_date)}
                           timeClassName="hidden"
-                          dateFormat={getDateFormat()}
+                          // dateFormat={getDateFormat()}
                           className="inline-block"
                         />
                       </Text>

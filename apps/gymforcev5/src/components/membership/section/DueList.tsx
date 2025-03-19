@@ -12,7 +12,7 @@ import Pagination from "@core/ui/pagination";
 // import { retrieveDemographicInfo } from "@/app/[locale]/auth/DemographicInfo";
 import { debounce } from "lodash";
 import toast from "react-hot-toast";
-import { filterOptions } from "../../../app/[locale]/(home)/Filter";
+import { filterOptions } from "../../../app/[locale]/Filter";
 import { getCurrentDateRange, validateDateRange } from "@/components/ValidDate";
 import { Announcement, Button, Drawer, Title, Text, Select } from "rizzui";
 // import { DatePicker } from "@ui/datepicker";

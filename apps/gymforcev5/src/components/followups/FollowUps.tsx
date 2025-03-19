@@ -17,7 +17,7 @@ import {
   formateDateValue,
   getDateFormat,
 } from "@/app/[locale]/auth/DateFormat";
-import { filterOptions } from "@/app/[locale]/(home)/Filter";
+import { filterOptions } from "@/app/[locale]/Filter";
 
 export interface FollowUpType {
   id: number;

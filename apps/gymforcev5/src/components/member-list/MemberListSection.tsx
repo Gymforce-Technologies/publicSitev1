@@ -21,7 +21,7 @@ import WidgetCard from "@core/components/cards/widget-card";
 import Pagination from "@core/ui/pagination";
 import { FilterIcon, ListPlusIcon, XIcon } from "lucide-react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { filterOptions } from "../../app/[locale]/(home)/Filter";
+import { filterOptions } from "../../app/[locale]/Filter";
 import { DatePicker } from "@core/ui/datepicker";
 import dayjs from "dayjs";
 import toast from "react-hot-toast";

@@ -30,7 +30,7 @@ import {
 import { useRouter } from "next/navigation";
 import { retrieveDemographicInfo } from "../../app/[locale]/auth/DemographicInfo";
 // import DropdownAction from "@core/components/charts/dropdown-action";
-import { getFilterInfo } from "../../app/[locale]/(home)/Filter";
+import { getFilterInfo } from "../../app/[locale]/Filter";
 import { FaEye, FaEyeSlash, } from "react-icons/fa6";
 import dayjs from "dayjs";
 import cn from "@core/utils/class-names";

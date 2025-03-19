@@ -33,7 +33,7 @@ import Table from "@/components/rizzui/table/table";
 import Pagination from "@core/ui/pagination";
 import { isStaff } from "../../app/[locale]/auth/Staff";
 import { FilterIcon, LucideCircleFadingPlus, XIcon } from "lucide-react";
-import { filterOptions } from "../../app/[locale]/(home)/Filter";
+import { filterOptions } from "../../app/[locale]/Filter";
 // import { DatePicker } from "@ui/datepicker";
 import dayjs from "dayjs";
 import { getCurrentDateRange, validateDateRange } from "@/components/ValidDate";
