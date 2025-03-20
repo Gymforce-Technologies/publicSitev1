@@ -309,7 +309,7 @@ export default function NotificationDropdown({
       return;
     }
 
-    const URL = process.env.NEXT_PUBLIC_URL || "https://apiv2.gymforce.in";
+    const URL = process.env.NEXT_PUBLIC_URL || "https://backend.gymforce.in";
     const socket = new WebSocket(
       `${URL.replace("https", "wss")}/ws/notifications/${currentUserId}/`
     );

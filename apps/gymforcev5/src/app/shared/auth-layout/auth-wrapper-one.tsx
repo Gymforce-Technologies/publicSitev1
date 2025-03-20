@@ -24,7 +24,7 @@ import logoImgText from "@public/svg/gymforce-text/gymforce-text-black.svg";
 // import { setIsStaff } from "@/app/[locale]/auth/Staff";
 import { useTranslations } from "next-intl";
 
-const API_URL = process.env.NEXT_PUBLIC_URL || "https://apiv2.gymforce.in";
+const API_URL = process.env.NEXT_PUBLIC_URL || "https://backend.gymforce.in";
 
 interface User {
   name: string;

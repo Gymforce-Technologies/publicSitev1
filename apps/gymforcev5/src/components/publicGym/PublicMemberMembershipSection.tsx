@@ -73,7 +73,7 @@ const PublicMemberMembershipSection = () => {
       try {
         const getToken = localStorage.getItem("member_token");
         const resp = await AxiosPublic.get(
-          `https://apiv2.gymforce.in/center/membership-details/?auth=${getToken}`,
+          `https://backend.gymforce.in/center/membership-details/?auth=${getToken}`,
           {
             id: `Member-Memberships-${getToken}`,
           }
