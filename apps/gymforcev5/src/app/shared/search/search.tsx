@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { Modal } from "rizzui";
 import SearchTrigger from "./search-trigger";
 import SearchList from "./search-list";
-import { PaymentModal, RenewModal } from "@/components/member-list/Modals";
+// import { PaymentModal, RenewModal } from "@/components/member-list/Modals";
 
 export default function SearchWidget({
   className,
@@ -64,28 +64,6 @@ export default function SearchWidget({
           setSelectedData={setSelectedData}
         />
       </Modal>
-      {func === "Pay" && selectedData && (
-        <PaymentModal
-          onUpdate={() => {
-            closeModal();
-          }}
-          membershipid={selectedData.membership_details?.id}
-          func={func}
-        />
-      )}
-
-      {func === "Renew" && selectedData && (
-        <RenewModal
-          onUpdate={() => {
-            closeModal();
-          }}
-          membershipId={selectedData.membership_details?.id}
-          package_name={selectedData.membership_details?.name}
-          func={func}
-          end_date={selectedData.membership_details?.latest_membership_end_date}
-          member_id={selectedData.id}
-        />
-      )}
     </>
   );
 }
