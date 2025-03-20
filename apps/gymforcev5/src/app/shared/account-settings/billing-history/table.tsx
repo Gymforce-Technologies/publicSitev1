@@ -15,7 +15,7 @@ import TableFooter from "@/app/shared/table-footer";
 import ControlledTable from "@/app/shared/controlled-table";
 import { exportToCSV } from "@core/utils/export-to-csv";
 // import { useTranslation } from "@/app/i18n/client";
-import { getDemographicInfo } from "@/app/[locale]/auth/DemographicInfo";
+// import { getDemographicInfo } from "@/app/[locale]/auth/DemographicInfo";
 import { setPageSize } from "@/components/pageSize";
 import { getColumnsAddon } from "./column2";
 // import { useTranslations } from "next-intl";
@@ -47,13 +47,13 @@ export default function BillingHistoryTable({
   const [pageSizeV, setPageSizeV] = useState(pageSizeVal ?? 10);
   const [demographics, setDemographics] = useState<any>({});
   const [type, setType] = useState("");
-  useEffect(() => {
-    const getPreReq = async () => {
-      const demographics = await getDemographicInfo();
-      setDemographics(demographics);
-    };
-    getPreReq();
-  }, []);
+  // useEffect(() => {
+  //   const getPreReq = async () => {
+  //     const demographics = await getDemographicInfo();
+  //     setDemographics(demographics);
+  //   };
+  //   getPreReq();
+  // }, []);
   useEffect(() => {
     setPageSizeVal(pageSizeV);
     setPageSize(pageSizeV);

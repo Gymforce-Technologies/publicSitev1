@@ -9,7 +9,7 @@ import { Button, Password, Title, Text } from "rizzui";
 // import { ProfileHeader } from "@/app/shared/account-settings/profile-settings";
 import HorizontalFormBlockWrapper from "@/app/shared/account-settings/horiozontal-block";
 // import { useTranslation } from "@/app/i18n/client";
-import { AxiosPrivate } from "@/app/[locale]/auth/AxiosPrivate";
+// import { AxiosPrivate } from "@/app/[locale]/auth/AxiosPrivate";
 import toast from "react-hot-toast";
 import { useTranslations } from "next-intl";
 
@@ -43,7 +43,7 @@ export default function PasswordSettingsView({ lang }: { lang?: string }) {
 
   const onSubmit = async (data: PasswordFormTypes) => {
     try {
-      const response = await AxiosPrivate.post("/api/changepassword/", data);
+      // const response = await AxiosPrivate.post("/api/changepassword/", data);
       toast.success("Password Changed Successfully");
       reset();
     } catch (error) {

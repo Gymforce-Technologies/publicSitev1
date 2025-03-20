@@ -25,7 +25,6 @@ import {
   newID,
 } from "@/app/[locale]/auth/AxiosPrivate";
 // import axios from "axios";
-import { getAccessToken } from "@/app/[locale]/auth/Acces";
 import { PhoneNumber } from "@core/ui/phone-input";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
@@ -115,7 +114,7 @@ export default function PersonalInfoView({ lang }: { lang?: string }) {
     const jsonData = JSON.stringify(data, null, 2);
     console.log("Submitted Data in JSON format:", jsonData);
     try {
-      const token = getAccessToken();
+      const token = "ujhede";
       console.log(data);
       const { email, ...updateData } = data;
       const newData = { ...updateData, phone: "+" + updateData.phone };

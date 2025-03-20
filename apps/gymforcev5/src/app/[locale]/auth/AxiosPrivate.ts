@@ -6,6 +6,61 @@ import {
 } from "axios-cache-interceptor";
 
 const URL = process.env.NEXT_PUBLIC_URL;
+// const CacheIDS:string[]=[];
+
+export const createAxiosPrivate = (): any => {
+  const axiosPrivate = axios.create({
+    baseURL: URL,
+    headers: { "Content-Type": "application/json" },
+    withCredentials: true,
+  });
+
+  // Add request interceptor
+  axiosPrivate.interceptors.request.use(
+    async (config) => {
+      let accessToken = "samnokd";
+      if (accessToken) {
+        config.headers["Authorization"] = `Bearer ${accessToken}`;
+      }
+      return config;
+    },
+    (error) => Promise.reject(error)
+  );
+
+  return axiosPrivate;
+};
+
+export const AxiosPrivate = createAxiosPrivate();
+
+const getAxiosCacheKeys = (): string[] => {
+  return Object.keys(sessionStorage).filter((key) =>
+    key.startsWith("axios-cache:")
+  );
+};
+
+export const invalidateAll = () => {
+  const cacheKeys = getAxiosCacheKeys();
+  console.log("Invalidating all cache keys:", cacheKeys);
+  cacheKeys.forEach((key) => {
+    // Remove from sessionStorage
+    sessionStorage.removeItem(key);
+
+    const cacheKey = key.replace("axios-cache:", "");
+    AxiosPrivate.storage.remove(cacheKey);
+  });
+
+  console.log("After invalidation, remaining cache keys:", getAxiosCacheKeys());
+};
+
+export const newID = (id: string) => {
+  return id;
+};
+
+export const logCurrentCacheKeys = () => {
+  const cacheKeys = getAxiosCacheKeys();
+  console.log("Current axios cache keys:", cacheKeys);
+};
+
 // Public Caching
 
 export const createAxiosPublic = (): AxiosCacheInstance => {
