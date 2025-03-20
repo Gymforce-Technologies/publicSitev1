@@ -167,7 +167,7 @@ export default function PublicGymRegSection() {
     const getInitialData = async () => {
       try {
         const resp = await AxiosPublic.get(
-          `https://backend.gymforce.in/center/initial/${code}/`,
+          `/center/initial/${code}/`,
           {
             id: `Gym-${code}`,
           }
@@ -218,7 +218,7 @@ export default function PublicGymRegSection() {
         newData = data;
       }
       const response = await axios.post(
-        `https://backend.gymforce.in/api/register-public-enquiry-w-details/`,
+        `/api/register-public-enquiry-w-details/`,
         newData,
         {
           headers: {

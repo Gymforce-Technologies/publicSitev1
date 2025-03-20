@@ -37,7 +37,7 @@ export default function PublicHeader({
     const getInitialData = async () => {
       try {
         const resp = await AxiosPublic.get(
-          `https://backend.gymforce.in/center/initial/${code}/`,
+          `/center/initial/${code}/`,
           {
             id: `Gym-${code}`,
           }

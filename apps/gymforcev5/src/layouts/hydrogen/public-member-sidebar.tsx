@@ -55,7 +55,7 @@ export default function MemberSidebar({
     try {
       const getToken = localStorage.getItem("member_token");
       const resp = await AxiosPublic.get(
-        `https://backend.gymforce.in/center/basic-details/?auth=${getToken}`,
+        `/center/basic-details/?auth=${getToken}`,
         {
           id: `Member-Details-${getToken}`,
         }
@@ -71,7 +71,7 @@ export default function MemberSidebar({
     const getInitialData = async () => {
       try {
         const resp = await AxiosPublic.get(
-          `https://backend.gymforce.in/center/initial/${code}/`,
+          `/center/initial/${code}/`,
           {
             id: `Gym-${code}`,
           }

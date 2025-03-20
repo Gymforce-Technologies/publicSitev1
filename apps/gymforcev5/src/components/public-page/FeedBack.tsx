@@ -57,7 +57,7 @@ const FeedbackModal: React.FC<FeedbackModalProps> = ({
 
     try {
       const response = await axios.post(
-        `https://backend.gymforce.in/center/new-feedback/${gymId}/`,
+        `/center/new-feedback/${gymId}/`,
         {
           ...formData,
           rating: formData.rating.toString(),

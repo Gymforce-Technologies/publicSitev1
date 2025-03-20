@@ -32,7 +32,7 @@ export default function PublicMemberAttendanceSection() {
       try {
         const getToken = localStorage.getItem("member_token");
         const resp = await AxiosPublic.get(
-          `https://backend.gymforce.in/center/attendance-details/?auth=${getToken}`,
+          `/center/attendance-details/?auth=${getToken}`,
           {
             id: `Member-Attendance-${getToken}`,
           }

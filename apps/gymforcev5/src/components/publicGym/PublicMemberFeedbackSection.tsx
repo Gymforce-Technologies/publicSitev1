@@ -37,7 +37,7 @@ export default function PublicMemberFeedbackSection() {
     const token = getMemberToken();
     try {
       const response = await AxiosPublic.post(
-        `https://backend.gymforce.in/center/member-feedback/`,
+        `/center/member-feedback/`,
         {
           ...formData,
           rating: formData.rating.toString(),

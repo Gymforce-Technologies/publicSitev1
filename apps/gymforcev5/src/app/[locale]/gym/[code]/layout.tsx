@@ -12,7 +12,7 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   try {
     const gymData = await AxiosPublic.get(
-      `https://backend.gymforce.in/center/initial/${params.code}/`,
+      `/center/initial/${params.code}/`,
       {
         id: `Gym-${params.code}`,
       }

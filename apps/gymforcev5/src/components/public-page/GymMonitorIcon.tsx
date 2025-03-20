@@ -41,7 +41,7 @@ export function GymMonitorIcon() {
 
   useEffect(() => {
     if (id) {
-      const URL = process.env.NEXT_PUBLIC_URL || "https://backend.gymforce.in";
+      const URL = process.env.NEXT_PUBLIC_URL || "";
       const ws = new WebSocket(
         `${URL.replace("https", "wss")}/ws/gym-monitor/${id}/`
       );

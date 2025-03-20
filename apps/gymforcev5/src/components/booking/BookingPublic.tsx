@@ -34,7 +34,7 @@ export default function PublicBooking({
     const getSessions = async () => {
       setLoading(true);
       const resp = await AxiosPublic.get(
-        `https://backend.gymforce.in/api/classes/available/v2/?gym_id=${gymId}&end_date=${formatDate(selectedDate, "YYYY-MM-DD")}`,
+        `/api/classes/available/v2/?gym_id=${gymId}&end_date=${formatDate(selectedDate, "YYYY-MM-DD")}`,
         {
           id: `Gym-${gymId}-${formatDate(selectedDate, "YYYY-MM-DD")}`,
         }

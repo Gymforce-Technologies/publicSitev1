@@ -110,7 +110,7 @@ export default function PublicGymSection() {
     const getInitialData = async () => {
       try {
         const resp = await AxiosPublic.get(
-          `https://backend.gymforce.in/center/initial/${code}/`,
+          `/center/initial/${code}/`,
           {
             id: `Gym-${code}`,
           }
@@ -133,7 +133,7 @@ export default function PublicGymSection() {
 
   const getGallery = async (gymId: string) => {
     const resp = await AxiosPublic.get(
-      `https://backend.gymforce.in/center/list-gallery/${gymId}/`,
+      `/center/list-gallery/${gymId}/`,
       {
         id: `Gym-${gymId}-Gallery`,
       }
@@ -144,7 +144,7 @@ export default function PublicGymSection() {
 
   const getTrainerDetails = async (gymId: string) => {
     const resp = await AxiosPublic.get(
-      `https://backend.gymforce.in/center/list-trainer/${gymId}/`,
+      `/center/list-trainer/${gymId}/`,
       {
         id: `Gym-${gymId}-Trainers`,
       }
@@ -190,7 +190,7 @@ export default function PublicGymSection() {
   const getOffers = async (gymId: string) => {
     try {
       const resp = await AxiosPublic.get(
-        `https://backend.gymforce.in/center/list-offers/${gymId}/`,
+        `/center/list-offers/${gymId}/`,
         {
           id: `Gym-${gymId}-Offers`,
         }
@@ -238,7 +238,7 @@ export default function PublicGymSection() {
       }
 
       const response = await AxiosPublic.post(
-        `https://backend.gymforce.in/center/new-enquiry/${gymId}`,
+        `/center/new-enquiry/${gymId}`,
         formData,
         {
           headers: {

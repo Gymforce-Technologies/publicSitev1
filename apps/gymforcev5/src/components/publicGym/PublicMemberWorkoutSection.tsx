@@ -46,7 +46,7 @@ export default function PublicMemberWorkoutSection({
       try {
         const getToken = localStorage.getItem("member_token");
         const resp = await AxiosPublic.get(
-          `https://backend.gymforce.in/center/workout-details/?auth=${getToken}`,
+          `/center/workout-details/?auth=${getToken}`,
           {
             id: `Member-Workout-${getToken}`,
           }

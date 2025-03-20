@@ -52,7 +52,7 @@ export default function PublicLoginSection() {
     }
     try {
       const resp = await AxiosPublic.post(
-        `https://backend.gymforce.in/center/verify-member/${gymId}/`,
+        `/center/verify-member/${gymId}/`,
         {
           ...data,
         }
@@ -73,7 +73,7 @@ export default function PublicLoginSection() {
     const getInitialData = async () => {
       try {
         const resp = await AxiosPublic.get(
-          `https://backend.gymforce.in/center/initial/${code}/`,
+          `/center/initial/${code}/`,
           {
             id: `Gym-${code}`,
           }

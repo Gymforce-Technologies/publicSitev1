@@ -67,7 +67,7 @@ export default function ClassBook({
 
       await axios
         .post(
-          `https://backend.gymforce.in/api/classes/book/?gym_id=${gymId}`,
+          `/api/classes/book/?gym_id=${gymId}`,
           payload
         )
         .then(() => {

@@ -39,7 +39,7 @@ export default function PublicMemberDietSection({
       try {
         const getToken = localStorage.getItem("member_token");
         const resp = await AxiosPublic.get(
-          `https://backend.gymforce.in/center/diet-details/?auth=${getToken}`,
+          `/center/diet-details/?auth=${getToken}`,
           {
             id: `Member-Diet-${getToken}`,
           }
