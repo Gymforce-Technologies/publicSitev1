@@ -3,14 +3,7 @@ import createMiddleware from "next-intl/middleware";
 import { routing } from "./i18n/routing";
 import type { Locale } from "./i18n/routing";
 
-const publicPages = [
-  "/auth/sign-up-wg6ixcnunl5",
-  "/auth/sign-in",
-  "/auth/forgot-password",
-  "/auth/reset-password",
-  "/i/.*",
-  "/gym/.*",
-];
+const publicPages = ["/i/.*", "/gym/.*"];
 
 // Function to check if the path should skip internationalization
 function shouldSkipInternationalization(path: string): boolean {
@@ -36,6 +29,7 @@ const intlMiddleware = createMiddleware({
 export default function middleware(req: NextRequest) {
   const url = req.nextUrl;
   const path = url.pathname;
+  console.log(url);
   const token = req.cookies.get("refreshToken")?.value;
 
   // Skip for chrome-specific paths

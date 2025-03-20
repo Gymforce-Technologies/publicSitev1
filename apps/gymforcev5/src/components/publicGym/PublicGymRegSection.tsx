@@ -29,7 +29,7 @@ import Image from "next/image";
 // import FeedbackModal from "@/components/public-page/FeedBack";
 import dynamic from "next/dynamic";
 const CameraCapture = dynamic(
-  () => import("@/components/member-list/Capture"),
+  () => import("@/components/Capture"),
   {
     ssr: false,
   }
@@ -43,7 +43,7 @@ const FeedbackModal = dynamic(
 );
 import { ArrowLeft, ArrowRight, CheckCircle, Phone } from "lucide-react";
 import { COUNTRY_MAPPINGS } from "@/app/[locale]/auth/Countries";
-import { AxiosPublic, newID } from "@/app/[locale]/auth/AxiosPrivate";
+import { AxiosPublic } from "@/app/[locale]/auth/AxiosPrivate";
 import SuccessModal from "./SuccessModal";
 import PublicHeader from "./PublicHeader";
 
@@ -191,7 +191,7 @@ export default function PublicGymRegSection() {
         const resp = await AxiosPublic.get(
           `/api/dynamic-fields/enquiry/?gym_id=${gymId}`,
           {
-            id: newID(`enquiry-fields`),
+            id: `enquiry-fields`,
           }
         );
         setRequiredFieldsList(resp.data.oFields);
