@@ -2,10 +2,10 @@ import { Title, Text, Avatar, Input, Button } from "rizzui";
 import { PiMinusBold, PiPlusBold, PiTrashBold } from "react-icons/pi";
 import { ActionIcon } from "rizzui";
 import { useCallback, useEffect, useState } from "react";
-import {
-  DemographicInfo,
-  getDemographicInfo,
-} from "@/app/[locale]/auth/DemographicInfo";
+// import {
+//   DemographicInfo,
+//   getDemographicInfo,
+// } from "@/app/[locale]/auth/DemographicInfo";
 
 interface Product {
   id: number;
@@ -27,20 +27,19 @@ export default function CartProduct({
   onQuantityChange,
   onRemove,
 }: CartProductProps) {
-  const [demographicInfo, setDemographicInfo] =
-    useState<DemographicInfo | null>(null);
-  const fetchDemographicInfo = useCallback(async () => {
-    try {
-      const geoinfo = await getDemographicInfo();
-      setDemographicInfo(geoinfo);
-    } catch (error) {
-      console.error("Error fetching demographic info:", error);
-    }
-  }, []);
+  const [demographicInfo, setDemographicInfo] = useState<null>();
+  // const fetchDemographicInfo = useCallback(async () => {
+  //   try {
+  //     const geoinfo = await getDemographicInfo();
+  //     setDemographicInfo(geoinfo);
+  //   } catch (error) {
+  //     console.error("Error fetching demographic info:", error);
+  //   }
+  // }, []);
 
-  useEffect(() => {
-    fetchDemographicInfo();
-  }, []);
+  // useEffect(() => {
+  //   fetchDemographicInfo();
+  // }, []);
   return (
     <div className="grid grid-cols-12 items-start gap-4 border-b border-muted py-6 first:pt-0 sm:flex sm:gap-6 2xl:py-8">
       <figure className="col-span-4 sm:max-w-[180px]">
@@ -61,7 +60,8 @@ export default function CartProduct({
             {product.title}
           </Title>
           <span className="inline-block text-sm font-semibold text-gray-1000 sm:font-medium md:text-base 3xl:text-lg">
-            {demographicInfo?.currency_symbol || " "} {product.sell_price}
+            {" "}
+            {product.sell_price}
           </span>
         </div>
 
@@ -105,7 +105,7 @@ export default function CartProduct({
           <div className=" flex items-center justify-between gap-4 text-base">
             <Text className="text-gray-500">Total:</Text>
             <Text className="font-semibold">
-              {demographicInfo?.currency_symbol || " "}
+              {" "}
               {product.sell_price * (product.quantity || 1)}
             </Text>
           </div>

@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { FaUsers } from "react-icons/fa";
 import Link from "next/link";
-import { retrieveGymId } from "@/app/[locale]/auth/InfoCookies";
+// import { retrieveGymId } from "@/app/[locale]/auth/InfoCookies";
 import { AxiosPrivate, newID } from "@/app/[locale]/auth/AxiosPrivate";
 import { Tooltip } from "rizzui";
 
@@ -18,7 +18,7 @@ export function GymMonitorIcon() {
   const [isAvailable, setIsAvailable] = useState(false);
   useEffect(() => {
     const getProfile = async () => {
-      const gymId = await retrieveGymId();
+      const gymId = '1';
       const resp = await AxiosPrivate.get("/api/profile/", {
         id: newID("user-profile"),
         cache: {

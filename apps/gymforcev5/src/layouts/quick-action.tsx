@@ -4,7 +4,7 @@ import {
   invalidateAll,
   newID,
 } from "@/app/[locale]/auth/AxiosPrivate";
-import { retrieveGymId } from "@/app/[locale]/auth/InfoCookies";
+// import { retrieveGymId } from "@/app/[locale]/auth/InfoCookies";
 import { routes } from "@/config/routes";
 import Link from "next/link";
 import React, { useState, ReactElement, useEffect } from "react";
@@ -106,7 +106,7 @@ export default function QuickDropdown({ children }: QuickActDropdownProps) {
 
   const getLinksInfo = async () => {
     try {
-      const gymId = await retrieveGymId();
+      const gymId = 1;
       const resp = await AxiosPrivate.get("/api/profile/", {
         id: newID("user-profile"),
         cache: {
@@ -138,7 +138,7 @@ export default function QuickDropdown({ children }: QuickActDropdownProps) {
 
   const handleSave = async () => {
     try {
-      const gymId = await retrieveGymId();
+      const gymId = 1;
       const payload = {
         actions: links.reduce(
           (acc, link) => ({

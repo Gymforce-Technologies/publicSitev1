@@ -17,16 +17,16 @@ import LogoMainTextDark from "@/../public/svg/gymforce-text/gymforce-text-white.
 import { LucideChevronsUpDown } from "lucide-react";
 import { FaCheck } from "react-icons/fa6";
 import toast from "react-hot-toast";
-import { deleteDemographicInfo } from "@/app/[locale]/auth/DemographicInfo";
+// import { deleteDemographicInfo } from "@/app/[locale]/auth/DemographicInfo";
 import { useTheme } from "next-themes";
 import {
   AxiosPrivate,
   invalidateAll,
   newID,
 } from "@/app/[locale]/auth/AxiosPrivate";
-import { retrieveGymId, setGymId } from "@/app/[locale]/auth/InfoCookies";
+// import { retrieveGymId, setGymId } from "@/app/[locale]/auth/InfoCookies";
 import { useLocale, useTranslations } from "next-intl";
-import { getStaffType, isStaff } from "@/app/[locale]/auth/Staff";
+// import { getStaffType, isStaff } from "@/app/[locale]/auth/Staff";
 import DanceForceText from "@/../public/svg/gymforce-text/DanceForce.svg";
 import LibraryForceText from "@/../public/svg/gymforce-text/LibraryForce.svg";
 
@@ -54,7 +54,7 @@ export default function Sidebar({
   const [userId, setUserId] = useState("");
   const fetchCenters = async () => {
     try {
-      const gymId = await retrieveGymId();
+      const gymId = 1;
       const response = await AxiosPrivate.get("/api/profile/", {
         id: newID("user-profile"),
         cache: {
@@ -76,7 +76,7 @@ export default function Sidebar({
 
   useEffect(() => {
     const checkStaff = async () => {
-      const resp = await isStaff();
+      const resp = false;
       setIsStaf(resp);
     };
     checkStaff();
@@ -84,7 +84,7 @@ export default function Sidebar({
 
   const fetchPermissions = async () => {
     try {
-      const gymId = await retrieveGymId();
+      const gymId = 1;
       const response = await AxiosPrivate.get(
         `api/staff-permission/${userId}/?gym_id=${gymId}`,
         {
@@ -411,8 +411,8 @@ export default function Sidebar({
                   console.log(item);
                   invalidateAll();
                   setCurrentGym(item);
-                  deleteDemographicInfo();
-                  setGymId(item.gym_id.toString());
+                  // deleteDemographicInfo();
+                  // setGymId(item.gym_id.toString());
                   toast.success(`Gym Center ${item.name} has been Switched.`);
                   // router.refresh();
                   document.location.reload();

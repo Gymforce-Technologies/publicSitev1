@@ -26,7 +26,7 @@ import {
 import { FaUserCircle } from "react-icons/fa";
 import { IoArrowBackOutline, IoBody } from "react-icons/io5";
 import { useCallback, useEffect, useState } from "react";
-import { retrieveGymId } from "@/app/[locale]/auth/InfoCookies";
+// import { retrieveGymId } from "@/app/[locale]/auth/InfoCookies";
 import { AxiosPrivate, newID } from "@/app/[locale]/auth/AxiosPrivate";
 import { useTranslations } from "next-intl";
 import cn from "@core/utils/class-names";
@@ -57,7 +57,7 @@ export default function ProfileSidebar({
 
   const getmember = async () => {
     try {
-      const gymId = await retrieveGymId();
+      const gymId = 1;
       const resp = await AxiosPrivate.get(
         `/api/member/${newId}/basic/?gym_id=${gymId}`,
         {
@@ -222,7 +222,7 @@ export default function ProfileSidebar({
   );
   const fetchProfile = async () => {
     try {
-      const gymId = await retrieveGymId();
+      const gymId = 1;
       const response = await AxiosPrivate.get("/api/profile/", {
         id: newID("user-profile"),
         cache: {

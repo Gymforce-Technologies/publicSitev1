@@ -13,15 +13,15 @@ import { Title, Text, Button } from "rizzui";
 import { PiArrowLeftBold } from "react-icons/pi";
 import { FcGoogle } from "react-icons/fc";
 import { AxiosPrivate, newID } from "@/app/[locale]/auth/AxiosPrivate";
-import { setAccessToken } from "@/app/[locale]/auth/Acces";
-import { setRefreshToken } from "@/app/[locale]/auth/Refresh";
-import { setGymId, deleteGymId } from "@/app/[locale]/auth/InfoCookies";
+// import { setAccessToken } from "@/app/[locale]/auth/Acces";
+// import { setRefreshToken } from "@/app/[locale]/auth/Refresh";
+// import { setGymId, deleteGymId } from "@/app/[locale]/auth/InfoCookies";
 import OrSeparation from "./or-separation";
 
 // Import your logo images
 import logoImg from "@public/svg/icon/gymforce-icon-black.svg";
 import logoImgText from "@public/svg/gymforce-text/gymforce-text-black.svg";
-import { setIsStaff } from "@/app/[locale]/auth/Staff";
+// import { setIsStaff } from "@/app/[locale]/auth/Staff";
 import { useTranslations } from "next-intl";
 
 const API_URL = process.env.NEXT_PUBLIC_URL || "https://apiv2.gymforce.in";
@@ -58,70 +58,70 @@ export default function AuthWrapperOne({
   const [error, setError] = useState<string | null>(null);
   const googleLoginRef = useRef<HTMLDivElement>(null);
 
-  const handleGoogleSuccess = useCallback(
-    async (credentialResponse: CredentialResponse) => {
-      console.log("Login Success", credentialResponse);
-      try {
-        if (!credentialResponse.credential) {
-          throw new Error("No credential received from Google");
-        }
-        const config = {
-          method: "post",
-          maxBodyLength: Infinity,
-          url: `${API_URL}/auth-receiver`,
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-            // 'Cookie': 'sessionid=mwrrzr6p0h1ictyj2oa3m9e46ztajmyp'
-          },
-          data: {
-            credential: credentialResponse.credential,
-          },
-          withCredentials: true,
-        };
+  // const handleGoogleSuccess = useCallback(
+  //   async (credentialResponse: CredentialResponse) => {
+  //     console.log("Login Success", credentialResponse);
+  //     try {
+  //       if (!credentialResponse.credential) {
+  //         throw new Error("No credential received from Google");
+  //       }
+  //       const config = {
+  //         method: "post",
+  //         maxBodyLength: Infinity,
+  //         url: `${API_URL}/auth-receiver`,
+  //         headers: {
+  //           "Content-Type": "application/x-www-form-urlencoded",
+  //           // 'Cookie': 'sessionid=mwrrzr6p0h1ictyj2oa3m9e46ztajmyp'
+  //         },
+  //         data: {
+  //           credential: credentialResponse.credential,
+  //         },
+  //         withCredentials: true,
+  //       };
 
-        const apiResponse = await axios(config);
-        console.log(
-          "Response from /auth-receiver:",
-          JSON.stringify(apiResponse.data)
-        );
-        if (apiResponse.status === 200) {
-          setAccessToken(apiResponse.data.token.access);
-          await setRefreshToken(apiResponse.data.token.refresh);
-          // console.log(apiResponse.data.user);
-          setUser(apiResponse.data.user);
-          const gymData = await AxiosPrivate.get("/api/profile", {
-            id: newID(`user-profile`),
-            cache: {
-              ttl: 60 * 60 * 1000,
-            },
-          });
-          setIsStaff(gymData.data.is_staff_role);
-          console.log(gymData);
-          toast.success("Google Signin successful");
-          if (gymData?.data?.associated_gyms?.length) {
-            const firstGym =
-              gymData.data.associated_gyms.find(
-                (gym: any) => gym.is_primary === true
-              ) || gymData.data.associated_gyms[0];
-            setGymId(firstGym.gym_id.toString());
-            router.push("/dashboard");
-          } else {
-            deleteGymId();
-            router.push("/gym-registration");
-          }
-        }
-      } catch (error) {
-        console.error("Error processing login:", error);
-        toast.error(
-          error instanceof Error ? error.message : "An unknown error occurred"
-        );
-        setError(
-          error instanceof Error ? error.message : "An unknown error occurred"
-        );
-      }
-    },
-    [router]
-  );
+  //       const apiResponse = await axios(config);
+  //       console.log(
+  //         "Response from /auth-receiver:",
+  //         JSON.stringify(apiResponse.data)
+  //       );
+  //       if (apiResponse.status === 200) {
+  //         setAccessToken(apiResponse.data.token.access);
+  //         await setRefreshToken(apiResponse.data.token.refresh);
+  //         // console.log(apiResponse.data.user);
+  //         setUser(apiResponse.data.user);
+  //         const gymData = await AxiosPrivate.get("/api/profile", {
+  //           id: newID(`user-profile`),
+  //           cache: {
+  //             ttl: 60 * 60 * 1000,
+  //           },
+  //         });
+  //         setIsStaff(gymData.data.is_staff_role);
+  //         console.log(gymData);
+  //         toast.success("Google Signin successful");
+  //         if (gymData?.data?.associated_gyms?.length) {
+  //           const firstGym =
+  //             gymData.data.associated_gyms.find(
+  //               (gym: any) => gym.is_primary === true
+  //             ) || gymData.data.associated_gyms[0];
+  //           setGymId(firstGym.gym_id.toString());
+  //           router.push("/dashboard");
+  //         } else {
+  //           deleteGymId();
+  //           router.push("/gym-registration");
+  //         }
+  //       }
+  //     } catch (error) {
+  //       console.error("Error processing login:", error);
+  //       toast.error(
+  //         error instanceof Error ? error.message : "An unknown error occurred"
+  //       );
+  //       setError(
+  //         error instanceof Error ? error.message : "An unknown error occurred"
+  //       );
+  //     }
+  //   },
+  //   [router]
+  // );
 
   const handleCustomButtonClick = () => {
     if (googleLoginRef.current) {
@@ -195,7 +195,7 @@ export default function AuthWrapperOne({
                   </Button>
                   <div ref={googleLoginRef} className="hidden">
                     <GoogleLogin
-                      onSuccess={handleGoogleSuccess}
+                      onSuccess={() => {}}
                       onError={() => {
                         console.log("Login Failed");
                         toast.error("Something went wrong. Please try again.");

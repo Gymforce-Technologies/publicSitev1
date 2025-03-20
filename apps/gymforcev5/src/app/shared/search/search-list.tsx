@@ -17,9 +17,9 @@ import { PiMagnifyingGlassBold, PiXBold } from "react-icons/pi";
 import { AxiosPrivate, newID } from "@/app/[locale]/auth/AxiosPrivate";
 import { Calendar } from "lucide-react";
 import getDueBadge from "@/components/dueBadge";
-import { retrieveGymId } from "@/app/[locale]/auth/InfoCookies";
+// import { retrieveGymId } from "@/app/[locale]/auth/InfoCookies";
 import DateCell from "@core/ui/date-cell";
-import { getDateFormat } from "@/app/[locale]/auth/DateFormat";
+// import { getDateFormat } from "@/app/[locale]/auth/DateFormat";
 
 export default function SearchList({
   onclose,
@@ -120,7 +120,7 @@ export default function SearchList({
       }
       // Use the current offset state value directly
       const currentOffset = isLoadMore ? offset : 0;
-      const gymid = await retrieveGymId();
+      const gymid = 1;
 
       const response = await AxiosPrivate.post(
         `/api/member_search/v2/?gym_id=${gymid}`,
@@ -272,7 +272,7 @@ export default function SearchList({
                           date={
                             item.membership_details?.latest_membership_end_date
                           }
-                          dateFormat={getDateFormat()}
+                          dateFormat={"yyyy-mm-dd"}
                           timeClassName="hidden"
                         />
                       </div>
@@ -324,7 +324,7 @@ export default function SearchList({
                         <Calendar className="h-4 w-4 mr-1" />
                         <DateCell
                           date={item?.latest_transaction_date}
-                          dateFormat={getDateFormat()}
+                          dateFormat={"yyyy-mm-dd"}
                           timeClassName="hidden"
                         />
                       </div>

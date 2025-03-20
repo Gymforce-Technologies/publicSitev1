@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { AxiosPrivate, invalidateAll, newID } from "@/app/[locale]/auth/AxiosPrivate";
-import { retrieveGymId } from "@/app/[locale]/auth/InfoCookies";
+// import { retrieveGymId } from "@/app/[locale]/auth/InfoCookies";
 
 type Membership = {
     user_id: string;
@@ -23,7 +23,7 @@ type Membership = {
 const useMembershipAPI = () => {
     const getAllMemberships = useCallback(async (type:string) => {
         try {
-            const gymId = await retrieveGymId();
+            const gymId = 1;
             const resp = await AxiosPrivate.get(`/api/list-memberships/?membership_type=${type}&gym_id=${gymId}`,{
                 id:newID(`membership-list-${type}`)
             });
@@ -37,7 +37,7 @@ const useMembershipAPI = () => {
 
     const getSpecificMember = useCallback(async (member_id: string) => {
         try {
-            const gymId = await retrieveGymId();
+            const gymId = 1;
             const response = await AxiosPrivate.get(`/api/${member_id}/memberships/?gym_id=${gymId}`,{
                 id:newID(`membership-${member_id}`)
             });
@@ -50,7 +50,7 @@ const useMembershipAPI = () => {
 
     const getSpecificMembership = useCallback(async (membership_id: string) => {
         try {
-            const gymId = await retrieveGymId();
+            const gymId = 1;
             const response = await AxiosPrivate.get(`/api/${membership_id}/list-memberships/?gym_id=${gymId}`,{
                 id:newID(`memberships-${membership_id}`)
             });

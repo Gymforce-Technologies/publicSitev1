@@ -34,7 +34,7 @@ import {
 } from "react-icons/pi";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
-import { getnewTokens } from "@/app/[locale]/auth/Refresh";
+// import { getnewTokens } from "@/app/[locale]/auth/Refresh";
 // import { useSound } from "@/hooks/useSound";
 import SimpleBar from "simplebar-react";
 import "simplebar-react/dist/simplebar.min.css";
@@ -369,7 +369,7 @@ export default function NotificationDropdown({
     socket.onerror = async (event) => {
       console.error("WebSocket error:", event);
       setLoading(false);
-      await getnewTokens();
+      // await getnewTokens();
       setTimeout(connectWebSocket, 5000);
     };
 

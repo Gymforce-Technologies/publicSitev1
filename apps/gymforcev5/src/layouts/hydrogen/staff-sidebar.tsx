@@ -23,7 +23,7 @@ import {
 } from "react-icons/fa";
 import { IoArrowBackOutline } from "react-icons/io5";
 import { useCallback, useEffect, useState } from "react";
-import { retrieveGymId } from "@/app/[locale]/auth/InfoCookies";
+// import { retrieveGymId } from "@/app/[locale]/auth/InfoCookies";
 import { AxiosPrivate, newID } from "@/app/[locale]/auth/AxiosPrivate";
 import { useTranslations } from "next-intl";
 import cn from "@core/utils/class-names";
@@ -56,7 +56,7 @@ export default function StaffProfileSidebar({
 
   const getmember = async () => {
     try {
-      const gymId = await retrieveGymId();
+      const gymId = 1;
       const resp = await AxiosPrivate.get(
         `/api/staff/${newId}/?gym_id=${gymId}`,
         {

@@ -12,7 +12,6 @@ import Favorite from "@/app/shared/file/manager/favorite";
 import DateCell from "@core/ui/date-cell";
 import { HeaderCell } from "@/app/shared/table";
 import { useTranslations } from "next-intl";
-import { getDateFormat } from "@/app/[locale]/auth/DateFormat";
 
 type Columns = {
   sortConfig?: any;
@@ -80,7 +79,7 @@ export const getColumns = ({
     key: "modified",
     width: 150,
     render: (value: Date) => (
-      <DateCell date={value} dateFormat={getDateFormat()} />
+      <DateCell date={value} dateFormat={"yyyy-mm-dd"} />
     ),
   },
   {

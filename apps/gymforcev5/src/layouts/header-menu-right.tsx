@@ -5,13 +5,13 @@ import ProfileMenu from "@/layouts/profile-menu";
 import SettingsButton from "@/layouts/settings-button";
 import RingBellSolidIcon from "@core/components/icons/ring-bell-solid";
 import { useCallback, useEffect, useState } from "react";
-import {
-  UserSubscriptionInfo,
-  getUserStatus,
-  // isUserOnTrial,
-  isUserSubscribed,
-  retrieveUserSubscriptionInfo,
-} from "@/app/[locale]/auth/Trail";
+// import {
+//   UserSubscriptionInfo,
+//   getUserStatus,
+//   // isUserOnTrial,
+//   isUserSubscribed,
+//   retrieveUserSubscriptionInfo,
+// } from "@/app/[locale]/auth/Trail";
 import dayjs from "dayjs";
 import { ArrowRightIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
@@ -22,28 +22,28 @@ import { TbInfoTriangleFilled } from "react-icons/tb";
 import { useTranslations } from "next-intl";
 import { GymMonitorIcon } from "@/components/public-page/GymMonitorIcon";
 import { AxiosPrivate, newID } from "@/app/[locale]/auth/AxiosPrivate";
-import { retrieveGymId } from "@/app/[locale]/auth/InfoCookies";
+// import { retrieveGymId } from "@/app/[locale]/auth/InfoCookies";
 import QuickDropdown from "./quick-action";
 import { MdOfflineBolt } from "react-icons/md";
 import NotificationDropdown from "./notification-dropdown";
 export default function HeaderMenuRight({ locale }: { locale?: string }) {
   const router = useRouter();
   const t = useTranslations("common");
-  const [userInfo, setUserInfo] = useState<UserSubscriptionInfo | null>(null);
+  const [userInfo, setUserInfo] = useState<null>(null);
   const [isAvailable, setIsAvailable] = useState(false);
 
-  useEffect(() => {
-    const getUserInfoData = async () => {
-      const resp = await retrieveUserSubscriptionInfo();
-      if (resp) {
-        setUserInfo(resp);
-      }
-    };
-    getUserInfoData();
-  }, []);
+  // useEffect(() => {
+  //   const getUserInfoData = async () => {
+  //     const resp = await retrieveUserSubscriptionInfo();
+  //     if (resp) {
+  //       setUserInfo(resp);
+  //     }
+  //   };
+  //   getUserInfoData();
+  // }, []);
   useEffect(() => {
     const getProfile = async () => {
-      const gymId = await retrieveGymId();
+      const gymId = "1";
       const resp = await AxiosPrivate.get("/api/profile/", {
         id: newID("user-profile"),
         cache: {
@@ -59,8 +59,8 @@ export default function HeaderMenuRight({ locale }: { locale?: string }) {
     };
     getProfile();
   }, []);
-  const formatExpirationInfo = useCallback((info: UserSubscriptionInfo) => {
-    const status = getUserStatus(info);
+  const formatExpirationInfo = useCallback((info: any) => {
+    const status: any = "jhebded";
     const today = dayjs();
 
     if (status === "Subscription") {
@@ -104,20 +104,7 @@ export default function HeaderMenuRight({ locale }: { locale?: string }) {
           badgeText={formatExpirationInfo(userInfo).badgeText}
           highlightedTextClassName="text-sm max-sm:hidden"
           highlightedText={formatExpirationInfo(userInfo).highlightedText}
-        >
-          {getUserStatus(userInfo) !== "Expired" && (
-            <Button
-              variant="text"
-              className={`${formatExpirationInfo(userInfo).isAlmostExpired ? "animate-blink" : ""} hover:animate-none max-sm:text-sm dark:text-primary-lighter dark:hover:text-primary`}
-              onClick={() => router.push("/subscription/plans")}
-            >
-              <span className="max-sm:hidden">
-                {isUserSubscribed(userInfo) ? "Renew" : "Subscribe"}
-              </span>{" "}
-              <ArrowRightIcon className="sm:ms-1.5" size={18} />
-            </Button>
-          )}
-        </Announcement>
+        ></Announcement>
       )}
       <div
         className={`grid  items-center gap-1.5 ${isAvailable ? "grid-cols-6 md:grid-cols-7" : "grid-cols-5 md:grid-cols-6"}`}

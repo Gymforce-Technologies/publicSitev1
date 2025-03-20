@@ -111,7 +111,7 @@ export default function InvoiceDetails() {
   }, [encryptedCode]);
 
   const fetchData = async () => {
-    // const gym_id = await retrieveGymId();
+    // const gym_id = 1;
     try {
       const url = process.env.NEXT_PUBLIC_API_URL;
       const newInvoicePublic = await AxiosPublic.get(

@@ -6,21 +6,21 @@ import { routes } from "@/config/routes";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { clearAccessToken } from "@/app/[locale]/auth/Acces";
+// import { clearAccessToken } from "@/app/[locale]/auth/Acces";
 import {
   AxiosPrivate,
   invalidateAll,
   newID,
 } from "@/app/[locale]/auth/AxiosPrivate";
-import {
-  clearRefreshToken,
-  getRefreshToken,
-} from "@/app/[locale]/auth/Refresh";
-import { deleteGymId } from "@/app/[locale]/auth/InfoCookies";
+// import {
+//   clearRefreshToken,
+//   getRefreshToken,
+// } from "@/app/[locale]/auth/Refresh";
+// import { deleteGymId } from "@/app/[locale]/auth/InfoCookies";
 import { useTranslations } from "next-intl";
 import { PiDownloadSimpleFill } from "react-icons/pi";
 import { usePWAInstall } from "@/hooks/usePWA";
-import { LockButton } from "@/components/lock/LockButton";
+// import { LockButton } from "@/components/lock/LockButton";
 import { useLock } from "@/hooks/useLock";
 
 interface Profile {
@@ -142,7 +142,7 @@ function DropdownMenu({ locale }: { locale: string }) {
   const { handleInstall } = usePWAInstall();
   const { lockApp } = useLock();
   async function logOut() {
-    const refreshToken = await getRefreshToken();
+    const refreshToken = "hwdwbws";
 
     try {
       const resp = await AxiosPrivate.post(
@@ -158,10 +158,10 @@ function DropdownMenu({ locale }: { locale: string }) {
       console.error("Logout Error");
     }
     localStorage.removeItem("appLock");
-    deleteGymId();
-    invalidateAll();
-    clearAccessToken();
-    await clearRefreshToken();
+    // deleteGymId();
+    // invalidateAll();
+    // clearAccessToken();
+    // await clearRefreshToken();
     sessionStorage.clear();
     localStorage.clear();
     router.push(routes.auth.signIn);
@@ -253,7 +253,7 @@ function DropdownMenu({ locale }: { locale: string }) {
       </div>
       {/* Logout Section */}
       {/* <div className="border-t border-gray-300 px-6 py-3"> */}
-      <LockButton onLock={lockApp} />
+      {/* <LockButton onLock={lockApp} /> */}
       {/* </div> */}
       <div className="border-t border-gray-300 px-6 py-3 group cursor-pointer">
         <Button

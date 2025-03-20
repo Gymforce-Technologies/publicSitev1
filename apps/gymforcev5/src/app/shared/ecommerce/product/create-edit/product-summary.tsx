@@ -11,7 +11,6 @@ import dynamic from "next/dynamic";
 import SelectLoader from "@core/components/loader/select-loader";
 // import QuillLoader from "@core/components/loader/quill-loader";
 import { useEffect, useState } from "react";
-import { retrieveGymId } from "@/app/[locale]/auth/InfoCookies";
 import { AxiosPrivate } from "@/app/[locale]/auth/AxiosPrivate";
 import toast from "react-hot-toast";
 import { BsArrowRight } from "react-icons/bs";
@@ -45,7 +44,7 @@ export default function ProductSummary({ className }: { className?: string }) {
   const router = useRouter();
   const getCategories = async () => {
     try {
-      const gymId = await retrieveGymId();
+      const gymId = 1;
       const response = await AxiosPrivate.get(
         `/api/categories/?center=${gymId}`,
         {

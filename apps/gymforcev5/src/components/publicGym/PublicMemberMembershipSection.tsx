@@ -152,7 +152,7 @@ const PublicMemberMembershipSection = () => {
         width: 120,
         render: (offer_price: number) => (
           <Text className=" font-medium">
-            {/* {demographicInfo?.currency_symbol}{" "} */}
+            {/* {}{" "} */}
             {new Intl.NumberFormat().format(offer_price)}
           </Text>
         ),

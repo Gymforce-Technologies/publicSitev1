@@ -28,9 +28,7 @@ import {
 } from "@/validators/create-product.schema";
 import { useLayout } from "@/layouts/use-layout";
 import { LAYOUT_OPTIONS } from "@/config/enums";
-import { retrieveGymId } from "@/app/[locale]/auth/InfoCookies";
 import { AxiosPrivate, invalidateAll } from "@/app/[locale]/auth/AxiosPrivate";
-import { DemographicInfo } from "@/app/[locale]/auth/DemographicInfo";
 
 const MAP_STEP_TO_COMPONENT = {
   [formParts.summary]: ProductSummary,
@@ -67,12 +65,12 @@ export default function CreateEditProduct({
     console.log("product_data", data);
     if (slug) {
       try {
-        const gymId = await retrieveGymId();
+        const gymId = 1;
         const resp = await AxiosPrivate.put(
           `/api/products/${slug}/update/?gym_id=${gymId}`,
           {
             ...data,
-            center: parseInt(gymId!),
+            center: gymId,
           }
         );
       } catch (error) {
@@ -81,7 +79,7 @@ export default function CreateEditProduct({
       }
     } else {
       try {
-        const gymId = await retrieveGymId();
+        const gymId = 1;
         const resp = await AxiosPrivate.post(
           `/api/products/create/?gym_id=${gymId}`,
           { ...data, center: gymId }

@@ -11,11 +11,6 @@ import {
   useEffect,
   useState,
 } from "react";
-import { getDateFormat } from "@/app/[locale]/auth/DateFormat";
-import {
-  DemographicInfo,
-  getDemographicInfo,
-} from "@/app/[locale]/auth/DemographicInfo";
 
 interface CustomerInfoProps {
   className?: string;
@@ -43,20 +38,6 @@ export default function CustomerInfo({
   totalPrice,
   onSubmit,
 }: CustomerInfoProps) {
-  const [demographicInfo, setDemographicInfo] =
-    useState<DemographicInfo | null>(null);
-  const fetchDemographicInfo = useCallback(async () => {
-    try {
-      const geoinfo = await getDemographicInfo();
-      setDemographicInfo(geoinfo);
-    } catch (error) {
-      console.error("Error fetching demographic info:", error);
-    }
-  }, []);
-
-  useEffect(() => {
-    fetchDemographicInfo();
-  }, []);
 
   return (
     <div
@@ -111,10 +92,7 @@ export default function CustomerInfo({
         <div className="space-y-4 mt-7">
           <div className="flex justify-between items-center text-[15px]">
             <Text>Total Price:</Text>
-            <Text className="font-semibold">
-              {demographicInfo?.currency_symbol + " "}
-              {totalPrice.toFixed(2)}
-            </Text>
+            <Text className="font-semibold"> {totalPrice.toFixed(2)}</Text>
           </div>
 
           <Input
@@ -129,7 +107,7 @@ export default function CustomerInfo({
                 dueAmount: totalPrice - discount - orderDetails.paidAmount,
               });
             }}
-            prefix={demographicInfo?.currency_symbol}
+            prefix={""}
           />
 
           <Input
@@ -144,7 +122,7 @@ export default function CustomerInfo({
                 dueAmount: totalPrice - orderDetails.discount - paid,
               });
             }}
-            prefix={demographicInfo?.currency_symbol}
+            prefix={""}
           />
 
           <div
@@ -152,7 +130,7 @@ export default function CustomerInfo({
           >
             <Text>Due Amount:</Text>
             <Text className="font-semibold">
-              {demographicInfo?.currency_symbol + " "}
+              {+" "}
               {orderDetails.dueAmount ? orderDetails.dueAmount : ""}
             </Text>
           </div>
@@ -167,7 +145,7 @@ export default function CustomerInfo({
               })
             }
             minDate={new Date()}
-            dateFormat={convertToDateFnsFormat(getDateFormat())}
+            dateFormat={convertToDateFnsFormat("yyyy-mm-dd")}
             className={`${!orderDetails.dueAmount ? "hidden" : " "}`}
           />
 

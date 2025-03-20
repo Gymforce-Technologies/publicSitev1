@@ -12,7 +12,7 @@ import {
   CategoryFormInput,
   categoryFormSchema,
 } from "@/validators/create-category.schema";
-import { retrieveGymId } from "@/app/[locale]/auth/InfoCookies";
+// import { retrieveGymId } from "@/app/[locale]/auth/InfoCookies";
 import { AxiosPrivate, invalidateAll } from "@/app/[locale]/auth/AxiosPrivate";
 import { useModal } from "../../modal-views/use-modal";
 
@@ -81,7 +81,7 @@ export default function CreateCategory({
   const onSubmit: SubmitHandler<CategoryFormInput> = async (data) => {
     setLoading(true);
     try {
-      const gymId = await retrieveGymId();
+      const gymId = 1;
       const endpoint = id
         ? `/api/categories/${id}/update/?gym_id=${gymId}`
         : `/api/categories/create/?gym_id=${gymId}`;
