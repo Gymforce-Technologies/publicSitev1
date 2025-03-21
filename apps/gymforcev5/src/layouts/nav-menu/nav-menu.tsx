@@ -1,5 +1,5 @@
 'use client';
-import { Reducer, useReducer, useRef } from 'react';
+import { useReducer, useRef } from 'react';
 import {
   NavMenuProvider,
   initialState,
@@ -12,7 +12,6 @@ import {
 import { NavMenuContent } from '@/layouts/nav-menu/nav-menu-content';
 import type {
   NavMenuProps,
-  InitialState,
   ContentUiProps,
   ItemRef,
 } from '@/layouts/nav-menu/nav-menu-types';
@@ -28,7 +27,7 @@ export default function NavMenu(props: NavMenuProps) {
     children,
     floatingOffset = 10,
   } = props;
-  const [state, set] = useReducer<Reducer<InitialState, any>>(
+  const [state, set] = useReducer(
     navMenuReducer,
     initialState
   );
@@ -38,6 +37,7 @@ export default function NavMenu(props: NavMenuProps) {
 
   function handleMouseEnter(index: number, el: HTMLElement) {
     set({
+      ...state,
       hovering: index,
       popoverLeft: el.offsetLeft,
       hoveringWidth: el.offsetWidth,
@@ -46,6 +46,7 @@ export default function NavMenu(props: NavMenuProps) {
     const contentElement = contentRefs.current[index];
     if (contentElement) {
       set({
+        ...state,
         popoverHeight: contentElement.offsetHeight,
         popoverWidth: contentElement.offsetWidth,
       });

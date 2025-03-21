@@ -81,22 +81,22 @@ export const carbonMenuItems: MenuItemsType[] = [
         href: routes.forms.profileSettings,
         icon: PiUserGearDuotone,
       },
-      // {
-      //   name: 'sidebar-menu-notification-preference',
-      //   href: routes.forms.notificationPreference,
-      //   icon: PiBellSimpleRingingDuotone,
-      //   badge: '',
-      // },
-      // {
-      //   name: 'sidebar-menu-personal-information',
-      //   href: routes.forms.personalInformation,
-      //   icon: PiUserCircleDuotone,
-      // },
-      // {
-      //   name: 'sidebar-menu-newsletter',
-      //   href: routes.forms.newsletter,
-      //   icon: PiEnvelopeSimpleOpenDuotone,
-      // },
+      {
+        name: 'sidebar-menu-notification-preference',
+        href: routes.forms.notificationPreference,
+        icon: PiBellSimpleRingingDuotone,
+        badge: '',
+      },
+      {
+        name: 'sidebar-menu-personal-information',
+        href: routes.forms.personalInformation,
+        icon: PiUserCircleDuotone,
+      },
+      {
+        name: 'sidebar-menu-newsletter',
+        href: routes.forms.newsletter,
+        icon: PiEnvelopeSimpleOpenDuotone,
+      },
     ],
   },
 ];

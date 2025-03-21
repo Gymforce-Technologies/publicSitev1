@@ -48,7 +48,7 @@ type NavMenuTriggerWrapperProps = {
 };
 
 export function NavMenuTriggerWrapper({ items, menuClassName }: NavMenuTriggerWrapperProps) {
-  const wrapperRef = React.useRef<any>();
+  const wrapperRef = React.useRef<any>(null);
   const { set } = useNavMenu();
 
   React.useEffect(() => {

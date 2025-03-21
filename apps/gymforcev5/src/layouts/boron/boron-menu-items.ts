@@ -51,19 +51,19 @@ export const menuItems = [
     href: routes.forms.profileSettings,
     icon: PiUserGearDuotone,
   },
-  // {
-  //   name: 'sidebar-menu-notification-preference',
-  //   href: routes.forms.notificationPreference,
-  //   icon: PiBellSimpleRingingDuotone,
-  // },
-  // {
-  //   name: 'sidebar-menu-personal-information',
-  //   href: routes.forms.personalInformation,
-  //   icon: PiUserDuotone,
-  // },
-  // {
-  //   name: 'sidebar-menu-newsletter',
-  //   href: routes.forms.newsletter,
-  //   icon: PiEnvelopeSimpleOpenDuotone,
-  // },
+  {
+    name: 'sidebar-menu-notification-preference',
+    href: routes.forms.notificationPreference,
+    icon: PiBellSimpleRingingDuotone,
+  },
+  {
+    name: 'sidebar-menu-personal-information',
+    href: routes.forms.personalInformation,
+    icon: PiUserDuotone,
+  },
+  {
+    name: 'sidebar-menu-newsletter',
+    href: routes.forms.newsletter,
+    icon: PiEnvelopeSimpleOpenDuotone,
+  },
 ];

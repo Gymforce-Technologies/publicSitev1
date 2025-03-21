@@ -1,12 +1,11 @@
 "use client";
 
 import { Link } from "@/i18n/routing";
-import { usePathname } from "next/navigation";
-import cn from "@core/utils/class-names";
-import SimpleBar from "@core/ui/simplebar";
 import { berylliumSidebarMenuItems } from "@/layouts/beryllium/beryllium-sidebar-menu-items";
 import Logo from "@core/components/logo";
+import cn from "@core/utils/class-names";
 import { useTranslations } from "next-intl";
+import { usePathname } from "next/navigation";
 
 export default function Sidebar({ className }: { className?: string }) {
   const pathname = usePathname();
@@ -29,7 +28,7 @@ export default function Sidebar({ className }: { className?: string }) {
         </Link>
       </div>
 
-      <SimpleBar className="h-[calc(100%-80px)]">
+      <div className="custom-scrollbar overflow-y-auto scroll-smooth h-[calc(100%-80px)]">
         <div className="mt-4 pb-3 3xl:mt-6">
           {berylliumSidebarMenuItems.map((item, index) => {
             const isActive = pathname === (item?.href as string);
@@ -63,7 +62,7 @@ export default function Sidebar({ className }: { className?: string }) {
             );
           })}
         </div>
-      </SimpleBar>
+      </div>
     </aside>
   );
 }

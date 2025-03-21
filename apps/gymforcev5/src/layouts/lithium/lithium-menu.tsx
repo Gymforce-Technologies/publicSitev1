@@ -4,7 +4,7 @@ import { Link } from "@/i18n/routing";
 import { PiCaretDownBold } from "react-icons/pi";
 import cn from "@core/utils/class-names";
 import { ForwardedRef, forwardRef, useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import BulletIcon from "@/layouts/lithium/bullet-icon";
 import { AiFillCaretRight } from "react-icons/ai";
 import NavMenu from "@/layouts/nav-menu/nav-menu";
