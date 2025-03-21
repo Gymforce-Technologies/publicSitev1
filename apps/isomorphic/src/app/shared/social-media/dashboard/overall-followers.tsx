@@ -1,25 +1,24 @@
 'use client';
 
 import {
-  Area,
-  XAxis,
-  YAxis,
-  Tooltip,
-  AreaChart,
-  CartesianGrid,
-  ResponsiveContainer,
-} from 'recharts';
-import { Badge } from 'rizzui';
-import { useState } from 'react';
-import SimpleBar from '@core/ui/simplebar';
-import { useMedia } from '@core/hooks/use-media';
-import { SocialMediaFilter } from './utils';
-import WidgetCard from '@core/components/cards/widget-card';
-import { CustomTooltip } from '@core/components/charts/custom-tooltip';
-import {
   socialMediaOptions,
   socialMediaOverallChartData,
 } from '@/data/social-media-dashboard-data';
+import WidgetCard from '@core/components/cards/widget-card';
+import { CustomTooltip } from '@core/components/charts/custom-tooltip';
+import { useMedia } from '@core/hooks/use-media';
+import { useState } from 'react';
+import {
+  Area,
+  AreaChart,
+  CartesianGrid,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from 'recharts';
+import { Badge } from 'rizzui';
+import { SocialMediaFilter } from './utils';
 
 export default function OverallFollowers({
   className,
@@ -45,7 +44,7 @@ export default function OverallFollowers({
         </>
       }
     >
-      <SimpleBar>
+      <div className="custom-scrollbar overflow-x-auto scroll-smooth">
         <div className="h-[400px] w-full @4xl:h-[260px] @7xl:h-[24rem] 3xl:h-[28rem] 4xl:h-[512px]">
           <ResponsiveContainer
             width="100%"
@@ -90,7 +89,7 @@ export default function OverallFollowers({
             </AreaChart>
           </ResponsiveContainer>
         </div>
-      </SimpleBar>
+      </div>
     </WidgetCard>
   );
 }

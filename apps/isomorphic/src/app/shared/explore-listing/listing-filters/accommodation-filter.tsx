@@ -1,3 +1,5 @@
+'use client';
+
 import { Button, Title, Text, AdvancedRadio, Checkbox } from 'rizzui';
 import cn from '@core/utils/class-names';
 import { useMedia } from '@core/hooks/use-media';

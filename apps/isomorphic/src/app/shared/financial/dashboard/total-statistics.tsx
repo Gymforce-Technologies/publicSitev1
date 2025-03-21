@@ -1,52 +1,45 @@
 'use client';
 
-import React, { useMemo } from 'react';
-import WidgetCard from '@core/components/cards/widget-card';
-import { CustomTooltip } from '@core/components/charts/custom-tooltip';
-import {
-  Bar,
-  XAxis,
-  YAxis,
-  Tooltip,
-  CartesianGrid,
-  ComposedChart,
-  ResponsiveContainer,
-} from 'recharts';
-import SimpleBar from '@core/ui/simplebar';
-import DropdownAction from '@core/components/charts/dropdown-action';
-import { Flex, Title } from 'rizzui';
-import cn from '@core/utils/class-names';
-import TrendingUpIcon from '@core/components/icons/trending-up';
-import { useTheme } from 'next-themes';
 import {
   financialViewOptions,
   totalStatisticsData,
   totalStatisticsLegend,
 } from '@/data/financial-data';
+import WidgetCard from '@core/components/cards/widget-card';
+import { CustomTooltip } from '@core/components/charts/custom-tooltip';
+import DropdownAction from '@core/components/charts/dropdown-action';
+import TrendingUpIcon from '@core/components/icons/trending-up';
+import cn from '@core/utils/class-names';
+import {
+  Bar,
+  CartesianGrid,
+  ComposedChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from 'recharts';
+import { Flex, Title } from 'rizzui';
 
 const COLORS = {
-  revenue: { dark: '#28D775', light: '#28D775' },
-  expenses: { dark: '#273849', light: '#111A23' },
-};
+  BG: {
+    revenue: "bg-[#28D775]",
+    expenses: "bg-[#111A23] dark:bg-[#273849]"
+  },
+  FILL: {
+    revenue: "fill-[#28D775]",
+    expenses: "fill-[#111A23] dark:fill-[#273849]"
+  },
+  STROKE: {
+    revenue: "stroke-[#28D775]",
+    expenses: "stroke-[#111A23] dark:fill-[#273849]"
+  }
+}
 
 export default function TotalStatistics({ className }: { className?: string }) {
-  const { theme } = useTheme();
-
-  const handleChange = React.useCallback((viewType: string) => {
+  const handleChange = (viewType: string) => {
     console.log('viewType', viewType);
-  }, []);
-
-  const chartColors = useMemo(
-    () => ({
-      revenue:
-        COLORS.revenue[theme as keyof typeof COLORS.revenue] ||
-        COLORS.revenue.light,
-      expenses:
-        COLORS.expenses[theme as keyof typeof COLORS.expenses] ||
-        COLORS.expenses.light,
-    }),
-    [theme]
-  );
+  };
 
   return (
     <WidgetCard
@@ -68,7 +61,7 @@ export default function TotalStatistics({ className }: { className?: string }) {
     >
       <StatisticsSummary />
       <CustomLegend className="mb-4 mt-0 inline-flex @[28rem]:hidden" />
-      <ChartContainer chartColors={chartColors} />
+      <ChartContainer />
     </WidgetCard>
   );
 }
@@ -87,13 +80,9 @@ function StatisticsSummary() {
   );
 }
 
-function ChartContainer({
-  chartColors,
-}: {
-  chartColors: { revenue: string; expenses: string };
-}) {
+function ChartContainer() {
   return (
-    <SimpleBar className="-mb-3 pb-3">
+    <div className="custom-scrollbar overflow-x-auto scroll-smooth -mb-3 pb-3">
       <div className="h-[24rem] w-full pt-6 @lg:pt-8">
         <ResponsiveContainer width="100%" height="100%" minWidth={900}>
           <ComposedChart
@@ -116,28 +105,25 @@ function ChartContainer({
             <Tooltip content={<CustomTooltip />} cursor={false} />
             <Bar
               dataKey="revenue"
-              fill={chartColors.revenue}
-              stroke={chartColors.revenue}
               barSize={28}
               radius={[4, 4, 0, 0]}
+              className={cn(COLORS.FILL["revenue"], COLORS.STROKE["revenue"])}
             />
             <Bar
               type="natural"
               dataKey="expenses"
-              fill={chartColors.expenses}
-              stroke={chartColors.expenses}
               barSize={28}
               radius={[4, 4, 0, 0]}
+              className={cn(COLORS.FILL["expenses"], COLORS.STROKE["expenses"])}
             />
           </ComposedChart>
         </ResponsiveContainer>
       </div>
-    </SimpleBar>
+    </div>
   );
 }
 
 function CustomLegend({ className }: { className?: string }) {
-  const { theme } = useTheme();
   return (
     <div
       className={cn(
@@ -147,15 +133,7 @@ function CustomLegend({ className }: { className?: string }) {
     >
       {totalStatisticsLegend.map((item) => (
         <div key={item.name} className="flex items-center gap-1.5">
-          <span
-            className="-mt-0.5 h-3 w-3 rounded-full"
-            style={{
-              backgroundColor:
-                COLORS[item.name.toLowerCase() as keyof typeof COLORS][
-                  theme as 'dark' | 'light'
-                ],
-            }}
-          />
+          <span className={cn("-mt-0.5 h-3 w-3 rounded-full", COLORS.BG[item.name.toLowerCase() as keyof typeof COLORS.BG])} />
           <span>{item.name}</span>
         </div>
       ))}

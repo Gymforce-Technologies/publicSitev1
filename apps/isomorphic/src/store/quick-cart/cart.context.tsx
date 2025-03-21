@@ -54,7 +54,7 @@ export function CartProvider({
     cartKey ?? CART_KEY,
     JSON.stringify(initialState)
   );
-  const [state, dispatch] = useReducer<React.Reducer<State, any>>(
+  const [state, dispatch] = useReducer(
     cartReducer,
     (savedCart ? JSON.parse(savedCart) : initialState) as State
   );

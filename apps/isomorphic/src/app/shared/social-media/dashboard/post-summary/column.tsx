@@ -1,3 +1,5 @@
+'use client';
+
 import AvatarCard from '@core/ui/avatar-card';
 import { PiEyeFill } from 'react-icons/pi';
 import { formatNumber } from '@core/utils/format-number';

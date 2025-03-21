@@ -1,14 +1,13 @@
 'use client';
 
-import { useState } from 'react';
-import { DatePicker } from '@core/ui/datepicker';
 import WidgetCard from '@core/components/cards/widget-card';
-import { RadialBarChart, RadialBar, ResponsiveContainer } from 'recharts';
-import cn from '@core/utils/class-names';
-import { useMedia } from '@core/hooks/use-media';
-import { Title } from 'rizzui';
 import TrendingUpIcon from '@core/components/icons/trending-up';
-import SimpleBar from 'simplebar-react';
+import { useMedia } from '@core/hooks/use-media';
+import { DatePicker } from '@core/ui/datepicker';
+import cn from '@core/utils/class-names';
+import { useState } from 'react';
+import { RadialBar, RadialBarChart, ResponsiveContainer } from 'recharts';
+import { Title } from 'rizzui';
 
 const data = [
   {
@@ -71,7 +70,7 @@ export default function AppointmentDiseases({
       </div>
 
       <div className="w-full items-center justify-between gap-4 pb-4 @sm:flex @lg:pt-4 @xl:pb-0">
-        <SimpleBar className="w-full @sm:w-3/5">
+        <div className="custom-scrollbar overflow-x-auto scroll-smooth w-full @sm:w-3/5">
           <div className="flex h-80 w-full justify-center @sm:h-80">
             <ResponsiveContainer
               width="100%"
@@ -94,7 +93,7 @@ export default function AppointmentDiseases({
               </RadialBarChart>
             </ResponsiveContainer>
           </div>
-        </SimpleBar>
+        </div>
         <CustomLegend className="shrink-0 @sm:w-36" />
       </div>
     </WidgetCard>

@@ -11,7 +11,7 @@ interface Options {
   onKeyDown?: (event: React.KeyboardEvent<any>) => void;
 }
 
-const noop = () => {};
+const noop = () => { };
 
 export function closeOnEscape(
   callback?: (event: any) => void,
@@ -96,10 +96,10 @@ export const PopoverContent = React.forwardRef<
 
     const accessibleProps = ctx.withRoles
       ? {
-          'aria-labelledby': ctx.getTargetId(),
-          id: ctx.getDropdownId(),
-          role: 'dialog',
-        }
+        'aria-labelledby': ctx.getTargetId(),
+        id: ctx.getDropdownId(),
+        role: 'dialog',
+      }
       : {};
 
     const mergedRef = useMergedRef(ref, ctx.floating);

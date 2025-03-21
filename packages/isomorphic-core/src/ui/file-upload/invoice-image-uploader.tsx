@@ -1,9 +1,11 @@
-import { Text } from 'rizzui';
-import Image from 'next/image';
-import cn from '../../utils/class-names';
-import UploadIcon from '../../components/shape/upload';
-import React, { ChangeEvent, useState } from 'react';
-import { PiPencilBold, PiTrashBold } from 'react-icons/pi';
+"use client";
+
+import { Text } from "rizzui";
+import Image from "next/image";
+import cn from "../../utils/class-names";
+import UploadIcon from "../../components/shape/upload";
+import React, { ChangeEvent, useState } from "react";
+import { PiPencilBold, PiTrashBold } from "react-icons/pi";
 
 interface InvoiceImageUploaderProps {
   name: string;
@@ -41,15 +43,15 @@ export default function InvoiceImageUploader({
 
   function handleClearFile() {
     setFile(() => null);
-    setValue(name, '');
+    setValue(name, "");
   }
 
   return (
     <div className={className}>
       <label
         className={cn(
-          'flex h-32 w-40 cursor-pointer flex-col items-center justify-center rounded-md border-[1.8px] p-2 hover:border-primary dark:border-gray-700 dark:hover:border-primary',
-          file && 'hidden',
+          "flex h-32 w-40 cursor-pointer flex-col items-center justify-center rounded-md border-[1.8px] p-2 hover:border-primary dark:border-gray-700 dark:hover:border-primary",
+          file && "hidden",
           dropZoneClassName
         )}
       >
@@ -69,7 +71,7 @@ export default function InvoiceImageUploader({
       {file && (
         <div
           className={cn(
-            'group relative h-32 w-40 rounded-md border-[1.8px] border-transparent p-2 hover:border-muted dark:hover:border-gray-700',
+            "group relative h-32 w-40 rounded-md border-[1.8px] border-transparent p-2 hover:border-muted dark:hover:border-gray-700",
             imageClassName
           )}
         >
@@ -108,7 +110,7 @@ function ActionButton({
   return (
     <button
       className={cn(
-        'flex size-7 items-center justify-center text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800',
+        "flex size-7 items-center justify-center text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800",
         className
       )}
       onClick={onClick}

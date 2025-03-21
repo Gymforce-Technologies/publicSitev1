@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import { routes } from '@/config/routes';
 import { Button, Title } from 'rizzui';

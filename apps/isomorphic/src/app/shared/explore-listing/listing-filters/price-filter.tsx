@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 import { RadioGroup, Button, AdvancedRadio, Select } from 'rizzui';
 import { PiMinus } from 'react-icons/pi';

@@ -1,1 +1,3 @@
-export { usePatternFormat } from 'rizzui';
+"use client";
+
+export { usePatternFormat } from "rizzui";

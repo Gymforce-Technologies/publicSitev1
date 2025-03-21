@@ -1,8 +1,7 @@
-import Link from 'next/link';
-import cn from '@core/utils/class-names';
-import SimpleBar from '@core/ui/simplebar';
-import Logo from '@core/components/logo';
 import WorkSpaceSwitcher from '@/layouts/carbon/work-space-switcher';
+import Logo from '@core/components/logo';
+import cn from '@core/utils/class-names';
+import Link from 'next/link';
 import { SidebarMenu } from '../hydrogen/sidebar-menu';
 
 export function CarbonDrawerSidebar({ className }: { className?: string }) {
@@ -23,9 +22,9 @@ export function CarbonDrawerSidebar({ className }: { className?: string }) {
         </Link>
       </div>
 
-      <SimpleBar className="h-[calc(100%-144px)]">
+      <div className="custom-scrollbar overflow-y-auto scroll-smooth h-[calc(100%-144px)]">
         <SidebarMenu />
-      </SimpleBar>
+      </div>
 
       <div className="relative bg-gray-0 px-6 pb-3 pt-1 dark:bg-gray-100">
         <WorkSpaceSwitcher

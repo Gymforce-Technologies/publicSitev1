@@ -1,12 +1,11 @@
 'use client';
 
-import CountUp from 'react-countup';
-import cn from '@core/utils/class-names';
-import { IconType } from 'react-icons/lib';
-import { PiArrowUpRightBold, PiArrowDownRightBold } from 'react-icons/pi';
-import SimpleBar from 'simplebar-react';
-import { Box, Text } from 'rizzui';
 import { jobBoardStatData } from '@/data/job-data';
+import cn from '@core/utils/class-names';
+import CountUp from 'react-countup';
+import { IconType } from 'react-icons/lib';
+import { PiArrowDownRightBold, PiArrowUpRightBold } from 'react-icons/pi';
+import { Box, Text } from 'rizzui';
 
 type StatType = {
   icon: IconType;
@@ -26,7 +25,7 @@ type StatCardProps = {
 export default function JobStats({ className }: { className?: string }) {
   return (
     <div className={cn('@container', className)}>
-      <SimpleBar>
+      <div className="custom-scrollbar overflow-x-auto scroll-smooth">
         <div className="flex items-start gap-4 @md:gap-6 3xl:gap-8">
           {jobBoardStatData.map((stat: StatType, index: number) => {
             return (
@@ -38,7 +37,7 @@ export default function JobStats({ className }: { className?: string }) {
             );
           })}
         </div>
-      </SimpleBar>
+      </div>
     </div>
   );
 }

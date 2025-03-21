@@ -1,5 +1,7 @@
 'use client';
 
+import ScheduleLightIcon from '@core/components/icons/schedule-light';
+import Calendar from 'react-calendar';
 import {
   ActionIcon,
   AdvancedRadio,
@@ -10,14 +12,11 @@ import {
   Textarea,
   Title,
 } from 'rizzui';
-import ScheduleLightIcon from '@core/components/icons/schedule-light';
-import Calendar from 'react-calendar';
 
-import { PiArrowLeft, PiArrowRight, PiXBold } from 'react-icons/pi';
 import { useModal } from '@/app/shared/modal-views/use-modal';
-import SimpleBar from 'simplebar-react';
 import cn from '@core/utils/class-names';
 import { useState } from 'react';
+import { PiArrowLeft, PiArrowRight, PiXBold } from 'react-icons/pi';
 
 const appointmentTimes = [
   {
@@ -145,7 +144,7 @@ export default function ScheduleModal() {
               >
                 Time
               </Title>
-              <SimpleBar className="mb-5 h-[320px] px-5">
+              <div className="custom-scrollbar mb-5 h-[320px] overflow-y-auto scroll-smooth px-5">
                 <RadioGroup
                   value={timeState}
                   setValue={setTimeState}
@@ -167,7 +166,7 @@ export default function ScheduleModal() {
                     </AdvancedRadio>
                   ))}
                 </RadioGroup>
-              </SimpleBar>
+              </div>
             </div>
           </div>
         </div>

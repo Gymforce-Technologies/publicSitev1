@@ -1,3 +1,5 @@
+'use client';
+
 import { Checkbox, Select } from 'rizzui';
 import { useEffect, useState } from 'react';
 import {

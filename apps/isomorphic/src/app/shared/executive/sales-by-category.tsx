@@ -1,26 +1,25 @@
 'use client';
 
-import { useState } from 'react';
 import WidgetCard from '@core/components/cards/widget-card';
+import { CustomTooltip } from '@core/components/charts/custom-tooltip';
+import { CustomYAxisTick } from '@core/components/charts/custom-yaxis-tick';
+import TrendingUpIcon from '@core/components/icons/trending-up';
+import { useMedia } from '@core/hooks/use-media';
+import cn from '@core/utils/class-names';
+import { formatNumber } from '@core/utils/format-number';
+import { useState } from 'react';
 import {
   Bar,
+  CartesianGrid,
   Cell,
+  ComposedChart,
   Line,
+  ResponsiveContainer,
+  Tooltip,
   XAxis,
   YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-  ComposedChart,
 } from 'recharts';
-import { useMedia } from '@core/hooks/use-media';
-import { CustomYAxisTick } from '@core/components/charts/custom-yaxis-tick';
-import { CustomTooltip } from '@core/components/charts/custom-tooltip';
-import SimpleBar from '@core/ui/simplebar';
-import TrendingUpIcon from '@core/components/icons/trending-up';
-import { formatNumber } from '@core/utils/format-number';
-import { Select, Title, Text } from 'rizzui';
-import cn from '@core/utils/class-names';
+import { Select, Text, Title } from 'rizzui';
 
 const data = [
   {
@@ -130,7 +129,7 @@ export default function SalesByCategory({ className }: { className?: string }) {
       }
     >
       <Legend className="mt-2 flex @2xl:hidden @3xl:flex @5xl:hidden" />
-      <SimpleBar>
+      <div className='custom-scrollbar overflow-x-auto scroll-smooth'>
         <div className="h-[28rem] w-full pt-9">
           <ResponsiveContainer
             width="100%"
@@ -207,7 +206,7 @@ export default function SalesByCategory({ className }: { className?: string }) {
             </ComposedChart>
           </ResponsiveContainer>
         </div>
-      </SimpleBar>
+      </div>
     </WidgetCard>
   );
 }

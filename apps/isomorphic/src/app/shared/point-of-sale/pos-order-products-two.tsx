@@ -1,29 +1,26 @@
 'use client';
 
-import Image from 'next/image';
-import { PiMinus, PiPlus, PiTrash } from 'react-icons/pi';
-import { useCart } from '@/store/quick-cart/cart.context';
-import { toCurrency } from '@core/utils/to-currency';
-import { Title } from 'rizzui';
-import cn from '@core/utils/class-names';
-import { CartItem } from '@/types';
-import Link from 'next/link';
 import { routes } from '@/config/routes';
+import { useCart } from '@/store/quick-cart/cart.context';
+import { CartItem } from '@/types';
+import cn from '@core/utils/class-names';
 import { generateSlug } from '@core/utils/generate-slug';
-import SimpleBar from '@core/ui/simplebar';
+import { toCurrency } from '@core/utils/to-currency';
+import Image from 'next/image';
+import Link from 'next/link';
+import { PiMinus, PiPlus, PiTrash } from 'react-icons/pi';
+import { Title } from 'rizzui/typography';
 
 export default function POSOrderProductsTwo({
   className,
   showControls,
   itemClassName,
-  simpleBarClassName,
   orderedItems,
   removeItemFromCart,
   clearItemFromCart,
 }: {
   className?: string;
   itemClassName?: string;
-  simpleBarClassName?: string;
   showControls?: boolean;
   orderedItems: CartItem[];
   removeItemFromCart: (id: number) => void;
@@ -31,9 +28,7 @@ export default function POSOrderProductsTwo({
 }) {
   return (
     <div className={className}>
-      <SimpleBar
-        className={cn('h-[calc(100vh_-_495px)] pb-3', simpleBarClassName)}
-      >
+      <div className="custom-scrollbar h-[calc(100vh_-_495px)] overflow-y-auto scroll-smooth pb-3 pe-3 xl:pe-7">
         <div className="divide-y divide-gray-100">
           {orderedItems.map((item) => (
             <div key={item.id} className={cn('group py-5', itemClassName)}>
@@ -91,7 +86,7 @@ export default function POSOrderProductsTwo({
             </div>
           ))}
         </div>
-      </SimpleBar>
+      </div>
     </div>
   );
 }

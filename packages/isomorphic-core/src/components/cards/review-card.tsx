@@ -1,7 +1,9 @@
-import Image from 'next/image';
-import dayjs from 'dayjs';
-import { PiStar, PiStarFill } from 'react-icons/pi';
-import { Title, Text } from 'rizzui';
+"use client";
+
+import Image from "next/image";
+import dayjs from "dayjs";
+import { PiStar, PiStarFill } from "react-icons/pi";
+import { Title, Text } from "rizzui";
 
 type ReviewCardProps = {
   customer: {
@@ -30,7 +32,7 @@ export default function ReviewCard({
           {customer.name}
         </Title>
         <Text className="text-xs text-gray-500 @md:text-sm">
-          {dayjs(date).format('DD MMM, YYYY')}
+          {dayjs(date).format("DD MMM, YYYY")}
         </Text>
       </div>
       <div className="w-full pt-4 @md:pt-1">

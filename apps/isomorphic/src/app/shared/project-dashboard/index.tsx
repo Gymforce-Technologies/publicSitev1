@@ -1,4 +1,4 @@
-import { Box } from 'rizzui';
+import { Box } from 'rizzui/box';
 import ProjectActiveTasks from './active-tasks';
 import ProjectActivities from './activities';
 import ProjectClientList from './client-list';

@@ -1,5 +1,8 @@
 import cn from '@core/utils/class-names';
-import { Badge, Box, Flex, Text, Title } from 'rizzui';
+import { Badge } from 'rizzui/badge';
+import { Box } from 'rizzui/box';
+import { Flex } from 'rizzui/flex';
+import { Text, Title } from 'rizzui/typography';
 import {
   PiCaretRightBold,
   PiTrendDownBold,

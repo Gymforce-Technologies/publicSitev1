@@ -1,5 +1,7 @@
-import { Title, Text } from 'rizzui';
-import cn from '../../utils/class-names';
+"use client";
+
+import { Title, Text } from "rizzui";
+import cn from "../../utils/class-names";
 
 type WelcomeBannerTypes = {
   title: React.ReactNode;
@@ -20,7 +22,7 @@ export default function WelcomeBanner({
   return (
     <div
       className={cn(
-        'relative flex items-center justify-between rounded-lg bg-gray-100/60 p-5 sm:p-6 lg:p-7 dark:bg-gray-100',
+        "relative flex items-center justify-between rounded-lg bg-gray-100/60 p-5 sm:p-6 lg:p-7 dark:bg-gray-100",
         className
       )}
     >

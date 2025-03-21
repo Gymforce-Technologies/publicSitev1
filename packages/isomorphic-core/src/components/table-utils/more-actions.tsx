@@ -1,3 +1,5 @@
+"use client";
+
 import {
   PiShareFat,
   PiCopySimple,
@@ -10,10 +12,7 @@ export function MoreActions({ onDelete }: { onDelete?: () => void }) {
   return (
     <Popover placement="bottom-end">
       <Popover.Trigger>
-        <ActionIcon
-          title="More Options"
-          variant="text"
-        >
+        <ActionIcon title="More Options" variant="text">
           <PiDotsThreeOutlineVerticalFill className="h-[18px] w-[18px] text-gray-500" />
         </ActionIcon>
       </Popover.Trigger>

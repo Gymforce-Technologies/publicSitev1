@@ -1,19 +1,18 @@
 'use client';
 
+import WidgetCard from '@core/components/cards/widget-card';
+import { CustomTooltip } from '@core/components/charts/custom-tooltip';
+import { useMedia } from '@core/hooks/use-media';
 import {
+  Area,
+  AreaChart,
+  CartesianGrid,
+  ResponsiveContainer,
+  Tooltip,
   XAxis,
   YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-  AreaChart,
-  Area,
 } from 'recharts';
-import WidgetCard from '@core/components/cards/widget-card';
 import { Progressbar } from 'rizzui';
-import { useMedia } from '@core/hooks/use-media';
-import SimpleBar from '@core/ui/simplebar';
-import { CustomTooltip } from '@core/components/charts/custom-tooltip';
 
 const data = [
   {
@@ -73,7 +72,7 @@ export default function OpenSalesOrder({ className }: { className?: string }) {
       </div>
       <div className="mt-5">
         <p>Boxes pending since:</p>
-        <SimpleBar className="mt-4 h-40">
+        <div className="custom-scrollbar overflow-x-auto scroll-smooth mt-4">
           <div className="h-40 w-full">
             <ResponsiveContainer
               width="100%"
@@ -112,7 +111,7 @@ export default function OpenSalesOrder({ className }: { className?: string }) {
               </AreaChart>
             </ResponsiveContainer>
           </div>
-        </SimpleBar>
+        </div>
       </div>
     </WidgetCard>
   );

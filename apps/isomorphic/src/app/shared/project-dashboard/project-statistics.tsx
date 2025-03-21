@@ -1,23 +1,5 @@
 'use client';
 
-import { useState } from 'react';
-import WidgetCard from '@core/components/cards/widget-card';
-import { CustomTooltip } from '@core/components/charts/custom-tooltip';
-import { CustomYAxisTick } from '@core/components/charts/custom-yaxis-tick';
-import {
-  Bar,
-  XAxis,
-  YAxis,
-  Tooltip,
-  CartesianGrid,
-  ComposedChart,
-  ResponsiveContainer,
-} from 'recharts';
-import { Box, Flex } from 'rizzui';
-import cn from '@core/utils/class-names';
-import SimpleBar from '@core/ui/simplebar';
-import { formatNumber } from '@core/utils/format-number';
-import DropdownAction from '@core/components/charts/dropdown-action';
 import {
   PROJECT_STATISTICS_COLORS,
   projectStatisticsDailyData,
@@ -25,6 +7,23 @@ import {
   projectStatisticsTicketStatus,
   projectStatisticsViewOptions,
 } from '@/data/project-dashboard';
+import WidgetCard from '@core/components/cards/widget-card';
+import { CustomTooltip } from '@core/components/charts/custom-tooltip';
+import { CustomYAxisTick } from '@core/components/charts/custom-yaxis-tick';
+import DropdownAction from '@core/components/charts/dropdown-action';
+import cn from '@core/utils/class-names';
+import { formatNumber } from '@core/utils/format-number';
+import { useState } from 'react';
+import {
+  Bar,
+  CartesianGrid,
+  ComposedChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from 'recharts';
+import { Box, Flex } from 'rizzui';
 
 const barSize = 24;
 
@@ -60,7 +59,7 @@ export default function ProjectStatistics({
       }
     >
       <Legend className="my-4 @2xl:hidden" />
-      <SimpleBar>
+      <div className='custom-scrollbar overflow-x-auto scroll-smooth'>
         <Box className="h-[20rem] pt-6 @lg:pt-8 lg:h-[24rem] 3xl:h-[25rem]">
           <ResponsiveContainer width="100%" height="100%" minWidth={800}>
             <ComposedChart
@@ -160,7 +159,7 @@ export default function ProjectStatistics({
             </ComposedChart>
           </ResponsiveContainer>
         </Box>
-      </SimpleBar>
+      </div>
     </WidgetCard>
   );
 }

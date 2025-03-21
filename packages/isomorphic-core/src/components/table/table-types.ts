@@ -1,5 +1,12 @@
+"use client";
+
 import { TableVariantProps } from "rizzui";
-import { Row, Cell, HeaderGroup, type Table as ReactTableType } from "@tanstack/react-table";
+import {
+  Row,
+  Cell,
+  HeaderGroup,
+  type Table as ReactTableType,
+} from "@tanstack/react-table";
 export type UniqueIdentifier = string | number;
 
 export type CustomHeaderProps<TData extends Record<string, any>> = {

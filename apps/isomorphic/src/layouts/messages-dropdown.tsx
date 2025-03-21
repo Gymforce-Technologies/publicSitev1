@@ -1,16 +1,15 @@
 'use client';
 
-import Link from 'next/link';
-import { RefObject, useState } from 'react';
+import { routes } from '@/config/routes';
+import { messagesData } from '@/data/messages';
+import { useMedia } from '@core/hooks/use-media';
+import cn from '@core/utils/class-names';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
-import { Title, Text, Popover, Avatar, Badge } from 'rizzui';
-import cn from '@core/utils/class-names';
-import { routes } from '@/config/routes';
-import { useMedia } from '@core/hooks/use-media';
-import SimpleBar from '@core/ui/simplebar';
+import Link from 'next/link';
+import { RefObject, useState } from 'react';
 import { PiCheck } from 'react-icons/pi';
-import { messagesData } from '@/data/messages';
+import { Avatar, Badge, Popover, Text, Title } from 'rizzui';
 
 dayjs.extend(relativeTime);
 
@@ -33,7 +32,7 @@ function MessagesList({
           View all
         </Link>
       </div>
-      <SimpleBar className="max-h-[406px]">
+      <div className="custom-scrollbar overflow-y-auto scroll-smooth max-h-[406px]">
         <div className="grid grid-cols-1 ps-4">
           {messagesData.map((item) => (
             <div
@@ -46,7 +45,7 @@ function MessagesList({
                   name={item.name}
                   className={cn(
                     item.avatar.length > 1 &&
-                      'relative -end-1 -top-0.5 !h-9 !w-9'
+                    'relative -end-1 -top-0.5 !h-9 !w-9'
                   )}
                 />
                 {item.avatar.length > 1 && (
@@ -89,7 +88,7 @@ function MessagesList({
             </div>
           ))}
         </div>
-      </SimpleBar>
+      </div>
     </div>
   );
 }
@@ -97,7 +96,7 @@ function MessagesList({
 export default function MessagesDropdown({
   children,
 }: {
-  children: JSX.Element & { ref?: RefObject<any> };
+  children: React.ReactElement & { ref?: RefObject<any> };
 }) {
   const isMobile = useMedia('(max-width: 480px)', false);
   const [isOpen, setIsOpen] = useState(false);

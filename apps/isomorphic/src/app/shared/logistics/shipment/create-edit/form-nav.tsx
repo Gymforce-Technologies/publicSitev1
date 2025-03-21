@@ -1,6 +1,5 @@
-import { Link } from 'react-scroll';
 import cn from '@core/utils/class-names';
-import SimpleBar from '@core/ui/simplebar';
+import { Link } from 'react-scroll';
 
 export const FormParts = {
   ShippingInfo: 'ShippingInfo',
@@ -45,7 +44,7 @@ export default function FormNav({ className }: FormNavProps) {
         className
       )}
     >
-      <SimpleBar>
+      <div className='custom-scrollbar overflow-x-auto scroll-smooth'>
         <div className="inline-grid grid-flow-col gap-5 md:gap-7 lg:gap-10">
           {menuItems.map((tab, idx) => (
             <Link
@@ -63,7 +62,7 @@ export default function FormNav({ className }: FormNavProps) {
             </Link>
           ))}
         </div>
-      </SimpleBar>
+      </div>
     </div>
   );
 }

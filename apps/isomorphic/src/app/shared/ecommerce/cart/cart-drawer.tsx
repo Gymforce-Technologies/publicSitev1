@@ -1,16 +1,17 @@
 'use client';
 
 import { useState } from 'react';
-import dynamic from 'next/dynamic';
+// import dynamic from 'next/dynamic';
 import { useCart } from '@/store/quick-cart/cart.context';
 import FloatingCartButton from '@/app/shared/floating-cart-button';
 import CartDrawerView from '@/app/shared/ecommerce/cart/cart-drawer-view';
 import { useParams, usePathname } from 'next/navigation';
 import { routes } from '@/config/routes';
+import { Drawer } from 'rizzui/drawer';
 
-const Drawer = dynamic(() => import('rizzui').then((module) => module.Drawer), {
-  ssr: false,
-});
+// const Drawer = dynamic(() => import('rizzui').then((module) => module.Drawer), {
+//   ssr: false,
+// });
 
 export default function CartDrawer() {
   const [openDrawer, setOpenDrawer] = useState(false);

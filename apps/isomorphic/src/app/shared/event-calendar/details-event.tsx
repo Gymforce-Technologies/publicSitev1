@@ -1,3 +1,5 @@
+'use client';
+
 import { useModal } from '@/app/shared/modal-views/use-modal';
 import { CalendarEvent } from '@/types';
 import { PiMapPin, PiXBold } from 'react-icons/pi';
@@ -16,7 +18,7 @@ function DetailsEvents({ event }: { event: CalendarEvent }) {
     closeModal(),
       openModal({
         view: <EventForm event={event} />,
-        customSize: '650px',
+        customSize: 650,
       });
   }
 

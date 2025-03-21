@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import { Radio, Button } from 'rizzui';
 import { useMedia } from '@core/hooks/use-media';

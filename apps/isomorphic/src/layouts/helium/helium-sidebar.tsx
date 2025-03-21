@@ -1,10 +1,9 @@
 'use client';
 
-import Link from 'next/link';
+import { siteConfig } from '@/config/site.config';
 import cn from '@core/utils/class-names';
 import Image from 'next/image';
-import SimpleBar from '@core/ui/simplebar';
-import { siteConfig } from '@/config/site.config';
+import Link from 'next/link';
 import { HeliumSidebarMenu } from './helium-sidebar-menu';
 
 export default function HeliumSidebar({ className }: { className?: string }) {
@@ -28,9 +27,9 @@ export default function HeliumSidebar({ className }: { className?: string }) {
           </Link>
         </div>
 
-        <SimpleBar className="h-[calc(100%-80px)]">
+        <div className="custom-scrollbar h-[calc(100%-80px)] overflow-y-auto scroll-smooth">
           <HeliumSidebarMenu />
-        </SimpleBar>
+        </div>
       </div>
     </aside>
   );

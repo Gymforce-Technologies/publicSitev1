@@ -1,12 +1,11 @@
 'use client';
 
 import WidgetCard from '@core/components/cards/widget-card';
-import { AdvancedCheckbox, Button } from 'rizzui';
-import cn from '@core/utils/class-names';
 import DropdownAction from '@core/components/charts/dropdown-action';
-import { PiCalendarBlank, PiCheckBold } from 'react-icons/pi';
 import DateCell from '@core/ui/date-cell';
-import SimpleBar from 'simplebar-react';
+import cn from '@core/utils/class-names';
+import { PiCalendarBlank, PiCheckBold } from 'react-icons/pi';
+import { AdvancedCheckbox, Button } from 'rizzui';
 
 const data = [
   {
@@ -79,11 +78,12 @@ export default function AppointmentTodo({ className }: { className?: string }) {
           onChange={handleChange}
           selectClassName="min-w-[120px]"
           prefixIconClassName="hidden"
+          dropdownClassName="!z-[11]"
         />
       }
     >
       <div className="relative mt-7 h-[22rem]">
-        <SimpleBar className="relative -mx-3 -my-2 h-full w-[calc(100%+24px)] pb-24">
+        <div className="custom-scrollbar relative -mx-3 -my-2 h-full w-[calc(100%+24px)] overflow-y-auto pb-24">
           <div className="relative before:absolute before:start-9 before:top-3 before:z-0 before:h-[calc(100%-24px)] before:w-1 before:translate-x-0.5 before:bg-gray-200">
             {data.map((item) => (
               <AdvancedCheckbox
@@ -122,8 +122,8 @@ export default function AppointmentTodo({ className }: { className?: string }) {
               </AdvancedCheckbox>
             ))}
           </div>
-        </SimpleBar>
-        <div className="absolute -start-0.5 bottom-0 z-20 flex h-32 w-[101%] items-end justify-center bg-gradient-to-t from-gray-50 via-gray-50 to-transparent pb-6">
+        </div>
+        <div className="absolute -start-0.5 bottom-0 z-20 flex h-32 w-[101%] items-end justify-center bg-gradient-to-t from-gray-50 via-gray-50 to-transparent">
           <Button
             rounded="lg"
             className="bg-gray-0 text-gray-800 shadow-md transition-shadow hover:bg-gray-0 hover:shadow dark:hover:bg-gray-0"

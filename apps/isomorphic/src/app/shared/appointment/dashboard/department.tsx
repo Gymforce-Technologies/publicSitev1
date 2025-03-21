@@ -1,20 +1,19 @@
 'use client';
 
 import WidgetCard from '@core/components/cards/widget-card';
+import DropdownAction from '@core/components/charts/dropdown-action';
 import TrendingUpIcon from '@core/components/icons/trending-up';
-import { Title } from 'rizzui';
 import cn from '@core/utils/class-names';
+import { formatNumber } from '@core/utils/format-number';
 import {
+  Bar,
+  ComposedChart,
+  LabelList,
   ResponsiveContainer,
   XAxis,
   YAxis,
-  Bar,
-  LabelList,
-  ComposedChart,
 } from 'recharts';
-import SimpleBar from 'simplebar-react';
-import DropdownAction from '@core/components/charts/dropdown-action';
-import { formatNumber } from '@core/utils/format-number';
+import { Title } from 'rizzui';
 
 const data = [
   {
@@ -88,7 +87,7 @@ export default function Department({ className }: { className?: string }) {
           <span className="font-semibold leading-none"> +32.40%</span>
         </span>
       </div>
-      <SimpleBar>
+      <div className='custom-scrollbar overflow-x-auto scroll-smooth'>
         <div className="h-[20rem] w-full pt-1">
           <ResponsiveContainer width="100%" height="100%">
             <ComposedChart
@@ -121,7 +120,7 @@ export default function Department({ className }: { className?: string }) {
             </ComposedChart>
           </ResponsiveContainer>
         </div>
-      </SimpleBar>
+      </div>
     </WidgetCard>
   );
 }

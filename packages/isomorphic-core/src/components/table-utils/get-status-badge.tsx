@@ -1,12 +1,14 @@
-import cn from '@core/utils/class-names';
-import { Badge, Flex, Text } from 'rizzui';
-import { replaceUnderscoreDash } from '@core/utils/replace-underscore-dash';
+"use client";
+
+import cn from "@core/utils/class-names";
+import { Badge, Flex, Text } from "rizzui";
+import { replaceUnderscoreDash } from "@core/utils/replace-underscore-dash";
 
 const statusColors = {
-  success: ['text-green-dark', 'bg-green-dark'],
-  warning: ['text-orange-dark', 'bg-orange-dark'],
-  danger: ['text-red-dark', 'bg-red-dark'],
-  default: ['text-gray-600', 'bg-gray-600'],
+  success: ["text-green-dark", "bg-green-dark"],
+  warning: ["text-orange-dark", "bg-orange-dark"],
+  danger: ["text-red-dark", "bg-red-dark"],
+  default: ["text-gray-600", "bg-gray-600"],
 };
 
 const allStatus = {
@@ -38,7 +40,7 @@ export function getStatusBadge(status: string) {
       <Flex align="center" gap="2" className="w-auto">
         <Badge renderAsDot className={allStatus[statusLower][1]} />
         <Text
-          className={cn('font-medium capitalize', allStatus[statusLower][0])}
+          className={cn("font-medium capitalize", allStatus[statusLower][0])}
         >
           {replaceUnderscoreDash(statusLower)}
         </Text>

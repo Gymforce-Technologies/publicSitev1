@@ -1,18 +1,17 @@
 'use client';
 
-import { useTransition } from 'react';
-import { atom, useAtom, useSetAtom } from 'jotai';
-import { usePathname, useRouter } from 'next/navigation';
-import { Badge } from 'rizzui';
-import cn from '@core/utils/class-names';
-import { useCreateQueryString } from '@core/hooks/use-create-query-string';
 import MessageDetails from '@/app/shared/support/inbox/message-details';
-import SimpleBar from '@core/ui/simplebar';
 import {
   dataAtom,
   messageIdAtom,
 } from '@/app/shared/support/inbox/message-list';
 import { messages } from '@/data/support-inbox';
+import { useCreateQueryString } from '@core/hooks/use-create-query-string';
+import cn from '@core/utils/class-names';
+import { atom, useAtom, useSetAtom } from 'jotai';
+import { usePathname, useRouter } from 'next/navigation';
+import { useTransition } from 'react';
+import { Badge } from 'rizzui';
 
 export const supportNavItems = [
   {
@@ -54,7 +53,7 @@ export function TabList() {
   }
 
   return (
-    <SimpleBar>
+    <div className='custom-scrollbar overflow-x-auto scroll-smooth'>
       <nav className="flex items-center gap-5 border-b border-gray-300">
         {supportNavItems.map((nav) => (
           <TabButton
@@ -66,7 +65,7 @@ export function TabList() {
           />
         ))}
       </nav>
-    </SimpleBar>
+    </div>
   );
 }
 

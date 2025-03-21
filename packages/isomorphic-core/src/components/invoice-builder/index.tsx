@@ -1,19 +1,18 @@
 "use client";
 
-import SimpleBar from "simplebar-react";
-import { InvoicePrint } from "./invoice-print";
-import TableBlock from "./invoice-details/table-block";
-import FirstBlock from "./invoice-details/first-block";
-import SecondBlock from "./invoice-details/second-block";
-import OthersBlock from "./invoice-details/others-block";
 import { zodResolver } from "@hookform/resolvers/zod";
-import CalcPayBlock from "./invoice-details/calc-pay-block";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import {
+  INVOICE_BUILDER_DEFAULT_VALUE,
   InvoiceType,
   invoiceBuilderSchema,
-  INVOICE_BUILDER_DEFAULT_VALUE,
 } from "./invoice-builder.schema";
+import CalcPayBlock from "./invoice-details/calc-pay-block";
+import FirstBlock from "./invoice-details/first-block";
+import OthersBlock from "./invoice-details/others-block";
+import SecondBlock from "./invoice-details/second-block";
+import TableBlock from "./invoice-details/table-block";
+import { InvoicePrint } from "./invoice-print";
 
 export default function InvoiceBuilder({ printRef }: { printRef: any }) {
   const methods = useForm<InvoiceType>({
@@ -42,7 +41,7 @@ export default function InvoiceBuilder({ printRef }: { printRef: any }) {
         data={methods.watch()}
       />
       <div className="rounded-2xl p-8">
-        <SimpleBar className="w-full">
+        <div className="custom-scrollbar overflow-x-auto scroll-smooth w-full">
           <FormProvider {...methods}>
             <form
               onSubmit={methods.handleSubmit(onSubmit)}
@@ -51,14 +50,11 @@ export default function InvoiceBuilder({ printRef }: { printRef: any }) {
               <FirstBlock setValue={methods.setValue} />
               <SecondBlock />
               <TableBlock />
-              <CalcPayBlock
-                subTotal={subTotal}
-                totalTax={totalTax}
-              />
+              <CalcPayBlock subTotal={subTotal} totalTax={totalTax} />
               <OthersBlock />
             </form>
           </FormProvider>
-        </SimpleBar>
+        </div>
       </div>
     </>
   );

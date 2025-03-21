@@ -1,13 +1,12 @@
 'use client';
 
-import { Text } from 'rizzui';
-import cn from '@core/utils/class-names';
-import SimpleBar from '@core/ui/simplebar';
 import MetricCard from '@core/components/cards/metric-card';
-import { Area, AreaChart, ResponsiveContainer } from 'recharts';
-import TrendingUpIcon from '@core/components/icons/trending-up';
 import TrendingDownIcon from '@core/components/icons/trending-down';
+import TrendingUpIcon from '@core/components/icons/trending-up';
 import { getChartColorByEngagementRate } from '@core/components/table-utils/get-chart-color-by-engagement-rate';
+import cn from '@core/utils/class-names';
+import { Area, AreaChart, ResponsiveContainer } from 'recharts';
+import { Text } from 'rizzui';
 
 interface StatsCardsProps {
   className?: string;
@@ -389,7 +388,7 @@ const filesStatData = [
 
 export default function StatsCards({ className }: StatsCardsProps) {
   return (
-    <SimpleBar>
+    <div className="custom-scrollbar overflow-x-auto">
       <div className="grid grid-cols-1 gap-5 @xl:grid-cols-2 @4xl:col-span-2 @6xl:grid-cols-4 @7xl:col-span-12 3xl:gap-8">
         {filesStatData.map((stat: any) => {
           return (
@@ -467,6 +466,6 @@ export default function StatsCards({ className }: StatsCardsProps) {
           );
         })}
       </div>
-    </SimpleBar>
+    </div>
   );
 }

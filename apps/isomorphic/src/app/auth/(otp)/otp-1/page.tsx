@@ -1,4 +1,4 @@
-import { Text } from 'rizzui';
+import { Text } from 'rizzui/typography';
 import OtpForm from './otp-form';
 import AuthWrapperOne from '@/app/shared/auth-layout/auth-wrapper-one';
 import UnderlineShape from '@core/components/shape/underline';

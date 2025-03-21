@@ -1,34 +1,33 @@
 'use client';
 
-import { useAtomValue } from 'jotai';
-import { z } from 'zod';
-import { LuReply } from 'react-icons/lu';
-import { useState, useEffect } from 'react';
-import { PiCaretDownBold } from 'react-icons/pi';
-import {
-  Title,
-  Text,
-  Badge,
-  Button,
-  Avatar,
-  Empty,
-  Select,
-  Loader,
-} from 'rizzui';
-import cn from '@core/utils/class-names';
+import ActionDropdown from '@/app/shared/support/inbox/action-dropdown';
+import MessageBody from '@/app/shared/support/inbox/message-body';
 import {
   dataAtom,
   messageIdAtom,
 } from '@/app/shared/support/inbox/message-list';
-import { SubmitHandler, Controller } from 'react-hook-form';
-import { Form } from '@core/ui/form';
-import ActionDropdown from '@/app/shared/support/inbox/action-dropdown';
-import MessageBody from '@/app/shared/support/inbox/message-body';
-import SimpleBar from '@core/ui/simplebar';
+import { SupportType, supportTypes } from '@/data/support-inbox';
 import { useElementSize } from '@core/hooks/use-element-size';
 import { useMedia } from '@core/hooks/use-media';
+import { Form } from '@core/ui/form';
+import cn from '@core/utils/class-names';
+import { useAtomValue } from 'jotai';
 import dynamic from 'next/dynamic';
-import { SupportType, supportTypes } from '@/data/support-inbox';
+import { useEffect, useState } from 'react';
+import { Controller, SubmitHandler } from 'react-hook-form';
+import { LuReply } from 'react-icons/lu';
+import { PiCaretDownBold } from 'react-icons/pi';
+import {
+  Avatar,
+  Badge,
+  Button,
+  Empty,
+  Loader,
+  Select,
+  Text,
+  Title,
+} from 'rizzui';
+import { z } from 'zod';
 
 const QuillEditor = dynamic(() => import('@core/ui/quill-editor'), {
   ssr: false,
@@ -253,13 +252,13 @@ export default function MessageDetails({ className }: { className?: string }) {
           </div>
         </header>
 
-        <div className="[&_.simplebar-content]:grid [&_.simplebar-content]:gap-8 [&_.simplebar-content]:py-5">
-          <SimpleBar className="@3xl:max-h-[calc(100dvh-34rem)] @4xl:max-h-[calc(100dvh-32rem)] @7xl:max-h-[calc(100dvh-31rem)]">
+        <div className="custom-scrollbar overflow-y-auto scroll-smooth @3xl:max-h-[calc(100dvh-34rem)] @4xl:max-h-[calc(100dvh-32rem)] @7xl:max-h-[calc(100dvh-31rem)]">
+          <div className="grid gap-8 py-5">
             <MessageBody />
             <MessageBody />
             <MessageBody />
             <MessageBody />
-          </SimpleBar>
+          </div>
         </div>
 
         <div

@@ -71,4 +71,10 @@ export const messages = {
   roleNameLengthMin: 'Role name must be at least 3 letters',
   errorSendingEmail: 'Error sending email',
   emailSentSuccessfully: 'Your email has been sent successfully.',
+  startingTypeIsRequired: 'Starting Type is required',
+  listingUnitIsRequired: 'Listing Unit is required',
+  propertyForIsRequired: "Property For is required",
+  priceTypeIsRequired: "Price Type is required",
+  pricePerSquareRequired: "Price Per Square is required",
+  totalPriceIsRequired: "Total Price is required",
 };

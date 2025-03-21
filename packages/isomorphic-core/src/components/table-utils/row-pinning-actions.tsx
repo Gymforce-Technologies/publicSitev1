@@ -1,3 +1,5 @@
+"use client";
+
 import { PiPushPin, PiPushPinSlash } from "react-icons/pi";
 import { ActionIcon, Tooltip } from "rizzui";
 

@@ -1,14 +1,13 @@
 'use client';
 
-import { RefObject, useState } from 'react';
+import { notificationsData } from '@/data/notifications';
+import { useMedia } from '@core/hooks/use-media';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
-import { Popover, Title, Badge, Checkbox, Text } from 'rizzui';
 import Link from 'next/link';
-import { useMedia } from '@core/hooks/use-media';
-import SimpleBar from '@core/ui/simplebar';
+import { ReactElement, ReactNode, RefObject, useState } from 'react';
 import { PiCheck } from 'react-icons/pi';
-import { notificationsData } from '@/data/notifications';
+import { Badge, Checkbox, Popover, Text, Title } from 'rizzui';
 
 dayjs.extend(relativeTime);
 
@@ -30,7 +29,7 @@ function NotificationsList({
           labelClassName="text-sm"
         />
       </div>
-      <SimpleBar className="max-h-[420px]">
+      <div className="custom-scrollbar max-h-[420px] overflow-y-auto scroll-smooth">
         <div className="grid cursor-pointer grid-cols-1 gap-1 ps-4">
           {notificationsData.map((item) => (
             <div
@@ -67,7 +66,7 @@ function NotificationsList({
             </div>
           ))}
         </div>
-      </SimpleBar>
+      </div>
       <Link
         href={'#'}
         onClick={() => setIsOpen(false)}
@@ -82,7 +81,7 @@ function NotificationsList({
 export default function NotificationDropdown({
   children,
 }: {
-  children: JSX.Element & { ref?: RefObject<any> };
+  children: ReactElement & { ref?: RefObject<any> };
 }) {
   const isMobile = useMedia('(max-width: 480px)', false);
   const [isOpen, setIsOpen] = useState(false);

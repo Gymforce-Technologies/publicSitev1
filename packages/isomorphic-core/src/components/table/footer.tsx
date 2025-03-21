@@ -1,3 +1,5 @@
+"use client";
+
 import { Button, Text } from "rizzui";
 import { Table as ReactTableType } from "@tanstack/react-table";
 
@@ -12,7 +14,9 @@ export default function TableFooter<TData extends Record<string, any>>({
   showDownloadButton = true,
   onExport,
 }: TableToolbarProps<TData>) {
-  const checkedItems = table.getSelectedRowModel().rows.map((row) => row.original);
+  const checkedItems = table
+    .getSelectedRowModel()
+    .rows.map((row) => row.original);
   const meta = table.options.meta;
 
   if (checkedItems.length === 0) {
@@ -29,7 +33,7 @@ export default function TableFooter<TData extends Record<string, any>>({
           variant="text"
           className="underline"
           color="danger"
-          // onClick={() => meta?.handleMultipleDelete?.(checkedItems)}
+          onClick={() => meta?.handleMultipleDelete?.(checkedItems)}
         >
           Delete Them
         </Button>
@@ -40,7 +44,8 @@ export default function TableFooter<TData extends Record<string, any>>({
           onClick={onExport}
           className="dark:bg-gray-300 dark:text-gray-800"
         >
-          Download {checkedItems.length} {checkedItems.length > 1 ? "Items" : "Item"}
+          Download {checkedItems.length}{" "}
+          {checkedItems.length > 1 ? "Items" : "Item"}
         </Button>
       )}
     </div>

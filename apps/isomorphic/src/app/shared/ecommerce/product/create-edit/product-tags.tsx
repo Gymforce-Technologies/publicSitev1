@@ -26,7 +26,7 @@ interface ItemCrudProps {
   setItems: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
-function ItemCrud({ name, items, setItems }: ItemCrudProps): JSX.Element {
+function ItemCrud({ name, items, setItems }: ItemCrudProps) {
   const { register, setValue } = useFormContext();
   const [itemText, setItemText] = useState<string>('');
 

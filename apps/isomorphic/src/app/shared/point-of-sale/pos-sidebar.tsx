@@ -9,14 +9,12 @@ import POSOrderProductsTwo from '@/app/shared/point-of-sale/pos-order-products-t
 import { useCart } from '@/store/quick-cart/cart.context';
 
 type PosSidebarProps = {
-  simpleBarClassName?: string;
   orderedItems: CartItem[];
   removeItemFromCart: (id: number) => void;
   clearItemFromCart: (id: number) => void;
 };
 
 function PostSidebar({
-  simpleBarClassName,
   orderedItems,
   removeItemFromCart,
   clearItemFromCart,
@@ -51,7 +49,6 @@ function PostSidebar({
             orderedItems={orderedItems}
             removeItemFromCart={removeItemFromCart}
             clearItemFromCart={clearItemFromCart}
-            simpleBarClassName={simpleBarClassName}
             showControls
           />
         )}

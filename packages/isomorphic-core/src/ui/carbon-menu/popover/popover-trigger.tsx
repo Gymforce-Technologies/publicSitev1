@@ -4,7 +4,13 @@ import { useMergedRef } from './use-merged-ref';
 import cn from '../../../utils/class-names';
 
 export interface PopoverTargetProps {
-  children: React.ReactNode;
+  children: React.ReactElement<{
+    className?: string;
+    onClick?: (event: React.MouseEvent) => void;
+    onMouseEnter?: (event: React.MouseEvent) => void;
+    onMouseLeave?: (event: React.MouseEvent) => void;
+    "data-expanded"?: boolean;
+  }>;
   refProp?: string;
   popupType?: string;
 }

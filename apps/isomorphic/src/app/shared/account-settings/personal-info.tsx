@@ -5,7 +5,7 @@ import toast from 'react-hot-toast';
 import { SubmitHandler, Controller } from 'react-hook-form';
 import { PiClock, PiEnvelopeSimple } from 'react-icons/pi';
 import { Form } from '@core/ui/form';
-import { Loader, Text, Input } from 'rizzui';
+import { Loader, Text, Input, Select } from 'rizzui';
 import FormGroup from '@/app/shared/form-group';
 import FormFooter from '@core/components/form-footer';
 import {
@@ -17,14 +17,14 @@ import UploadZone from '@core/ui/file-upload/upload-zone';
 import { countries, roles, timezones } from '@/data/forms/my-details';
 import AvatarUpload from '@core/ui/file-upload/avatar-upload';
 
-const Select = dynamic(() => import('rizzui').then((mod) => mod.Select), {
-  ssr: false,
-  loading: () => (
-    <div className="grid h-10 place-content-center">
-      <Loader variant="spinner" />
-    </div>
-  ),
-});
+// const Select = dynamic(() => import('rizzui').then((mod) => mod.Select), {
+//   ssr: false,
+//   loading: () => (
+//     <div className="grid h-10 place-content-center">
+//       <Loader variant="spinner" />
+//     </div>
+//   ),
+// });
 
 const QuillEditor = dynamic(() => import('@core/ui/quill-editor'), {
   ssr: false,

@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { Modal } from "rizzui";
 import SearchTrigger from "./search-trigger";
 import SearchList from "./search-list";
+import { Modal } from "@core/modal-views/modal";
 
 export default function SearchWidget({
   className,

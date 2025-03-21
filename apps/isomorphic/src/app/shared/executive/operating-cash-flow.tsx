@@ -1,24 +1,23 @@
 'use client';
 
-import { useState } from 'react';
 import WidgetCard from '@core/components/cards/widget-card';
 import { CustomTooltip } from '@core/components/charts/custom-tooltip';
 import { CustomYAxisTick } from '@core/components/charts/custom-yaxis-tick';
+import DropdownAction from '@core/components/charts/dropdown-action';
+import TrendingUpIcon from '@core/components/icons/trending-up';
+import { useMedia } from '@core/hooks/use-media';
+import cn from '@core/utils/class-names';
+import { useState } from 'react';
 import {
   Bar,
-  XAxis,
-  YAxis,
-  Tooltip,
   CartesianGrid,
   ComposedChart,
   ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
 } from 'recharts';
-import { useMedia } from '@core/hooks/use-media';
-import SimpleBar from '@core/ui/simplebar';
-import DropdownAction from '@core/components/charts/dropdown-action';
-import { Title, Text } from 'rizzui';
-import cn from '@core/utils/class-names';
-import TrendingUpIcon from '@core/components/icons/trending-up';
+import { Text, Title } from 'rizzui';
 
 const dailyData = [
   {
@@ -209,7 +208,7 @@ export default function OperatingCashFlow({
       }
     >
       <Legend className="mt-2 flex @2xl:hidden" />
-      <SimpleBar>
+      <div className='custom-scrollbar overflow-x-auto scroll-smooth'>
         <div className="h-[28rem] w-full pt-6 @lg:pt-8">
           <ResponsiveContainer
             width="100%"
@@ -307,7 +306,7 @@ export default function OperatingCashFlow({
             </ComposedChart>
           </ResponsiveContainer>
         </div>
-      </SimpleBar>
+      </div>
     </WidgetCard>
   );
 }

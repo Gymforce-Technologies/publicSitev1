@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { PiPlusBold } from 'react-icons/pi';
 import { routes } from '@/config/routes';
-import { Button } from 'rizzui';
+import { Button } from 'rizzui/button';
 import PageHeader from '@/app/shared/page-header';
 import ReviewsTable from '@/app/shared/ecommerce/review/table';
 import { metaObject } from '@/config/site.config';

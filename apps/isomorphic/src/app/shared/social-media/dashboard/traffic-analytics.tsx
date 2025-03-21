@@ -1,3 +1,5 @@
+'use client';
+
 import cn from '@core/utils/class-names';
 import { Progressbar, Text } from 'rizzui';
 import WidgetCard from '@core/components/cards/widget-card';

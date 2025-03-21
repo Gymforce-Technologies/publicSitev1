@@ -28,7 +28,7 @@ export default function EventCalendarView() {
     ({ start, end }: { start: Date; end: Date }) => {
       openModal({
         view: <EventForm startDate={start} endDate={end} />,
-        customSize: '650px',
+        customSize: 650,
       });
     },
     [openModal]
@@ -38,7 +38,7 @@ export default function EventCalendarView() {
     (event: CalendarEvent) => {
       openModal({
         view: <DetailsEvents event={event} />,
-        customSize: '500px',
+        customSize: 500,
       });
     },
     [openModal]

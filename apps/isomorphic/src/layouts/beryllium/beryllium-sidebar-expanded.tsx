@@ -1,20 +1,19 @@
 'use client';
 
-import { Collapse } from 'rizzui';
-import cn from '@core/utils/class-names';
-import { useBerylliumSidebars } from '@/layouts/beryllium/beryllium-utils';
-import { useAtomValue } from 'jotai';
 import {
   ItemType,
   berylliumMenuItemAtom,
 } from '@/layouts/beryllium/beryllium-fixed-menu-items';
-import { Fragment } from 'react';
+import { useBerylliumSidebars } from '@/layouts/beryllium/beryllium-utils';
+import { useColorPresetName } from '@/layouts/settings/use-theme-color';
+import StatusBadge from '@core/components/get-status-badge';
+import cn from '@core/utils/class-names';
+import { useAtomValue } from 'jotai';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { Fragment } from 'react';
 import { PiCaretDownBold } from 'react-icons/pi';
-import SimpleBar from '@core/ui/simplebar';
-import StatusBadge from '@core/components/get-status-badge';
-import { useColorPresetName } from '@/layouts/settings/use-theme-color';
+import { Collapse } from 'rizzui';
 
 function LinkMenuItem({ item }: { item: ItemType }) {
   const { colorPresetName } = useColorPresetName();
@@ -138,7 +137,7 @@ export default function BerylliumLeftSidebarExpandable() {
         !!expandedLeft && 'w-[294px]'
       )}
     >
-      <SimpleBar className="h-[calc(100vh_-_100px)] min-w-[294px] pe-2.5">
+      <div className="custom-scrollbar overflow-y-auto scroll-smooth h-[calc(100vh_-_100px)] min-w-[294px] pe-2.5">
         <p className="mb-3 font-lexend text-xs font-normal uppercase tracking-widest text-gray-500">
           {selectedMenu.title}
         </p>
@@ -153,7 +152,7 @@ export default function BerylliumLeftSidebarExpandable() {
             </Fragment>
           ))}
         </div>
-      </SimpleBar>
+      </div>
     </div>
   );
 }

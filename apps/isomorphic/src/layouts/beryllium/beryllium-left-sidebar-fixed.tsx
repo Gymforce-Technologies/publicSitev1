@@ -1,22 +1,21 @@
 'use client';
 
-import { ActionIcon } from 'rizzui';
-import cn from '@core/utils/class-names';
-import { PiTextIndent } from 'react-icons/pi';
 import {
-  useBerylliumSidebars,
-  getActiveMainMenuIndex,
-} from '@/layouts/beryllium/beryllium-utils';
-import {
+  berylliumMenuItemAtom,
   berylliumMenuItems,
   MenuItemsType,
-  berylliumMenuItemAtom,
 } from '@/layouts/beryllium/beryllium-fixed-menu-items';
+import {
+  getActiveMainMenuIndex,
+  useBerylliumSidebars,
+} from '@/layouts/beryllium/beryllium-utils';
+import { useWindowSize } from '@core/hooks/use-window-size';
+import cn from '@core/utils/class-names';
 import { useAtom, useSetAtom } from 'jotai';
 import { usePathname } from 'next/navigation';
 import { useEffect } from 'react';
-import SimpleBar from '@core/ui/simplebar';
-import { useWindowSize } from '@core/hooks/use-window-size';
+import { PiTextIndent } from 'react-icons/pi';
+import { ActionIcon } from 'rizzui';
 
 function MenuItem({ menu }: { menu: MenuItemsType }) {
   const { expandedLeft, setExpandedLeft } = useBerylliumSidebars();
@@ -53,13 +52,13 @@ function MenuItem({ menu }: { menu: MenuItemsType }) {
 function MenuItems() {
   return (
     <menu className="flex w-full justify-center">
-      <SimpleBar className="h-[calc(100vh_-_105px)] w-full pb-5">
+      <div className="custom-scrollbar overflow-y-auto scroll-smooth h-[calc(100vh_-_105px)] w-full pb-5">
         <ul className="flex flex-col gap-6">
           {berylliumMenuItems.map((menu) => (
             <MenuItem key={menu.id} menu={menu} />
           ))}
         </ul>
-      </SimpleBar>
+      </div>
     </menu>
   );
 }

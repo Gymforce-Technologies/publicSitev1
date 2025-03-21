@@ -1,6 +1,8 @@
-import { useState } from 'react';
-import { AdvancedRadio } from 'rizzui';
-import cn from '../../utils/class-names';
+"use client";
+
+import { useState } from "react";
+import { AdvancedRadio } from "rizzui";
+import cn from "../../utils/class-names";
 
 type ButtonGroupActionProps = {
   name?: string;
@@ -13,7 +15,7 @@ type ButtonGroupActionProps = {
 };
 
 export default function ButtonGroupAction({
-  name = 'filter',
+  name = "filter",
   options,
   onChange,
   className,
@@ -30,7 +32,7 @@ export default function ButtonGroupAction({
   }
 
   return (
-    <div className={cn('flex items-center gap-1 font-medium', className)}>
+    <div className={cn("flex items-center gap-1 font-medium", className)}>
       {options.map((item) => (
         <AdvancedRadio
           key={`filter-${item}`}
@@ -39,10 +41,10 @@ export default function ButtonGroupAction({
           onChange={(e) => handleOnChange(e.target.value)}
           contentClassName="min-w-[unset] min-h-[auto] text-center border-0 ring-0 peer-checked:ring-0 px-2"
           className={cn(
-            'rounded-md transition-all duration-200 hover:cursor-pointer',
+            "rounded-md transition-all duration-200 hover:cursor-pointer",
             state === item
-              ? 'bg-gray-100 text-gray-900 dark:text-gray-700'
-              : 'text-gray-600',
+              ? "bg-gray-100 text-gray-900 dark:text-gray-700"
+              : "text-gray-600",
             btnClassName,
             state === item && activeClassName
           )}

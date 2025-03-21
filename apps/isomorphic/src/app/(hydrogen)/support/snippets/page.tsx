@@ -1,6 +1,6 @@
 import { PiChartLineUp } from 'react-icons/pi';
 import { routes } from '@/config/routes';
-import { Button } from 'rizzui';
+import { Button } from 'rizzui/button';
 import PageHeader from '@/app/shared/page-header';
 import SnippetsTable from '@/app/shared/support/snippets/table';
 import HeaderAction from '../header-action';

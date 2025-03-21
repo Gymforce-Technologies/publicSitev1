@@ -1,21 +1,20 @@
 'use client';
 
-import Calendar from 'react-calendar';
+import { useModal } from '@/app/shared/modal-views/use-modal';
 import cn from '@core/utils/class-names';
+import dayjs from 'dayjs';
+import { LooseValue } from 'node_modules/react-calendar/dist/esm/shared/types';
+import Calendar from 'react-calendar';
 import {
-  PiClock,
-  PiPlusBold,
   PiArrowLeft,
   PiArrowRight,
+  PiClock,
   PiDotsThreeVerticalBold,
+  PiPlusBold,
 } from 'react-icons/pi';
-import dayjs from 'dayjs';
-import SimpleBar from 'simplebar-react';
+import { ActionIcon, Box, Button, Flex, Title } from 'rizzui';
 import ScheduleModal from './schedule-modal';
 import JobUpgradeStorage from './upgrade-storage';
-import { ActionIcon, Box, Button, Flex, Title } from 'rizzui';
-import { useModal } from '@/app/shared/modal-views/use-modal';
-import { LooseValue } from 'node_modules/react-calendar/dist/esm/shared/types';
 
 interface ScheduledRowProps {
   data?: {
@@ -137,7 +136,7 @@ export default function JobScheduleList({ className }: { className?: string }) {
               onClick={() =>
                 openModal({
                   view: <ScheduleModal />,
-                  customSize: '700px',
+                  customSize: 700,
                 })
               }
             >
@@ -146,13 +145,13 @@ export default function JobScheduleList({ className }: { className?: string }) {
             </Button>
           </Flex>
           <Box className="relative">
-            <SimpleBar className="-mx-0.5 my-5 -me-2 h-72 pe-2 @4xl:h-52">
+            <div className="custom-scrollbar -mx-0.5 my-5 -me-2 h-72 overflow-y-auto scroll-smooth pe-2 @4xl:h-52">
               <Box className="space-y-5 p-0.5 pb-8">
                 {scheduledData.map((item) => (
                   <ScheduledRow key={item.date} data={item} />
                 ))}
               </Box>
-            </SimpleBar>
+            </div>
             <Box className="absolute -end-0 -start-1 bottom-0 h-6 w-[101%] bg-gradient-to-t from-gray-0 via-gray-50 to-transparent dark:from-gray-50 dark:via-gray-50" />
           </Box>
           <JobUpgradeStorage />

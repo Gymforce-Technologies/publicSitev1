@@ -1,8 +1,12 @@
+"use client";
+
 import { useState } from "react";
 import { Input, InputProps } from "rizzui";
 import cn from "../utils/class-names";
 import { PiCalendarBlank, PiCaretDownBold } from "react-icons/pi";
-import ReactDatePicker, { type DatePickerProps as ReactDatePickerProps } from "react-datepicker";
+import ReactDatePicker, {
+  type DatePickerProps as ReactDatePickerProps,
+} from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 const calendarContainerClasses = {
@@ -65,7 +69,10 @@ export const DatePicker = ({
               prefix={<PiCalendarBlank className="w-5 h-5 text-gray-500" />}
               suffix={
                 <PiCaretDownBold
-                  className={cn("h-4 w-4 text-gray-500 transition", isCalenderOpen && "rotate-180")}
+                  className={cn(
+                    "h-4 w-4 text-gray-500 transition",
+                    isCalenderOpen && "rotate-180"
+                  )}
                 />
               }
               {...inputProps}

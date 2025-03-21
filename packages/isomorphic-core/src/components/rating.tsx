@@ -1,7 +1,10 @@
+import cn from '@core/utils/class-names';
 import { PiStar, PiStarFill } from 'react-icons/pi';
 
 type RatingProps = {
   rating: number[];
+  className?: string;
+  disableText?: boolean;
 };
 
 function getRating(rating: number[]) {
@@ -17,10 +20,10 @@ function getRating(rating: number[]) {
   };
 }
 
-export default function Rating({ rating }: RatingProps) {
+export default function Rating({ rating, disableText = false, className }: RatingProps) {
   const { review, totalRating } = getRating(rating);
   return (
-    <div className="flex flex-col items-end">
+    <div className={cn("flex flex-col items-end", className)}>
       <div className="flex items-center">
         {[...new Array(5)].map((_, index) => {
           return index < Math.round(review) ? (
@@ -30,9 +33,11 @@ export default function Rating({ rating }: RatingProps) {
           );
         })}{' '}
       </div>
-      <span className="mt-1 shrink-0 text-gray-500">
-        {totalRating} {totalRating > 1 ? 'reviews' : 'review'}
-      </span>
+      {!disableText && (
+        <span className="mt-1 shrink-0 text-gray-500">
+          {totalRating} {totalRating > 1 ? 'reviews' : 'review'}
+        </span>
+      )}
     </div>
   );
 }

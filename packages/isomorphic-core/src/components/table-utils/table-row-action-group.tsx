@@ -1,3 +1,5 @@
+"use client";
+
 import EyeIcon from "@core/components/icons/eye";
 import PencilIcon from "@core/components/icons/pencil";
 import { ActionIcon, Flex, Tooltip } from "rizzui";
@@ -27,12 +29,7 @@ export default function TableRowActionGroup({
       gap="3"
       className={cn("pe-3", className)}
     >
-      <Tooltip
-        size="sm"
-        content="Edit Item"
-        placement="top"
-        color="invert"
-      >
+      <Tooltip size="sm" content="Edit Item" placement="top" color="invert">
         <Link href={editUrl}>
           <ActionIcon
             as="span"
@@ -44,12 +41,7 @@ export default function TableRowActionGroup({
           </ActionIcon>
         </Link>
       </Tooltip>
-      <Tooltip
-        size="sm"
-        content="View Item"
-        placement="top"
-        color="invert"
-      >
+      <Tooltip size="sm" content="View Item" placement="top" color="invert">
         <Link href={viewUrl}>
           <ActionIcon
             as="span"

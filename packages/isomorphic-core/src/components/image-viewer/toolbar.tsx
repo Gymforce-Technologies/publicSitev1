@@ -1,3 +1,5 @@
+"use client";
+
 import { ChangeEvent } from "react";
 import { useImageViewer } from "./storage";
 import { ActionIcon, FileInput } from "rizzui";
@@ -30,10 +32,7 @@ export default function ToolBar({ onClick }: { onClick?: () => void }) {
           inputClassName="p-0 ps-px dark:ring-primary dark:border-primary"
         />
       </div>
-      <ActionIcon
-        rounded="full"
-        onClick={onClick}
-      >
+      <ActionIcon rounded="full" onClick={onClick}>
         <PiChatCircleFill className="size-5" />
       </ActionIcon>
     </div>

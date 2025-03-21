@@ -1,10 +1,12 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import WishlistButton from '../wishlist-button';
-import { generateSlug } from '../../utils/generate-slug';
-import { Title, Text } from 'rizzui';
-import { Product } from '../../types';
-import { toCurrency } from '../../utils/to-currency';
+"use client";
+
+import Link from "next/link";
+import Image from "next/image";
+import WishlistButton from "../wishlist-button";
+import { generateSlug } from "../../utils/generate-slug";
+import { Title, Text } from "rizzui";
+import { Product } from "../../types";
+import { toCurrency } from "../../utils/to-currency";
 
 interface ProductProps {
   product: Product;
@@ -66,7 +68,7 @@ export default function ProductMinimalCard({
 
         {colors?.length ? (
           <div className="text-sm text-gray-500">
-            {colors?.length} {colors?.length > 1 ? 'Colors' : 'Color'}
+            {colors?.length} {colors?.length > 1 ? "Colors" : "Color"}
           </div>
         ) : null}
 

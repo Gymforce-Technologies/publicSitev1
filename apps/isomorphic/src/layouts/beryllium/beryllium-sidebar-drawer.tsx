@@ -1,15 +1,14 @@
 'use client';
 
-import Link from 'next/link';
-import { Fragment } from 'react';
-import { usePathname } from 'next/navigation';
-import { Title, Collapse } from 'rizzui';
-import cn from '@core/utils/class-names';
-import { PiCaretDownBold } from 'react-icons/pi';
-import SimpleBar from '@core/ui/simplebar';
 import { berylliumSidebarMenuItems } from '@/layouts/beryllium/beryllium-sidebar-menu-items';
-import Logo from '@core/components/logo';
 import StatusBadge from '@core/components/get-status-badge';
+import Logo from '@core/components/logo';
+import cn from '@core/utils/class-names';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { Fragment } from 'react';
+import { PiCaretDownBold } from 'react-icons/pi';
+import { Collapse, Title } from 'rizzui';
 
 export default function Sidebar({ className }: { className?: string }) {
   const pathname = usePathname();
@@ -30,7 +29,7 @@ export default function Sidebar({ className }: { className?: string }) {
         </Link>
       </div>
 
-      <SimpleBar className="h-[calc(100%-80px)]">
+      <div className="custom-scrollbar overflow-y-auto scroll-smooth h-[calc(100%-80px)]">
         <div className="mt-4 pb-3 3xl:mt-6">
           {berylliumSidebarMenuItems.map((item, index) => {
             const isActive = pathname === (item?.href as string);
@@ -163,7 +162,7 @@ export default function Sidebar({ className }: { className?: string }) {
             );
           })}
         </div>
-      </SimpleBar>
+      </div>
     </aside>
   );
 }

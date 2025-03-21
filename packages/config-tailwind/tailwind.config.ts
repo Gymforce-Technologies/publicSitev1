@@ -127,10 +127,12 @@ const config: Omit<Config, "content"> = {
         underline: 'url("/public/underline.svg")',
       },
       boxShadow: {
-        profilePic: "0px 2px 4px -2px rgba(0, 0, 0, 0.10), 0px 4px 6px -1px rgba(0, 0, 0, 0.10)",
+        profilePic:
+          "0px 2px 4px -2px rgba(0, 0, 0, 0.10), 0px 4px 6px -1px rgba(0, 0, 0, 0.10)",
+        roundedCard:
+          "0px 4px 6px -4px rgba(0, 0, 0, 0.1), 0px 10px 15px -3px rgba(0, 0, 0, 0.1)",
       },
       gridTemplateColumns: {
-        '12': 'repeat(12, minmax(0, 1fr))',
         "18": "repeat(18, minmax(0, 1fr))",
       },
     },

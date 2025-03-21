@@ -41,11 +41,11 @@ export default function CategoryPageHeader({
       <PageHeader title={title} breadcrumb={breadcrumb} className={className}>
         <Button
           as="span"
-          className="mt-4 w-full cursor-pointer @lg:mt-0 @lg:w-auto "
+          className="mt-4 w-full cursor-pointer @lg:mt-0 @lg:w-auto"
           onClick={() =>
             openModal({
               view: <CreateCategoryModalView />,
-              customSize: '720px',
+              customSize: 720,
             })
           }
         >

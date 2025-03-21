@@ -1,3 +1,5 @@
+"use client";
+
 import AvatarCard from "../../ui/avatar-card";
 import { ActionIcon, Button, Input, Text, Tooltip } from "rizzui";
 import {
@@ -20,7 +22,9 @@ export default function ConversationBar() {
           name="Fay Doe"
           description="Tuesday"
         />
-        <Text className="font-medium text-xl">Productivity app wait list page concept</Text>
+        <Text className="font-medium text-xl">
+          Productivity app wait list page concept
+        </Text>
 
         <div className="flex items-center justify-between">
           <ActionIcon
@@ -51,10 +55,7 @@ export default function ConversationBar() {
           </div>
         )}
         {comment?.map((c) => (
-          <div
-            key={c.id}
-            className="pt-4 group"
-          >
+          <div key={c.id} className="pt-4 group">
             <div className="flex items-start justify-between mb-3">
               <AvatarCard
                 avatarProps={{
@@ -65,10 +66,7 @@ export default function ConversationBar() {
                 src={c.avatar}
                 description={c.commentTime}
               />
-              <Tooltip
-                placement="left"
-                content="Mark as Resolved"
-              >
+              <Tooltip placement="left" content="Mark as Resolved">
                 <ActionIcon
                   size="sm"
                   variant="text"

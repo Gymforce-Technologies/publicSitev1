@@ -1,3 +1,5 @@
+'use client';
+
 import { useModal } from '@/app/shared/modal-views/use-modal';
 import dayjs from 'dayjs';
 import { PiCalendarCheckLight, PiMapPinLight, PiXBold } from 'react-icons/pi';

@@ -1,7 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { Badge, ActionIcon } from 'rizzui';
+import { Badge } from 'rizzui/badge';
+import { ActionIcon } from 'rizzui/action-icon';
 import cn from '@core/utils/class-names';
 import SearchWidget from '@/app/shared/search/search';
 import MessagesDropdown from '@/layouts/messages-dropdown';

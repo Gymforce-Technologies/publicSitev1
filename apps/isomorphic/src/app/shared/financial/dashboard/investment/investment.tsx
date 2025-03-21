@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { DatePicker } from '@core/ui/datepicker';
 import WidgetCard from '@core/components/cards/widget-card';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import {
   CircleTextType,
   CustomCircleChartDataType,

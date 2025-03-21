@@ -110,7 +110,7 @@ export default function Filters<TData extends Record<string, any>>({
           <ModalButton
             label="Add New User"
             view={<CreateUser />}
-            customSize="600px"
+            customSize={600}
             className="mt-0"
           />
         </Box>

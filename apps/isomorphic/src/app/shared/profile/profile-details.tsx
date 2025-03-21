@@ -3,7 +3,8 @@
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { PiXBold } from 'react-icons/pi';
-import { Badge, Title, Modal, Button } from 'rizzui';
+import { Badge, Title, Button } from 'rizzui';
+import { Modal } from '@core/modal-views/modal';
 import cn from '@core/utils/class-names';
 import PostFeed from '@/app/shared/profile/post-feed';
 import FollowerModal from '@/app/shared/profile/follower-modal';

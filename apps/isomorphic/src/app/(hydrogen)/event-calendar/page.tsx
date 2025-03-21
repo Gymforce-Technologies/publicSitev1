@@ -38,7 +38,7 @@ export default function EventCalendarPage() {
           <ModalButton
             label="Create Event"
             view={<EventForm />}
-            customSize="900px"
+            customSize={900}
             className="mt-0 w-full @lg:w-auto"
           />
         </div>

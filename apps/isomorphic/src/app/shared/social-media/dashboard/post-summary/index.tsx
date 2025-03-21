@@ -37,7 +37,8 @@ export default function PostSummary({ className }: { className?: string }) {
         </span>
       }
       className={cn('space-y-4 p-0 lg:p-0', className)}
-      headerClassName="items-center px-5 pt-5 lg:px-7 lg:pt-7"
+      headerClassName="items-center px-5 pt-5 lg:px-7 lg:pt-7 flex-wrap sm:flex-nowrap gap-y-3"
+      actionClassName="ml-auto"
       action={<Filters table={table} className="w-full justify-between" />}
     >
       <Table

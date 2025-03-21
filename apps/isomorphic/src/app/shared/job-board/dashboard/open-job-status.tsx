@@ -1,25 +1,5 @@
 'use client';
 
-import { useState } from 'react';
-import WidgetCard from '@core/components/cards/widget-card';
-import { CustomTooltip } from '@core/components/charts/custom-tooltip';
-import { CustomYAxisTick } from '@core/components/charts/custom-yaxis-tick';
-import {
-  Bar,
-  XAxis,
-  YAxis,
-  Tooltip,
-  CartesianGrid,
-  ComposedChart,
-  ResponsiveContainer,
-} from 'recharts';
-import { useMedia } from '@core/hooks/use-media';
-import SimpleBar from '@core/ui/simplebar';
-import DropdownAction from '@core/components/charts/dropdown-action';
-import { Title, Text, Flex } from 'rizzui';
-import cn from '@core/utils/class-names';
-import TrendingUpIcon from '@core/components/icons/trending-up';
-import { formatNumber } from '@core/utils/format-number';
 import {
   JOB_OVERVIEW_COLORS,
   jobOverviewOptions,
@@ -27,6 +7,25 @@ import {
   openJobStatsMonthlyData,
   openJobStatsTicketStatus,
 } from '@/data/job-data';
+import WidgetCard from '@core/components/cards/widget-card';
+import { CustomTooltip } from '@core/components/charts/custom-tooltip';
+import { CustomYAxisTick } from '@core/components/charts/custom-yaxis-tick';
+import DropdownAction from '@core/components/charts/dropdown-action';
+import TrendingUpIcon from '@core/components/icons/trending-up';
+import { useMedia } from '@core/hooks/use-media';
+import cn from '@core/utils/class-names';
+import { formatNumber } from '@core/utils/format-number';
+import { useState } from 'react';
+import {
+  Bar,
+  CartesianGrid,
+  ComposedChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from 'recharts';
+import { Flex, Text, Title } from 'rizzui';
 
 export default function OpenJobOverview({ className }: { className?: string }) {
   const [data, setData] = useState(openJobStatsDailyData);
@@ -75,7 +74,7 @@ export default function OpenJobOverview({ className }: { className?: string }) {
         </Text>
       </Flex>
       <Legend className="my-4 flex @sm:justify-end @xl:hidden" />
-      <SimpleBar>
+      <div className='custom-scrollbar overflow-x-auto scroll-smooth'>
         <div className="h-[20rem] w-full pt-6 @lg:pt-8 lg:h-[24rem] 3xl:h-[25rem]">
           <ResponsiveContainer width="100%" height="100%" minWidth={700}>
             <ComposedChart
@@ -123,7 +122,7 @@ export default function OpenJobOverview({ className }: { className?: string }) {
             </ComposedChart>
           </ResponsiveContainer>
         </div>
-      </SimpleBar>
+      </div>
     </WidgetCard>
   );
 }

@@ -1,5 +1,7 @@
+'use client';
+
 import { Controller, useFormContext } from 'react-hook-form';
-import { Input } from 'rizzui';
+import { Input, Select } from 'rizzui';
 import cn from '@core/utils/class-names';
 import FormGroup from '@/app/shared/form-group';
 import {
@@ -9,10 +11,10 @@ import {
 import dynamic from 'next/dynamic';
 import SelectLoader from '@core/components/loader/select-loader';
 import QuillLoader from '@core/components/loader/quill-loader';
-const Select = dynamic(() => import('rizzui').then((mod) => mod.Select), {
-  ssr: false,
-  loading: () => <SelectLoader />,
-});
+// const Select = dynamic(() => import('rizzui').then((mod) => mod.Select), {
+//   ssr: false,
+//   loading: () => <SelectLoader />,
+// });
 const QuillEditor = dynamic(() => import('@core/ui/quill-editor'), {
   ssr: false,
   loading: () => <QuillLoader className="col-span-full h-[143px]" />,

@@ -1,3 +1,5 @@
+'use client';
+
 import { Badge, ActionIcon } from 'rizzui';
 import MessagesDropdown from '@/layouts/messages-dropdown';
 import ProfileMenu from '@/layouts/profile-menu';

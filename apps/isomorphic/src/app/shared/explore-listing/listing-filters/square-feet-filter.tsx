@@ -1,3 +1,5 @@
+'use client'
+
 import { useEffect, useState } from 'react';
 import { Select, Title } from 'rizzui';
 import { PiMinus } from 'react-icons/pi';

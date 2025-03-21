@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import { PiNotePencil } from 'react-icons/pi';
 import { ActionIcon, Text, Title } from 'rizzui';

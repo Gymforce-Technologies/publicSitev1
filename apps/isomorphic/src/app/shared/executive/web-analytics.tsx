@@ -19,7 +19,6 @@ import GoogleIcon from '@core/components/icons/google';
 import MediumIcon from '@core/components/icons/medium';
 import YoutubeIcon from '@core/components/icons/youtube';
 import SquareBoxIcon from '@core/components/icons/square-box';
-import SimpleBar from '@core/ui/simplebar';
 
 const platforms = [
   {
@@ -122,7 +121,7 @@ export default function WebAnalytics({ className }: { className?: string }) {
       titleClassName="font-medium sm:text-lg text-gray-800 mb-2.5 font-inter"
       className={className}
     >
-      <SimpleBar>
+      <div className="custom-scrollbar overflow-x-auto scroll-smooth">
         <div className="my-8 h-[300px]">
           <ResponsiveContainer
             width="100%"
@@ -163,7 +162,7 @@ export default function WebAnalytics({ className }: { className?: string }) {
             </BarChart>
           </ResponsiveContainer>
         </div>
-      </SimpleBar>
+      </div>
       <div className=" ">
         <div className="mb-4 flex items-center justify-between border-b border-muted pb-4 font-medium last:mb-0 last:border-0 last:pb-0">
           <Text as="span" className="text-sm text-gray-600 dark:text-gray-700">

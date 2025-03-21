@@ -13,7 +13,6 @@ import {
   Area,
 } from 'recharts';
 import { CustomTooltip } from '@core/components/charts/custom-tooltip';
-import SimpleBar from '@core/ui/simplebar';
 import { useMedia } from '@core/hooks/use-media';
 import DropdownAction from '@core/components/charts/dropdown-action';
 import { useState } from 'react';
@@ -167,7 +166,7 @@ export default function Forecast({ className }: { className?: string }) {
       }
     >
       <Legend className="mt-2 flex @2xl:hidden @3xl:flex @5xl:hidden" />
-      <SimpleBar>
+      <div className='custom-scrollbar overflow-x-auto'>
         <div className="h-96 w-full pt-9">
           <ResponsiveContainer
             width="100%"
@@ -227,7 +226,7 @@ export default function Forecast({ className }: { className?: string }) {
             </AreaChart>
           </ResponsiveContainer>
         </div>
-      </SimpleBar>
+      </div>
     </WidgetCard>
   );
 }

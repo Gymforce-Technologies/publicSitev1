@@ -1,3 +1,5 @@
+"use client";
+
 import { PiCaretDownBold } from "react-icons/pi";
 import Pagination, { type PaginationProps } from "@core/ui/pagination";
 import { Select } from "rizzui";

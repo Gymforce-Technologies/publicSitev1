@@ -1,25 +1,24 @@
 'use client';
 
-import { Box } from 'rizzui';
-import { useState } from 'react';
-import { useTheme } from 'next-themes';
-import SimpleBar from 'simplebar-react';
-import cn from '@core/utils/class-names';
+import { revenueSummaryData } from '@/data/crm-dashboard-data';
+import WidgetCard from '@core/components/cards/widget-card';
+import { CustomTooltip } from '@core/components/charts/custom-tooltip';
 import { DatePicker } from '@core/ui/datepicker';
+import cn from '@core/utils/class-names';
+import { useTheme } from 'next-themes';
+import { useState } from 'react';
 import {
   Bar,
-  XAxis,
-  YAxis,
-  Tooltip,
   BarChart,
+  CartesianGrid,
   LabelList,
   Rectangle,
-  CartesianGrid,
   ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
 } from 'recharts';
-import WidgetCard from '@core/components/cards/widget-card';
-import { revenueSummaryData } from '@/data/crm-dashboard-data';
-import { CustomTooltip } from '@core/components/charts/custom-tooltip';
+import { Box } from 'rizzui';
 
 export default function CustomerGrowthSummary({
   className,
@@ -48,7 +47,7 @@ export default function CustomerGrowthSummary({
         />
       }
     >
-      <SimpleBar className="w-full">
+      <div className="custom-scrollbar overflow-x-auto scroll-smooth w-full">
         <Box className="mt-[22px] h-[350px]">
           <ResponsiveContainer width="100%" height="100%" minWidth={600}>
             <BarChart
@@ -77,7 +76,7 @@ export default function CustomerGrowthSummary({
             </BarChart>
           </ResponsiveContainer>
         </Box>
-      </SimpleBar>
+      </div>
     </WidgetCard>
   );
 }

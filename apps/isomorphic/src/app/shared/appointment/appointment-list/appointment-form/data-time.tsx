@@ -1,28 +1,27 @@
 'use client';
 
-import { z } from 'zod';
-import { useAtom } from 'jotai';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { Controller, SubmitHandler, useForm } from 'react-hook-form';
-import {
-  ActionIcon,
-  AdvancedRadio,
-  RadioGroup,
-  Text,
-  Title,
-  FieldError,
-} from 'rizzui';
-import Footer from './footer';
-import ScheduleLightIcon from '@core/components/icons/schedule-light';
-import Calendar from 'react-calendar';
 import {
   formDataAtom,
   useStepperAppointment,
 } from '@/app/shared/appointment/appointment-list/appointment-form';
-import { PiXBold } from 'react-icons/pi';
 import { useModal } from '@/app/shared/modal-views/use-modal';
-import SimpleBar from 'simplebar-react';
+import ScheduleLightIcon from '@core/components/icons/schedule-light';
 import cn from '@core/utils/class-names';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useAtom } from 'jotai';
+import Calendar from 'react-calendar';
+import { Controller, SubmitHandler, useForm } from 'react-hook-form';
+import { PiXBold } from 'react-icons/pi';
+import {
+  ActionIcon,
+  AdvancedRadio,
+  FieldError,
+  RadioGroup,
+  Text,
+  Title,
+} from 'rizzui';
+import { z } from 'zod';
+import Footer from './footer';
 
 export const appointmentDataSchema = z.object({
   date: z.date().refine((value) => value !== null, 'Please select a date'),
@@ -185,7 +184,7 @@ export default function DateTime() {
             >
               Time
             </Title>
-            <SimpleBar className="mb-5 h-[280px] px-5">
+            <div className="custom-scrollbar mb-5 h-[280px] overflow-y-auto px-5">
               <Controller
                 control={control}
                 name="time"
@@ -213,7 +212,7 @@ export default function DateTime() {
                   </RadioGroup>
                 )}
               />
-            </SimpleBar>
+            </div>
             {errors.time && (
               <FieldError error={errors.time?.message} className="px-5 pb-5" />
             )}

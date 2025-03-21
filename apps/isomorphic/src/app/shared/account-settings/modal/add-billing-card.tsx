@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import { PiLockSimple } from 'react-icons/pi';
 import { Controller, SubmitHandler } from 'react-hook-form';

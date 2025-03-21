@@ -3,7 +3,8 @@
 import { useEffect, useState } from 'react';
 import { postData } from '@/data/profile-data';
 import { usePathname } from 'next/navigation';
-import { Modal, Button } from 'rizzui';
+import { Button } from 'rizzui';
+import { Modal } from '@core/modal-views/modal';
 import {
   PiCaretLeftBold,
   PiCaretRightBold,
@@ -81,7 +82,7 @@ export default function PostFeed() {
         {currentPostID > 100 && (
           <Button
             variant="text"
-            className="absolute -left-12 top-1/2 -mt-4 hidden p-0 text-gray-50 lg:inline-block dark:text-white"
+            className="absolute -left-12 top-1/2 -mt-4 hidden p-0 text-gray-50 dark:text-white lg:inline-block"
             onClick={() => setCurrentPostID(currentPostID - 1)}
           >
             <PiCaretLeftBold className="text-3xl" />
@@ -91,7 +92,7 @@ export default function PostFeed() {
         {currentPostID < postData[postData.length - 1].id && (
           <Button
             variant="text"
-            className="absolute -right-12 top-1/2 -mt-4 hidden p-0 text-gray-50 lg:inline-block dark:text-white"
+            className="absolute -right-12 top-1/2 -mt-4 hidden p-0 text-gray-50 dark:text-white lg:inline-block"
             onClick={() => setCurrentPostID(currentPostID + 1)}
           >
             <PiCaretRightBold className="text-3xl" />

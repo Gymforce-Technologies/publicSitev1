@@ -51,7 +51,7 @@ export default function HeaderAction({ title, className }: HeaderActionProps) {
           onClick={() =>
             openModal({
               view: <CreateFolderModalView />,
-              customSize: '480px',
+              customSize: 480,
             })
           }
         >
@@ -63,7 +63,7 @@ export default function HeaderAction({ title, className }: HeaderActionProps) {
           onClick={() =>
             openModal({
               view: <CreateSnippetTemplateForm title={title} />,
-              customSize: '720px',
+              customSize: 720,
             })
           }
         >

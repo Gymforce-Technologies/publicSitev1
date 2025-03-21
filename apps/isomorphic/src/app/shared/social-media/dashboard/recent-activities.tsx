@@ -1,10 +1,9 @@
 'use client';
 
-import cn from '@core/utils/class-names';
-import SimpleBar from 'simplebar-react';
-import { Badge, Button, Text } from 'rizzui';
-import WidgetCard from '@core/components/cards/widget-card';
 import { recentActivitiesData } from '@/data/social-media-dashboard-data';
+import WidgetCard from '@core/components/cards/widget-card';
+import cn from '@core/utils/class-names';
+import { Badge, Button, Text } from 'rizzui';
 
 export default function RecentActivities({
   className,
@@ -22,7 +21,7 @@ export default function RecentActivities({
       }
       className={cn('relative', className)}
     >
-      <SimpleBar className="mt-2 max-h-[400px] @4xl:max-h-[500px] @7xl:max-h-[550px]">
+      <div className="custom-scrollbar overflow-y-auto scroll-smooth mt-2 max-h-[400px] @4xl:max-h-[500px] @7xl:max-h-[550px]">
         {recentActivitiesData.map((item, idx) => {
           const Icon = item.icon;
           return (
@@ -52,7 +51,7 @@ export default function RecentActivities({
             </div>
           );
         })}
-      </SimpleBar>
+      </div>
       <div className="absolute inset-x-0 bottom-3 z-10 h-20 bg-gradient-to-t from-white to-transparent dark:from-gray-50" />
     </WidgetCard>
   );

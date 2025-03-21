@@ -43,6 +43,16 @@ export const lithiumMenuItems: LithiumMenuItem = {
         icon: 'BusinessIcon',
       },
       {
+        name: 'Store Analytics',
+        href: routes.storeAnalytics.dashboard,
+        icon: 'StoreAnalysisColoredIcon',
+      },
+      {
+        name: 'Bidding',
+        href: routes.bidding.dashboard,
+        icon: 'BiddingIcon',
+      },
+      {
         name: 'Project',
         href: routes.project.dashboard,
         icon: 'ProjectDashIcon',
@@ -91,6 +101,11 @@ export const lithiumMenuItems: LithiumMenuItem = {
         name: 'Support',
         href: routes.support.dashboard,
         icon: 'WalkmanIcon',
+      },
+      {
+        name: 'Podcast',
+        href: routes.podcast.dashboard,
+        icon: 'PodcastIcon',
       },
     ],
   },
@@ -319,6 +334,11 @@ export const lithiumMenuItems: LithiumMenuItem = {
       {
         name: 'Multi Step',
         href: routes.multiStep,
+        icon: 'MultiStepArrowIcon',
+      },
+      {
+        name: 'Multi Step 2',
+        href: routes.multiStep2,
         icon: 'MultiStepArrowIcon',
       },
       {

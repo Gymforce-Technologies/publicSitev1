@@ -1,4 +1,4 @@
-import { Button } from 'rizzui';
+import { Button } from 'rizzui/button';
 import { routes } from '@/config/routes';
 import PageHeader from '@/app/shared/page-header';
 import CreateCategory from '@/app/shared/ecommerce/category/create-category';
@@ -7,7 +7,7 @@ import { metaObject } from '@/config/site.config';
 import { Metadata } from 'next';
 
 type Props = {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 };
 
 /**
@@ -17,7 +17,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   // read route params
-  const id = params.id;
+  const id = (await params).id;
 
   return metaObject(`Edit ${id}`);
 }
@@ -48,7 +48,8 @@ const categoryData = {
   images: undefined,
 };
 
-export default function EditCategoryPage({ params }: any) {
+export default async function EditCategoryPage({ params }: any) {
+  const id = (await params).id;
   return (
     <>
       <PageHeader title={pageHeader.title} breadcrumb={pageHeader.breadcrumb}>
@@ -61,7 +62,7 @@ export default function EditCategoryPage({ params }: any) {
           </Button>
         </Link>
       </PageHeader>
-      <CreateCategory id={params.id} category={categoryData} />
+      <CreateCategory id={id} category={categoryData} />
     </>
   );
 }

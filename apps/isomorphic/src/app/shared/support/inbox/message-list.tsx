@@ -1,17 +1,5 @@
 'use client';
 
-import { useAtom } from 'jotai';
-import { atomWithReset, atomWithStorage } from 'jotai/utils';
-import { useState, useEffect, useRef } from 'react';
-import { HiOutlineAdjustmentsHorizontal } from 'react-icons/hi2';
-import { PiCaretDownBold, PiChats, PiPaperclipLight } from 'react-icons/pi';
-import { useRouter } from 'next/navigation';
-import { Select, Title, Badge, Checkbox, ActionIcon } from 'rizzui';
-import cn from '@core/utils/class-names';
-import { useHover } from '@core/hooks/use-hover';
-import { useMedia } from '@core/hooks/use-media';
-import { getRelativeTime } from '@core/utils/get-relative-time';
-import rangeMap from '@core/utils/range-map';
 import { routes } from '@/config/routes';
 import {
   messages,
@@ -20,8 +8,19 @@ import {
   SupportStatusType,
   supportTypes,
 } from '@/data/support-inbox';
+import { useHover } from '@core/hooks/use-hover';
+import { useMedia } from '@core/hooks/use-media';
 import { LineGroup, Skeleton } from '@core/ui/skeleton';
-import SimpleBar from '@core/ui/simplebar';
+import cn from '@core/utils/class-names';
+import { getRelativeTime } from '@core/utils/get-relative-time';
+import rangeMap from '@core/utils/range-map';
+import { useAtom } from 'jotai';
+import { atomWithReset, atomWithStorage } from 'jotai/utils';
+import { useRouter } from 'next/navigation';
+import { useEffect, useRef, useState } from 'react';
+import { HiOutlineAdjustmentsHorizontal } from 'react-icons/hi2';
+import { PiCaretDownBold, PiChats, PiPaperclipLight } from 'react-icons/pi';
+import { ActionIcon, Badge, Checkbox, Select, Title } from 'rizzui';
 
 interface MessageItemProps {
   message: MessageType;
@@ -34,6 +33,7 @@ export const dataAtom = atomWithReset<MessageType[]>(messages);
 export function MessageItem({ className, message }: MessageItemProps) {
   const hoverRef = useRef(null);
   const router = useRouter();
+  // @ts-ignore
   const isHover = useHover(hoverRef);
   const [data, setData] = useAtom(dataAtom);
   const isMobile = useMedia('(max-width: 1023px)', false);
@@ -82,9 +82,9 @@ export function MessageItem({ className, message }: MessageItemProps) {
           })}
           {...(isActive &&
             message.selected && {
-              variant: 'flat',
-              color: 'primary',
-            })}
+            variant: 'flat',
+            color: 'primary',
+          })}
           checked={message.selected}
           onChange={() => handleItemChange(message.id)}
         />
@@ -239,7 +239,7 @@ export default function MessageList({ className }: InboxListProps) {
                 className={cn(
                   'px-2.5 py-1.5 text-sm font-medium text-gray-500 transition duration-300',
                   status === supportStatuses.Closed &&
-                    'bg-gray-100 text-gray-900'
+                  'bg-gray-100 text-gray-900'
                 )}
                 onClick={handleClosed}
               >
@@ -268,7 +268,7 @@ export default function MessageList({ className }: InboxListProps) {
         </div>
 
         <div className="overflow-hidden rounded-lg border border-muted">
-          <SimpleBar className="max-h-[calc(100dvh-356px)] md:max-h-[calc(100dvh-311px)] lg:max-h-[calc(100dvh-240px)] xl:max-h-[calc(100dvh-230px)] 2xl:max-h-[calc(100dvh-240px)] 3xl:max-h-[calc(100dvh-270px)]">
+          <div className="custom-scrollbar overflow-y-auto scroll-smooth max-h-[calc(100dvh-356px)] md:max-h-[calc(100dvh-311px)] lg:max-h-[calc(100dvh-240px)] xl:max-h-[calc(100dvh-230px)] 2xl:max-h-[calc(100dvh-240px)] 3xl:max-h-[calc(100dvh-270px)]">
             {isLoading ? (
               <div className="grid gap-4">
                 {rangeMap(5, (i) => (
@@ -280,7 +280,7 @@ export default function MessageList({ className }: InboxListProps) {
                 <MessageItem key={message.id} message={message} />
               ))
             )}
-          </SimpleBar>
+          </div>
         </div>
       </div>
     </>

@@ -6,9 +6,10 @@ import {
 } from '@/app/shared/drawer-views/use-drawer';
 import { ActionIcon } from 'rizzui';
 import cn from '@core/utils/class-names';
+import { ReactNode } from 'react';
 
 interface Props {
-  view: JSX.Element;
+  view: React.ReactElement;
   placement?: DrawerPlacements;
   containerClassName?: string;
   className?: string;

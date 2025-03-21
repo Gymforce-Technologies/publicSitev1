@@ -5,11 +5,11 @@ import { productData } from '@/app/shared/ecommerce/product/create-edit/form-uti
 import CreateEditProduct from '@/app/shared/ecommerce/product/create-edit';
 import PageHeader from '@/app/shared/page-header';
 import { metaObject } from '@/config/site.config';
-import { Button } from 'rizzui';
+import { Button } from 'rizzui/button';
 import { routes } from '@/config/routes';
 
 type Props = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
 /**
@@ -19,7 +19,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   // read route params
-  const slug = params.slug;
+  const slug = (await params).slug;
 
   return metaObject(`Edit ${slug}`);
 }
@@ -41,11 +41,8 @@ const pageHeader = {
   ],
 };
 
-export default function EditProductPage({
-  params,
-}: {
-  params: { slug: string };
-}) {
+export default async function EditProductPage({ params }: any) {
+  const slug = (await params).slug;
   return (
     <>
       <PageHeader title={pageHeader.title} breadcrumb={pageHeader.breadcrumb}>
@@ -60,7 +57,7 @@ export default function EditProductPage({
         </Link>
       </PageHeader>
 
-      <CreateEditProduct slug={params.slug} product={productData} />
+      <CreateEditProduct slug={slug} product={productData} />
     </>
   );
 }

@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
-import { Modal } from 'rizzui';
+import { Modal } from '@core/modal-views/modal';
 import { useModal } from '@/app/shared/modal-views/use-modal';
 
 export default function GlobalModal() {

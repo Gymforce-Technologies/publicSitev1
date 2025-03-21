@@ -188,6 +188,10 @@ export const iconsData = [
     name: "SuitCaseIcon",
   },
   {
+    file: "store-analysis-colored.tsx",
+    name: "StoreAnalysisColoredIcon",
+  },
+  {
     file: "stack.tsx",
     name: "StackIcon",
   },
@@ -198,6 +202,10 @@ export const iconsData = [
   {
     file: "social-media-dash.tsx",
     name: "SocialMediaDashIcon",
+  },
+  {
+    file: "snapchat.tsx",
+    name: "SnapchatIcon",
   },
   {
     file: "smoke-alarm.tsx",
@@ -276,6 +284,10 @@ export const iconsData = [
     name: "RocketFlamingIcon",
   },
   {
+    file: "ripple.tsx",
+    name: "RippleIcon",
+  },
+  {
     file: "ring-bell-solid.tsx",
     name: "RingBellSolidIcon",
   },
@@ -292,10 +304,6 @@ export const iconsData = [
     name: "RealEstateIcon",
   },
   {
-    file: "project-write.tsx",
-    name: "ProjectWriteIcon",
-  },
-  {
     file: "project-dash.tsx",
     name: "ProjectDashIcon",
   },
@@ -306,6 +314,10 @@ export const iconsData = [
   {
     file: "point-of-sell.tsx",
     name: "PointOfSellIcon",
+  },
+  {
+    file: "play-store.tsx",
+    name: "PlayStoreIcon",
   },
   {
     file: "plane.tsx",
@@ -588,6 +600,10 @@ export const iconsData = [
     name: "DriveIcon",
   },
   {
+    file: "dribble.tsx",
+    name: "DribbleIcon",
+  },
+  {
     file: "dollar.tsx",
     name: "DollarIcon",
   },
@@ -618,10 +634,6 @@ export const iconsData = [
   {
     file: "cube-solid.tsx",
     name: "CubeSolidIcon",
-  },
-  {
-    file: "crm-icon.tsx",
-    name: "CrmDashIcon",
   },
   {
     file: "crm-icon-two.tsx",
@@ -786,10 +798,6 @@ export const iconsData = [
   {
     file: "air-conditioner.tsx",
     name: "AirConditionerIcon",
-  },
-  {
-    file: "affiliate.tsx",
-    name: "AffiliateIcon",
   },
   {
     file: "affiliate-colored.tsx",

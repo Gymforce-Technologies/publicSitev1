@@ -1,8 +1,18 @@
+"use client";
+
 import RcTable from "rc-table";
 import cn from "@core/utils/class-names";
 import { PiTextColumns } from "react-icons/pi";
 import { addSpacesToCamelCase } from "@core/utils/add-spaces-to-camel-case";
-import { Empty, ActionIcon, Checkbox, CheckboxGroup, Popover, Title, Text } from "rizzui";
+import {
+  Empty,
+  ActionIcon,
+  Checkbox,
+  CheckboxGroup,
+  Popover,
+  Title,
+  Text,
+} from "rizzui";
 
 export type ExtractProps<T> = T extends React.ComponentType<infer P> ? P : T;
 
@@ -11,7 +21,8 @@ const classes = {
     "[&_.rc-table-content]:overflow-x-auto [&_table]:w-full [&_.rc-table-row:hover]:bg-gray-50 [&_.rc-table-row-expand-icon-cell]:w-14",
   thead:
     "[&_thead]:text-left [&_thead]:rtl:text-right [&_th.rc-table-cell]:uppercase [&_th.rc-table-cell]:text-xs [&_th.rc-table-cell]:font-semibold [&_th.rc-table-cell]:tracking-wider [&_th.rc-table-cell]:text-gray-500",
-  tCell: "[&_.rc-table-cell]:px-3 [&_th.rc-table-cell]:py-3 [&_td.rc-table-cell]:py-4",
+  tCell:
+    "[&_.rc-table-cell]:px-3 [&_th.rc-table-cell]:py-3 [&_td.rc-table-cell]:py-4",
   variants: {
     classic:
       "[&_thead]:bg-gray-100 [&_.rc-table-container]:border-x [&_.rc-table-container]:border-muted/70 [&_td.rc-table-cell]:border-b [&_td.rc-table-cell]:border-muted/70 [&_thead]:border-y [&_thead]:border-muted/70",
@@ -30,7 +41,8 @@ const classes = {
 
 type RCTableProps = ExtractProps<typeof RcTable>;
 
-export interface TableProps extends Omit<RCTableProps, "className" | "emptyText"> {
+export interface TableProps
+  extends Omit<RCTableProps, "className" | "emptyText"> {
   /** Set empty text, it will only appear when table has no data */
   emptyText?: React.ReactElement;
   /** The variants of the component are: */
@@ -117,7 +129,9 @@ export function HeaderCell({
     );
   }
   if (width !== undefined && ellipsis !== true) {
-    console.warn("width prop without ellipsis won't work, please set ellipsis prop true.");
+    console.warn(
+      "width prop without ellipsis won't work, please set ellipsis prop true."
+    );
   }
   return (
     <div
@@ -176,27 +190,15 @@ export function ToggleColumns<T>({
 }: ToggleColumnsTypes<T>) {
   return (
     <div>
-      <Popover
-        shadow="sm"
-        placement="bottom-end"
-      >
+      <Popover shadow="sm" placement="bottom-end">
         <Popover.Trigger>
-          <ActionIcon
-            variant="outline"
-            title={"Toggle Columns"}
-          >
-            <PiTextColumns
-              strokeWidth={3}
-              className="h-6 w-6"
-            />
+          <ActionIcon variant="outline" title={"Toggle Columns"}>
+            <PiTextColumns strokeWidth={3} className="h-6 w-6" />
           </ActionIcon>
         </Popover.Trigger>
         <Popover.Content className="z-0">
           <div className="px-0.5 pt-2 text-left rtl:text-right">
-            <Title
-              as="h6"
-              className="mb-1 px-0.5 text-sm font-semibold"
-            >
+            <Title as="h6" className="mb-1 px-0.5 text-sm font-semibold">
               Toggle Columns
             </Title>
             <CheckboxGroup
@@ -210,7 +212,9 @@ export function ToggleColumns<T>({
                   value={column.dataIndex}
                   label={addSpacesToCamelCase(column.dataIndex)}
                   labelClassName="ml-2 rtl:mr-2 text-[13px] font-medium"
-                  className={cn(hideIndex && index === hideIndex ? "hidden" : "")}
+                  className={cn(
+                    hideIndex && index === hideIndex ? "hidden" : ""
+                  )}
                 />
               ))}
             </CheckboxGroup>

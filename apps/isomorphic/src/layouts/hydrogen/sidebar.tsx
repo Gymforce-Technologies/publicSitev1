@@ -1,9 +1,8 @@
 'use client';
 
-import Link from 'next/link';
-import cn from '@core/utils/class-names';
-import SimpleBar from '@core/ui/simplebar';
 import Logo from '@core/components/logo';
+import cn from '@core/utils/class-names';
+import Link from 'next/link';
 import { SidebarMenu } from './sidebar-menu';
 
 export default function Sidebar({ className }: { className?: string }) {
@@ -24,9 +23,9 @@ export default function Sidebar({ className }: { className?: string }) {
         </Link>
       </div>
 
-      <SimpleBar className="h-[calc(100%-80px)]">
+      <div className="custom-scrollbar h-[calc(100%-80px)] overflow-y-auto">
         <SidebarMenu />
-      </SimpleBar>
+      </div>
     </aside>
   );
 }

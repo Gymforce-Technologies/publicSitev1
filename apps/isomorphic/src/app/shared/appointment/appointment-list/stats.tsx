@@ -176,7 +176,7 @@ export default function AppointmentListStats({
       <div className="w-full overflow-hidden">
         <div
           ref={sliderEl}
-          className="custom-scrollbar-x grid grid-flow-col gap-5 overflow-x-auto scroll-smooth 2xl:gap-6"
+          className="custom-scrollbar grid grid-flow-col gap-5 overflow-x-auto scroll-smooth 2xl:gap-6"
         >
           <StatGrid />
         </div>

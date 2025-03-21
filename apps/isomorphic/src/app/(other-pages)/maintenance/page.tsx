@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Title, Text } from 'rizzui';
+import { Title, Text } from 'rizzui/typography';
 import SubscriptionForm from '@/app/shared/subscription-form';
 import MaintananceImg from '@public/maintanance.png';
 

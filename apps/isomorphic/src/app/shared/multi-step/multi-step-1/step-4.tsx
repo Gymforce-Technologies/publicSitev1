@@ -18,6 +18,7 @@ import {
   locationSchema,
   LocationSchema,
 } from '@/validators/multistep-form.schema';
+import { env } from '@/env.mjs';
 
 export default function StepTwo() {
   const setLocation = useSetAtom(locationAtom);
@@ -92,7 +93,7 @@ export default function StepTwo() {
         className="col-span-full flex items-center justify-center @5xl:col-span-7"
       >
         <Autocomplete
-          apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY as string}
+          apiKey={env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY}
           onPlaceSelect={handlePlaceSelect}
           mapClassName="rounded-lg"
           spinnerClassName="grid h-full w-full place-content-center"

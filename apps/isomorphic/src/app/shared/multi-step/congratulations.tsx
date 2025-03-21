@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import Confetti from 'react-confetti';
-import { Button } from 'rizzui';
+import { Button } from 'rizzui/button';
 
 export default function Congratulations() {
   return (

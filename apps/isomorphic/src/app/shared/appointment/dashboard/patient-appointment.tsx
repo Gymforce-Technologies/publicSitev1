@@ -1,22 +1,21 @@
 'use client';
 
 import WidgetCard from '@core/components/cards/widget-card';
+import { CustomTooltip } from '@core/components/charts/custom-tooltip';
+import DropdownAction from '@core/components/charts/dropdown-action';
+import TrendingUpIcon from '@core/components/icons/trending-up';
+import cn from '@core/utils/class-names';
+import { useTheme } from 'next-themes';
 import {
+  Area,
+  AreaChart,
+  CartesianGrid,
+  ResponsiveContainer,
+  Tooltip,
   XAxis,
   YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-  AreaChart,
-  Area,
 } from 'recharts';
-import { CustomTooltip } from '@core/components/charts/custom-tooltip';
-import SimpleBar from '@core/ui/simplebar';
-import DropdownAction from '@core/components/charts/dropdown-action';
 import { Title } from 'rizzui';
-import cn from '@core/utils/class-names';
-import TrendingUpIcon from '@core/components/icons/trending-up';
-import { useTheme } from 'next-themes';
 
 const data = [
   {
@@ -144,7 +143,7 @@ export default function PatientAppointment({
         </span>
       </div>
       <CustomLegend className="mb-4 mt-0 inline-flex @[80rem]:hidden" />
-      <SimpleBar className="-mb-3 pb-3">
+      <div className="custom-scrollbar -mb-3 overflow-x-auto pb-3">
         <div className="h-[20rem] w-full pe-1 pt-6">
           <ResponsiveContainer width="100%" height="100%" minWidth={700}>
             <AreaChart
@@ -190,7 +189,7 @@ export default function PatientAppointment({
             </AreaChart>
           </ResponsiveContainer>
         </div>
-      </SimpleBar>
+      </div>
     </WidgetCard>
   );
 }

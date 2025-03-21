@@ -4,19 +4,18 @@
 import WidgetCard from '@core/components/cards/widget-card';
 import { CustomTooltip } from '@core/components/charts/custom-tooltip';
 import { CustomYAxisTick } from '@core/components/charts/custom-yaxis-tick';
+import { DatePicker } from '@core/ui/datepicker';
+import { useState } from 'react';
 import {
   Bar,
-  Line,
-  YAxis,
-  XAxis,
-  Tooltip,
   CartesianGrid,
   ComposedChart,
+  Line,
   ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
 } from 'recharts';
-import { useState } from 'react';
-import SimpleBar from '@core/ui/simplebar';
-import { DatePicker } from '@core/ui/datepicker';
 
 type DataType = {
   label: string;
@@ -155,7 +154,7 @@ export function DeliveryStatus({ className }: { className?: string }) {
           </div>
         ))}
       </div>
-      <SimpleBar>
+      <div className='custom-scrollbar overflow-x-auto scroll-smooth'>
         <div className="mt-5 h-[460px] w-full @sm:mt-3 @lg:mt-8">
           <ResponsiveContainer width="100%" height="100%" minWidth="1450px">
             <ComposedChart
@@ -199,7 +198,7 @@ export function DeliveryStatus({ className }: { className?: string }) {
             </ComposedChart>
           </ResponsiveContainer>
         </div>
-      </SimpleBar>
+      </div>
     </WidgetCard>
   );
 }

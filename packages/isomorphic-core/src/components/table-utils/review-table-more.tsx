@@ -1,3 +1,5 @@
+"use client";
+
 import PencilIcon from "@core/components/icons/pencil";
 import TrashIcon from "@core/components/icons/trash";
 import { PiDotsThreeVerticalBold, PiXBold } from "react-icons/pi";

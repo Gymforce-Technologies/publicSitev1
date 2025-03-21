@@ -18,6 +18,8 @@ const navigations = {
   '9': routes.jobBoard.dashboard,
   '0': routes.project.dashboard,
   q: routes.socialMedia.dashboard,
+  b: routes.bidding.dashboard,
+  p: routes.podcast.dashboard,
 };
 
 const allowedNumKeys = Object.keys(navigations);

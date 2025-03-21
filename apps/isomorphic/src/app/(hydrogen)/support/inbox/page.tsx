@@ -1,6 +1,6 @@
 import { PiPlusBold } from 'react-icons/pi';
 import { routes } from '@/config/routes';
-import { Button } from 'rizzui';
+import { Button } from 'rizzui/button';
 import PageHeader from '@/app/shared/page-header';
 import { TabList } from '@/app/shared/support/inbox/inbox-tabs';
 import SupportInbox from '@/app/shared/support/inbox';

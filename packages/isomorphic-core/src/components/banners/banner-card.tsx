@@ -1,6 +1,6 @@
-import Image from 'next/image';
-import { Title } from 'rizzui';
-import cn from '../../utils/class-names';
+import Image from "next/image";
+import { Title } from "rizzui/typography";
+import cn from "../../utils/class-names";
 
 type BannerCardProps = {
   title: string;
@@ -12,18 +12,18 @@ type BannerCardProps = {
 export default function BannerCard({
   bgImage,
   className,
-  titleClassName = 'text-white',
+  titleClassName = "text-white",
   children,
   title,
   imageClassName,
 }: React.PropsWithChildren<BannerCardProps>) {
   return (
-    <div className={cn('relative p-8', className)}>
+    <div className={cn("relative p-8", className)}>
       <Image
         src={
           bgImage
             ? bgImage
-            : 'https://isomorphic-furyroad.s3.amazonaws.com/public/upgrade-storage-bg.webp'
+            : "https://isomorphic-furyroad.s3.amazonaws.com/public/upgrade-storage-bg.webp"
         }
         alt="Upgrade Storage"
         fill
@@ -31,7 +31,7 @@ export default function BannerCard({
         className={imageClassName}
       />
       <div className="relative z-10">
-        <Title as="h2" className={cn('text-2xl font-semibold', titleClassName)}>
+        <Title as="h2" className={cn("text-2xl font-semibold", titleClassName)}>
           {title}
         </Title>
         {children}

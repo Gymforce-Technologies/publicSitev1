@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { forwardRef } from "react";
-import { Text, Title } from "rizzui";
+import { Text, Title } from "rizzui/typography";
 import cn from "../../utils/class-names";
 import { InvoiceType } from "./invoice-builder.schema";
 
@@ -50,7 +50,9 @@ export const InvoicePrint = forwardRef<HTMLDivElement, InvoicePrintProps>(
                             {data.company.name}
                           </Text>
                         )}
-                        <Title className="text-4xl font-semibold">{data.documentTitle}</Title>
+                        <Title className="text-4xl font-semibold">
+                          {data.documentTitle}
+                        </Title>
                       </div>
                     </div>
 
@@ -58,8 +60,12 @@ export const InvoicePrint = forwardRef<HTMLDivElement, InvoicePrintProps>(
                     <div className="mt-12 grid grid-cols-2 gap-8">
                       {/* left side */}
                       <div>
-                        <Text className="mb-1 font-medium">{data.client.clientSectionLabel}</Text>
-                        <Title className="mb-3 text-xl font-semibold">{data.client.name}</Title>
+                        <Text className="mb-1 font-medium">
+                          {data.client.clientSectionLabel}
+                        </Text>
+                        <Title className="mb-3 text-xl font-semibold">
+                          {data.client.name}
+                        </Title>
                         <div className="space-y-1">
                           <Text>{data.client.contact}</Text>
                           <Text>{data.client.email}</Text>
@@ -75,7 +81,9 @@ export const InvoicePrint = forwardRef<HTMLDivElement, InvoicePrintProps>(
                         <Text className="mb-1 font-medium text-gray-900">
                           {data.invoice.InvoiceDateLabel}
                         </Text>
-                        <Text>{data.invoice.date?.toDateString() ?? "-- --"}</Text>
+                        <Text>
+                          {data.invoice.date?.toDateString() ?? "-- --"}
+                        </Text>
                       </div>
                     </div>
 
@@ -103,10 +111,18 @@ export const InvoicePrint = forwardRef<HTMLDivElement, InvoicePrintProps>(
                           key={index}
                           className="!mb-2 grid break-inside-avoid grid-cols-12 gap-2 px-2"
                         >
-                          <span className="col-span-4 block py-2">{item.title}</span>
-                          <span className="col-span-2 block py-2 text-end">{item.quantity}</span>
-                          <span className="col-span-2 block py-2 text-end">{item.rate}</span>
-                          <span className="col-span-2 block py-2 text-end">{item.tax}</span>
+                          <span className="col-span-4 block py-2">
+                            {item.title}
+                          </span>
+                          <span className="col-span-2 block py-2 text-end">
+                            {item.quantity}
+                          </span>
+                          <span className="col-span-2 block py-2 text-end">
+                            {item.rate}
+                          </span>
+                          <span className="col-span-2 block py-2 text-end">
+                            {item.tax}
+                          </span>
                           <span className="col-span-2 block py-2 text-end">
                             {item.quantity * item.rate}
                           </span>
@@ -117,18 +133,24 @@ export const InvoicePrint = forwardRef<HTMLDivElement, InvoicePrintProps>(
                     {/* total section  */}
                     <div className="ms-auto mt-4 w-full max-w-[240px] break-inside-avoid divide-y font-medium">
                       <div className="flex items-center justify-between gap-6 pb-2">
-                        <span className="block">{data.finalCalculations.subTotalLabel}</span>
+                        <span className="block">
+                          {data.finalCalculations.subTotalLabel}
+                        </span>
                         <span className="block text-gray-900">${subTotal}</span>
                       </div>
                       <div className="flex items-center justify-between gap-6 py-2">
-                        <span className="block">{data.finalCalculations.taxLabel}</span>
+                        <span className="block">
+                          {data.finalCalculations.taxLabel}
+                        </span>
                         <span className="block text-gray-900">${totalTax}</span>
                       </div>
                       <div className="flex items-center justify-between gap-6 pt-2">
                         <span className="block text-gray-900">
                           {data.finalCalculations.totalLabel}
                         </span>
-                        <span className="block text-gray-900">${subTotal + totalTax}</span>
+                        <span className="block text-gray-900">
+                          ${subTotal + totalTax}
+                        </span>
                       </div>
                     </div>
 
@@ -166,7 +188,9 @@ export const InvoicePrint = forwardRef<HTMLDivElement, InvoicePrintProps>(
                       <Text className="text-lg font-semibold text-gray-900">
                         {data.signature.name}
                       </Text>
-                      <Text className="mt-1 border-t pt-2">{data.signature.label}</Text>
+                      <Text className="mt-1 border-t pt-2">
+                        {data.signature.label}
+                      </Text>
                     </div>
                   </td>
                 </tr>

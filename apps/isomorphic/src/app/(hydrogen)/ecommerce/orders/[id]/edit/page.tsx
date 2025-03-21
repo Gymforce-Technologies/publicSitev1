@@ -1,14 +1,14 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { routes } from '@/config/routes';
-import { Button } from 'rizzui';
+import { Button } from 'rizzui/button';
 import { metaObject } from '@/config/site.config';
 import PageHeader from '@/app/shared/page-header';
 import CreateOrder from '@/app/shared/ecommerce/order/create-order';
 import { orderData } from '@/app/shared/ecommerce/order/order-form/form-utils';
 
 type Props = {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 };
 
 /**
@@ -18,7 +18,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   // read route params
-  const id = params.id;
+  const id = (await params).id;
 
   return metaObject(`Edit ${id}`);
 }
@@ -42,7 +42,8 @@ const pageHeader = {
   ],
 };
 
-export default function EditOrderPage({ params }: any) {
+export default async function EditOrderPage({ params }: any) {
+  const id = (await params).id;
   return (
     <>
       <PageHeader title={pageHeader.title} breadcrumb={pageHeader.breadcrumb}>
@@ -55,7 +56,7 @@ export default function EditOrderPage({ params }: any) {
           </Button>
         </Link>
       </PageHeader>
-      <CreateOrder id={params.id} order={orderData} />
+      <CreateOrder id={id} order={orderData} />
     </>
   );
 }

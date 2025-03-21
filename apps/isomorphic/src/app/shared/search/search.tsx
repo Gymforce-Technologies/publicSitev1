@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
-import { Modal } from 'rizzui';
+import { Modal } from '@core/modal-views/modal';
 import SearchTrigger from './search-trigger';
 import SearchList from './search-list';
 

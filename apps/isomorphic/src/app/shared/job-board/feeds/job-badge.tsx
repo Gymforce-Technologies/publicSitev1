@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import cn from '@core/utils/class-names';
 import { Badge, Button } from 'rizzui';

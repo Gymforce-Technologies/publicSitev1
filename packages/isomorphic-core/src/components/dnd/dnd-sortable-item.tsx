@@ -1,12 +1,21 @@
 "use client";
 
-import React, { createContext, useContext, useMemo } from "react";
-import type { CSSProperties, PropsWithChildren } from "react";
-import type { DraggableSyntheticListeners, UniqueIdentifier } from "@dnd-kit/core";
+import React, {
+  createContext,
+  useContext,
+  useMemo,
+  type CSSProperties,
+  type PropsWithChildren,
+} from "react";
+import type {
+  DraggableSyntheticListeners,
+  UniqueIdentifier,
+} from "@dnd-kit/core";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { PiDotsSixVerticalBold } from "react-icons/pi";
 import cn from "../../utils/class-names";
+import { useIsMounted } from "@core/hooks/use-is-mounted";
 
 interface Props {
   as?: React.ElementType;
@@ -24,10 +33,16 @@ interface Context {
 const SortableItemContext = createContext<Context>({
   attributes: {},
   listeners: undefined,
-  ref() {},
+  ref() { },
 });
 
-export function SortableItem({ as, children, id, className, data }: PropsWithChildren<Props>) {
+export function SortableItem({
+  as,
+  children,
+  id,
+  className,
+  data,
+}: PropsWithChildren<Props>) {
   const {
     attributes,
     isDragging,
@@ -73,15 +88,18 @@ type DragHandleProps = {
 export function DragHandle({
   className,
   children = <PiDotsSixVerticalBold />,
+  ...rest
 }: PropsWithChildren<DragHandleProps>) {
   const { attributes, listeners, ref } = useContext(SortableItemContext);
-
+  const isMounted = useIsMounted();
+  if (!isMounted) return null;
   return (
     <button
       type="button"
       className={cn("h-5 w-5 text-gray-900", className)}
       {...attributes}
       {...listeners}
+      {...rest}
       ref={ref}
     >
       {children}

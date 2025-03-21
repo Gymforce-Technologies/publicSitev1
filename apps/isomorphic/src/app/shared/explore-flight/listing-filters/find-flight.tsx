@@ -1,20 +1,19 @@
 'use client';
 
-import dynamic from 'next/dynamic';
-import { Popover, Button, ActionIcon, Title } from 'rizzui';
-import cn from '@core/utils/class-names';
-import { useFilterControls } from '@core/hooks/use-filter-control';
+import { useDrawer } from '@/app/shared/drawer-views/use-drawer';
+import FlightFilter from '@/app/shared/explore-flight/listing-filters/flight-filter';
 import { initialState } from '@/data/flight-filter-data';
+import { useFilterControls } from '@core/hooks/use-filter-control';
+import cn from '@core/utils/class-names';
+import hasSearchedParams from '@core/utils/has-searched-params';
+import dynamic from 'next/dynamic';
 import {
   PiAirplaneTakeoffBold,
   PiFunnelBold,
   PiX,
   PiXBold,
 } from 'react-icons/pi';
-import SimpleBar from '@core/ui/simplebar';
-import { useDrawer } from '@/app/shared/drawer-views/use-drawer';
-import FlightFilter from '@/app/shared/explore-flight/listing-filters/flight-filter';
-import hasSearchedParams from '@core/utils/has-searched-params';
+import { ActionIcon, Button, Popover, Title } from 'rizzui';
 
 const FlightFilterSidebar = dynamic(
   () => import('@/app/shared/explore-flight/flight-filter-sidebar'),
@@ -100,11 +99,11 @@ function FlightFilterDrawerView({ reset }: any) {
           <PiXBold className="h-4 w-4" />
         </ActionIcon>
       </div>
-      <SimpleBar className="-mx-5 min-h-[calc(100%-10rem)]">
+      <div className="custom-scrollbar overflow-y-auto scroll-smooth -mx-5 min-h-[calc(100%-10rem)]">
         <div className="px-5">
           <FlightFilterSidebar />
         </div>
-      </SimpleBar>
+      </div>
 
       <div className="sticky bottom-0 flex items-center justify-center gap-3 bg-white pb-3 pt-5 dark:bg-gray-50">
         {hasSearchedParams() ? (

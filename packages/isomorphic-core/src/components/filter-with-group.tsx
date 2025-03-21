@@ -1,9 +1,11 @@
-import { useEffect, useRef, useState } from 'react';
-import { Checkbox, CheckboxGroup, Collapse } from 'rizzui';
-import cn from '../utils/class-names';
-import { PiCaretDownBold, PiPlusBold } from 'react-icons/pi';
-import { generateSlug } from '../utils/generate-slug';
-import { LayoverAirPortOptionType } from '../types';
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import { Checkbox, CheckboxGroup, Collapse } from "rizzui";
+import cn from "../utils/class-names";
+import { PiCaretDownBold, PiPlusBold } from "react-icons/pi";
+import { generateSlug } from "../utils/generate-slug";
+import { LayoverAirPortOptionType } from "../types";
 
 type FilterWithSearchProps = {
   title: string;
@@ -54,7 +56,7 @@ export default function FilterWithGroup({
     LayoverAirPortOptionType[]
   >([]);
   const [values, setValues] = useState<string[]>(
-    state[name]?.length ? state[name].split(',') : []
+    state[name]?.length ? state[name].split(",") : []
   );
 
   const [event, setEvent] = useState(false);
@@ -103,8 +105,8 @@ export default function FilterWithGroup({
               <PiCaretDownBold
                 strokeWidth={3}
                 className={cn(
-                  'h-3.5 w-3.5 -rotate-90 text-gray-500 transition-transform duration-200 rtl:rotate-90',
-                  open && 'rotate-0 rtl:rotate-0'
+                  "h-3.5 w-3.5 -rotate-90 text-gray-500 transition-transform duration-200 rtl:rotate-90",
+                  open && "rotate-0 rtl:rotate-0"
                 )}
               />
             </button>
@@ -121,7 +123,7 @@ export default function FilterWithGroup({
       >
         <div className="flex flex-col pt-5">
           <CheckboxGroup
-            values={state[name]?.length ? state[name].split(',') : []}
+            values={state[name]?.length ? state[name].split(",") : []}
             setValues={setValues}
             onChange={(e) => handleOnChange(e)}
             className="space-y-3"

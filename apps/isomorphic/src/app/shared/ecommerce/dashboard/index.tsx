@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { routes } from '@/config/routes';
-import { Button } from 'rizzui';
+import { Button } from 'rizzui/button';
 import WelcomeBanner from '@core/components/banners/welcome';
 import StatCards from '@/app/shared/ecommerce/dashboard/stat-cards';
 import ProfitWidget from '@/app/shared/ecommerce/dashboard/profit-widget';

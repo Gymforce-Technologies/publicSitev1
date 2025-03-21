@@ -1,3 +1,5 @@
+'use client';
+
 import { Input, NumberInput, Title } from 'rizzui';
 import { PiMinus } from 'react-icons/pi';
 import { InitialStateType } from '@/app/shared/explore-listing/listing-filters/filter-utils';
@@ -26,7 +28,7 @@ export default function BuiltYearFilter({
           {...{ variant: 'outline' }}
         />
         <span className="relative top-0 inline-flex flex-shrink-0 items-center justify-center text-center">
-          <PiMinus className=" w-3" />
+          <PiMinus className="w-3" />
         </span>
         <NumberInput
           value={state.built_year_max}

@@ -41,7 +41,6 @@ export default function SearchList({ onClose }: { onClose?: () => void }) {
     return () => {
       inputRef.current = null;
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

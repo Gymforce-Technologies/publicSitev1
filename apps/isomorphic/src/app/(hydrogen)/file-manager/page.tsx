@@ -1,13 +1,10 @@
-import dynamic from 'next/dynamic';
 import PageHeader from '@/app/shared/page-header';
 import { routes } from '@/config/routes';
 import FileStats from '@/app/shared/file/manager/file-stats';
 import { metaObject } from '@/config/site.config';
 import UploadButton from '@/app/shared/upload-button';
 import PageLayout from '@/app/(hydrogen)/file-manager/page-layout';
-const FileUpload = dynamic(() => import('@/app/shared/file-upload'), {
-  ssr: false,
-});
+import FileUpload from '@/app/shared/file-upload';
 
 export const metadata = {
   ...metaObject('File Manager'),

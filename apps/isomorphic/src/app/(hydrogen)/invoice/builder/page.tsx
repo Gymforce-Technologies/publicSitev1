@@ -5,7 +5,7 @@ import PrintButton from '@/app/shared/print-button';
 import { routes } from '@/config/routes';
 import InvoiceBuilder from '@core/components/invoice-builder';
 import { useReactToPrint } from 'react-to-print';
-import { useRef } from 'react';
+import { RefObject, useRef } from 'react';
 import { PiDownloadSimpleBold } from 'react-icons/pi';
 import { Button } from 'rizzui';
 
@@ -27,10 +27,10 @@ const pageHeader = {
 };
 
 export default function InvoiceBuilderPage() {
-  const printRef = useRef(null);
+  const printRef = useRef<Element>(null);
   const handlePrint = useReactToPrint({
-    contentRef: printRef,
-  });
+    contentRef: printRef as RefObject<Element>,
+  })
 
   return (
     <>

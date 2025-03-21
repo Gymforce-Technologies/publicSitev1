@@ -45,7 +45,7 @@ export function SnippetsTableActions({
                   data={row}
                 />
               ),
-              customSize: '850px',
+              customSize: 850,
             })
           }
         >

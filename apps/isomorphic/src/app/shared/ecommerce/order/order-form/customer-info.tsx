@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import { Controller, useFormContext } from 'react-hook-form';
 import { DatePicker } from '@core/ui/datepicker';

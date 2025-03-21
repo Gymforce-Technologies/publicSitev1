@@ -1,23 +1,22 @@
 'use client';
 
-import { useState } from 'react';
 import WidgetCard from '@core/components/cards/widget-card';
+import { CustomTooltip } from '@core/components/charts/custom-tooltip';
+import { CustomYAxisTick } from '@core/components/charts/custom-yaxis-tick';
+import { useMedia } from '@core/hooks/use-media';
 import { DatePicker } from '@core/ui/datepicker';
+import { useState } from 'react';
 import {
+  Area,
   Bar,
+  CartesianGrid,
+  ComposedChart,
+  ResponsiveContainer,
+  Tooltip,
   XAxis,
   YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-  Area,
-  ComposedChart,
 } from 'recharts';
 import { Badge } from 'rizzui';
-import { useMedia } from '@core/hooks/use-media';
-import { CustomYAxisTick } from '@core/components/charts/custom-yaxis-tick';
-import { CustomTooltip } from '@core/components/charts/custom-tooltip';
-import SimpleBar from '@core/ui/simplebar';
 
 const data = [
   {
@@ -113,7 +112,7 @@ export default function SalesReport({ className }: { className?: string }) {
       }
       className={className}
     >
-      <SimpleBar>
+      <div className='custom-scrollbar overflow-x-auto scroll-smooth'>
         <div className="h-96 w-full pt-9">
           <ResponsiveContainer
             width="100%"
@@ -171,7 +170,7 @@ export default function SalesReport({ className }: { className?: string }) {
             </ComposedChart>
           </ResponsiveContainer>
         </div>
-      </SimpleBar>
+      </div>
     </WidgetCard>
   );
 }

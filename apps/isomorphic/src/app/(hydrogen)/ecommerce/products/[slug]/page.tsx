@@ -7,7 +7,9 @@ export const metadata = {
   ...metaObject('Product Details'),
 };
 
-export default function ProductDetailsPage({ params }: any) {
+export default async function ProductDetailsPage({ params }: any) {
+  const slug = (await params).slug;
+
   const pageHeader = {
     title: 'Shop',
     breadcrumb: [
@@ -20,10 +22,11 @@ export default function ProductDetailsPage({ params }: any) {
         name: 'Shop',
       },
       {
-        name: params.slug,
+        name: slug,
       },
     ],
   };
+
   return (
     <>
       <PageHeader title={pageHeader.title} breadcrumb={pageHeader.breadcrumb} />

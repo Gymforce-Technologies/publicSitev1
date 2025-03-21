@@ -1,3 +1,5 @@
+'use client';
+
 import { PiCaretDownBold } from 'react-icons/pi';
 import { Switch, Collapse } from 'rizzui';
 import cn from '@core/utils/class-names';

@@ -1,19 +1,18 @@
 'use client';
 
-import { Text } from 'rizzui';
 import WidgetCard from '@core/components/cards/widget-card';
-import {
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-  AreaChart,
-  Area,
-} from 'recharts';
 import { CustomTooltip } from '@core/components/charts/custom-tooltip';
 import { PiDownloadSimple, PiUploadSimple } from 'react-icons/pi';
-import SimpleBar from '@core/ui/simplebar';
+import {
+  Area,
+  AreaChart,
+  CartesianGrid,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from 'recharts';
+import { Text } from 'rizzui';
 
 const data = [
   {
@@ -109,7 +108,7 @@ export default function ActivityReport({ className }: { className?: string }) {
           </div>
         </div>
       </div>
-      <SimpleBar>
+      <div className="custom-scrollbar overflow-x-auto">
         <div className="h-96 w-full pt-9">
           <ResponsiveContainer width="100%" height="100%" minWidth={700}>
             <AreaChart
@@ -157,7 +156,7 @@ export default function ActivityReport({ className }: { className?: string }) {
             </AreaChart>
           </ResponsiveContainer>
         </div>
-      </SimpleBar>
+      </div>
     </WidgetCard>
   );
 }

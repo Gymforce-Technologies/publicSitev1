@@ -748,3 +748,153 @@ export const scheduledPostData: SchedulePostType[] = [
     time: '10:30 PM',
   },
 ];
+
+export const customersDistributionsMapData = [
+  { country: 'US', name: 'United States', value: 10, color: '#192f5d' },
+  { country: 'SA', name: 'Saudi Arab', value: 20, color: '#199d00' },
+  { country: 'CN', name: 'China', value: 30, color: '#afdaf7' },
+  { country: 'DK', name: 'United Kingdom', value: 40, color: '#d7ecfb' },
+  { country: 'ES', name: 'Spain', value: 20, color: '#d7ecfb' },
+];
+
+export const salesAnalysisChartGradientData = [
+  {
+    offset: 0,
+    color: 'rgba(84, 214, 193, 0.1)',
+  },
+  {
+    offset: 9,
+    color: 'rgba(84, 214, 193, 0.1)',
+  },
+  {
+    offset: 9,
+    color: 'rgba(84, 214, 193, 0.2)',
+  },
+  {
+    offset: 18,
+    color: 'rgba(84, 214, 193, 0.2)',
+  },
+  {
+    offset: 18,
+    color: 'rgba(84, 214, 193, 0.3)',
+  },
+  {
+    offset: 27,
+    color: 'rgba(84, 214, 193, 0.3)',
+  },
+  {
+    offset: 27,
+    color: 'rgba(84, 214, 193, 0.4)',
+  },
+  {
+    offset: 36,
+    color: 'rgba(84, 214, 193, 0.4)',
+  },
+  {
+    offset: 36,
+    color: 'rgba(84, 214, 193, 0.5)',
+  },
+  {
+    offset: 45,
+    color: 'rgba(84, 214, 193, 0.5)',
+  },
+  {
+    offset: 45,
+    color: 'rgba(84, 214, 193, 0.6)',
+  },
+  {
+    offset: 55,
+    color: 'rgba(84, 214, 193, 0.6)',
+  },
+  {
+    offset: 55,
+    color: 'rgba(84, 214, 193, 0.7)',
+  },
+  {
+    offset: 64,
+    color: 'rgba(84, 214, 193, 0.7)',
+  },
+  {
+    offset: 64,
+    color: 'rgba(84, 214, 193, 0.8)',
+  },
+  {
+    offset: 73,
+    color: 'rgba(84, 214, 193, 0.8)',
+  },
+  {
+    offset: 73,
+    color: 'rgba(84, 214, 193, 0.9)',
+  },
+  {
+    offset: 82,
+    color: 'rgba(84, 214, 193, 0.9)',
+  },
+  {
+    offset: 82,
+    color: 'rgb(84, 214, 193)',
+  },
+  {
+    offset: 91,
+    color: 'rgb(84, 214, 193)',
+  },
+  {
+    offset: 91,
+    color: { dark: '#59E9D2', light: '#50CCB8' },
+  },
+  {
+    offset: 100,
+    color: { dark: '#59E9D2', light: '#50CCB8' },
+  },
+];
+
+export const salesAnalysisData = [
+  {
+    month: 'Jan',
+    value: 785,
+  },
+  {
+    month: 'Feb',
+    value: 700,
+  },
+  {
+    month: 'Mar',
+    value: 600,
+  },
+  {
+    month: 'Apr',
+    value: 515,
+  },
+  {
+    month: 'May',
+    value: 435,
+  },
+  {
+    month: 'Jun',
+    value: 370,
+  },
+  {
+    month: 'Jul',
+    value: 315,
+  },
+  {
+    month: 'Aug',
+    value: 275,
+  },
+  {
+    month: 'Sep',
+    value: 250,
+  },
+  {
+    month: 'Oct',
+    value: 240,
+  },
+  {
+    month: 'Nov',
+    value: 245,
+  },
+  {
+    month: 'Dec',
+    value: 260,
+  },
+];

@@ -1,15 +1,14 @@
 'use client';
 
-import cn from '@core/utils/class-names';
-import SimpleBar from 'simplebar-react';
-import { Badge, Tab, Text } from 'rizzui';
-import { GetSocialOption } from './utils';
-import WidgetCard from '@core/components/cards/widget-card';
 import {
   scheduledPostData,
   SchedulePostType,
 } from '@/data/social-media-dashboard-data';
+import WidgetCard from '@core/components/cards/widget-card';
+import cn from '@core/utils/class-names';
 import { PiCalendarBlankDuotone, PiClockDuotone } from 'react-icons/pi';
+import { Badge, Tab, Text } from 'rizzui';
+import { GetSocialOption } from './utils';
 
 const tabList = ['All Post', 'Facebook', 'Instagram', 'LinkedIn'];
 
@@ -58,7 +57,7 @@ export default function ScheduledPost({ className }: { className?: string }) {
 
 function ActivityCard({ posts }: { posts: SchedulePostType[] }) {
   return (
-    <SimpleBar className="max-h-[465px] @7xl:max-h-[500px]">
+    <div className="custom-scrollbar overflow-y-auto scroll-smooth max-h-[465px] @7xl:max-h-[500px]">
       {posts?.map((p, idx) => (
         <div key={idx} className="space-y-3 border-b border-muted py-4">
           <GetSocialOption platform={p.platform} />
@@ -77,6 +76,6 @@ function ActivityCard({ posts }: { posts: SchedulePostType[] }) {
           </div>
         </div>
       ))}
-    </SimpleBar>
+    </div>
   );
 }

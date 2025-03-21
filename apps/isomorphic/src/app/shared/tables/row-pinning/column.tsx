@@ -1,3 +1,5 @@
+'use client';
+
 import { routes } from '@/config/routes';
 import AvatarCard from '@core/ui/avatar-card';
 import DateCell from '@core/ui/date-cell';
