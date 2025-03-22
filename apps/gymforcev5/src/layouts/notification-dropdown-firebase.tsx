@@ -296,7 +296,8 @@ export default function NotificationDropdown({
         placement="bottom-end"
       >
         <Popover.Trigger>
-          {cloneElement(children, { onClick: () => setIsOpen(!isOpen) })}
+          {/* {cloneElement(children, { onClick: () => setIsOpen(!isOpen) })} */}
+          <div onClick={() => setIsOpen(!isOpen)}>{children}</div>
         </Popover.Trigger>
         <Popover.Content className="z-[9999] px-1 py-4">
           <div className="w-[320px] text-left sm:w-[360px] 2xl:w-[420px] p-4">

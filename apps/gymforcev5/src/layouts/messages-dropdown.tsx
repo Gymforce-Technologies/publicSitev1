@@ -1,6 +1,10 @@
 // MessageDropdown.tsx
 "use client";
-import React, { useState, ReactElement } from "react";
+import React, {
+  useState,
+  ReactElement,
+  ForwardedRef,
+} from "react";
 import { Popover, Text, Title, Button } from "rizzui";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
@@ -103,7 +107,7 @@ const MessagesList: React.FC<{
 
 // Main component
 interface MessageDropdownProps {
-  children: ReactElement;
+  children: ReactElement & { ref?: ForwardedRef<any> };
 }
 
 export default function MessageDropdown({ children }: MessageDropdownProps) {
@@ -120,9 +124,10 @@ export default function MessageDropdown({ children }: MessageDropdownProps) {
         arrowClassName="text-gray-400 "
       >
         <Popover.Trigger>
-          {React.cloneElement(children, {
+          {/* {cloneElement(children as any, {
             onClick: () => setIsOpen(!isOpen),
-          })}
+          })} */}
+          <div onClick={() => setIsOpen(!isOpen)}>{children}</div>
         </Popover.Trigger>
         <Popover.Content className="z-[9999] p-0 [&>svg]:hidden sm:[&>svg]:inline-flex ">
           <MessagesList

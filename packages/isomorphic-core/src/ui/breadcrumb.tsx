@@ -1,6 +1,6 @@
-import React from 'react';
-import cn from '../utils/class-names';
-import Link from 'next/link';
+import React from "react";
+import cn from "../utils/class-names";
+import Link from "next/link";
 
 export type BreadcrumbItemProps = {
   href?: string;
@@ -9,17 +9,22 @@ export type BreadcrumbItemProps = {
 };
 
 const BreadcrumbItem = ({
-  href = '#',
+  href = "#",
   className,
   children,
 }: BreadcrumbItemProps) => (
-  <Link
-    href={href}
-    role="button"
-    className={cn('inline-flex items-center gap-2 text-sm', className)}
-  >
-    {children}
-  </Link>
+  <span>
+    {
+      //@ts-ignore
+      <Link
+        href={href}
+        role="button"
+        className={cn("inline-flex items-center gap-2 text-sm", className)}
+      >
+        {children}
+      </Link>
+    }
+  </span>
 );
 
 export interface BreadcrumbProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -28,21 +33,21 @@ export interface BreadcrumbProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   className?: string;
   separatorClassName?: string;
-  separatorVariant?: 'default' | 'circle';
+  separatorVariant?: "default" | "circle";
 }
 
 const Breadcrumb = ({
-  separator = '/',
+  separator = "/",
   disableCurrent = true,
   children,
   className,
   separatorClassName,
-  separatorVariant = 'default',
+  separatorVariant = "default",
 }: BreadcrumbProps) => {
   const numOfItems = React.Children.count(children);
 
   return (
-    <div className={cn('inline-flex items-center gap-2.5', className)}>
+    <div className={cn("inline-flex items-center gap-2.5", className)}>
       {React.Children.map(children, (child, index) => {
         if (!React.isValidElement<BreadcrumbItemProps>(child)) return child;
 
@@ -50,14 +55,14 @@ const Breadcrumb = ({
           <>
             {React.cloneElement(child, {
               className: cn(
-                'text-gray-700 last:text-gray-500 font-medium',
-                disableCurrent && 'last:pointer-events-none'
+                "text-gray-700 last:text-gray-500 font-medium",
+                disableCurrent && "last:pointer-events-none"
               ),
             })}
             {index < numOfItems - 1 &&
-              (separatorVariant === 'default' ? (
+              (separatorVariant === "default" ? (
                 <span
-                  className={cn('text-sm text-gray-500', separatorClassName)}
+                  className={cn("text-sm text-gray-500", separatorClassName)}
                 >
                   {separator}
                 </span>
@@ -72,5 +77,5 @@ const Breadcrumb = ({
 };
 
 Breadcrumb.Item = BreadcrumbItem;
-Breadcrumb.displayName = 'Breadcrumb';
+Breadcrumb.displayName = "Breadcrumb";
 export default Breadcrumb;

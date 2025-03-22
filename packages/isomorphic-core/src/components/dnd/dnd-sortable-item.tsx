@@ -33,7 +33,7 @@ interface Context {
 const SortableItemContext = createContext<Context>({
   attributes: {},
   listeners: undefined,
-  ref() { },
+  ref() {},
 });
 
 export function SortableItem({
@@ -87,7 +87,7 @@ type DragHandleProps = {
 
 export function DragHandle({
   className,
-  children = <PiDotsSixVerticalBold />,
+  children,
   ...rest
 }: PropsWithChildren<DragHandleProps>) {
   const { attributes, listeners, ref } = useContext(SortableItemContext);

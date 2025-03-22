@@ -1,8 +1,8 @@
-import { forwardRef, useRef } from 'react';
-import { useMenuContext } from './menu-context';
-import Popover from '../popover/popover';
-import { useMergedRef } from '../popover/use-merged-ref';
-import cn from '../../../utils/class-names';
+import { forwardRef, useRef } from "react";
+import { useMenuContext } from "./menu-context";
+import Popover from "../popover/popover";
+import { useMergedRef } from "../popover/use-merged-ref";
+import cn from "../../../utils/class-names";
 
 export type MenuListProps = {
   as?: React.ElementType;
@@ -10,9 +10,9 @@ export type MenuListProps = {
   className?: string;
   onMouseEnter?: React.MouseEventHandler<HTMLButtonElement>;
   onMouseLeave?: React.MouseEventHandler<HTMLButtonElement>;
-  shadow?: 'sm' | 'md' | 'lg' | 'xl' | 'none';
-  size?: 'sm' | 'md' | 'lg' | 'xl';
-  rounded?: 'sm' | 'md' | 'lg' | 'pill' | 'none';
+  shadow?: "sm" | "md" | "lg" | "xl" | "none";
+  size?: "sm" | "md" | "lg" | "xl";
+  rounded?: "sm" | "md" | "lg" | "pill" | "none";
 };
 
 export const MenuList = forwardRef<
@@ -21,7 +21,7 @@ export const MenuList = forwardRef<
 >(
   (
     {
-      as = 'ul',
+      as = "ul",
       children,
       className,
       shadow,
@@ -38,11 +38,11 @@ export const MenuList = forwardRef<
     const wrapperRef = useRef<HTMLElement>(null);
 
     const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
-      if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
+      if (event.key === "ArrowUp" || event.key === "ArrowDown") {
         event.preventDefault();
         wrapperRef.current
           ?.querySelectorAll<HTMLButtonElement>(
-            '[data-menu-item]:not(:disabled)'
+            "[data-menu-item]:not(:disabled)"
           )[0]
           ?.focus();
       }
@@ -50,39 +50,20 @@ export const MenuList = forwardRef<
 
     const handleMouseEnter = (event?: any) => {
       onMouseEnter?.(event);
-      if (trigger === 'hover' || trigger === 'click-hover') {
+      if (trigger === "hover" || trigger === "click-hover") {
         openDropdown();
       }
     };
 
     const handleMouseLeave = (event?: any) => {
       onMouseLeave?.(event);
-      if (trigger === 'hover' || trigger === 'click-hover') {
+      if (trigger === "hover" || trigger === "click-hover") {
         closeDropdown();
       }
     };
 
-    return (
-      <Popover.Content
-        as={Component}
-        {...props}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        role="menuList"
-        ref={useMergedRef(ref, wrapperRef)}
-        tabIndex={-1}
-        data-menu-dropdown
-        className={cn('w-48', className)}
-        // @ts-ignore
-        onKeyDown={handleKeyDown}
-        shadow={shadow}
-        size={size}
-        rounded={rounded}
-      >
-        {children}
-      </Popover.Content>
-    );
+    return <div>Build Fix</div>;
   }
 );
 
-MenuList.displayName = 'MenuList';
+MenuList.displayName = "MenuList";

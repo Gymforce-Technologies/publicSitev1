@@ -18,7 +18,7 @@ export function createContextHook<ContextValue>(errorMessage: string) {
     value,
   }: {
     value: ContextValue;
-    children: React.ReactNode;
+    children: any;
   }) => <Context.Provider value={value}>{children}</Context.Provider>;
 
   return [Provider, useCustomContext] as const;

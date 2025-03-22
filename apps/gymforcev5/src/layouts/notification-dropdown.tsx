@@ -459,9 +459,10 @@ export default function NotificationDropdown({
     >
       <Popover.Trigger>
         <div className={`${animateIcon ? "animate-blink" : ""}`}>
-          {cloneElement(children, {
+          {/* {cloneElement(children, {
             onClick: () => setIsOpen(!isOpen),
-          })}
+          })} */}
+          <div onClick={() => setIsOpen(!isOpen)}>{children}</div>
         </div>
       </Popover.Trigger>
       <Popover.Content className="z-[9999] px-0 pb-4 pe-6 pt-4 [&>svg]:hidden sm:[&>svg]:inline-fle">

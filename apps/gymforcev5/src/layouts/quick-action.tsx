@@ -17,7 +17,7 @@ import {
 } from "react-icons/fa6";
 import { IoMdPersonAdd } from "react-icons/io";
 import { MdEdit, MdFormatListBulletedAdd } from "react-icons/md";
-import { Popover, Text,  Button, Checkbox } from "rizzui";
+import { Popover, Text, Button, Checkbox } from "rizzui";
 
 interface QuickActDropdownProps {
   children: ReactElement;
@@ -186,9 +186,10 @@ export default function QuickDropdown({ children }: QuickActDropdownProps) {
         arrowClassName="text-gray-400"
       >
         <Popover.Trigger>
-          {React.cloneElement(children, {
+          {/* {React.cloneElement(children, {
             onClick: () => setIsOpen(!isOpen),
-          })}
+          })} */}
+          <div onClick={() => setIsOpen(!isOpen)}>{children}</div>
         </Popover.Trigger>
         <Popover.Content className="z-[9999] p-0 [&>svg]:hidden sm:[&>svg]:inline-flex">
           <div className="p-3 rounded-lg shadow">
