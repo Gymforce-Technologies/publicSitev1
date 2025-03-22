@@ -1,8 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useAtomValue } from "jotai";
-import isEmpty from "lodash/isEmpty";
+
 import { PiCheckBold } from "react-icons/pi";
 // import {
 //   billingAddressAtom,

@@ -1,10 +1,10 @@
 "use client";
 
-import { productsData } from "@/data/products-data";
+// import { productsData } from "@/data/products-data";
 import Table from "@core/components/table";
 import { useTanStackTable } from "@core/components/table/custom/use-TanStack-Table";
 import TablePagination from "@core/components/table/pagination";
-import { ProductsDataType } from "@/app/shared/ecommerce/dashboard/stock-report";
+// import { ProductsDataType } from "@/app/shared/ecommerce/dashboard/stock-report";
 import { productsListColumns } from "./columns";
 import Filters from "./filters";
 import TableFooter from "@core/components/table/footer";
@@ -30,51 +30,9 @@ export default function ProductsTable({
   classNames?: TableClassNameProps;
   paginationClassName?: string;
 }) {
-  const { table, setData } = useTanStackTable<ProductsDataType>({
-    tableData: productsData,
-    columnConfig: productsListColumns,
-    options: {
-      initialState: {
-        pagination: {
-          pageIndex: 0,
-          pageSize: pageSize,
-        },
-      },
-      meta: {
-        handleDeleteRow: (row: any) => {
-          setData((prev) => prev.filter((r) => r.id !== row.id));
-        },
-        handleMultipleDelete: (rows: any) => {
-          setData((prev) => prev.filter((r) => !rows.includes(r)));
-        },
-      },
-      enableColumnResizing: false,
-    },
-  });
-
-  const selectedData = table
-    .getSelectedRowModel()
-    .rows.map((row) => row.original);
-
-  function handleExportData() {
-    exportToCSV(
-      selectedData,
-      "ID,Name,Category,Sku,Price,Stock,Status,Rating",
-      `product_data_${selectedData.length}`
-    );
-  }
-
   return (
     <>
-      {!hideFilters && <Filters table={table} />}
-      <Table table={table} variant="modern" classNames={classNames} />
-      {!hideFooter && <TableFooter table={table} onExport={handleExportData} />}
-      {!hidePagination && (
-        <TablePagination
-          table={table}
-          className={cn("py-4", paginationClassName)}
-        />
-      )}
+      <div>Build Fix</div>
     </>
   );
 }

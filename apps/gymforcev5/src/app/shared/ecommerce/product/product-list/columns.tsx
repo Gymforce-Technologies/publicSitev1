@@ -5,7 +5,7 @@ import { getRatings } from '@core/components/table-utils/get-ratings';
 import { getStatusBadge } from '@core/components/table-utils/get-status-badge';
 import { getStockStatus } from '@core/components/table-utils/get-stock-status';
 import { routes } from '@/config/routes';
-import { ProductType } from '@/data/products-data';
+// import { ProductType } from '@/data/products-data';
 import EyeIcon from '@core/components/icons/eye';
 import PencilIcon from '@core/components/icons/pencil';
 import AvatarCard from '@core/ui/avatar-card';
@@ -13,7 +13,7 @@ import { createColumnHelper } from '@tanstack/react-table';
 import Link from 'next/link';
 import { ActionIcon, Checkbox, Flex, Text, Tooltip } from 'rizzui';
 
-const columnHelper = createColumnHelper<ProductType>();
+const columnHelper = createColumnHelper<any>();
 
 export const productsListColumns = [
   columnHelper.display({

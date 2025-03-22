@@ -31,6 +31,7 @@ import {
   CreateOrderInput,
   orderFormSchema,
 } from "@/validators/create-order.schema";
+import { fileSchema } from "@/validators/common-rules";
 
 // main order form component for create and update order
 export default function CreateOrder({
@@ -48,71 +49,5 @@ export default function CreateOrder({
   // const setBillingAddress = useSetAtom(billingAddressAtom);
   // const setShippingAddress = useSetAtom(shippingAddressAtom);
 
-  const methods = useForm({
-    defaultValues: defaultValues(order),
-    resolver: zodResolver(orderFormSchema),
-  });
-
-  const onSubmit: SubmitHandler<CreateOrderInput> = (data) => {
-    // console.log('data', data);
-
-    // set timeout ony required to display loading state of the create order button
-    // if (sameShippingAddress) {
-    //   setBillingAddress(data.billingAddress);
-    //   setShippingAddress(data.billingAddress);
-    // } else {
-    //   if (!isEmpty(data.shippingAddress)) {
-    //     setShippingAddress(data.shippingAddress);
-    //   }
-    // }
-    // setOrderNote(data?.note as string);
-
-    setLoading(true);
-
-    setTimeout(() => {
-      setLoading(false);
-      console.log("createOrder data ->", data);
-      router.push(routes.eCommerce.orderDetails(DUMMY_ID));
-      toast.success(
-        <Text as="b">Order {id ? "Updated" : "placed"} successfully!</Text>
-      );
-    }, 600);
-  };
-
-  const sameShippingAddress = useWatch({
-    control: methods.control,
-    name: "sameShippingAddress",
-  });
-
-  return (
-    <FormProvider {...methods}>
-      <form
-        // @ts-ignore
-        onSubmit={methods.handleSubmit(onSubmit)}
-        className={cn(
-          "isomorphic-form flex flex-grow flex-col @container [&_label.block>span]:font-medium",
-          className
-        )}
-      >
-        <div className="items-start @5xl:grid @5xl:grid-cols-12 @5xl:gap-7 @6xl:grid-cols-10 @7xl:gap-10">
-          <div className="flex-grow @5xl:col-span-8 @5xl:pb-10 @6xl:col-span-7">
-            <div className="flex flex-col gap-4 @xs:gap-7 @5xl:gap-9">
-              <AddressInfo type="billingAddress" title="Billing Information" />
-
-              <DifferentBillingAddress />
-
-              {!sameShippingAddress && <AddressInfo type="shippingAddress" />}
-
-              <OrderNote />
-            </div>
-          </div>
-
-          <div className="pb-7 pt-10 @container @5xl:col-span-4 @5xl:py-0 @6xl:col-span-3">
-            {/* <CustomerInfo /> */}
-            <OrderSummery isLoading={isLoading} className="static" />
-          </div>
-        </div>
-      </form>
-    </FormProvider>
-  );
+  return <div>Build Fix</div>;
 }
