@@ -30,11 +30,7 @@ interface WorkoutPlan {
   member_count: number;
   members: any[];
 }
-export default function PublicMemberWorkoutSection({
-  params,
-}: {
-  params: { id: string };
-}) {
+export default function PublicMemberWorkoutSection() {
   //   const newId = params.id.toString().split("-")[1];
   const [data, setData] = useState<any[]>([]);
   // const [currentPlan, setCurrentPlan] = useState();

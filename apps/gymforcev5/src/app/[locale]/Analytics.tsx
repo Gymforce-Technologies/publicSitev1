@@ -5,7 +5,7 @@ import { useEffect } from "react";
 // import { usePostHog } from "../../hooks/usePostHog";
 import * as gtag from "../../lib/gtag";
 
-export default function Analytics(): JSX.Element {
+export default function Analytics() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   // const posthog = usePostHog();

@@ -4,7 +4,7 @@ import { Placement } from "@floating-ui/react";
 import { PiTrashBold, PiTrashFill } from "react-icons/pi";
 import { ActionIcon, Popover, Title, Text, Button } from "rizzui";
 import cn from "@core/utils/class-names";
-import { useCart } from '@/store/quick-cart/cart.context';
+// import { useCart } from '@/store/quick-cart/cart.context';
 
 interface RemoveItemProps {
   productID: number;
@@ -17,7 +17,7 @@ export default function RemoveItem({
   className,
   placement,
 }: RemoveItemProps) {
-  const { clearItemFromCart } = useCart();
+  // const { clearItemFromCart } = useCart();
   return (
     <Popover placement={placement}>
       <Popover.Trigger>
@@ -25,7 +25,7 @@ export default function RemoveItem({
           variant="text"
           rounded="full"
           className="hover:border-red-light h-auto w-auto border border-muted p-2"
-          onClick={() => clearItemFromCart(productID)}
+          onClick={() => {}}
         >
           <PiTrashBold className="text-red-light h-4 w-4" />
         </ActionIcon>

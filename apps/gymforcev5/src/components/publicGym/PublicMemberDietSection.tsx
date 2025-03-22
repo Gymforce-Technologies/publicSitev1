@@ -26,9 +26,9 @@ interface DietPlan {
   active: boolean;
 }
 export default function PublicMemberDietSection({
-  params,
+  // params,
 }: {
-  params: { id: string };
+  // params: { id: string };
 }) {
   const [loading, setLoading] = useState<boolean>(false);
   const [data, setData] = useState<any[]>([]);

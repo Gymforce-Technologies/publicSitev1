@@ -19,9 +19,7 @@ import { PWAProvider } from "@/hooks/usePWA";
 import { FirebaseProvider } from "@/components/FireBaseProvider";
 import pick from "lodash/pick";
 
-const NextProgress = dynamic(() => import("@core/components/next-progress"), {
-  ssr: false,
-});
+const NextProgress = dynamic(() => import("@core/components/next-progress"));
 
 export const metadata: Metadata = {
   manifest: "/manifest.json",
@@ -31,11 +29,12 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({
   children,
-  params: { locale },
+  params,
 }: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: any;
 }) {
+  const { locale } = await params;
   const session = await getServerSession(auth);
   const messages = await getMessages();
 

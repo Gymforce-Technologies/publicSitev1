@@ -135,7 +135,7 @@ export default function BillingHistoryTable({
           onChange: (page: number) => {
             handlePageChange(page);
           },
-          pageSizeOptions: ["5", "10", "15", "20", "25"],
+          pageSizeOptions: [5, 10, 15, 20, 25],
         }}
         tableFooter={
           <TableFooter

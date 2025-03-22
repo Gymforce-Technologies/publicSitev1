@@ -7,9 +7,8 @@ import { createColumnHelper } from '@tanstack/react-table';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ActionIcon, Checkbox, Text, Title, Tooltip } from 'rizzui';
-import { CategoryDataType } from './table';
 
-const columnHelper = createColumnHelper<CategoryDataType>();
+const columnHelper = createColumnHelper<any>();
 
 export const categoriesColumns = [
   columnHelper.display({
