@@ -442,21 +442,21 @@ export const berylliumMenuItems: MenuItemsType[] = [
         href: routes.forms.profileSettings,
         icon: PiUserGear,
       },
-      {
-        name: 'Notification Preference',
-        href: routes.forms.notificationPreference,
-        icon: PiBellSimpleRinging,
-      },
-      {
-        name: 'Personal Information',
-        href: routes.forms.personalInformation,
-        icon: PiUser,
-      },
-      {
-        name: 'Newsletter',
-        href: routes.forms.newsletter,
-        icon: PiEnvelopeSimpleOpen,
-      },
+      // {
+      //   name: 'Notification Preference',
+      //   href: routes.forms.notificationPreference,
+      //   icon: PiBellSimpleRinging,
+      // },
+      // {
+      //   name: 'Personal Information',
+      //   href: routes.forms.personalInformation,
+      //   icon: PiUser,
+      // },
+      // {
+      //   name: 'Newsletter',
+      //   href: routes.forms.newsletter,
+      //   icon: PiEnvelopeSimpleOpen,
+      // },
       {
         name: 'Multi Step',
         href: routes.multiStep,

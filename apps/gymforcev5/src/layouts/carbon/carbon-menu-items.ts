@@ -1,5 +1,5 @@
-import { routes } from '@/config/routes';
-import { IconType } from 'react-icons/lib';
+import { routes } from "@/config/routes";
+import { IconType } from "react-icons/lib";
 import {
   PiBellSimpleRingingDuotone,
   PiBrowserDuotone,
@@ -11,8 +11,8 @@ import {
   PiSquaresFourDuotone,
   PiUserCircleDuotone,
   PiUserGearDuotone,
-} from 'react-icons/pi';
-import { atom } from 'jotai';
+} from "react-icons/pi";
+import { atom } from "jotai";
 
 export interface SubMenuItemType {
   name: string;
@@ -40,62 +40,46 @@ export interface MenuItemsType {
 
 export const carbonMenuItems: MenuItemsType[] = [
   {
-    id: '1',
-    name: 'sidebar-menu-dashboard',
-    title: 'sidebar-menu-overview',
+    id: "1",
+    name: "sidebar-menu-dashboard",
+    title: "sidebar-menu-overview",
     icon: PiBrowserDuotone,
     menuItems: [
       {
-        name: 'sidebar-menu-file-manager',
-        href: '/',
+        name: "sidebar-menu-file-manager",
+        href: "/",
         icon: PiFoldersDuotone,
       },
     ],
   },
   {
-    id: '4',
-    name: 'sidebar-menu-widgets',
-    title: 'sidebar-menu-widgets',
+    id: "4",
+    name: "sidebar-menu-widgets",
+    title: "sidebar-menu-widgets",
     icon: PiPackageDuotone,
     menuItems: [
       {
-        name: 'sidebar-menu-cards',
+        name: "sidebar-menu-cards",
         href: routes.widgets.cards,
         icon: PiSquaresFourDuotone,
       },
       {
-        name: 'sidebar-menu-charts',
+        name: "sidebar-menu-charts",
         href: routes.widgets.charts,
         icon: PiChartLineUpDuotone,
       },
     ],
   },
   {
-    id: '5',
-    name: 'sidebar-menu-forms',
-    title: 'sidebar-menu-forms',
+    id: "5",
+    name: "sidebar-menu-forms",
+    title: "sidebar-menu-forms",
     icon: PiNotePencilDuotone,
     menuItems: [
       {
-        name: 'sidebar-menu-account-settings',
+        name: "sidebar-menu-account-settings",
         href: routes.forms.profileSettings,
         icon: PiUserGearDuotone,
-      },
-      {
-        name: 'sidebar-menu-notification-preference',
-        href: routes.forms.notificationPreference,
-        icon: PiBellSimpleRingingDuotone,
-        badge: '',
-      },
-      {
-        name: 'sidebar-menu-personal-information',
-        href: routes.forms.personalInformation,
-        icon: PiUserCircleDuotone,
-      },
-      {
-        name: 'sidebar-menu-newsletter',
-        href: routes.forms.newsletter,
-        icon: PiEnvelopeSimpleOpenDuotone,
       },
     ],
   },

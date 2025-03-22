@@ -455,21 +455,21 @@ export const menuItems = [
     href: routes.forms.profileSettings,
     icon: PiUserGearDuotone,
   },
-  {
-    name: 'Notification Preference',
-    href: routes.forms.notificationPreference,
-    icon: PiBellSimpleRingingDuotone,
-  },
-  {
-    name: 'Personal Information',
-    href: routes.forms.personalInformation,
-    icon: PiUserDuotone,
-  },
-  {
-    name: 'Newsletter',
-    href: routes.forms.newsletter,
-    icon: PiEnvelopeSimpleOpenDuotone,
-  },
+  // {
+  //   name: 'Notification Preference',
+  //   href: routes.forms.notificationPreference,
+  //   icon: PiBellSimpleRingingDuotone,
+  // },
+  // {
+  //   name: 'Personal Information',
+  //   href: routes.forms.personalInformation,
+  //   icon: PiUserDuotone,
+  // },
+  // {
+  //   name: 'Newsletter',
+  //   href: routes.forms.newsletter,
+  //   icon: PiEnvelopeSimpleOpenDuotone,
+  // },
   {
     name: 'Multi Step',
     href: routes.multiStep,
