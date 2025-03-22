@@ -16,7 +16,7 @@ import { SVGProps } from "react";
 type LocaleOptionsType = {
   label: string;
   value: Locale;
-  icon: ({ ...props }: SVGProps<SVGSVGElement>) => JSX.Element;
+  icon: ({ ...props }: SVGProps<SVGSVGElement>) => any;
 };
 
 const localeOptions: LocaleOptionsType[] = [
@@ -63,7 +63,9 @@ export default function LanguageSwitcher({
   const selectedLocale = localeOptions.filter(
     (item) => item.value.toLowerCase() === locale.toLowerCase()
   );
-  const [selected, setSelected] = useState<LocaleOptionsType>(selectedLocale[0]);
+  const [selected, setSelected] = useState<LocaleOptionsType>(
+    selectedLocale[0]
+  );
 
   function handleChange(op: LocaleOptionsType) {
     setSelected(op);
@@ -87,7 +89,9 @@ export default function LanguageSwitcher({
         selectClassName
       )}
       displayValue={(op: LocaleOptionsType) => renderDisplayValue(op)}
-      getOptionDisplayValue={(op: LocaleOptionsType) => renderOptionDisplayValue(op)}
+      getOptionDisplayValue={(op: LocaleOptionsType) =>
+        renderOptionDisplayValue(op)
+      }
     />
   );
 }

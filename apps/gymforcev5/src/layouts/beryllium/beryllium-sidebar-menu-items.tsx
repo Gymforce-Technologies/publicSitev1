@@ -46,19 +46,4 @@ export const berylliumSidebarMenuItems = [
     href: routes.forms.profileSettings,
     icon: <PiUserGear />,
   },
-  {
-    name: 'Notification Preference',
-    href: routes.forms.notificationPreference,
-    icon: <PiBellSimpleRinging />,
-  },
-  {
-    name: 'Personal Information',
-    href: routes.forms.personalInformation,
-    icon: <PiUser />,
-  },
-  {
-    name: 'Newsletter',
-    href: routes.forms.newsletter,
-    icon: <PiEnvelopeSimpleOpen />,
-  }
 ];
