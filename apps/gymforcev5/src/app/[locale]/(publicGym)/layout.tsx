@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import logoImg from "@public/svg/Live_Logo.png";
-import { AxiosPublic } from "../../auth/AxiosPrivate";
+import { AxiosPublic } from "../auth/AxiosPrivate";
 
 type Props = {
   params: { code: string; locale: string };
