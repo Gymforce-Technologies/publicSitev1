@@ -3,8 +3,6 @@ import createMiddleware from "next-intl/middleware";
 import { routing } from "./i18n/routing";
 import type { Locale } from "./i18n/routing";
 
-const publicPages = ["/i/.*", "/gym/.*"];
-
 // Function to check if the path should skip internationalization
 function shouldSkipInternationalization(path: string): boolean {
   const pwaFiles = [
@@ -22,6 +20,16 @@ function shouldSkipInternationalization(path: string): boolean {
   return pwaFiles.some((file) => path.includes(file));
 }
 
+// Function to check if path already has a valid locale
+function hasValidLocale(path: string): boolean {
+  const pathSegments = path.split("/");
+  if (pathSegments.length > 1) {
+    const potentialLocale = pathSegments[1];
+    return routing.locales.includes(potentialLocale as Locale);
+  }
+  return false;
+}
+
 const intlMiddleware = createMiddleware({
   ...routing,
 });
@@ -29,8 +37,6 @@ const intlMiddleware = createMiddleware({
 export default function middleware(req: NextRequest) {
   const url = req.nextUrl;
   const path = url.pathname;
-  console.log(url);
-  const token = req.cookies.get("refreshToken")?.value;
 
   // Skip for chrome-specific paths
   if (path.indexOf("chrome") > -1) {
@@ -42,47 +48,28 @@ export default function middleware(req: NextRequest) {
     return NextResponse.next();
   }
 
-  // Create regex for public pages with locale prefix
-  const publicPathnameRegex = RegExp(
-    `^(/(${[...routing.locales].join("|")}))?(${publicPages
-      .flatMap((p) => (p === "/" ? ["", "/"] : p))
-      .join("|")})/?$`,
-    "i"
-  );
-
-  const isPublicPage = publicPathnameRegex.test(path);
-
   // Handle root path
   if (path === "/" || path === "") {
-    const lang = routing.defaultLocale;
-    const redirectUrl = new URL(
-      token ? `/${lang}/dashboard` : `/${lang}/auth/sign-in`,
-      req.url
-    );
+    const redirectUrl = new URL(`/${routing.defaultLocale}`, req.url);
     return NextResponse.redirect(redirectUrl);
   }
 
-  // For public pages, just apply the intl middleware
-  if (isPublicPage) {
+  // Check if the path already contains a valid locale
+  if (!hasValidLocale(path)) {
+    // If no valid locale, add the default locale
+    const redirectUrl = new URL(`/${routing.defaultLocale}${path}`, req.url);
+    return NextResponse.redirect(redirectUrl);
+  }
+
+  // Apply internationalization middleware
+  try {
     return intlMiddleware(req);
+  } catch (error) {
+    // If there's any issue, redirect to root
+    return NextResponse.redirect(new URL("/", req.url));
   }
-
-  // For protected routes, check authentication
-  if (!token) {
-    const pathLocale = path.split("/")[1];
-    const isValidLocale = (locale: string): locale is Locale =>
-      routing.locales.includes(locale as Locale);
-
-    const locale = isValidLocale(pathLocale)
-      ? pathLocale
-      : routing.defaultLocale;
-
-    return NextResponse.redirect(new URL(`/${locale}/auth/sign-in`, req.url));
-  }
-
-  // Apply intl middleware for authenticated routes
-  return intlMiddleware(req);
 }
+
 export const config = {
   matcher: [
     "/((?!api|_next/static|_next/image|assets|favicon.ico|sw.js|posthog-snippet.js).*)",
