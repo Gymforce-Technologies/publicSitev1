@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import React from 'react';
-import { Input, Title } from 'rizzui';
-import cn from '@core/utils/class-names';
+import React from "react";
+import { Input, Title } from "rizzui";
+import cn from "@core/utils/class-names";
 
-import { useTable } from '@core/hooks/use-table';
-import { useColumn } from '@core/hooks/use-column';
-import ControlledTable from '@/components/controlled-table';
+import { useTable } from "@core/hooks/use-table";
+import { useColumn } from "@core/hooks/use-column";
+import ControlledTable from "@/components/controlled-table";
 
 type ColumnTypes = {
   data?: any[];
@@ -19,7 +19,7 @@ type ColumnTypes = {
 };
 
 type BasicTableWidgetProps = {
-  title?: React.ReactNode;
+  title?: any;
   className?: string;
   pageSize?: number;
   setPageSize?: React.Dispatch<React.SetStateAction<number>>;
@@ -35,7 +35,7 @@ type BasicTableWidgetProps = {
   data: any[];
   isLoading: boolean;
   enablePagination?: boolean;
-  variant?: 'modern' | 'minimal' | 'classic' | 'elegant' | 'retro';
+  variant?: "modern" | "minimal" | "classic" | "elegant" | "retro";
   enableSearch?: boolean;
   paginatorClassName?: string;
   searchPlaceholder?: string;
@@ -55,14 +55,14 @@ export default function BasicTableWidget({
   pageSize = 7,
   setPageSize,
   enablePagination,
-  variant = 'modern',
+  variant = "modern",
   enableSearch = true,
   paginatorClassName,
   noGutter,
   sticky,
   scroll = { x: 1000 },
   className,
-  searchPlaceholder = 'Search...',
+  searchPlaceholder = "Search...",
 }: BasicTableWidgetProps) {
   const onHeaderCellClick = (value: string) => ({
     onClick: () => {
@@ -114,10 +114,10 @@ export default function BasicTableWidget({
 
   const { visibleColumns } = useColumn(columns);
   return (
-    <div className='flex flex-col'>
-      <Title as='h3'>{title}</Title>
+    <div className="flex flex-col">
+      <Title as="h3">{title}</Title>
       <div
-        className={cn('table-wrapper flex-grow', noGutter && '-mx-5 lg:-mx-7')}
+        className={cn("table-wrapper flex-grow", noGutter && "-mx-5 lg:-mx-7")}
       >
         <ControlledTable
           isLoading={isLoading}
@@ -126,8 +126,7 @@ export default function BasicTableWidget({
           scroll={scroll}
           sticky={sticky}
           variant={variant}
-          
-          className={"mt-4 "+className}
+          className={"mt-4 " + className}
           {...(enablePagination && {
             paginatorOptions: {
               pageSize,
@@ -137,8 +136,8 @@ export default function BasicTableWidget({
               onChange: (page: number) => handlePaginate(page),
             },
             paginatorClassName: cn(
-              'mt-4 lg:mt-5',
-              noGutter && 'px-5 ',
+              "mt-4 lg:mt-5",
+              noGutter && "px-5 ",
               paginatorClassName
             ),
           })}

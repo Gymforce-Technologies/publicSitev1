@@ -15,7 +15,7 @@ export interface GalleryItemProps {
   is_featured?: boolean;
 }
 
-const GallerySection: React.FC<{ items: GalleryItemProps[] }> = ({ items }) => {
+const GallerySection = ({ items }: { items: GalleryItemProps[] }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const swiperRef = useRef<SwiperRef>(null);
 

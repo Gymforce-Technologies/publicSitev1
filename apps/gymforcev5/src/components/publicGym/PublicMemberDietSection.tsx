@@ -25,11 +25,7 @@ interface DietPlan {
   image_url: string;
   active: boolean;
 }
-export default function PublicMemberDietSection({
-  // params,
-}: {
-  // params: { id: string };
-}) {
+export default function PublicMemberDietSection() {
   const [loading, setLoading] = useState<boolean>(false);
   const [data, setData] = useState<any[]>([]);
 
@@ -139,11 +135,12 @@ export default function PublicMemberDietSection({
   const { visibleColumns } = useColumn(columns);
 
   return (
+    //@ts-ignore
     <WidgetCard
+      title="Diet Plans"
       className="relative dark:bg-inherit"
       headerClassName="items-start flex-row items-center @[57rem]:flex-row @[57rem]:items-center"
       actionClassName="grow @[57rem]:ps-11 ps-0 flex items-center justify-end w-full @[42rem]:w-full @[57rem]:w-auto"
-      title="Diet Plans"
       titleClassName="whitespace-nowrap"
     >
       <ControlledTable
@@ -154,7 +151,6 @@ export default function PublicMemberDietSection({
         emptyText={
           <div className="min-w-full flex flex-col items-center justify-center gap-2">
             <Empty text="No Diet Plan" />
-
           </div>
         }
         //@ts-ignore

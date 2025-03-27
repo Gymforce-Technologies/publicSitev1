@@ -84,7 +84,7 @@ export const FileInput = ({
   className,
 }: {
   className?: string;
-  label?: React.ReactNode;
+  label?: any;
   multiple?: boolean;
   btnLabel?: string;
   accept?: AcceptedFiles;

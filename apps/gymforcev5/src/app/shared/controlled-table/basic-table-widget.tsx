@@ -20,7 +20,7 @@ type ColumnTypes = {
 };
 
 type BasicTableWidgetProps = {
-  title?: React.ReactNode;
+  title?: any;
   className?: string;
   pageSize?: number;
   setPageSize?: React.Dispatch<React.SetStateAction<number>>;
@@ -133,7 +133,9 @@ export default function BasicTableWidget({
         ),
       })}
     >
-      <div className={cn("table-wrapper flex-grow", noGutter && "-mx-5 lg:-mx-7")}>
+      <div
+        className={cn("table-wrapper flex-grow", noGutter && "-mx-5 lg:-mx-7")}
+      >
         <ControlledTable
           isLoading={isLoading}
           data={tableData}
@@ -150,7 +152,11 @@ export default function BasicTableWidget({
               current: currentPage,
               onChange: (page: number) => handlePaginate(page),
             },
-            paginatorClassName: cn("mt-4 lg:mt-5", noGutter && "px-5 lg:px-7", paginatorClassName),
+            paginatorClassName: cn(
+              "mt-4 lg:mt-5",
+              noGutter && "px-5 lg:px-7",
+              paginatorClassName
+            ),
           })}
         />
       </div>

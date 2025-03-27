@@ -1,7 +1,7 @@
 import cn from "@core/utils/class-names";
 
 interface FormGroupProps {
-  title: React.ReactNode;
+  title: any;
   className?: string;
   description?: string;
   children?: React.ReactNode;

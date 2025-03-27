@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import React from 'react';
-import { Input, Title } from 'rizzui';
-import cn from '@core/utils/class-names';
-import WidgetCard from '@/components/cards/widget-card';
-import { PiMagnifyingGlassBold } from 'react-icons/pi';
-import { useTable } from '@core/hooks/use-table';
-import { useColumn } from '@core/hooks/use-column';
-import ControlledTable from '@/components/controlled-table';
+import React from "react";
+import { Input, Title } from "rizzui";
+import cn from "@core/utils/class-names";
+import WidgetCard from "@/components/cards/widget-card";
+import { PiMagnifyingGlassBold } from "react-icons/pi";
+import { useTable } from "@core/hooks/use-table";
+import { useColumn } from "@core/hooks/use-column";
+import ControlledTable from "@/components/controlled-table";
 // import { Membership } from '@/app/[locale]/(home)/membership/Memberships';
 
 type ColumnTypes = {
@@ -21,7 +21,7 @@ type ColumnTypes = {
 };
 
 type BasicTableWidgetProps = {
-  title?: React.ReactNode;
+  title?: any;
   className?: string;
   pageSize?: number;
   setPageSize?: React.Dispatch<React.SetStateAction<number>>;
@@ -36,7 +36,7 @@ type BasicTableWidgetProps = {
   }: ColumnTypes) => any;
   data: any[];
   enablePagination?: boolean;
-  variant?: 'modern' | 'minimal' | 'classic' | 'elegant' | 'retro';
+  variant?: "modern" | "minimal" | "classic" | "elegant" | "retro";
   enableSearch?: boolean;
   paginatorClassName?: string;
   searchPlaceholder?: string;
@@ -55,14 +55,14 @@ export default function BasicTableWidget({
   pageSize = 7,
   setPageSize,
   enablePagination,
-  variant = 'modern',
+  variant = "modern",
   enableSearch = true,
   paginatorClassName,
   noGutter,
   sticky,
   scroll = { x: 1000 },
   className,
-  searchPlaceholder = 'Search...',
+  searchPlaceholder = "Search...",
 }: BasicTableWidgetProps) {
   const onHeaderCellClick = (value: string) => ({
     onClick: () => {
@@ -115,54 +115,57 @@ export default function BasicTableWidget({
 
   const { visibleColumns } = useColumn(columns);
   return (
-    <div className='flex flex-col gap-3'>
-      <Title as='h3'>{title}</Title>
+    <div className="flex flex-col gap-3">
+      <Title as="h3">{title}</Title>
       <div>
-      <WidgetCard
-      className={cn('flex flex-col', className)}
-      headerClassName="widget-card-header flex-col sm:flex-row [&>.ps-2]:ps-0 [&>.ps-2]:w-full sm:[&>.ps-2]:w-auto [&>.ps-2]:mt-3 sm:[&>.ps-2]:mt-0"
-      {...(enableSearch && {
-        action: (
-          <Input
-            type="search"
-            placeholder={searchPlaceholder}
-            value={searchTerm}
-            onClear={() => handleSearch('')}
-            onChange={(event) => handleSearch(event.target.value)}
-            clearable
-            prefix={<PiMagnifyingGlassBold className="h-4 w-4" />}
-          />
-        ),
-      })}
-    >
-      <div
-        className={cn('table-wrapper flex-grow', noGutter && '-mx-5 lg:-mx-7')}
-      >
-        <ControlledTable
-          isLoading={isLoading}
-          data={data}
-          columns={visibleColumns}
-          scroll={scroll}
-          sticky={sticky}
-          variant={variant}
-          className="mt-4"
-          {...(enablePagination && {
-            paginatorOptions: {
-              pageSize,
-              ...(setPageSize && { setPageSize }),
-              total: totalItems,
-              current: currentPage,
-              onChange: (page: number) => handlePaginate(page),
-            },
-            paginatorClassName: cn(
-              'mt-4 lg:mt-5',
-              noGutter && 'px-5 ',
-              paginatorClassName
+        <WidgetCard
+          className={cn("flex flex-col", className)}
+          headerClassName="widget-card-header flex-col sm:flex-row [&>.ps-2]:ps-0 [&>.ps-2]:w-full sm:[&>.ps-2]:w-auto [&>.ps-2]:mt-3 sm:[&>.ps-2]:mt-0"
+          {...(enableSearch && {
+            action: (
+              <Input
+                type="search"
+                placeholder={searchPlaceholder}
+                value={searchTerm}
+                onClear={() => handleSearch("")}
+                onChange={(event) => handleSearch(event.target.value)}
+                clearable
+                prefix={<PiMagnifyingGlassBold className="h-4 w-4" />}
+              />
             ),
           })}
-        />
-      </div>
-    </WidgetCard>
+        >
+          <div
+            className={cn(
+              "table-wrapper flex-grow",
+              noGutter && "-mx-5 lg:-mx-7"
+            )}
+          >
+            <ControlledTable
+              isLoading={isLoading}
+              data={data}
+              columns={visibleColumns}
+              scroll={scroll}
+              sticky={sticky}
+              variant={variant}
+              className="mt-4"
+              {...(enablePagination && {
+                paginatorOptions: {
+                  pageSize,
+                  ...(setPageSize && { setPageSize }),
+                  total: totalItems,
+                  current: currentPage,
+                  onChange: (page: number) => handlePaginate(page),
+                },
+                paginatorClassName: cn(
+                  "mt-4 lg:mt-5",
+                  noGutter && "px-5 ",
+                  paginatorClassName
+                ),
+              })}
+            />
+          </div>
+        </WidgetCard>
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
-'use client'
-import { createContext, useContext, ReactNode } from "react";
+"use client";
+import { createContext, ReactNode } from "react";
 
 interface FirebaseContextType {
   app: any;
@@ -10,6 +10,7 @@ const FirebaseContext = createContext<FirebaseContextType | null>(null);
 
 export function FirebaseProvider({ children }: { children: ReactNode }) {
   return (
+    //@ts-ignore
     <FirebaseContext.Provider value={null}>{children}</FirebaseContext.Provider>
   );
 }
