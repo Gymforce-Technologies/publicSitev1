@@ -1,4 +1,4 @@
-import PublicLoginSection from "../../../../../components/publicGym/PublicLoginSection";
+import PublicLoginSection from "@/components/publicGym/PublicLoginSection";
 
 export default function PublicMemberLoginPage() {
   return <PublicLoginSection />;

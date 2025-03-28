@@ -1,4 +1,4 @@
-import PublicMemberWorkoutSection from "../../../../../../../components/publicGym/PublicMemberWorkoutSection";
+import PublicMemberWorkoutSection from "@/components/publicGym/PublicMemberWorkoutSection";
 
 export default function MemberWorkoutPage() {
   return <PublicMemberWorkoutSection />;
