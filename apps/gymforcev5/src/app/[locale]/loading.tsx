@@ -37,4 +37,5 @@ export default function Loading() {
       <Loader variant="pulse" color="current" />
     </section>
   );
+
 }

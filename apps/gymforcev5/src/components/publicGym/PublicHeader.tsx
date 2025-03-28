@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import React, { Dispatch, SetStateAction } from "react";
 import { FaFacebook, FaInstagram } from "react-icons/fa6";

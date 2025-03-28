@@ -1,30 +1,25 @@
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import Image from "next/image";
-import { Title, Button } from "rizzui";
+import { Title } from "rizzui/typography";
+import { Button } from "rizzui/button";
 import { PiHouseLineBold } from "react-icons/pi";
-import LogoMain from "@/../public/svg/icon/gymforce-icon-black.svg";
-import LogoMainText from "@/../public/svg/gymforce-text/gymforce-text-black.svg";
-import NotFoundImg from "@public/not-found.png";
-// import { useTranslations } from 'next-intl';
 import SocialItems from "@core/ui/social-shares";
+import { siteConfig } from "@/config/site.config";
+import NotFoundImg from "@public/not-found.png";
+import { useTranslations } from "next-intl";
 
 export default function NotFound() {
-  // const t = useTranslations("common");
-
+  const t = useTranslations("common");
   return (
     <div className="flex min-h-screen flex-col bg-[#F8FAFC]">
       <div className="sticky top-0 z-40 flex justify-center py-5 backdrop-blur-lg lg:backdrop-blur-none xl:py-10">
-        <Link href={`/dashboard`}>
-          <div className="flex flex-nowrap items-center">
-            <Image src={LogoMain} alt="Gymforce" className="size-8" />
-            <Image
-              src={LogoMainText}
-              alt="Gymforce"
-              className=" dark:invert"
-              width={200}
-              height={40}
-            />
-          </div>
+        <Link href="/">
+          <Image
+            src={siteConfig.logo}
+            alt={siteConfig.title}
+            className="dark:invert"
+            priority
+          />
         </Link>
       </div>
 
@@ -39,13 +34,12 @@ export default function NotFound() {
             as="h1"
             className="text-[22px] font-bold leading-normal text-gray-1000 lg:text-3xl"
           >
-            Sorry, the page not found
+            {t("text-not-found-title")}
           </Title>
           <p className="mt-3 text-sm leading-loose text-gray-500 lg:mt-6 lg:text-base lg:leading-loose">
-            We have been spending long hours in order to launch our new website.
-            Join our
+            {t("text-we-have-been-spending-long-hours")}
             <br className="hidden sm:inline-block" />
-            mailing list or follow us on Facebook for get latest update.
+            {t("text-mailing-list-or-follow-us-on-facebook")}
           </p>
           <Link href={"/"}>
             <Button
@@ -54,8 +48,8 @@ export default function NotFound() {
               color="primary"
               className="mt-8 h-12 px-4 xl:h-14 xl:px-6"
             >
-              <PiHouseLineBold className="mr-1.5 text-lg" />
-              Back to home
+              <PiHouseLineBold className="me-1.5 text-lg" />
+              {t("text-back-to-home")}
             </Button>
           </Link>
         </div>

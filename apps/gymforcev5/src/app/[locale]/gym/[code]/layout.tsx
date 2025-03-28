@@ -1,22 +1,19 @@
 import { Metadata } from "next";
 import logoImg from "@public/svg/Live_Logo.png";
 import { AxiosPublic } from "../../auth/AxiosPrivate";
+// import { AxiosPublic } from "../../auth/AxiosPrivate";
 
 type Props = {
-  params: { code: string; locale: string };
+  params: any;
   children: React.ReactNode;
 };
 
-export async function generateMetadata(
-  { params }: Props,
-): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
-    const gymData = await AxiosPublic.get(
-      `/center/initial/${params.code}/`,
-      {
-        id: `Gym-${params.code}`,
-      }
-    ).then((res) => res.data);
+    const { code } = await params;
+    const gymData = await AxiosPublic.get(`/center/initial/${code}/`, {
+      id: `Gym-${code}`,
+    }).then((res) => res.data);
 
     return {
       title: gymData.name || "GymForce Center",
