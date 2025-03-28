@@ -9,6 +9,7 @@ type Props = {
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  // console.log(params);
   try {
     const { code } = await params;
     const gymData = await AxiosPublic.get(`/center/initial/${code}/`, {
