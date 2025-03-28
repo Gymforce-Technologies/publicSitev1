@@ -1,153 +1,357 @@
-import { routes } from '@/config/routes';
-// import { DUMMY_ID } from '@/config/constants';
+import { routes } from "@/config/routes";
+import { DUMMY_ID } from "@/config/constants";
 
 // Note: do not add href in the label object, it is rendering as label
 export const pageLinks = [
   // label start
   {
-    name: 'Home',
+    name: "Home",
   },
   // label end
   {
-    name: 'Dashboard',
-    href: routes.dashboard,
-  },
-
-  {
-    name:'SMS'
+    name: "E-Commerce",
+    href: routes.eCommerce.dashboard,
   },
   {
-    name: 'SMS History',
-    href: routes.sms,
+    name: "Support",
+    href: routes.support.dashboard,
   },
   {
-    name:'Enquiry'
+    name: "Logistics",
+    href: routes.logistics.dashboard,
   },
   {
-    name: 'All Enquiry',
-    href: routes.leads.leadsList,
-  },
-   {
-    name: 'Add Enquiry',
-    href: routes.leads.leadsAdd,
+    name: "Analytics",
+    href: routes.analytics,
   },
   {
-    name: 'Follow Ups',
-    href: routes.leads.followupTypes,
-  } 
-  , {
-    name: 'Categories',
-    href: routes.leads.leadCategories,
+    name: "File Manager",
+    href: routes.file.dashboard,
   },
   {
-    name: 'Sources',
-    href: routes.leads.leadSources,
+    name: "Appointment",
+    href: routes.appointment.dashboard,
   },
   {
-    name: 'Status',
-    href: routes.leads.leadStatus,
+    name: "Executive",
+    href: routes.executive.dashboard,
   },
   {
-    name: 'Member',
+    name: "Job Board",
+    href: routes.jobBoard.dashboard,
   },
   {
-    name: 'Members',
-    href: routes.members.list,
+    name: "Financial",
+    href: routes.financial.dashboard,
+  },
+  // label start
+  {
+    name: "Apps",
+  },
+  // label end
+  {
+    name: "Products",
+    href: routes.eCommerce.products,
   },
   {
-    name: 'Add Member',
-    href: routes.members.new,
+    name: "Product Details",
+    href: routes.eCommerce.productDetails(DUMMY_ID),
   },
   {
-    name: 'Membership',
+    name: "Create Product",
+    href: routes.eCommerce.createProduct,
   },
   {
-    name: 'Memberships',
-    href: routes.Membership.list,
+    name: "Edit Product",
+    href: routes.eCommerce.ediProduct(DUMMY_ID),
   },
   {
-    name: 'Due List',
-    href: routes.Membership.duelist,
+    name: "Categories",
+    href: routes.eCommerce.categories,
   },
   {
-    name: 'MasterPackages',
-    href: routes.Membership.masterPackages,
+    name: "Create Category",
+    href: routes.eCommerce.createCategory,
+  },
+  {
+    name: "Edit Category",
+    href: routes.eCommerce.editCategory(DUMMY_ID),
+  },
+  {
+    name: "Orders",
+    href: routes.eCommerce.orders,
+  },
+  {
+    name: "Order Details",
+    href: routes.eCommerce.orderDetails(DUMMY_ID),
+  },
+  {
+    name: "Create Order",
+    href: routes.eCommerce.createOrder,
+  },
+  {
+    name: "Edit Order",
+    href: routes.eCommerce.editOrder(DUMMY_ID),
+  },
+  {
+    name: "Reviews",
+    href: routes.eCommerce.reviews,
+  },
+  {
+    name: "Shop",
+    href: routes.eCommerce.shop,
+  },
+  {
+    name: "Cart",
+    href: routes.eCommerce.cart,
+  },
+  {
+    name: "Checkout & Payment",
+    href: routes.eCommerce.checkout,
+  },
+  {
+    name: "Support Inbox",
+    href: routes.support.inbox,
+  },
+  {
+    name: "Support Snippets",
+    href: routes.support.snippets,
+  },
+  {
+    name: "Support Templates",
+    href: routes.support.templates,
+  },
+  {
+    name: "Invoice List",
+    href: routes.invoice.home,
+  },
+  {
+    name: "Invoice Details",
+    href: routes.invoice.details(DUMMY_ID),
+  },
+  {
+    name: "Create Invoice",
+    href: routes.invoice.create,
+  },
+  {
+    name: "Edit Invoice",
+    href: routes.invoice.edit(DUMMY_ID),
+  },
+  {
+    name: "Shipment List",
+    href: routes.logistics.shipmentList,
+  },
+  {
+    name: "Shipment Details",
+    href: routes.logistics.shipmentDetails(DUMMY_ID),
+  },
+  {
+    name: "Tracking",
+    href: routes.logistics.tracking(DUMMY_ID),
+  },
+  {
+    name: "File Manager",
+    href: routes.file.manager,
+  },
+  // label start
+  {
+    name: "Widgets",
+  },
+  // label end
+  {
+    name: "Cards",
+    href: routes.widgets.cards,
+  },
+  {
+    name: "Icons",
+    href: routes.widgets.icons,
+  },
+  {
+    name: "Charts",
+    href: routes.widgets.charts,
   },
   // {
-  //   name: 'Batches',
-  //   href: routes.Membership.batches,
+  //   name: 'Banners',
+  //   href: routes.widgets.banners,
   // },
   {
-    name: 'Staff',
+    name: "Maps",
+    href: routes.widgets.maps,
+  },
+  // label start
+  {
+    name: "Forms",
+  },
+  // label end
+  {
+    name: "Profile Settings",
+    href: routes.forms.profileSettings,
   },
   {
-    name: 'List Staff',
-    href: routes.staff.allstaffs,
+    name: "Notification Preference",
+    href: routes.forms.notificationPreference,
   },
   {
-    name: 'Add Staff',
-    href: routes.staff.addstaff,
+    name: "Personal Information",
+    href: routes.forms.personalInformation,
   },
   {
-    name: 'Finance',
-   
-  },
-  {
-    name: 'All Invoices',
-    href: routes.finance.allinvoices,
+    name: "Newsletter",
+    href: routes.forms.newsletter,
   },
   // {
-  //   name: 'Today Invoices',
-  //   href: routes.finance.todayinvoices,
-  // },
-  // {
-  //   name: 'Monthly Invoices',
-  //   href: routes.finance.monthlyinvoices,
-  // },
-  // {
-  //   name: 'Expences',
-  //   href: routes.finance.expences,
+  //   name: 'Multi Step',
+  //   href: routes.forms.multiStep,
   // },
   {
-    name: 'Summary',
-    href: routes.finance.summary,
+    name: "Payment checkout",
+    href: routes.eCommerce.checkout,
+  },
+  // label start
+  {
+    name: "Tables",
+  },
+  // label end
+  {
+    name: "Basic",
+    href: routes.tables.basic,
   },
   {
-    name: 'Payment Modes',
-    href: routes.finance.addpaymentmodes,
-  },
-   {
-    name: 'All Invoices',
-    href: routes.finance.allinvoices,
+    name: "Collapsible",
+    href: routes.tables.collapsible,
   },
   {
-    name: 'Attendance',
+    name: "Enhanced",
+    href: routes.tables.enhanced,
   },
   {
-    name: 'Attendence',
-    href: routes.attendance,
+    name: "Sticky Header",
+    href: routes.tables.stickyHeader,
   },
   {
-    name: 'CenterSettings',
+    name: "Pagination",
+    href: routes.tables.pagination,
   },
   {
-    name: 'Basic Settings',
-    href: routes.center.home,
+    name: "Search",
+    href: routes.tables.search,
   },
-  // {
-  //   name: 'Advance Settings',
-  //   href: routes.center.advanced,
-  // },
+  // label start
   {
-    name: 'Contact Details',
-    href: routes.center.contactdetails,
+    name: "Pages",
+  },
+  // label end
+  {
+    name: "Profile",
+    href: routes.profile,
   },
   {
-    name: 'Tax & Legals',
-    href: routes.center.taxLegal,
+    name: "Welcome",
+    href: routes.welcome,
   },
-  // {
-  //   name: 'Billing',
-  //   href: routes.center.billing,
-  // }
+  {
+    name: "Coming soon",
+    href: routes.comingSoon,
+  },
+  {
+    name: "Access Denied",
+    href: routes.accessDenied,
+  },
+  {
+    name: "Not Found",
+    href: routes.notFound,
+  },
+  {
+    name: "Maintenance",
+    href: routes.maintenance,
+  },
+  {
+    name: "Blank",
+    href: routes.blank,
+  },
+  // label start
+  {
+    name: "Authentication",
+  },
+  // label end
+  {
+    name: "Modern Sign Up",
+    href: routes.auth.signUp1,
+  },
+  {
+    name: "Vintage Sign Up",
+    href: routes.auth.signUp2,
+  },
+  {
+    name: "Trendy Sign Up",
+    href: routes.auth.signUp3,
+  },
+  {
+    name: "Elegant Sign Up",
+    href: routes.auth.signUp4,
+  },
+  {
+    name: "Classic Sign Up",
+    href: routes.auth.signUp5,
+  },
+  {
+    name: "Modern Sign In",
+    href: routes.auth.signIn1,
+  },
+  {
+    name: "Vintage Sign In",
+    href: routes.auth.signIn2,
+  },
+  {
+    name: "Trendy Sign In",
+    href: routes.auth.signIn3,
+  },
+  {
+    name: "Elegant Sign In",
+    href: routes.auth.signIn4,
+  },
+  {
+    name: "Classic Sign In",
+    href: routes.auth.signIn5,
+  },
+  {
+    name: "Modern Forgot Password",
+    href: routes.auth.forgotPassword1,
+  },
+  {
+    name: "Vintage Forgot Password",
+    href: routes.auth.forgotPassword2,
+  },
+  {
+    name: "Trendy Forgot Password",
+    href: routes.auth.forgotPassword3,
+  },
+  {
+    name: "Elegant Forgot Password",
+    href: routes.auth.forgotPassword4,
+  },
+  {
+    name: "Classic Forgot Password",
+    href: routes.auth.forgotPassword5,
+  },
+  {
+    name: "Modern OTP Page",
+    href: routes.auth.otp1,
+  },
+  {
+    name: "Vintage OTP Page",
+    href: routes.auth.otp2,
+  },
+  {
+    name: "Trendy OTP Page",
+    href: routes.auth.otp3,
+  },
+  {
+    name: "Elegant OTP Page",
+    href: routes.auth.otp4,
+  },
+  {
+    name: "Classic OTP Page",
+    href: routes.auth.otp5,
+  },
 ];

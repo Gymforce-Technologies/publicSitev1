@@ -23,6 +23,7 @@ import PriceFilter from '@/app/shared/explore-listing/listing-filters/price-filt
 import AccommodationFilter from '@/app/shared/explore-listing/listing-filters/accommodation-filter';
 import HometypeFilter from '@/app/shared/explore-listing/listing-filters/hometype-filter';
 import { initialState } from '@/app/shared/explore-listing/listing-filters/filter-utils';
+import { env } from '@/env.mjs';
 const FilterDrawerView = dynamic(
   () => import('@/app/shared/explore-listing/listing-filters/drawer-view'),
   { ssr: false }
@@ -52,7 +53,7 @@ export default function ListingFilters({ className }: { className?: string }) {
       <div className="relative flex flex-grow items-center gap-3">
         <div className="relative w-full xs:max-w-[298px]">
           <Autocomplete
-            apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY as string}
+            apiKey={env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY}
             onPlaceSelect={handlePlaceSelect}
             spinnerClassName="hidden"
             hideMap

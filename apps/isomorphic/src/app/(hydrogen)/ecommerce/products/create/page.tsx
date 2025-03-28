@@ -3,7 +3,7 @@ import { PiPlusBold } from 'react-icons/pi';
 import CreateEditProduct from '@/app/shared/ecommerce/product/create-edit';
 import { metaObject } from '@/config/site.config';
 import PageHeader from '@/app/shared/page-header';
-import { Button } from 'rizzui';
+import { Button } from 'rizzui/button';
 import { routes } from '@/config/routes';
 
 export const metadata = {

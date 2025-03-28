@@ -1,22 +1,21 @@
 'use client';
 
 import WidgetCard from '@core/components/cards/widget-card';
+import ButtonGroupAction from '@core/components/charts/button-group-action';
+import { CustomTooltip } from '@core/components/charts/custom-tooltip';
+import { CustomYAxisTick } from '@core/components/charts/custom-yaxis-tick';
+import { useMedia } from '@core/hooks/use-media';
+import cn from '@core/utils/class-names';
 import {
   Area,
   Bar,
-  XAxis,
-  YAxis,
-  Tooltip,
   ComposedChart,
   ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
 } from 'recharts';
 import { Badge } from 'rizzui';
-import cn from '@core/utils/class-names';
-import { useMedia } from '@core/hooks/use-media';
-import { CustomYAxisTick } from '@core/components/charts/custom-yaxis-tick';
-import { CustomTooltip } from '@core/components/charts/custom-tooltip';
-import ButtonGroupAction from '@core/components/charts/button-group-action';
-import SimpleBar from '@core/ui/simplebar';
 
 const data = [
   {
@@ -128,7 +127,7 @@ export default function UserMetrics({ className }: { className?: string }) {
       rounded="lg"
       className={className}
     >
-      <SimpleBar>
+      <div className="custom-scrollbar overflow-x-auto scroll-smooth">
         <div className={cn('h-[420px] w-full pt-9 @7xl:h-[480px]')}>
           <ResponsiveContainer
             width="100%"
@@ -182,7 +181,7 @@ export default function UserMetrics({ className }: { className?: string }) {
             </ComposedChart>
           </ResponsiveContainer>
         </div>
-      </SimpleBar>
+      </div>
     </WidgetCard>
   );
 }

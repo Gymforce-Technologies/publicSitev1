@@ -1,25 +1,32 @@
-import { routes } from '@/config/routes';
 import { DUMMY_ID } from '@/config/constants';
+import { routes } from '@/config/routes';
 import { IconType } from 'react-icons/lib';
+
+import { atom } from 'jotai';
 import {
   PiAirplaneTilt,
+  PiApplePodcastsLogo,
   PiBellSimpleRinging,
   PiBinoculars,
   PiBriefcase,
-  PiCalendarDuotone,
+  PiCalendar,
   PiCalendarPlus,
   PiCards,
   PiChartBar,
   PiChartLineUp,
+  PiChartPieSlice,
   PiChatCenteredDots,
+  PiClipboardText,
+  PiCodesandboxLogo,
   PiCreditCard,
   PiCurrencyCircleDollar,
   PiCurrencyDollar,
   PiEnvelopeSimpleOpen,
   PiFeather,
   PiFileImage,
-  PiFolderLock,
   PiFolder,
+  PiFolderLock,
+  PiFolderUser,
   PiGridFour,
   PiHammer,
   PiHeadset,
@@ -29,32 +36,29 @@ import {
   PiLockKey,
   PiMagicWand,
   PiMapPinLine,
+  PiNewspaperClipping,
   PiNoteBlank,
   PiNotePencil,
   PiPackage,
   PiPokerChip,
+  PiPresentationChart,
   PiRocketLaunch,
+  PiScales,
+  PiShapes,
   PiShieldCheck,
   PiShieldCheckered,
   PiShootingStar,
   PiShoppingCart,
+  PiSparkle,
   PiSquaresFour,
+  PiStairs,
   PiSteps,
   PiTable,
   PiUser,
   PiUserCircle,
   PiUserGear,
   PiUserPlus,
-  PiShapes,
-  PiNewspaperClippingDuotone,
-  PiTableDuotone,
-  PiCodesandboxLogoDuotone,
-  PiSparkleDuotone,
 } from 'react-icons/pi';
-import { atom } from 'jotai';
-import ProjectWriteIcon from '@core/components/icons/project-write';
-import CrmDashIcon from '@core/components/icons/crm-icon';
-import AffiliateIcon from '@core/components/icons/affiliate';
 
 export interface SubMenuItemType {
   name: string;
@@ -95,7 +99,7 @@ export const berylliumMenuItems: MenuItemsType[] = [
       {
         name: 'Appointment',
         href: routes.appointment.dashboard,
-        icon: PiCalendarDuotone,
+        icon: PiCalendar,
       },
       {
         name: 'Executive',
@@ -105,23 +109,34 @@ export const berylliumMenuItems: MenuItemsType[] = [
       {
         name: 'Project',
         href: routes.project.dashboard,
-        icon: ProjectWriteIcon,
+        icon: PiClipboardText,
       },
       {
         name: 'CRM',
         href: routes.crm.dashboard,
-        icon: CrmDashIcon,
+        icon: PiFolderUser,
       },
       {
         name: 'Affiliate',
         href: routes.affiliate.dashboard,
-        icon: AffiliateIcon,
+        icon: PiChartPieSlice,
+      },
+      {
+        name: 'Store Analytics',
+        href: routes.storeAnalytics.dashboard,
+        icon: PiPresentationChart,
+        badge: 'NEW',
+      },
+      {
+        name: 'Bidding',
+        href: routes.bidding.dashboard,
+        icon: PiScales,
         badge: 'NEW',
       },
       {
         name: 'Social Media',
         href: routes.socialMedia.dashboard,
-        icon: PiSparkleDuotone,
+        icon: PiSparkle,
       },
       {
         name: 'Job Board',
@@ -152,6 +167,12 @@ export const berylliumMenuItems: MenuItemsType[] = [
         name: 'Support',
         href: routes.support.dashboard,
         icon: PiHeadset,
+      },
+      {
+        name: 'Podcast',
+        href: routes.podcast.dashboard,
+        icon: PiApplePodcastsLogo,
+        badge: 'NEW',
       },
     ],
   },
@@ -328,7 +349,7 @@ export const berylliumMenuItems: MenuItemsType[] = [
       {
         name: 'Appointment',
         href: routes.appointment.appointmentList,
-        icon: PiCalendarDuotone,
+        icon: PiCalendar,
       },
       {
         name: 'Event Calendar',
@@ -348,13 +369,12 @@ export const berylliumMenuItems: MenuItemsType[] = [
       {
         name: 'Invoice Builder',
         href: routes.invoice.builder,
-        icon: PiNewspaperClippingDuotone,
+        icon: PiNewspaperClipping,
       },
       {
         name: 'Image Viewer',
         href: routes.imageViewer,
-        icon: PiCodesandboxLogoDuotone,
-        badge: 'New',
+        icon: PiCodesandboxLogo,
       },
     ],
   },
@@ -441,6 +461,11 @@ export const berylliumMenuItems: MenuItemsType[] = [
         name: 'Multi Step',
         href: routes.multiStep,
         icon: PiSteps,
+      },
+      {
+        name: 'Multi Step 2',
+        href: routes.multiStep2,
+        icon: PiStairs,
       },
       {
         name: 'Payment Checkout',

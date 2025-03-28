@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { routes } from "@/config/routes";
 import cn from "@core/utils/class-names";
 import Image from "next/image";
@@ -9,11 +9,8 @@ import { Title, Button } from "rizzui";
 import { PiArrowLineRight, PiUserCirclePlus } from "react-icons/pi";
 import { FcGoogle } from "react-icons/fc";
 import OrSeparation from "./or-separation";
-// import { siteConfig } from '@/config/site.config';
+import { siteConfig } from "@/config/site.config";
 import { BsFacebook } from "react-icons/bs";
-// import { useTranslation } from '@/app/i18n/client';
-import LogoMain from "@/../public/svg/icon/gymforce-icon-black.svg";
-import LogoMainText from "@/../public/svg/gymforce-text/gymforce-text-black.svg";
 import { useTranslations } from "next-intl";
 
 function AuthNavLink({
@@ -49,14 +46,12 @@ export default function AuthWrapperFour({
   isSocialLoginActive = false,
   isSignIn = false,
   className = "",
-  lang,
 }: {
   children: React.ReactNode;
   title: React.ReactNode;
   isSocialLoginActive?: boolean;
   isSignIn?: boolean;
   className?: string;
-  lang?: string;
 }) {
   const t = useTranslations("auth");
 
@@ -67,21 +62,23 @@ export default function AuthWrapperFour({
       <div className="flex w-full flex-col justify-center px-5">
         <div
           className={cn(
-            "mx-auto w-full max-w-md py-12 md:max-w-lg lg:max-w-xl",
+            "mx-auto w-full max-w-md py-12 md:max-w-lg lg:max-w-xl 2xl:pb-8 2xl:pt-2",
             className
           )}
         >
           <div className="flex flex-col items-center">
-            <Link href={"/"} className="mb-7 inline-block max-w-[64px] lg:mb-9">
+            <Link
+              href={"/"}
+              className="mb-7 inline-block max-w-[64px] lg:mb-9"
+            >
               <Image
-                src={LogoMain}
-                alt="Gymforce"
-                className="size-10 dark:invert "
+                src={siteConfig.icon}
+                alt={siteConfig.title}
               />
             </Link>
             <Title
-              as="h3"
-              className="mb-7 text-center text-[28px] font-bold leading-snug md:text-3xl md:!leading-normal lg:mb-10 lg:text-4xl text-gray-900 dark:text-gray-200"
+              as="h2"
+              className="mb-7 text-center text-[28px] font-bold leading-snug md:text-3xl md:!leading-normal lg:mb-10 lg:text-4xl"
             >
               {title}
             </Title>
@@ -91,15 +88,11 @@ export default function AuthWrapperFour({
               <div className="flex flex-col gap-4 pb-6 md:flex-row md:gap-6 xl:pb-7">
                 <Button className="h-11 w-full">
                   <FcGoogle className="me-2 h-4 w-4 shrink-0" />
-                  <span className="truncate">
-                    {t("auth-sign-in-with-google")}
-                  </span>
+                  <span className="truncate">{t("auth-sign-in-with-google")}</span>
                 </Button>
                 <Button className="h-11 w-full">
                   <BsFacebook className="me-2 h-4 w-4 shrink-0 md:h-5 md:w-5" />
-                  <span className="truncate">
-                    {t("auth-sign-in-with-facebook")}
-                  </span>
+                  <span className="truncate">{t("auth-sign-in-with-facebook")}</span>
                 </Button>
               </div>
               <OrSeparation
@@ -116,65 +109,78 @@ export default function AuthWrapperFour({
         </div>
       </div>
 
-      {/* <AuthFooter /> */}
+      <AuthFooter />
     </div>
   );
 }
 
-function AuthHeader({ lang }: { lang?: string }) {
+function AuthHeader() {
   const t = useTranslations("auth");
   return (
     <header className="flex items-center justify-between p-4 lg:px-16 lg:py-6 2xl:px-24">
       <Link href={"/"}>
-        <div className="flex flex-nowrap items-center">
-          <Image src={LogoMain} alt="Gymforce" className="size-8 dark:invert" />
-          <Image
-            src={LogoMainText}
-            alt="Gymforce"
-            className=" dark:invert"
-            width={200}
-            height={40}
-          />
-        </div>
+        <Image
+          src={siteConfig.logo}
+          alt={siteConfig.title}
+          className="dark:invert"
+          priority
+        />
       </Link>
-      <div className="flex items-center space-x-2 md:space-x-4 ">
-        <AuthNavLink href={routes.auth.signIn}>
-          <PiArrowLineRight className="h-4 w-4 text-gray-900 dark:text-gray-200  hover:text-primary" />
-          <span className="text-gray-900 dark:text-gray-200  hover:text-primary">
-            Login
-          </span>
+      <div className="flex items-center space-x-2 md:space-x-4">
+        <AuthNavLink href={routes.auth.signIn4}>
+          <PiArrowLineRight className="h-4 w-4" />
+          <span>{t("auth-login")}</span>
+        </AuthNavLink>
+        <AuthNavLink href={routes.auth.signUp4}>
+          <PiUserCirclePlus className="h-4 w-4" />
+          <span>{t("auth-sign-up")}</span>
         </AuthNavLink>
       </div>
     </header>
   );
 }
 
-// function AuthFooter({ lang }: { lang?: string }) {
-//   const { t } = useTranslation(lang!, 'auth');
+const footerMenu = [
+  {
+    name: "auth-menu-help",
+    href: "/",
+  },
+  {
+    name: "auth-menu-privacy",
+    href: "/",
+  },
+  {
+    name: "auth-menu-terms",
+    href: "/",
+  },
+];
 
-//   return (
-//     <footer className="flex flex-col-reverse items-center justify-between px-4 py-5 lg:flex-row lg:px-16 lg:py-6 2xl:px-24 2xl:py-10">
-//       <div className="text-center leading-relaxed text-gray-500 lg:text-start">
-//         {t('auth-copyright')}{' '}
-//         <Link
-//           href="https://redq.io/"
-//           className="font-medium transition-colors hover:text-primary"
-//         >
-//           {t('auth-redq')}
-//         </Link>
-//         , {t('auth-all-rights-reserved')}
-//       </div>
-//       <div className="-mx-2.5 flex items-center justify-end pb-3 font-medium text-gray-700 lg:w-1/2 lg:pb-0">
-//         {footerMenu.map((item) => (
-//           <Link
-//             key={item.name}
-//             href={item.href}
-//             className="px-2.5 py-1.5 transition-colors hover:text-primary"
-//           >
-//             {t(item.name)}
-//           </Link>
-//         ))}
-//       </div>
-//     </footer>
-//   );
-// }
+function AuthFooter() {
+  const t = useTranslations("auth");
+
+  return (
+    <footer className="flex flex-col-reverse items-center justify-between px-4 py-5 lg:flex-row lg:px-16 lg:py-6 2xl:px-24 2xl:py-10">
+      <div className="text-center leading-relaxed text-gray-500 lg:text-start">
+        {t("auth-copyright")}{" "}
+        <Link
+          href="https://redq.io/"
+          className="font-medium transition-colors hover:text-primary"
+        >
+          {t("auth-redq")}
+        </Link>
+        , {t("auth-all-rights-reserved")}
+      </div>
+      <div className="-mx-2.5 flex items-center justify-end pb-3 font-medium text-gray-700 lg:w-1/2 lg:pb-0">
+        {footerMenu.map((item) => (
+          <Link
+            key={item.name}
+            href={item.href}
+            className="px-2.5 py-1.5 transition-colors hover:text-primary"
+          >
+            {t(item.name)}
+          </Link>
+        ))}
+      </div>
+    </footer>
+  );
+}

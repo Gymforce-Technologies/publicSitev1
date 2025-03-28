@@ -36,7 +36,6 @@ export default function SettingsButton({
   // to set html dir attribute on direction change
   useEffect(() => {
     document.documentElement.dir = direction ?? 'ltr';
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [direction]);
 
   return (

@@ -1,13 +1,12 @@
 'use client';
 
-import cn from '@core/utils/class-names';
-import Link from 'next/link';
-import Logo from '@core/components/logo';
 import ProfileCardMenu from '@/layouts/carbon/profile-card-menu';
-import { PiDotsThreeVerticalBold, PiHeadsetBold } from 'react-icons/pi';
-import dynamic from 'next/dynamic';
-import SimpleBar from 'simplebar-react';
 import WorkSpaceSwitcher from '@/layouts/carbon/work-space-switcher';
+import Logo from '@core/components/logo';
+import cn from '@core/utils/class-names';
+import dynamic from 'next/dynamic';
+import Link from 'next/link';
+import { PiDotsThreeVerticalBold, PiHeadsetBold } from 'react-icons/pi';
 import { CarbonSidebarMenu } from './carbon-sidebar-menu';
 
 const NeedSupport = dynamic(() => import('@/layouts/carbon/need-support'), {
@@ -37,22 +36,23 @@ export function CarbonSidebar({ className }: { className?: string }) {
         suffixClassName="text-gray-500 w-5 h-5"
       />
 
-      <SimpleBar
+      <div
         className={cn(
-          'h-[calc(100%-265px)] [&_.simplebar-content]:flex [&_.simplebar-content]:h-full [&_.simplebar-content]:flex-col [&_.simplebar-content]:justify-between'
+          'custom-scrollbar h-[calc(100%-265px)] overflow-y-auto scroll-smooth'
         )}
       >
-        <CarbonSidebarMenu />
-
-        <div className="sticky bottom-0 bg-gray-0 dark:bg-gray-50">
-          <NeedSupport
-            title="Need Support?"
-            text="Contact with one of our experts to get support."
-            prefixIcon={<PiHeadsetBold className="h-5 w-5 text-gray-400" />}
-            className="relative mx-6 before:absolute before:-start-6 before:bottom-full before:end-0 before:h-10 before:w-[calc(100%+48px)] before:bg-gradient-to-t before:from-gray-0 before:to-gray-0/30 before:dark:from-gray-50 before:dark:to-gray-50/30"
-          />
+        <div className="flex h-full flex-col justify-between">
+          <CarbonSidebarMenu />
+          <div className="sticky bottom-0 bg-gray-0 dark:bg-gray-50">
+            <NeedSupport
+              title="Need Support?"
+              text="Contact with one of our experts to get support."
+              prefixIcon={<PiHeadsetBold className="h-5 w-5 text-gray-400" />}
+              className="relative mx-6 before:absolute before:-start-6 before:bottom-full before:end-0 before:h-10 before:w-[calc(100%+48px)] before:bg-gradient-to-t before:from-gray-0 before:to-gray-0/30 before:dark:from-gray-50 before:dark:to-gray-50/30"
+            />
+          </div>
         </div>
-      </SimpleBar>
+      </div>
 
       <div className="bg-gray-0 px-6 pb-3 dark:bg-gray-50">
         <ProfileCardMenu

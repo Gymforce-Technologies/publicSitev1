@@ -1,16 +1,15 @@
 'use client';
 
-import Image from 'next/image';
-import { PiMinus, PiPlus, PiTrash } from 'react-icons/pi';
-import { useCart } from '@/store/quick-cart/cart.context';
-import { toCurrency } from '@core/utils/to-currency';
-import { Title } from 'rizzui';
-import cn from '@core/utils/class-names';
-import { CartItem } from '@/types';
-import Link from 'next/link';
 import { routes } from '@/config/routes';
+import { useCart } from '@/store/quick-cart/cart.context';
+import { CartItem } from '@/types';
+import cn from '@core/utils/class-names';
 import { generateSlug } from '@core/utils/generate-slug';
-import SimpleBar from '@core/ui/simplebar';
+import { toCurrency } from '@core/utils/to-currency';
+import Image from 'next/image';
+import Link from 'next/link';
+import { PiMinus, PiPlus, PiTrash } from 'react-icons/pi';
+import { Title } from 'rizzui/typography';
 
 export default function POSOrderProducts({
   className,
@@ -31,8 +30,11 @@ export default function POSOrderProducts({
 }) {
   return (
     <div className={className}>
-      <SimpleBar
-        className={cn('h-[calc(100vh_-_630px)] pb-3', simpleBarClassName)}
+      <div
+        className={cn(
+          'custom-scrollbar h-[calc(100vh_-_630px)] overflow-y-auto scroll-smooth pb-3',
+          simpleBarClassName
+        )}
       >
         <div className="space-y-7">
           {orderedItems.map((item) => (
@@ -91,7 +93,7 @@ export default function POSOrderProducts({
             </div>
           ))}
         </div>
-      </SimpleBar>
+      </div>
     </div>
   );
 }

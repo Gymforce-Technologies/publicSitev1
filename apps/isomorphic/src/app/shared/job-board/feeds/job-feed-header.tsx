@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import { Text, Title } from 'rizzui';
 import cn from '@core/utils/class-names';

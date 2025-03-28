@@ -1,3 +1,5 @@
+"use client";
+
 import { isEmpty } from "lodash";
 import { Fragment } from "react";
 import cn from "@core/utils/class-names";
@@ -25,22 +27,17 @@ export default function MainTable<TData extends Record<string, any>>({
   components,
   stickyHeader = false,
 }: MainTableProps<TData>) {
-  const { containerRef, tableRef, isLeftScrollable, isRightScrollable } = useScrollPosition();
+  const { containerRef, tableRef, isLeftScrollable, isRightScrollable } =
+    useScrollPosition();
 
   if (!table) return null;
 
   if (isLoading) {
     return (
       <div className="flex h-full min-h-[128px] flex-col items-center justify-center">
-        <Loader
-          variant="spinner"
-          size="xl"
-        />
+        <Loader variant="spinner" size="xl" />
         {showLoadingText ? (
-          <Title
-            as="h6"
-            className="-me-2 mt-4 font-medium text-gray-500"
-          >
+          <Title as="h6" className="-me-2 mt-4 font-medium text-gray-500">
             Loading...
           </Title>
         ) : null}
@@ -64,14 +61,16 @@ export default function MainTable<TData extends Record<string, any>>({
     isRightScrollable,
   };
 
-  const mainRows = table.getIsSomeRowsPinned() ? table.getCenterRows() : table.getRowModel().rows;
+  const mainRows = table.getIsSomeRowsPinned()
+    ? table.getCenterRows()
+    : table.getRowModel().rows;
 
   return (
     <>
       <Box
         ref={containerRef}
         className={cn(
-          "custom-scrollbar w-full max-w-full overflow-x-auto",
+          "custom-scrollbar w-full max-w-full overflow-x-auto scroll-smooth",
           stickyHeader && "max-h-[600px] overflow-y-auto",
           classNames?.container
         )}
@@ -93,7 +92,10 @@ export default function MainTable<TData extends Record<string, any>>({
               components.header(headerParam)
             ) : (
               <Table.Header
-                className={cn(stickyHeader && "sticky top-0 z-10", classNames?.headerClassName)}
+                className={cn(
+                  stickyHeader && "sticky top-0 z-10",
+                  classNames?.headerClassName
+                )}
               >
                 {table.getHeaderGroups().map((headerGroup) => {
                   const headerCellParam = {
@@ -172,7 +174,10 @@ export default function MainTable<TData extends Record<string, any>>({
                     {components?.expandedComponent && row.getIsExpanded() && (
                       <Table.Row className={classNames?.expandedRowClassName}>
                         <Table.Cell
-                          className={cn("!p-0", classNames?.expandedCellClassName)}
+                          className={cn(
+                            "!p-0",
+                            classNames?.expandedCellClassName
+                          )}
                           colSpan={row.getVisibleCells().length}
                         >
                           {components.expandedComponent(row)}
@@ -221,9 +226,8 @@ export function TableHeadBasic<TData extends Record<string, any>>({
   return (
     <>
       {headerGroup.headers.map((header) => {
-        const { canResize, canPin, isPinned, isLeftPinned, isRightPinned } = getColumnOptions(
-          header.column
-        );
+        const { canResize, canPin, isPinned, isLeftPinned, isRightPinned } =
+          getColumnOptions(header.column);
 
         return (
           <Table.Head
@@ -231,7 +235,9 @@ export function TableHeadBasic<TData extends Record<string, any>>({
             colSpan={header.colSpan}
             style={{
               left: isLeftPinned ? header.column.getStart("left") : undefined,
-              right: isRightPinned ? header.column.getAfter("right") : undefined,
+              right: isRightPinned
+                ? header.column.getAfter("right")
+                : undefined,
               width: header.getSize(),
             }}
             className={cn(
@@ -246,7 +252,10 @@ export function TableHeadBasic<TData extends Record<string, any>>({
             <Box className="flex items-start">
               {header.isPlaceholder
                 ? null
-                : flexRender(header.column.columnDef.header, header.getContext())}
+                : flexRender(
+                    header.column.columnDef.header,
+                    header.getContext()
+                  )}
 
               {header.column.getCanSort() ? (
                 <button
@@ -259,7 +268,9 @@ export function TableHeadBasic<TData extends Record<string, any>>({
                     asc: <PiCaretUpFill size={14} />,
                     desc: <PiCaretDownFill size={14} />,
                   }[header.column.getIsSorted() as string] ??
-                    (header.column.columnDef.header !== "" && <PiCaretDownFill size={14} />)}
+                    (header.column.columnDef.header !== "" && (
+                      <PiCaretDownFill size={14} />
+                    ))}
                 </button>
               ) : null}
             </Box>
@@ -290,9 +301,8 @@ export function TableCellBasic<TData extends Record<string, any>>({
 }: CustomBodyCellProps<TData>) {
   if (!cell) return null;
 
-  const { canResize, canPin, isPinned, isLeftPinned, isRightPinned } = getColumnOptions(
-    cell.column
-  );
+  const { canResize, canPin, isPinned, isLeftPinned, isRightPinned } =
+    getColumnOptions(cell.column);
 
   return (
     <Table.Cell

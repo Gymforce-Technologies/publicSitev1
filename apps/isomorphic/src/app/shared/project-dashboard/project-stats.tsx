@@ -1,17 +1,16 @@
 'use client';
 
-import cn from '@core/utils/class-names';
-import { PiArrowUpRightBold, PiArrowDownRightBold } from 'react-icons/pi';
-import SimpleBar from 'simplebar-react';
-import DropdownAction from '@core/components/charts/dropdown-action';
-import { Box, Flex, Text, Title } from 'rizzui';
-import { useState } from 'react';
-import { formatNumber } from '@core/utils/format-number';
 import {
   StatType,
   projectStatData,
   projectStatViewOptions,
 } from '@/data/project-dashboard';
+import DropdownAction from '@core/components/charts/dropdown-action';
+import cn from '@core/utils/class-names';
+import { formatNumber } from '@core/utils/format-number';
+import { useState } from 'react';
+import { PiArrowDownRightBold, PiArrowUpRightBold } from 'react-icons/pi';
+import { Box, Flex, Text, Title } from 'rizzui';
 
 export type StatCardProps = {
   className?: string;
@@ -37,13 +36,13 @@ export default function ProjectStats({ className }: { className?: string }) {
           options={projectStatViewOptions}
         />
       </Flex>
-      <SimpleBar>
+      <div className='custom-scrollbar overflow-x-auto scroll-smooth [&::-webkit-scrollbar]:h-0'>
         <Flex className="sm:gap-6 3xl:gap-8">
           {projectStatData.map((stat: StatType, index: number) => {
             return <StatCard key={'stat-card-' + index} transaction={stat} />;
           })}
         </Flex>
-      </SimpleBar>
+      </div>
     </Box>
   );
 }

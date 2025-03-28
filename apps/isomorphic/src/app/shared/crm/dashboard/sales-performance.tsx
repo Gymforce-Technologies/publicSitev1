@@ -1,19 +1,18 @@
 'use client';
 
+import WidgetCard from '@core/components/cards/widget-card';
+import { CustomTooltip } from '@core/components/charts/custom-tooltip';
+import { useTheme } from 'next-themes';
 import {
   Bar,
-  XAxis,
-  YAxis,
-  Tooltip,
   BarChart,
   CartesianGrid,
   ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
 } from 'recharts';
 import { Box } from 'rizzui';
-import { useTheme } from 'next-themes';
-import SimpleBar from 'simplebar-react';
-import WidgetCard from '@core/components/cards/widget-card';
-import { CustomTooltip } from '@core/components/charts/custom-tooltip';
 
 const data = [
   {
@@ -56,7 +55,7 @@ export default function SalesPerformance({
 
   return (
     <WidgetCard rounded="lg" className={className} title="Sales Performance">
-      <SimpleBar className="w-full">
+      <div className="custom-scrollbar overflow-x-auto scroll-smooth w-full">
         <Box className="mt-6 h-72 w-full @sm:mt-3 @lg:mt-8">
           <ResponsiveContainer width="100%" height="100%" minWidth={400}>
             <BarChart
@@ -91,7 +90,7 @@ export default function SalesPerformance({
             </BarChart>
           </ResponsiveContainer>
         </Box>
-      </SimpleBar>
+      </div>
     </WidgetCard>
   );
 }

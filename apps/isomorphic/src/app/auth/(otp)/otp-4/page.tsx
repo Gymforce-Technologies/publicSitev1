@@ -1,5 +1,5 @@
 import AuthWrapperFour from '@/app/shared/auth-layout/auth-wrapper-four';
-import { Text } from 'rizzui';
+import { Text } from 'rizzui/typography';
 import OtpForm from '@/app/auth/(otp)/otp-4/otp-form';
 
 export default function OtpPage() {

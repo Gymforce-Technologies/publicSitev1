@@ -69,7 +69,6 @@ export default function LoggedInDevices({
         data={tableData}
         // @ts-ignore
         columns={visibleColumns}
-        scroll={{ y: 500 }}
         variant="modern"
         rowKey={(record) => record.id}
         className="w-full text-sm"

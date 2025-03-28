@@ -1,14 +1,21 @@
 "use client";
 
 import WidgetCard from "@core/components/cards/widget-card";
-import { Title, Text, Badge } from "rizzui";
-import cn from "@core/utils/class-names";
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
-import { useMedia } from "@core/hooks/use-media";
 import { CustomTooltip } from "@core/components/charts/custom-tooltip";
 import TrendingUpIcon from "@core/components/icons/trending-up";
-import SimpleBar from "@core/ui/simplebar";
+import { useMedia } from "@core/hooks/use-media";
+import cn from "@core/utils/class-names";
 import { useTranslations } from "next-intl";
+import {
+  Bar,
+  BarChart,
+  CartesianGrid,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
+import { Badge, Text, Title } from "rizzui";
 
 const data = [
   {
@@ -100,13 +107,7 @@ const data = [
 function CustomYAxisTick({ x, y, payload }: any) {
   return (
     <g transform={`translate(${x},${y})`}>
-      <text
-        x={0}
-        y={0}
-        dy={16}
-        textAnchor="end"
-        className="fill-gray-500"
-      >
+      <text x={0} y={0} dy={16} textAnchor="end" className="fill-gray-500">
         {`${payload.value.toLocaleString()}`}GB
       </text>
     </g>
@@ -126,16 +127,15 @@ export default function StorageReport({ className }: { className?: string }) {
       titleClassName="font-normal text-gray-700 sm:text-base font-inter"
       description={
         <div className="flex items-center justify-start">
-          <Title
-            as="h2"
-            className="me-2 font-semibold"
-          >
+          <Title as="h2" className="me-2 font-semibold">
             105,000 GB
           </Title>
           <Text className="flex items-center leading-none text-gray-500">
             <Text
               as="span"
-              className={cn("me-2 inline-flex items-center font-medium text-green")}
+              className={cn(
+                "me-2 inline-flex items-center font-medium text-green"
+              )}
             >
               <TrendingUpIcon className="me-1 h-4 w-4" />
               32.40%
@@ -147,21 +147,9 @@ export default function StorageReport({ className }: { className?: string }) {
       descriptionClassName="text-gray-500 mt-1.5"
       action={
         <div className="hidden @2xl:block">
-          <Badge
-            renderAsDot
-            className="me-0.5 bg-[#282ECA]"
-          />{" "}
-          Image
-          <Badge
-            renderAsDot
-            className="me-0.5 ms-4 bg-[#4052F6]"
-          />{" "}
-          Video
-          <Badge
-            renderAsDot
-            className="me-0.5 ms-4 bg-[#96C0FF]"
-          />{" "}
-          Documents
+          <Badge renderAsDot className="me-0.5 bg-[#282ECA]" /> Image
+          <Badge renderAsDot className="me-0.5 ms-4 bg-[#4052F6]" /> Video
+          <Badge renderAsDot className="me-0.5 ms-4 bg-[#96C0FF]" /> Documents
           <Badge
             renderAsDot
             className="me-0.5 ms-4 bg-[#DEEAFC] dark:bg-[#7c88b2]"
@@ -171,7 +159,7 @@ export default function StorageReport({ className }: { className?: string }) {
       }
       className={className}
     >
-      <SimpleBar>
+      <div className="custom-scrollbar overflow-x-auto scroll-smooth">
         <div className="h-96 w-full pt-9">
           <ResponsiveContainer
             width="100%"
@@ -186,45 +174,22 @@ export default function StorageReport({ className }: { className?: string }) {
               }}
               className="[&_.recharts-tooltip-cursor]:fill-opacity-20 dark:[&_.recharts-tooltip-cursor]:fill-opacity-10 [&_.recharts-cartesian-axis-tick-value]:fill-gray-500 [&_.recharts-cartesian-axis.yAxis]:-translate-y-3 rtl:[&_.recharts-cartesian-axis.yAxis]:-translate-x-12 [&_.recharts-cartesian-grid-vertical]:opacity-0"
             >
-              <CartesianGrid
-                strokeDasharray="8 10"
-                strokeOpacity={0.435}
-              />
-              <XAxis
-                dataKey="month"
-                axisLine={false}
-                tickLine={false}
-              />
+              <CartesianGrid strokeDasharray="8 10" strokeOpacity={0.435} />
+              <XAxis dataKey="month" axisLine={false} tickLine={false} />
               <YAxis
                 axisLine={false}
                 tickLine={false}
                 tick={<CustomYAxisTick />}
               />
               <Tooltip content={<CustomTooltip />} />
-              <Bar
-                dataKey="image"
-                fill="#282ECA"
-                stackId="a"
-              />
-              <Bar
-                dataKey="video"
-                stackId="a"
-                fill="#4052F6"
-              />
-              <Bar
-                dataKey="document"
-                stackId="a"
-                fill="#96C0FF"
-              />
-              <Bar
-                dataKey="music"
-                stackId="a"
-                fill="#DEEAFC"
-              />
+              <Bar dataKey="image" fill="#282ECA" stackId="a" />
+              <Bar dataKey="video" stackId="a" fill="#4052F6" />
+              <Bar dataKey="document" stackId="a" fill="#96C0FF" />
+              <Bar dataKey="music" stackId="a" fill="#DEEAFC" />
             </BarChart>
           </ResponsiveContainer>
         </div>
-      </SimpleBar>
+      </div>
     </WidgetCard>
   );
 }

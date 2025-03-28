@@ -1,7 +1,6 @@
 import { Link } from "@/i18n/routing";
-import cn from "@core/utils/class-names";
-import SimpleBar from "@core/ui/simplebar";
 import Logo from "@core/components/logo";
+import cn from "@core/utils/class-names";
 import { BoronSidebarMenu } from "./boron-sidebar-menu";
 
 export default function BoronSidebar({ className }: { className?: string }) {
@@ -21,9 +20,9 @@ export default function BoronSidebar({ className }: { className?: string }) {
           <Logo className="max-w-[155px]" />
         </Link>
       </div>
-      <SimpleBar className="h-[calc(100%-80px)]">
+      <div className="custom-scrollbar overflow-y-auto scroll-smooth h-[calc(100%-80px)]">
         <BoronSidebarMenu />
-      </SimpleBar>
+      </div>
     </aside>
   );
 }

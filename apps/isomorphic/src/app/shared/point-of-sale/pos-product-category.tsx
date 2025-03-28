@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Button } from 'rizzui';
+import { Button } from 'rizzui/button';
 import cn from '@core/utils/class-names';
 import { useFilterControls } from '@core/hooks/use-filter-control';
 import {

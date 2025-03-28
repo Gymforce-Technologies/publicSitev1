@@ -1,7 +1,11 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import { useModal } from "@/app/shared/modal-views/use-modal";
+import Upload from "@core/ui/upload";
+import cn from "@core/utils/class-names";
 import Image from "next/image";
+import React, { useRef, useState } from "react";
+import { toast } from "react-hot-toast";
 import {
   PiArrowLineDownBold,
   PiFile,
@@ -13,12 +17,7 @@ import {
   PiTrashBold,
   PiXBold,
 } from "react-icons/pi";
-import { ActionIcon, Title, Text, Button } from "rizzui";
-import cn from "@core/utils/class-names";
-import Upload from "@core/ui/upload";
-import { useModal } from "@/app/shared/modal-views/use-modal";
-import SimpleBar from "@core/ui/simplebar";
-import { toast } from "react-hot-toast";
+import { ActionIcon, Button, Text, Title } from "rizzui";
 
 type AcceptedFiles = "img" | "pdf" | "csv" | "imgAndPdf" | "all";
 
@@ -40,10 +39,7 @@ export default function FileUpload({
   return (
     <div className="m-auto px-5 pb-8 pt-5 @lg:pt-6 @2xl:px-7">
       <div className="mb-6 flex items-center justify-between">
-        <Title
-          as="h3"
-          className="text-lg"
-        >
+        <Title as="h3" className="text-lg">
           {label}
         </Title>
         <ActionIcon
@@ -133,10 +129,12 @@ export const FileInput = ({
         className="mb-6 min-h-[280px] justify-center border-dashed bg-gray-50 dark:bg-transparent"
       />
 
-      {files.length > 1 ? <Text className="mb-2 text-gray-500">{files.length} files</Text> : null}
+      {files.length > 1 ? (
+        <Text className="mb-2 text-gray-500">{files.length} files</Text>
+      ) : null}
 
       {files.length > 0 && (
-        <SimpleBar className="max-h-[280px]">
+        <div className="custom-scrollbar overflow-y-auto scroll-smooth max-h-[280px]">
           <div className="grid grid-cols-1 gap-4">
             {files?.map((file: File, index: number) => (
               <div
@@ -170,7 +168,7 @@ export const FileInput = ({
               </div>
             ))}
           </div>
-        </SimpleBar>
+        </div>
       )}
       <div className="mt-4 flex justify-end gap-3">
         <Button
@@ -180,10 +178,7 @@ export const FileInput = ({
         >
           Reset
         </Button>
-        <Button
-          className="w-full"
-          onClick={() => handleFileUpload()}
-        >
+        <Button className="w-full" onClick={() => handleFileUpload()}>
           <PiArrowLineDownBold className="me-1.5 h-[17px] w-[17px]" />
           {btnLabel}
         </Button>

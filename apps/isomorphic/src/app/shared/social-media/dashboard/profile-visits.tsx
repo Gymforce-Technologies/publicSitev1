@@ -1,26 +1,25 @@
 'use client';
 
-import { useMedia } from 'react-use';
-import { useTheme } from 'next-themes';
-import SimpleBar from 'simplebar-react';
-import {
-  Bar,
-  XAxis,
-  YAxis,
-  Tooltip,
-  BarChart,
-  LabelList,
-  Rectangle,
-  CartesianGrid,
-  ResponsiveContainer,
-} from 'recharts';
 import {
   genderViewOptions,
   socialMediaProfileVisitsData,
 } from '@/data/social-media-dashboard-data';
 import WidgetCard from '@core/components/cards/widget-card';
-import DropdownAction from '@core/components/charts/dropdown-action';
 import { CustomTooltip } from '@core/components/charts/custom-tooltip';
+import DropdownAction from '@core/components/charts/dropdown-action';
+import { useTheme } from 'next-themes';
+import { useMedia } from 'react-use';
+import {
+  Bar,
+  BarChart,
+  CartesianGrid,
+  LabelList,
+  Rectangle,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from 'recharts';
 
 export default function ProfileVisits({ className }: { className?: string }) {
   const isSM = useMedia('(max-width: 640px)', false);
@@ -44,7 +43,7 @@ export default function ProfileVisits({ className }: { className?: string }) {
         />
       }
     >
-      <SimpleBar>
+      <div className="custom-scrollbar overflow-x-auto scroll-smooth">
         <div className="mt-6 h-[300px]">
           <ResponsiveContainer
             width="100%"
@@ -77,7 +76,7 @@ export default function ProfileVisits({ className }: { className?: string }) {
             </BarChart>
           </ResponsiveContainer>
         </div>
-      </SimpleBar>
+      </div>
     </WidgetCard>
   );
 }

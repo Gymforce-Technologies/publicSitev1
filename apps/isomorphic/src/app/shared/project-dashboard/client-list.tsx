@@ -1,10 +1,9 @@
 'use client';
 
-import Link from 'next/link';
-import SimpleBar from 'simplebar-react';
-import cn from '@core/utils/class-names';
 import { clientList } from '@/data/project-dashboard';
 import WidgetCard from '@core/components/cards/widget-card';
+import cn from '@core/utils/class-names';
+import Link from 'next/link';
 import { Avatar, Box, Button, Flex, Progressbar, Text } from 'rizzui';
 
 export default function ProjectClientList({
@@ -26,7 +25,7 @@ export default function ProjectClientList({
           </Link>
         }
       >
-        <SimpleBar className="-me-2 mt-6 h-[24rem] pe-2">
+        <div className="custom-scrollbar overflow-x-auto scroll-smooth -me-2 mt-6 h-[24rem] pe-2">
           <Box className="space-y-3.5">
             {clientList.map((client) => (
               <Box
@@ -50,7 +49,7 @@ export default function ProjectClientList({
               </Box>
             ))}
           </Box>
-        </SimpleBar>
+        </div>
       </WidgetCard>
     </>
   );

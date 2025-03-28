@@ -104,7 +104,7 @@ export default function QuickAccess({ className }: { className?: string }) {
         <div className="w-full overflow-hidden">
           <div
             ref={sliderEl}
-            className="custom-scrollbar-x grid grid-flow-col gap-5 overflow-x-auto scroll-smooth"
+            className="custom-scrollbar grid grid-flow-col gap-5 overflow-x-auto scroll-smooth"
           >
             {mockdata.map((item) => {
               return (

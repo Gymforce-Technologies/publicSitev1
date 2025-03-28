@@ -1,3 +1,5 @@
+'use client';
+
 import { useFormContext } from 'react-hook-form';
 import { Textarea } from 'rizzui';
 import cn from '@core/utils/class-names';

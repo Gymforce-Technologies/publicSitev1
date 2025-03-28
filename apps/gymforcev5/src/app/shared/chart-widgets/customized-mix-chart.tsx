@@ -1,15 +1,22 @@
 "use client";
 
 import WidgetCard from "@core/components/cards/widget-card";
-import { Area, Bar, XAxis, YAxis, Tooltip, ComposedChart, ResponsiveContainer } from "recharts";
-import { Badge } from "rizzui";
-import cn from "@core/utils/class-names";
-import { useMedia } from "@core/hooks/use-media";
-import { CustomYAxisTick } from "@core/components/charts/custom-yaxis-tick";
-import { CustomTooltip } from "@core/components/charts/custom-tooltip";
 import ButtonGroupAction from "@core/components/charts/button-group-action";
-import SimpleBar from "@core/ui/simplebar";
+import { CustomTooltip } from "@core/components/charts/custom-tooltip";
+import { CustomYAxisTick } from "@core/components/charts/custom-yaxis-tick";
+import { useMedia } from "@core/hooks/use-media";
+import cn from "@core/utils/class-names";
 import { useTranslations } from "next-intl";
+import {
+  Area,
+  Bar,
+  ComposedChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
+import { Badge } from "rizzui";
 
 const data = [
   {
@@ -88,7 +95,11 @@ const data = [
 
 const filterOptions = ["Week", "Month", "Year"];
 
-export default function CustomizedMixChart({ className }: { className?: string }) {
+export default function CustomizedMixChart({
+  className,
+}: {
+  className?: string;
+}) {
   const t = useTranslations("common");
   const isMediumScreen = useMedia("(max-width: 1200px)", false);
   const isTablet = useMedia("(max-width: 800px)", false);
@@ -106,15 +117,9 @@ export default function CustomizedMixChart({ className }: { className?: string }
             className="me-0.5 bg-[#eab308] dark:bg-[#7c88b2]"
           />{" "}
           {t("text-users")}
-          <Badge
-            renderAsDot
-            className="me-0.5 ms-4 bg-[#5a5fd7]"
-          />{" "}
+          <Badge renderAsDot className="me-0.5 ms-4 bg-[#5a5fd7]" />{" "}
           {t("text-new-users")}
-          <Badge
-            renderAsDot
-            className="me-0.5 ms-4 bg-[#10b981]"
-          />{" "}
+          <Badge renderAsDot className="me-0.5 ms-4 bg-[#10b981]" />{" "}
           {t("text-sessions")}
         </>
       }
@@ -130,7 +135,7 @@ export default function CustomizedMixChart({ className }: { className?: string }
       rounded="lg"
       className={className}
     >
-      <SimpleBar>
+      <div className="custom-scrollbar overflow-x-auto scroll-smooth">
         <div className={cn("h-[420px] w-full pt-9 @7xl:h-[480px]")}>
           <ResponsiveContainer
             width="100%"
@@ -143,30 +148,16 @@ export default function CustomizedMixChart({ className }: { className?: string }
               className="[&_.recharts-cartesian-axis-tick-value]:fill-gray-500  [&_.recharts-cartesian-axis.yAxis]:-translate-y-3 rtl:[&_.recharts-cartesian-axis.yAxis]:-translate-x-12"
             >
               <defs>
-                <linearGradient
-                  id="analyticsArea"
-                  x1="0"
-                  y1="0"
-                  x2="0"
-                  y2="1"
-                >
+                <linearGradient id="analyticsArea" x1="0" y1="0" x2="0" y2="1">
                   <stop
                     offset="5%"
                     stopColor="#F0F1FF"
                     className=" [stop-opacity:0.2]"
                   />
-                  <stop
-                    offset="95%"
-                    stopColor="#10b981"
-                    stopOpacity={0}
-                  />
+                  <stop offset="95%" stopColor="#10b981" stopOpacity={0} />
                 </linearGradient>
               </defs>
-              <XAxis
-                dataKey="month"
-                axisLine={false}
-                tickLine={false}
-              />
+              <XAxis dataKey="month" axisLine={false} tickLine={false} />
               <YAxis
                 axisLine={false}
                 tickLine={false}
@@ -184,7 +175,9 @@ export default function CustomizedMixChart({ className }: { className?: string }
               <Bar
                 dataKey="newUser"
                 fill="#5a5fd7"
-                {...(isTablet ? { stackId: "userMetrics" } : { radius: [4, 4, 0, 0] })}
+                {...(isTablet
+                  ? { stackId: "userMetrics" }
+                  : { radius: [4, 4, 0, 0] })}
               />
               <Bar
                 dataKey="user"
@@ -195,7 +188,7 @@ export default function CustomizedMixChart({ className }: { className?: string }
             </ComposedChart>
           </ResponsiveContainer>
         </div>
-      </SimpleBar>
+      </div>
     </WidgetCard>
   );
 }

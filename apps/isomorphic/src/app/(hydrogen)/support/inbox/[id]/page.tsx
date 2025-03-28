@@ -5,7 +5,7 @@ import MessageList from '@/app/shared/support/inbox/message-list';
 import MessageDetails from '@/app/shared/support/inbox/message-details';
 
 type Props = {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 };
 
 /**
@@ -15,7 +15,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   // read route params
-  const id = params.id;
+  const id = (await params).id;
 
   return metaObject(`Message ${id}`);
 }

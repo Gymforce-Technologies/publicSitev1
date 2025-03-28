@@ -132,7 +132,7 @@ export default function FileStats({ className }: FileStatsType) {
       <div className="w-full overflow-hidden">
         <div
           ref={sliderEl}
-          className="custom-scrollbar-x grid grid-flow-col gap-5 overflow-x-auto scroll-smooth 2xl:gap-6 3xl:gap-8"
+          className="custom-scrollbar grid grid-flow-col gap-5 overflow-x-auto scroll-smooth 2xl:gap-6 3xl:gap-8"
         >
           <FileStatGrid className="min-w-[292px]" />
         </div>

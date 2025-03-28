@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import { Title, Text } from 'rizzui';
 import { PiImageDuotone } from 'react-icons/pi';

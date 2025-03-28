@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { PiPlusBold } from 'react-icons/pi';
 import { routes } from '@/config/routes';
-import { Button } from 'rizzui';
+import { Button } from 'rizzui/button';
 import { shipmentData } from '@/data/shipment-data';
 import PageHeader from '@/app/shared/page-header';
 import ExportButton from '@/app/shared/export-button';

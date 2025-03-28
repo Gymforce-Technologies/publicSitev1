@@ -1,5 +1,15 @@
+"use client";
+
 import { type Table as ReactTableType } from "@tanstack/react-table";
-import { ActionIcon, Box, Flex, Grid, Select, SelectOption, Text } from "rizzui";
+import {
+  ActionIcon,
+  Box,
+  Flex,
+  Grid,
+  Select,
+  SelectOption,
+  Text,
+} from "rizzui";
 import {
   PiCaretLeftBold,
   PiCaretRightBold,
@@ -32,11 +42,10 @@ export default function TablePagination<TData extends Record<string, any>>({
       justify="between"
       className={cn("@container", className)}
     >
-      <Flex
-        align="center"
-        className="w-auto shrink-0"
-      >
-        <Text className="hidden font-normal text-gray-600 @md:block">Rows per page</Text>
+      <Flex align="center" className="w-auto shrink-0">
+        <Text className="hidden font-normal text-gray-600 @md:block">
+          Rows per page
+        </Text>
         <Select
           size="sm"
           variant="flat"
@@ -59,18 +68,12 @@ export default function TablePagination<TData extends Record<string, any>>({
           </Text>
         </Box>
       )}
-      <Flex
-        justify="end"
-        align="center"
-      >
+      <Flex justify="end" align="center">
         <Text className="hidden font-normal text-gray-600 @3xl:block">
           Page {table.getState().pagination.pageIndex + 1} of{" "}
           {table.getPageCount().toLocaleString()}
         </Text>
-        <Grid
-          gap="2"
-          columns="4"
-        >
+        <Grid gap="2" columns="4">
           <ActionIcon
             size="sm"
             rounded="lg"

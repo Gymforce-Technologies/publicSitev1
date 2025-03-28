@@ -1,3 +1,5 @@
+'use client';
+
 import { Controller, useFormContext } from 'react-hook-form';
 import { Input, Textarea, RadioGroup, AdvancedRadio } from 'rizzui';
 import cn from '@core/utils/class-names';

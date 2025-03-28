@@ -1,6 +1,7 @@
+'use client';
+
 import { useState } from 'react';
-import { Text, Avatar, Button } from 'rizzui';
-import SimpleBar from '@core/ui/simplebar';
+import { Avatar, Button, Text } from 'rizzui';
 
 type FollowerRowProps = {
   row: {
@@ -22,11 +23,9 @@ type FollowModalProps = {
 
 export default function FollowerModal({ data }: FollowModalProps) {
   return (
-    <>
-      <SimpleBar className="-mr-3 h-[400px] pr-3 md:h-[450px]">
-        {data?.map((item) => <FollowerRow row={item} key={item.id} />)}
-      </SimpleBar>
-    </>
+    <div className="custom-scrollbar -mr-3 h-[400px] overflow-y-auto scroll-smooth pr-3 md:h-[450px]">
+      {data?.map((item) => <FollowerRow row={item} key={item.id} />)}
+    </div>
   );
 }
 

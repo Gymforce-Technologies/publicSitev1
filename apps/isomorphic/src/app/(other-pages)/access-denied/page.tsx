@@ -1,5 +1,6 @@
 import Image from 'next/image';
-import { Button, Title } from 'rizzui';
+import { Button } from 'rizzui/button';
+import { Title } from 'rizzui/typography';
 import ForbiddenImg from '@public/403img.svg';
 import ForbiddenTwoImg from '@public/forbidden-two.png';
 import { PiHouseLineBold } from 'react-icons/pi';

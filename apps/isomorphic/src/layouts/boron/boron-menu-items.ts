@@ -1,58 +1,62 @@
+import { DUMMY_ID } from '@/config/constants';
+import { routes } from '@/config/routes';
 import {
-  PiShoppingCartDuotone,
-  PiHeadsetDuotone,
-  PiPackageDuotone,
-  PiChartBarDuotone,
-  PiCurrencyDollarDuotone,
-  PiSquaresFourDuotone,
-  PiGridFourDuotone,
-  PiFeatherDuotone,
-  PiChartLineUpDuotone,
-  PiMapPinLineDuotone,
-  PiUserGearDuotone,
+  PiAirplaneTiltDuotone,
+  PiApplePodcastsLogoDuotone,
+  PiArrowsOutDuotone,
+  PiArrowsOutLineHorizontalDuotone,
   PiBellSimpleRingingDuotone,
-  PiUserDuotone,
-  PiEnvelopeSimpleOpenDuotone,
-  PiStepsDuotone,
-  PiCreditCardDuotone,
-  PiTableDuotone,
-  PiBrowserDuotone,
-  PiHourglassSimpleDuotone,
-  PiUserCircleDuotone,
-  PiShootingStarDuotone,
-  PiRocketLaunchDuotone,
-  PiFolderLockDuotone,
   PiBinocularsDuotone,
-  PiHammerDuotone,
-  PiNoteBlankDuotone,
-  PiUserPlusDuotone,
-  PiShieldCheckDuotone,
-  PiLockKeyDuotone,
-  PiChatCenteredDotsDuotone,
+  PiBriefcaseDuotone,
+  PiBrowserDuotone,
   PiCalendarDuotone,
   PiCalendarPlusDuotone,
-  PiEnvelopeDuotone,
-  PiCurrencyCircleDollarDuotone,
-  PiBriefcaseDuotone,
-  PiHouseLineDuotone,
-  PiAirplaneTiltDuotone,
-  PiFolder,
   PiCaretCircleUpDownDuotone,
-  PiListNumbersDuotone,
-  PiCoinDuotone,
-  PiShapesDuotone,
-  PiNewspaperClippingDuotone,
+  PiChartBarDuotone,
+  PiChartLineUpDuotone,
+  PiChartPieSliceDuotone,
+  PiChatCenteredDotsDuotone,
+  PiClipboardTextDuotone,
   PiCodesandboxLogoDuotone,
-  PiSparkleDuotone,
-  PiArrowsOut,
+  PiCoinDuotone,
+  PiCreditCardDuotone,
+  PiCurrencyCircleDollarDuotone,
+  PiCurrencyDollarDuotone,
+  PiEnvelopeDuotone,
+  PiEnvelopeSimpleOpenDuotone,
+  PiFeatherDuotone,
+  PiFolderDuotone,
+  PiFolderLockDuotone,
+  PiFolderUserDuotone,
+  PiGridFourDuotone,
+  PiHammerDuotone,
+  PiHeadsetDuotone,
+  PiHourglassSimpleDuotone,
+  PiHouseLineDuotone,
+  PiListNumbersDuotone,
+  PiLockKeyDuotone,
+  PiMapPinLineDuotone,
+  PiNewspaperClippingDuotone,
+  PiNoteBlankDuotone,
+  PiPackageDuotone,
+  PiPresentationChartDuotone,
   PiPushPinDuotone,
-  PiArrowsOutLineHorizontalBold,
+  PiRocketLaunchDuotone,
+  PiScalesDuotone,
+  PiShapesDuotone,
+  PiShieldCheckDuotone,
+  PiShootingStarDuotone,
+  PiShoppingCartDuotone,
+  PiSparkleDuotone,
+  PiSquaresFourDuotone,
+  PiStairsDuotone,
+  PiStepsDuotone,
+  PiTableDuotone,
+  PiUserCircleDuotone,
+  PiUserDuotone,
+  PiUserGearDuotone,
+  PiUserPlusDuotone,
 } from 'react-icons/pi';
-import { routes } from '@/config/routes';
-import { DUMMY_ID } from '@/config/constants';
-import ProjectWriteIcon from '@core/components/icons/project-write';
-import CrmDashIcon from '@core/components/icons/crm-icon';
-import AffiliateIcon from '@core/components/icons/affiliate';
 
 // Note: do not add href in the label object, it is rendering as label
 export const menuItems = [
@@ -64,7 +68,7 @@ export const menuItems = [
   {
     name: 'File Manager',
     href: '/',
-    icon: PiFolder,
+    icon: PiFolderDuotone,
     shortcut: {
       modifiers: 'alt',
       key: '1',
@@ -145,7 +149,7 @@ export const menuItems = [
   {
     name: 'Project',
     href: routes.project.dashboard,
-    icon: ProjectWriteIcon,
+    icon: PiClipboardTextDuotone,
     shortcut: {
       modifiers: 'alt',
       key: '0',
@@ -163,7 +167,7 @@ export const menuItems = [
   {
     name: 'CRM',
     href: routes.crm.dashboard,
-    icon: CrmDashIcon,
+    icon: PiFolderUserDuotone,
     shortcut: {
       modifiers: 'alt',
       key: 'w',
@@ -172,10 +176,37 @@ export const menuItems = [
   {
     name: 'Affiliate',
     href: routes.affiliate.dashboard,
-    icon: AffiliateIcon,
+    icon: PiChartPieSliceDuotone,
     shortcut: {
       modifiers: 'alt',
       key: 'e',
+    },
+  },
+  {
+    name: 'Store Analytics',
+    href: routes.storeAnalytics.dashboard,
+    icon: PiPresentationChartDuotone,
+    shortcut: {
+      modifiers: 'alt',
+      key: 't',
+    },
+  },
+  {
+    name: 'Bidding',
+    href: routes.bidding.dashboard,
+    icon: PiScalesDuotone,
+    shortcut: {
+      modifiers: 'alt',
+      key: 'b',
+    },
+  },
+  {
+    name: 'Podcast',
+    href: routes.podcast.dashboard,
+    icon: PiApplePodcastsLogoDuotone,
+    shortcut: {
+      modifiers: 'alt',
+      key: 'p',
     },
   },
   // label start
@@ -336,7 +367,7 @@ export const menuItems = [
   {
     name: 'File Manager',
     href: routes.file.manager,
-    icon: PiFolder,
+    icon: PiFolderDuotone,
   },
   {
     name: 'Event Calendar',
@@ -445,6 +476,11 @@ export const menuItems = [
     icon: PiStepsDuotone,
   },
   {
+    name: 'Multi Step 2',
+    href: routes.multiStep2,
+    icon: PiStairsDuotone,
+  },
+  {
     name: 'Payment Checkout',
     href: routes.eCommerce.checkout,
     icon: PiCreditCardDuotone,
@@ -487,7 +523,7 @@ export const menuItems = [
   {
     name: 'Resizable',
     href: routes.tables.resizable,
-    icon: PiArrowsOutLineHorizontalBold,
+    icon: PiArrowsOutLineHorizontalDuotone,
   },
   {
     name: 'Pinning',
@@ -497,7 +533,7 @@ export const menuItems = [
   {
     name: 'Drag & Drop',
     href: routes.tables.dnd,
-    icon: PiArrowsOut,
+    icon: PiArrowsOutDuotone,
   },
 
   // label start

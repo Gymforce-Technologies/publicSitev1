@@ -139,7 +139,7 @@ export function MemberForm({ register, control, errors }: any) {
           placeholder={t("form-first-name-placeholder")}
           labelClassName="text-sm font-medium text-gray-900"
           {...register("first_name")}
-          error={t(errors?.first_name?.message!)}
+          error={errors?.first_name?.message}
           className="flex-grow"
         />
         <Input
@@ -148,7 +148,7 @@ export function MemberForm({ register, control, errors }: any) {
           placeholder={t("form-last-name-placeholder")}
           labelClassName="text-sm font-medium text-gray-900"
           {...register("last_name")}
-          error={t(errors?.last_name?.message!)}
+          error={errors?.last_name?.message!}
           className="flex-grow"
         />
       </div>
@@ -158,7 +158,7 @@ export function MemberForm({ register, control, errors }: any) {
         labelClassName="text-sm font-medium text-gray-900"
         placeholder={t("form-email-placeholder")}
         {...register("email")}
-        error={t(errors.email?.message!)}
+        error={errors.email?.message}
       />
       <Controller
         control={control}
@@ -175,7 +175,7 @@ export function MemberForm({ register, control, errors }: any) {
             value={value}
             getOptionValue={(option) => option.value}
             displayValue={(selected) => role?.find((r) => r.value === selected)?.label ?? ""}
-            error={t(errors?.role?.message as string)}
+            error={errors?.role?.message}
           />
         )}
       />
@@ -196,7 +196,7 @@ export function MemberForm({ register, control, errors }: any) {
             displayValue={(selected) =>
               countries?.find((con) => con.value === selected)?.label ?? ""
             }
-            error={t(errors?.country?.message as string)}
+            error={errors?.country?.message}
           />
         )}
       />
@@ -214,7 +214,7 @@ export function MemberForm({ register, control, errors }: any) {
             value={value}
             getOptionValue={(option) => option.value}
             displayValue={(selected) => teams?.find((t) => t.value === selected)?.label ?? ""}
-            error={t(errors?.teams?.message as string)}
+            error={errors?.teams?.message}
           />
         )}
       />

@@ -36,7 +36,7 @@ export default function ImportButton({
               btnLabel={modalBtnLabel}
             />
           ),
-          customSize: "480px",
+          customSize: 480,
         })
       }
       className={cn("w-full @lg:w-auto", className)}

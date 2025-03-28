@@ -20,16 +20,16 @@ export default function PageHeader({
   const t = useTranslations("common");
 
   return (
-    <header className={cn(" @container xs:-mt-2 lg:mb-2", className)}>
+    <header className={cn("mb-6 @container xs:-mt-2 lg:mb-7", className)}>
       <div className="flex flex-col @lg:flex-row @lg:items-center @lg:justify-between">
         <div>
           <Title
             as="h2"
             className="mb-2 text-[22px] lg:text-2xl 4xl:text-[26px]"
           >
-            {/* {t(title!)} */}
-            {title}
+            {t(title!)}
           </Title>
+
           <Breadcrumb
             separator=""
             separatorVariant="circle"
@@ -40,7 +40,7 @@ export default function PageHeader({
                 key={item.name}
                 {...(item?.href && { href: item?.href })}
               >
-                {(item.name)}
+                {t(item.name)}
               </Breadcrumb.Item>
             ))}
           </Breadcrumb>

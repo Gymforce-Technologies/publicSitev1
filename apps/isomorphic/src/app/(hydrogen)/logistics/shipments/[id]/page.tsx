@@ -1,6 +1,6 @@
 import { PiPrinterBold, PiDownloadSimpleBold } from 'react-icons/pi';
 import { routes } from '@/config/routes';
-import { Button } from 'rizzui';
+import { Button } from 'rizzui/button';
 import PageHeader from '@/app/shared/page-header';
 import Addresses from '@/app/shared/logistics/shipment/details/addresses';
 import InvoiceDetails from '@/app/shared/logistics/shipment/details/invoice-details';

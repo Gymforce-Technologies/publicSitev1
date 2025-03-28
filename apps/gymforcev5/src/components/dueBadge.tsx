@@ -6,7 +6,7 @@ type DueBadgeProps = {
   symbol?: string | null | undefined;
 };
 
-export default function getDueBadge({ dueAmount, symbol }: DueBadgeProps): JSX.Element {
+export default function getDueBadge({ dueAmount, symbol }: DueBadgeProps) {
   if (dueAmount === null || dueAmount === undefined) {
     return (
       <div className="flex items-center flex-nowrap">

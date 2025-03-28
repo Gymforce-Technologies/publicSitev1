@@ -1,22 +1,21 @@
 'use client';
 
-import {
-  Bar,
-  XAxis,
-  YAxis,
-  Tooltip,
-  CartesianGrid,
-  ComposedChart,
-  ResponsiveContainer,
-  Cell,
-  LabelList,
-} from 'recharts';
 import WidgetCard from '@core/components/cards/widget-card';
 import { CustomTooltip } from '@core/components/charts/custom-tooltip';
 import { CustomYAxisTick } from '@core/components/charts/custom-yaxis-tick';
-import SimpleBar from '@core/ui/simplebar';
-import { Title } from 'rizzui';
 import cn from '@core/utils/class-names';
+import {
+  Bar,
+  CartesianGrid,
+  Cell,
+  ComposedChart,
+  LabelList,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from 'recharts';
+import { Title } from 'rizzui';
 
 const data = [
   {
@@ -88,7 +87,7 @@ export default function MonthlySalesGrowth({
         </div>
       }
     >
-      <SimpleBar className="-mb-3 pb-3">
+      <div className="custom-scrollbar overflow-x-auto scroll-smooth -mb-3 pb-3">
         <div className="h-[28rem] w-full pt-6 @lg:pt-8">
           <ResponsiveContainer width="100%" height="100%" minWidth={900}>
             <ComposedChart
@@ -158,7 +157,7 @@ export default function MonthlySalesGrowth({
             </ComposedChart>
           </ResponsiveContainer>
         </div>
-      </SimpleBar>
+      </div>
     </WidgetCard>
   );
 }

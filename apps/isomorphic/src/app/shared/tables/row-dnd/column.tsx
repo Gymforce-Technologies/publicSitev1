@@ -1,3 +1,5 @@
+'use client';
+
 import { routes } from '@/config/routes';
 import { RowDragHandleCell } from '@core/components/table/custom';
 import AvatarCard from '@core/ui/avatar-card';

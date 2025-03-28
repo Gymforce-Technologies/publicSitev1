@@ -1,4 +1,4 @@
-import { AdvancedRadio, type AdvancedRadioProps } from 'rizzui';
+import { AdvancedRadio, type AdvancedRadioProps } from 'rizzui/advanced-radio';
 import cn from '@core/utils/class-names';
 
 export default function RadioBox({

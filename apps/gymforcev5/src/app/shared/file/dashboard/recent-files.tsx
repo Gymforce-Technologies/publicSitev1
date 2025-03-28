@@ -1,11 +1,10 @@
 "use client";
 
-import { Link } from "@/i18n/routing";
-import { Title } from "rizzui";
-import SimpleBar from "@core/ui/simplebar";
-import FolderIcon from "@core/components/icons/folder-solid";
 import { Card } from "@/app/shared/file/manager/file-grid/grid";
+import { Link } from "@/i18n/routing";
+import FolderIcon from "@core/components/icons/folder-solid";
 import { useTranslations } from "next-intl";
+import { Title } from "rizzui";
 
 const recentFiles = [
   {
@@ -52,10 +51,7 @@ export default function RecentFiles({ className }: { className?: string }) {
   return (
     <div className={className}>
       <div className="col-span-full mb-3 flex items-center justify-between 2xl:mb-5">
-        <Title
-          as="h3"
-          className="text-lg font-semibold xl:text-xl"
-        >
+        <Title as="h3" className="text-lg font-semibold xl:text-xl">
           {t("text-recent-files")}
         </Title>
         <Link
@@ -66,7 +62,7 @@ export default function RecentFiles({ className }: { className?: string }) {
         </Link>
       </div>
 
-      <SimpleBar>
+      <div className="custom-scrollbar overflow-x-auto scroll-smooth">
         <div className="grid grid-flow-col gap-5">
           {recentFiles.map((item) => (
             <Card
@@ -77,7 +73,7 @@ export default function RecentFiles({ className }: { className?: string }) {
             />
           ))}
         </div>
-      </SimpleBar>
+      </div>
     </div>
   );
 }

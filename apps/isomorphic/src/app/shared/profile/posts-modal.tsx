@@ -1,19 +1,20 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import { useState } from 'react';
-import ReactPlayer from 'react-player/lazy';
-import { Swiper, SwiperSlide, Pagination } from '@core/ui/carousel/carousel';
-import { Title, Text, Button, Avatar, Textarea } from 'rizzui';
-import SimpleBar from '@core/ui/simplebar';
+'use client';
+
+import { Pagination, Swiper, SwiperSlide } from '@core/ui/carousel/carousel';
 import NextBtn from '@core/ui/carousel/next-btn';
 import PrevBtn from '@core/ui/carousel/prev-btn';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useState } from 'react';
 import {
   PiChatTextBold,
-  PiXBold,
   PiHeartBold,
-  PiUsers,
   PiShareFat,
+  PiUsers,
+  PiXBold,
 } from 'react-icons/pi';
+import ReactPlayer from 'react-player/lazy';
+import { Avatar, Button, Text, Textarea, Title } from 'rizzui';
 
 export type CommentPropsType = {
   commentData: {
@@ -51,11 +52,11 @@ export default function PostsModal({ data, onClose }: any) {
 
       <div className="flex w-full flex-col justify-between p-5 lg:col-span-5 xl:p-6 2xl:p-8">
         <ModalCardText />
-        <SimpleBar className="lg:h-[280px]">
+        <div className="custom-scrollbar overflow-y-auto scroll-smooth lg:h-[280px]">
           {data.commentData.map((item: any) => (
             <ModalCardComment key={item.user} commentData={item} />
           ))}
-        </SimpleBar>
+        </div>
         <ModalCommentBox />
       </div>
     </div>

@@ -6,10 +6,6 @@ export const fileSchema = z.object({
   url: z.string(),
   size: z.number(),
 });
-export const validateEmailOld = z
-  .string()
-  .min(1, { message: messages.emailIsRequired })
-  .email({ message: messages.invalidEmail });
 
 export type FileSchema = z.infer<typeof fileSchema>;
 

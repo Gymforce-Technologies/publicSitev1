@@ -8,9 +8,9 @@ import { MdArrowForwardIos, MdOutlineDateRange } from "react-icons/md";
 import ClassBook from "./ClassBook";
 import dayjs from "dayjs";
 import { DatePicker } from "@core/ui/datepicker";
-import { FaClipboardList } from "react-icons/fa6";
+import { FaClipboardList, FaX } from "react-icons/fa6";
 import { AxiosPublic } from "@/app/[locale]/auth/AxiosPrivate";
-import { XIcon } from "lucide-react";
+// import { XIcon } from "lucide-react";
 
 export default function PublicBooking({
   gymId,
@@ -102,7 +102,7 @@ export default function PublicBooking({
           <Title as="h4" className="mb-4">
             Book a Session
           </Title>
-          <XIcon
+          <FaX
             className="cursor-pointer text-primary"
             onClick={() => setIsDrawerOpen(false)}
           />

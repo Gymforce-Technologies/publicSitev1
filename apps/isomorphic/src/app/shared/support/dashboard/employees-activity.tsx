@@ -1,20 +1,19 @@
 'use client';
 
-import { useState } from 'react';
 import WidgetCard from '@core/components/cards/widget-card';
 import { CustomTooltip } from '@core/components/charts/custom-tooltip';
 import { CustomYAxisTick } from '@core/components/charts/custom-yaxis-tick';
+import DropdownAction from '@core/components/charts/dropdown-action';
+import { useState } from 'react';
 import {
   Bar,
-  XAxis,
-  YAxis,
-  Tooltip,
   CartesianGrid,
   ComposedChart,
   ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
 } from 'recharts';
-import SimpleBar from '@core/ui/simplebar';
-import DropdownAction from '@core/components/charts/dropdown-action';
 
 const dailyData = [
   {
@@ -143,7 +142,7 @@ export default function EmployeesActivity({
       }
       className={className}
     >
-      <SimpleBar>
+      <div className="custom-scrollbar overflow-x-auto scroll-smooth">
         <div className="h-96 w-full @sm:pt-3 @lg:pt-8 2xl:h-80 3xl:h-[26rem]">
           <ResponsiveContainer width="100%" height="100%" minWidth="700px">
             <ComposedChart
@@ -179,7 +178,7 @@ export default function EmployeesActivity({
             </ComposedChart>
           </ResponsiveContainer>
         </div>
-      </SimpleBar>
+      </div>
     </WidgetCard>
   );
 }

@@ -10,6 +10,7 @@ import LockExclamationIcon from '@core/components/icons/lock-exclamation';
 import LockWildCardIcon from '@core/components/icons/lock-wild-card';
 import DicesIcon from '@core/components/icons/dices';
 import GreenLeafIcon from '@core/components/icons/green-leaf';
+import BiddingIcon from '@core/components/icons/bidding';
 import PieChartCurrencyIcon from '@core/components/icons/pie-chart-currency';
 import MapMarkerWithPathIcon from '@core/components/icons/map-marker-with-path';
 import UserSettingsIcon from '@core/components/icons/user-settings';
@@ -49,6 +50,8 @@ import ProjectDashIcon from '@core/components/icons/project-dash';
 import SocialMediaDashIcon from '@core/components/icons/social-media-dash';
 import CrmDashTwoIcon from '@core/components/icons/crm-icon-two';
 import AffiliateColoredIcon from '@core/components/icons/affiliate-colored';
+import StoreAnalysisColoredIcon from '@core/components/icons/store-analysis-colored';
+import PodcastIcon from '@core/components/icons/podcast';
 
 export const lithiumMenuIcons = {
   FilesIcon,
@@ -102,6 +105,9 @@ export const lithiumMenuIcons = {
   SocialMediaDashIcon,
   CrmDashTwoIcon,
   AffiliateColoredIcon,
+  StoreAnalysisColoredIcon,
+  BiddingIcon,
+  PodcastIcon,
 };
 
 export type LithiumMenuIconType = keyof typeof lithiumMenuIcons;

@@ -4,7 +4,6 @@ import { projectRecentActivitiesData } from '@/data/project-dashboard';
 import WidgetCard from '@core/components/cards/widget-card';
 import cn from '@core/utils/class-names';
 import { Box, Flex, Tab, Text } from 'rizzui';
-import SimpleBar from 'simplebar-react';
 
 export default function RecentActivities({
   className,
@@ -23,14 +22,14 @@ export default function RecentActivities({
         </Tab.List>
         <Tab.Panels>
           <Tab.Panel>
-            <SimpleBar className="h-[505px] @3xl/pd:h-[700px] @7xl/pd:h-[380px]">
+            <div className="custom-scrollbar overflow-y-auto scroll-smooth h-[505px] @3xl/pd:h-[700px] @7xl/pd:h-[380px]">
               <ActivityCard />
-            </SimpleBar>
+            </div>
           </Tab.Panel>
           <Tab.Panel>
-            <SimpleBar className="h-[505px] @3xl/pd:h-[700px] @7xl/pd:h-[380px]">
+            <div className="custom-scrollbar overflow-y-auto scroll-smooth h-[505px] @3xl/pd:h-[700px] @7xl/pd:h-[380px]">
               <ActivityCard />
-            </SimpleBar>
+            </div>
           </Tab.Panel>
         </Tab.Panels>
       </Tab>

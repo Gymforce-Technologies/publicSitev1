@@ -1,18 +1,20 @@
 "use client";
 
-import { Collapse } from "rizzui";
-import cn from "@core/utils/class-names";
-import { useBerylliumSidebars } from "@/layouts/beryllium/beryllium-utils";
-import { useAtomValue } from "jotai";
-import { ItemType, berylliumMenuItemAtom } from "@/layouts/beryllium/beryllium-fixed-menu-items";
-import { Fragment } from "react";
 import { Link } from "@/i18n/routing";
-import { usePathname } from "next/navigation";
-import { PiCaretDownBold } from "react-icons/pi";
-import SimpleBar from "@core/ui/simplebar";
+import {
+  ItemType,
+  berylliumMenuItemAtom,
+} from "@/layouts/beryllium/beryllium-fixed-menu-items";
+import { useBerylliumSidebars } from "@/layouts/beryllium/beryllium-utils";
 import StatusBadge from "@core/components/get-status-badge";
-import { useColorPresetName } from "../settings/use-theme-color";
+import cn from "@core/utils/class-names";
+import { useAtomValue } from "jotai";
 import { useLocale, useTranslations } from "next-intl";
+import { usePathname } from "next/navigation";
+import { Fragment } from "react";
+import { PiCaretDownBold } from "react-icons/pi";
+import { Collapse } from "rizzui";
+import { useColorPresetName } from "../settings/use-theme-color";
 
 function LinkMenuItem({ item }: { item: ItemType }) {
   const t = useTranslations("layout");
@@ -54,7 +56,9 @@ function CollapsibleMenuItem({ item }: { item: ItemType }) {
     (dropdownItem) => dropdownItem.href === pathname
   );
   const isDropdownOpen = Boolean(pathnameExistInDropdowns?.length);
-  const isActive = item.subMenuItems?.some((subMenuItem) => subMenuItem.href === pathname);
+  const isActive = item.subMenuItems?.some(
+    (subMenuItem) => subMenuItem.href === pathname
+  );
 
   const Icon = item.icon;
 
@@ -85,7 +89,8 @@ function CollapsibleMenuItem({ item }: { item: ItemType }) {
             className={cn(
               "h-3.5 w-3.5 -rotate-90 text-gray-500 transition-transform duration-200 rtl:rotate-90",
               open && "rotate-0 rtl:rotate-0",
-              (isActive || isDropdownOpen) && "text-primary dark:text-primary-lighter"
+              (isActive || isDropdownOpen) &&
+                "text-primary dark:text-primary-lighter"
             )}
           />
         </div>
@@ -100,19 +105,25 @@ function CollapsibleMenuItem({ item }: { item: ItemType }) {
             key={subMenuItem?.name + index}
             className={cn(
               "mx-3.5 mb-0.5 flex items-center justify-between rounded-md px-3.5 py-2 font-medium capitalize duration-200 last-of-type:mb-1 lg:last-of-type:mb-2 2xl:mx-5",
-              isChildActive ? "text-primary" : "text-gray-500 hover:text-primary"
+              isChildActive
+                ? "text-primary"
+                : "text-gray-500 hover:text-primary"
             )}
           >
             <div className="flex items-center truncate">
               <span
                 className={cn(
                   "me-[18px] ms-1 inline-flex h-1 w-1 rounded-full bg-current transition-all duration-200",
-                  isChildActive ? "bg-primary text-primary ring-[1px] ring-primary" : "opacity-40"
+                  isChildActive
+                    ? "bg-primary text-primary ring-[1px] ring-primary"
+                    : "opacity-40"
                 )}
               />
               <span className="truncate">{t(subMenuItem?.name)}</span>
             </div>
-            {subMenuItem?.badge?.length ? <StatusBadge status={subMenuItem?.badge} /> : null}
+            {subMenuItem?.badge?.length ? (
+              <StatusBadge status={subMenuItem?.badge} />
+            ) : null}
           </Link>
         );
       })}
@@ -132,18 +143,22 @@ export default function BerylliumLeftSidebarExpandable() {
         !!expandedLeft && "w-[294px]"
       )}
     >
-      <SimpleBar className="h-[calc(100vh_-_100px)] min-w-[294px] pe-2.5">
+      <div className="custom-scrollbar overflow-y-auto scroll-smooth h-[calc(100vh_-_100px)] min-w-[294px] pe-2.5">
         <p className="mb-3 font-lexend text-xs font-normal uppercase tracking-widest text-gray-500">
           {t(selectedMenu.title)}
         </p>
         <div className="flex flex-col gap-2">
           {selectedMenu.menuItems.map((menu) => (
             <Fragment key={menu.name}>
-              {menu.href ? <LinkMenuItem item={menu} /> : <CollapsibleMenuItem item={menu} />}
+              {menu.href ? (
+                <LinkMenuItem item={menu} />
+              ) : (
+                <CollapsibleMenuItem item={menu} />
+              )}
             </Fragment>
           ))}
         </div>
-      </SimpleBar>
+      </div>
     </div>
   );
 }

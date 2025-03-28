@@ -1,3 +1,5 @@
+'use client';
+
 import { Select, type SelectProps, type SelectOption } from "rizzui";
 import cn from "@core/utils/class-names";
 

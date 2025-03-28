@@ -7,121 +7,152 @@ import { HeaderCell } from "@/app/shared/table";
 import { Checkbox, Title, Text, Button, Badge } from "rizzui";
 import { exportToCSV } from "@core/utils/export-to-csv";
 
-// Define the props for the getColumns function
-interface GetColumnsProps {
-  sortConfig: any;
-  onHeaderCellClick: (key: string) => void;
-  demographics: any;
+const statusColors: any = {
+  "In Progress": "info",
+  Paid: "success",
+  Canceled: "secondary",
+  "On hold": "danger",
+};
+
+function handleDownloadRowData(row: { [key: string]: any }) {
+  exportToCSV([row], "Title,Amount,Date,Status,Shared", `billing_history_${row.id}`);
 }
 
-// Define the structure of a column
-interface Column {
-  title: React.ReactNode;
-  dataIndex: keyof any;
-  key: string;
-  width: number;
-  render?: (value: any, record: any) => React.ReactNode;
-  onHeaderCell?: () => { onClick: () => void };
-}
-
-const statusColors: { [key: string]: string } = {
-  Active: "success",
-  Cancelled: "danger",
-  Pending: "warning",
-  Expired: "danger",
-  Upcoming: "secondary",
+type Columns = {
+  data: any[];
+  sortConfig?: any;
+  handleSelectAll: any;
+  checkedItems: string[];
+  onHeaderCellClick: (value: string) => void;
+  onChecked?: (id: string) => void;
+  t?: (key: string) => string | undefined;
 };
 
 export const getColumns = ({
+  data,
   sortConfig,
+  checkedItems,
   onHeaderCellClick,
-  demographics,
-}: GetColumnsProps): Column[] => [
+  handleSelectAll,
+  onChecked,
+  t,
+}: Columns) => [
+  {
+    title: (
+      <div className="ps-2">
+        <Checkbox
+          title={"Select All"}
+          onChange={handleSelectAll}
+          checked={checkedItems.length === data.length}
+          className="cursor-pointer"
+        />
+      </div>
+    ),
+    dataIndex: "checked",
+    key: "checked",
+    width: 30,
+    render: (_: any, row: any) => (
+      <div className="inline-flex ps-2">
+        <Checkbox
+          className="cursor-pointer"
+          checked={checkedItems.includes(row.id)}
+          {...(onChecked && { onChange: () => onChecked(row.id) })}
+        />
+      </div>
+    ),
+  },
+  {
+    title: <HeaderCell title="table-text-name" />,
+    dataIndex: "title",
+    key: "title",
+    width: 420,
+    render: (_: any, row: any) => {
+      return (
+        <Title
+          as="h6"
+          className="mb-0.5 !text-sm font-medium text-gray-700"
+        >
+          {row.title} - {dayjs(row.date).format("MMM YYYY")}
+        </Title>
+      );
+    },
+  },
+  {
+    title: <HeaderCell title="table-text-amount" />,
+    dataIndex: "amount",
+    key: "amount",
+    width: 130,
+    render: (value: any) => <span className="text-gray-700">{value}</span>,
+  },
+  {
+    title: <HeaderCell title="table-text-date" />,
+    dataIndex: "date",
+    key: "date",
+    width: 130,
+    render: (value: Date) => (
+      <Text className="mb-1 text-gray-700">{dayjs(value).format("DD MMM YYYY")}</Text>
+    ),
+  },
   {
     title: (
       <HeaderCell
-        title="Status"
+        title="table-text-status"
         sortable
-        ascending={
-          sortConfig?.direction === "asc" && sortConfig?.key === "status"
-        }
+        ascending={sortConfig?.direction === "asc" && sortConfig?.key === "dueDate"}
       />
     ),
+    onHeaderCell: () => onHeaderCellClick("status"),
     dataIndex: "status",
     key: "status",
-    width: 120,
-    onHeaderCell: () => ({
-      onClick: () => onHeaderCellClick("status"),
-    }),
-    render: (status: string) => (
+    width: 200,
+    render: (status: any) => (
       <Badge
         variant="flat"
+        rounded="pill"
         className="w-[90px] font-medium"
-        //@ts-ignore
-        color={statusColors[status] || "gray"}
+        color={statusColors[status]}
       >
         {status}
       </Badge>
     ),
   },
   {
-    title: <HeaderCell title="Plan Name" />,
-    dataIndex: "plan_details",
-    key: "plan_details",
-    width: 250,
-    render: (plan_details: any) => (
-      <Title
-        as="h6"
-        className="mb-0.5 !text-sm font-medium text-gray-700 "
+    title: <HeaderCell title="table-text-user-on-plan" />,
+    dataIndex: "shared",
+    key: "shared",
+    width: 200,
+    render: (_: any, row: any) => {
+      return (
+        <div className="flex items-center justify-start">
+          {row.shared.map((avatar: any, index: number) => {
+            return (
+              <Image
+                key={`fileavatar-${index}`}
+                src={avatar}
+                width={26}
+                height={26}
+                className="-me-2 aspect-square rounded-full border-2 border-gray-0"
+                alt="File Avatar"
+              />
+            );
+          })}
+        </div>
+      );
+    },
+  },
+  {
+    title: <></>,
+    dataIndex: "action",
+    key: "action",
+    width: 100,
+    render: (_: string, row: any) => (
+      <Button
+        variant="text"
+        onClick={() => handleDownloadRowData(row)}
+        className="flex w-full items-center justify-start px-4 py-2.5 focus:outline-none"
       >
-        {plan_details?.name}
-      </Title>
-    ),
-  },
-  {
-    title: <HeaderCell title="Duration" />,
-    dataIndex: "plan_details",
-    key: "plan_details",
-    width: 120,
-    render: (plan_details: any) => (
-      <Text className="text-gray-700 ">
-        {plan_details?.duration_months} months
-      </Text>
-    ),
-  },
-  {
-    title: <HeaderCell title="Price" />,
-    dataIndex: "plan_details",
-    key: "plan_details",
-    width: 120,
-    render: (plan_details: any) => (
-      <Text className="text-gray-700 ">
-        {(demographics?.currency_symbol || "") +
-          " " +
-          parseFloat(plan_details?.price).toFixed(2)}
-      </Text>
-    ),
-  },
-  {
-    title: <HeaderCell title="Start Date" />,
-    dataIndex: "start_date",
-    key: "start_date",
-    width: 150,
-    render: (value: string) => (
-      <Text className="text-gray-900 ">
-        {dayjs(value).format("MMM DD, YYYY")}
-      </Text>
-    ),
-  },
-  {
-    title: <HeaderCell title="End Date" />,
-    dataIndex: "end_date",
-    key: "end_date",
-    width: 150,
-    render: (value: string) => (
-      <Text className="text-gray-900 ">
-        {dayjs(value).format("MMM DD, YYYY")}
-      </Text>
+        <PiCloudArrowDown className="h-6 w-6 text-gray-500" />
+      </Button>
     ),
   },
 ];

@@ -22,7 +22,10 @@ export function useBoronKbdShortcuts() {
   const router = useRouter();
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
-      if ((event.metaKey || event.ctrlKey) && allowedNumKeys.includes(event.key)) {
+      if (
+        (event.metaKey || event.ctrlKey) &&
+        allowedNumKeys.includes(event.key)
+      ) {
         event.preventDefault();
         router.push(navigations[event.key as NavigationKey]);
       }

@@ -1,25 +1,24 @@
 'use client';
 
 import {
-  Bar,
-  XAxis,
-  YAxis,
-  Tooltip,
-  CartesianGrid,
-  ResponsiveContainer,
-  BarChart,
-} from 'recharts';
-import { Box, Flex } from 'rizzui';
-import cn from '@core/utils/class-names';
-import SimpleBar from '@core/ui/simplebar';
-import WidgetCard from '@core/components/cards/widget-card';
-import { CustomTooltip } from '@core/components/charts/custom-tooltip';
-import { CustomYAxisTick } from '@core/components/charts/custom-yaxis-tick';
-import {
   ACTIVITIES_COLORS,
   activitiesData,
   activitiesStatus,
 } from '@/data/project-dashboard';
+import WidgetCard from '@core/components/cards/widget-card';
+import { CustomTooltip } from '@core/components/charts/custom-tooltip';
+import { CustomYAxisTick } from '@core/components/charts/custom-yaxis-tick';
+import cn from '@core/utils/class-names';
+import {
+  Bar,
+  BarChart,
+  CartesianGrid,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from 'recharts';
+import { Box, Flex } from 'rizzui';
 
 export default function ProjectActivities({
   className,
@@ -33,7 +32,7 @@ export default function ProjectActivities({
       className={cn('@container dark:bg-gray-100/50', className)}
       action={<Legend />}
     >
-      <SimpleBar>
+      <div className='custom-scrollbar overflow-x-auto scroll-smooth'>
         <Box className="h-[24rem] w-full pt-6 @lg:pt-8">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart
@@ -88,7 +87,7 @@ export default function ProjectActivities({
             </BarChart>
           </ResponsiveContainer>
         </Box>
-      </SimpleBar>
+      </div>
     </WidgetCard>
   );
 }

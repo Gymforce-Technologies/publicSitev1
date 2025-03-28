@@ -1,9 +1,9 @@
 import { Dispatch, SetStateAction, useState, useEffect } from "react";
 import { Button, Input, Text, Drawer, Alert, Title } from "rizzui";
 import axios from "axios";
-import { XIcon } from "lucide-react";
 import { formatDate } from "@core/utils/format-date";
 import { TbClockHour4Filled } from "react-icons/tb";
+import { FaX } from "react-icons/fa6";
 
 type Data = {
   class_id: number;
@@ -97,7 +97,7 @@ export default function ClassBook({
     >
       <div className="space-y-4">
         <div className="w-full flex items-center justify-end">
-          <XIcon
+          <FaX
             className="cursor-pointer text-primary"
             onClick={() => setIsOpen(false)}
           />

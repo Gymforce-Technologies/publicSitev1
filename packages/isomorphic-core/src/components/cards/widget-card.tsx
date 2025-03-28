@@ -1,6 +1,5 @@
-import { Title } from "rizzui";
+import { Title } from "rizzui/typography";
 import cn from "../../utils/class-names";
-import { ForwardedRef, forwardRef } from "react";
 
 const widgetCardClasses = {
   base: "border border-muted bg-gray-0 p-5 dark:bg-gray-50 lg:p-7",
@@ -22,29 +21,37 @@ type WidgetCardTypes = {
   actionClassName?: string;
   descriptionClassName?: string;
   className?: string;
+  ref?: React.Ref<HTMLDivElement>;
 };
 
-function WidgetCard(
-  {
-    title,
-    action,
-    description,
-    rounded = "DEFAULT",
-    className,
-    headerClassName,
-    actionClassName,
-    titleClassName,
-    descriptionClassName,
-    children,
-  }: React.PropsWithChildren<WidgetCardTypes>,
-  ref: ForwardedRef<HTMLDivElement>
-) {
+function WidgetCard({
+  title,
+  action,
+  description,
+  rounded = "DEFAULT",
+  className,
+  headerClassName,
+  actionClassName,
+  titleClassName,
+  descriptionClassName,
+  children,
+  ref,
+}: React.PropsWithChildren<WidgetCardTypes>) {
   return (
     <div
-      className={cn(widgetCardClasses.base, widgetCardClasses.rounded[rounded], className)}
+      className={cn(
+        widgetCardClasses.base,
+        widgetCardClasses.rounded[rounded],
+        className
+      )}
       ref={ref}
     >
-      <div className={cn(action && "flex items-start justify-between", headerClassName)}>
+      <div
+        className={cn(
+          action && "flex items-start justify-between",
+          headerClassName
+        )}
+      >
         <div>
           <Title
             as="h3"
@@ -52,7 +59,9 @@ function WidgetCard(
           >
             {title}
           </Title>
-          {description && <div className={descriptionClassName}>{description}</div>}
+          {description && (
+            <div className={descriptionClassName}>{description}</div>
+          )}
         </div>
         {action && <div className={cn("ps-2", actionClassName)}>{action}</div>}
       </div>
@@ -61,5 +70,5 @@ function WidgetCard(
   );
 }
 
-export default forwardRef(WidgetCard);
+export default WidgetCard;
 WidgetCard.displayName = "WidgetCard";

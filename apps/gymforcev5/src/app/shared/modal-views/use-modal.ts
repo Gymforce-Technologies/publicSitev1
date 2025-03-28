@@ -6,14 +6,14 @@ import { ModalSize } from "rizzui";
 type ModalTypes = {
   view: React.ReactNode;
   isOpen: boolean;
-  customSize?: string;
+  customSize?: number;
   size?: ModalSize;
 };
 
 const modalAtom = atom<ModalTypes>({
   isOpen: false,
   view: null,
-  customSize: "320px",
+  customSize: 320,
   size: "sm",
 });
 
@@ -27,7 +27,7 @@ export function useModal() {
     size,
   }: {
     view: React.ReactNode;
-    customSize?: string;
+    customSize?: number;
     size?: ModalSize;
   }) => {
     setState({

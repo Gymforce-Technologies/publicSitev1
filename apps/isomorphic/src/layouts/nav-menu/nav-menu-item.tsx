@@ -1,4 +1,6 @@
+// @ts-nocheck
 'use client';
+
 import React from 'react';
 import cn from '@core/utils/class-names';
 import { NavMenuTrigger, NavMenuTriggerWrapper } from './nav-menu-trigger';

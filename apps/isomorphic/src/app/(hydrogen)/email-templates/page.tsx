@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Button } from 'rizzui';
+import { Button } from 'rizzui/button';
 import PageHeader from '@/app/shared/page-header';
 import { metaObject } from '@/config/site.config';
 import EmailTemplatesGrid from '@/app/shared/email-templates';

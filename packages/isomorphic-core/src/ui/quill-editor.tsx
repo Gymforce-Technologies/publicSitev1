@@ -1,9 +1,11 @@
-import ReactQuill, { type ReactQuillProps } from "react-quill";
+"use client";
+
+import ReactQuill from "react-quill-new";
 import { FieldError } from "rizzui";
 import cn from "../utils/class-names";
-import "react-quill/dist/quill.snow.css";
+import "react-quill-new/dist/quill.snow.css";
 
-interface QuillEditorProps extends ReactQuillProps {
+interface QuillEditorProps extends ReactQuill.ReactQuillProps {
   error?: string;
   label?: React.ReactNode;
   className?: string;
@@ -61,8 +63,11 @@ export default function QuillEditor({
 
   return (
     <div className={cn(className)}>
-      {label && <label className={cn("mb-1.5 block", labelClassName)}>{label}</label>}
+      {label && (
+        <label className={cn("mb-1.5 block", labelClassName)}>{label}</label>
+      )}
       <ReactQuill
+        theme="snow"
         modules={quillModules}
         // formats={quillFormats}
         className={cn(
@@ -73,11 +78,7 @@ export default function QuillEditor({
         {...props}
       />
       {error && (
-        <FieldError
-          size="md"
-          error={error}
-          className={errorClassName}
-        />
+        <FieldError size="md" error={error} className={errorClassName} />
       )}
     </div>
   );

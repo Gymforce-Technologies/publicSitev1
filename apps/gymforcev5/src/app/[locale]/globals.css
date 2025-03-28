@@ -326,7 +326,7 @@
   @apply bg-gray-300 dark:bg-gray-300;
 }
 
-.custom-scrollbar-x::-webkit-scrollbar,
+.custom-scrollbar::-webkit-scrollbar,
 .rc-table-content::-webkit-scrollbar,
 .rc-table-fixed-header .rc-table-body::-webkit-scrollbar {
   @apply h-1.5;
@@ -1095,7 +1095,7 @@ td.rc-table-cell-fix-right {
 
 input::placeholder,
 textarea::placeholder {
-  @apply dark:!text-gray-400;
+  @apply dark:!text-gray-300;
 }
 
 /* ................................................... */
@@ -1378,9 +1378,9 @@ div[style="z-index: 1000001;"],
 .react-calendar__tile--now {
   @apply !text-gray-0;
 }
-/* .react-calendar__month-view__days__day--weekend {
+.react-calendar__month-view__days__day--weekend {
   @apply !text-red-dark;
-} */
+}
 
 /* job dashboard calender style  */
 .job-schedule-calendar {

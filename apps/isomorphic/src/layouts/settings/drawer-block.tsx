@@ -1,4 +1,4 @@
-import { Title } from 'rizzui';
+import { Title } from 'rizzui/typography';
 import cn from '@core/utils/class-names';
 
 export default function DrawerBlock({

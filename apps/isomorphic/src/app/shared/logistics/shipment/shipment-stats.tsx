@@ -1,13 +1,12 @@
 'use client';
 
-import cn from '@core/utils/class-names';
-import { toCurrency } from '@core/utils/to-currency';
+import CargoPallet from '@core/components/icons/cargo-pallet';
+import Containers from '@core/components/icons/containers';
+import MoneyInHand from '@core/components/icons/money-in-hand';
 import ShipWithContainer from '@core/components/icons/ship-with-container';
 import ShippingBox from '@core/components/icons/shipping-box';
-import CargoPallet from '@core/components/icons/cargo-pallet';
-import MoneyInHand from '@core/components/icons/money-in-hand';
-import Containers from '@core/components/icons/containers';
-import SimpleBar from '@core/ui/simplebar';
+import cn from '@core/utils/class-names';
+import { toCurrency } from '@core/utils/to-currency';
 
 type StatType = {
   id: number;
@@ -55,13 +54,13 @@ interface IndexProps {
 
 export default function ShipmentStats({ className }: IndexProps) {
   return (
-    <SimpleBar>
+    <div className='custom-scrollbar overflow-x-auto scroll-smooth'>
       <div className="grid grid-flow-col gap-5">
         {data.map((item) => (
           <ShipmentStat key={item.id} {...item} />
         ))}
       </div>
-    </SimpleBar>
+    </div>
   );
 }
 

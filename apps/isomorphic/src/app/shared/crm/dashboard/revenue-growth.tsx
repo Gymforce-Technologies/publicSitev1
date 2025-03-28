@@ -1,21 +1,20 @@
 'use client';
 
+import WidgetCard from '@core/components/cards/widget-card';
+import { CustomTooltip } from '@core/components/charts/custom-tooltip';
+import { useMedia } from '@core/hooks/use-media';
+import { DatePicker } from '@core/ui/datepicker';
+import { useState } from 'react';
+import { PiArrowCircleUpRight, PiCaretDoubleUpDuotone } from 'react-icons/pi';
 import {
   Area,
-  XAxis,
-  Tooltip,
   AreaChart,
   CartesianGrid,
   ResponsiveContainer,
+  Tooltip,
+  XAxis,
 } from 'recharts';
-import { useState } from 'react';
-import SimpleBar from '@core/ui/simplebar';
-import { useMedia } from '@core/hooks/use-media';
-import { Title, Box, Text, Badge } from 'rizzui';
-import { DatePicker } from '@core/ui/datepicker';
-import WidgetCard from '@core/components/cards/widget-card';
-import { CustomTooltip } from '@core/components/charts/custom-tooltip';
-import { PiArrowCircleUpRight, PiCaretDoubleUpDuotone } from 'react-icons/pi';
+import { Badge, Box, Text, Title } from 'rizzui';
 
 type DataType = {
   name: string;
@@ -117,7 +116,7 @@ export default function RevenueGrowth({ className }: { className?: string }) {
         </Box>
 
         <Box className="@4xl:col-span-8 @7xl:col-span-9">
-          <SimpleBar>
+          <div className='custom-scrollbar overflow-x-auto scroll-smooth'>
             <Box className="h-72 w-full @4xl:h-60 @7xl:h-64">
               <ResponsiveContainer
                 width="100%"
@@ -171,7 +170,7 @@ export default function RevenueGrowth({ className }: { className?: string }) {
                 </AreaChart>
               </ResponsiveContainer>
             </Box>
-          </SimpleBar>
+          </div>
         </Box>
       </Box>
     </WidgetCard>

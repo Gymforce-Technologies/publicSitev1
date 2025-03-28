@@ -1,6 +1,7 @@
-import { ArrowRight, CheckCircle, Phone } from "lucide-react";
+// import { ArrowRight, CheckCircle, Phone } from "lucide-react";
 import Link from "next/link";
 import React, { Dispatch, SetStateAction } from "react";
+import { FaArrowRight, FaCircleCheck, FaPhone } from "react-icons/fa6";
 import { Button, Modal, Text, Title } from "rizzui";
 
 const SuccessModal = ({
@@ -24,7 +25,7 @@ const SuccessModal = ({
       <div className="p-6">
         <div className="flex flex-col items-center mb-6">
           <div className="w-16 h-16 bg-green-500/10 rounded-full flex items-center justify-center mb-4">
-            <CheckCircle className="w-8 h-8 text-green-500" />
+            <FaCircleCheck className="w-8 h-8 text-green-500" />
           </div>
           <Title className="text-2xl font-bold text-gray-900 mb-2 text-center">
             Welcome to {initialData?.name}!
@@ -38,7 +39,7 @@ const SuccessModal = ({
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
           <div className="bg-primary/5 p-5 rounded-xl">
             <div className="flex items-center gap-3 mb-3">
-              <ArrowRight className="w-5 h-5 text-primary" />
+              <FaArrowRight className="w-5 h-5 text-primary" />
               <Title as="h6" className="font-semibold text-gray-900">
                 Next Steps
               </Title>
@@ -51,7 +52,7 @@ const SuccessModal = ({
 
           <div className="bg-primary/5 p-5 rounded-xl">
             <div className="flex items-center gap-3 mb-3">
-              <Phone className="w-5 h-5 text-primary" />
+              <FaPhone className="w-5 h-5 text-primary" />
               <Title as="h6" className="font-semibold text-gray-900">
                 Contact Details
               </Title>

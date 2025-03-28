@@ -1,3 +1,5 @@
+'use client';
+
 import { Controller } from 'react-hook-form';
 import { Input, Title, Radio } from 'rizzui';
 import { PhoneNumber } from '@core/ui/phone-input';

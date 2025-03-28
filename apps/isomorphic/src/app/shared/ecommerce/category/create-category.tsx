@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic';
 import { SubmitHandler, Controller } from 'react-hook-form';
 import SelectLoader from '@core/components/loader/select-loader';
 import QuillLoader from '@core/components/loader/quill-loader';
-import { Button, Input, Text, Title } from 'rizzui';
+import { Button, Input, Select, Text, Title } from 'rizzui';
 import cn from '@core/utils/class-names';
 import { Form } from '@core/ui/form';
 import {
@@ -13,10 +13,12 @@ import {
   categoryFormSchema,
 } from '@/validators/create-category.schema';
 import UploadZone from '@core/ui/file-upload/upload-zone';
-const Select = dynamic(() => import('rizzui').then((mod) => mod.Select), {
-  ssr: false,
-  loading: () => <SelectLoader />,
-});
+
+// const Select = dynamic(() => import('rizzui').then((mod) => mod.Select), {
+//   ssr: false,
+//   loading: () => <SelectLoader />,
+// });
+
 const QuillEditor = dynamic(() => import('@core/ui/quill-editor'), {
   ssr: false,
   loading: () => <QuillLoader className="col-span-full h-[168px]" />,

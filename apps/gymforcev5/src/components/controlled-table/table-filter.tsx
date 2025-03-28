@@ -1,16 +1,11 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import dynamic from 'next/dynamic';
-import { ToggleColumns } from '../table';
-import { PiMagnifyingGlassBold, PiFunnel, PiXBold } from 'react-icons/pi';
-import { Button, ActionIcon, Input, Title } from 'rizzui';
-import cn from '@core/utils/class-names';
-import { useMedia } from '@core/hooks/use-media';
-const Drawer = dynamic(() => import('rizzui').then((module) => module.Drawer), {
-  ssr: false,
-});
-
+import React, { useState } from "react";
+import { ToggleColumns } from "../table";
+import { PiMagnifyingGlassBold, PiFunnel, PiXBold } from "react-icons/pi";
+import { Button, ActionIcon, Input, Title, Drawer } from "rizzui";
+import cn from "@core/utils/class-names";
+import { useMedia } from "@core/hooks/use-media";
 export function FilterDrawerView({
   isOpen,
   drawerTitle,
@@ -38,7 +33,7 @@ export function FilterDrawerView({
             size="sm"
             rounded="full"
             variant="text"
-            title={'Close Filter'}
+            title={"Close Filter"}
             onClick={() => setOpenDrawer(false)}
           >
             <PiXBold className="h-4 w-4" />
@@ -85,14 +80,14 @@ export default function TableFilter({
   checkedColumns,
   setCheckedColumns,
   hideIndex,
-  drawerTitle = 'Table Filters',
+  drawerTitle = "Table Filters",
   hasSearched,
   enableDrawerFilter = false,
   showSearchOnTheRight = false,
   menu,
   children,
 }: TableFilterProps) {
-  const isMediumScreen = useMedia('(max-width: 1860px)', false);
+  const isMediumScreen = useMedia("(max-width: 1860px)", false);
   const [showFilters, setShowFilters] = useState(true);
   const [openDrawer, setOpenDrawer] = useState(false);
 
@@ -158,18 +153,18 @@ export default function TableFilter({
                   },
                 }
               : { onClick: () => setShowFilters(() => !showFilters) })}
-            variant={'outline'}
+            variant={"outline"}
             className={cn(
-              'me-2.5 h-9 pe-3 ps-2.5',
+              "me-2.5 h-9 pe-3 ps-2.5",
               !(isMediumScreen || enableDrawerFilter) &&
                 showFilters &&
-                'border-dashed border-gray-700'
+                "border-dashed border-gray-700"
             )}
           >
             <PiFunnel className="me-1.5 h-[18px] w-[18px]" strokeWidth={1.7} />
             {!(isMediumScreen || enableDrawerFilter) && showFilters
-              ? 'Hide Filters'
-              : 'Filters'}
+              ? "Hide Filters"
+              : "Filters"}
           </Button>
         ) : null}
 

@@ -1,18 +1,17 @@
 'use client';
 
-import { Text } from 'rizzui';
-import cn from '@core/utils/class-names';
 import MetricCard from '@core/components/cards/metric-card';
 import WidgetCard from '@core/components/cards/widget-card';
+import DropdownAction from '@core/components/charts/dropdown-action';
+import ContainersIcon from '@core/components/icons/containers';
 import ExpenseIcon from '@core/components/icons/expenses';
+import ExpressDeliveryIcon from '@core/components/icons/express-delivery';
 import RevenueUpIcon from '@core/components/icons/revenue-up';
 import SalesIcon from '@core/components/icons/sales';
-import ContainersIcon from '@core/components/icons/containers';
-import ExpressDeliveryIcon from '@core/components/icons/express-delivery';
-import SimpleBar from '@core/ui/simplebar';
-import DropdownAction from '@core/components/charts/dropdown-action';
-import TrendingUpIcon from '@core/components/icons/trending-up';
 import TrendingDownIcon from '@core/components/icons/trending-down';
+import TrendingUpIcon from '@core/components/icons/trending-up';
+import cn from '@core/utils/class-names';
+import { Text } from 'rizzui';
 
 const statData = [
   {
@@ -97,7 +96,7 @@ export default function StatCards({ className }: { className?: string }) {
         />
       }
     >
-      <SimpleBar>
+      <div className='custom-scrollbar overflow-x-auto scroll-smooth'>
         <div className="grid grid-flow-col gap-5 pb-1">
           {statData.map((stat) => (
             <MetricCard
@@ -130,7 +129,7 @@ export default function StatCards({ className }: { className?: string }) {
             </MetricCard>
           ))}
         </div>
-      </SimpleBar>
+      </div>
     </WidgetCard>
   );
 }

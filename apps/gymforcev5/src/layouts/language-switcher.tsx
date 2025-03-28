@@ -8,18 +8,16 @@ import ESFlagIcon from "@core/components/icons/language/ESFlag";
 import { Select } from "rizzui";
 import cn from "@core/utils/class-names";
 import { useLocale } from "next-intl";
-import { useTransition, useState } from "react";
+import { JSX, useState, useTransition } from "react";
 import { Locale, usePathname, useRouter } from "@/i18n/routing";
-import { SVGProps } from "react";
 
-// Updated type to match the icon function signature expected
 type LocaleOptionsType = {
   label: string;
   value: Locale;
-  icon: ({ ...props }: SVGProps<SVGSVGElement>) => JSX.Element;
+  icon: ({ ...props }: React.SVGProps<SVGSVGElement>) => JSX.Element;
 };
 
-const localeOptions: LocaleOptionsType[] = [
+const localeOptions = [
   {
     label: "English - EN",
     value: "en",
@@ -63,7 +61,7 @@ export default function LanguageSwitcher({
   const selectedLocale = localeOptions.filter(
     (item) => item.value.toLowerCase() === locale.toLowerCase()
   );
-  const [selected, setSelected] = useState<LocaleOptionsType>(selectedLocale[0]);
+  const [selected, setSelected] = useState(selectedLocale[0]);
 
   function handleChange(op: LocaleOptionsType) {
     setSelected(op);
@@ -87,7 +85,9 @@ export default function LanguageSwitcher({
         selectClassName
       )}
       displayValue={(op: LocaleOptionsType) => renderDisplayValue(op)}
-      getOptionDisplayValue={(op: LocaleOptionsType) => renderOptionDisplayValue(op)}
+      getOptionDisplayValue={(op: LocaleOptionsType) =>
+        renderOptionDisplayValue(op)
+      }
     />
   );
 }

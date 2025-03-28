@@ -1,27 +1,26 @@
 'use client';
 
-import WidgetCard from '@core/components/cards/widget-card';
-import { Title } from 'rizzui';
-import cn from '@core/utils/class-names';
-import {
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-  ComposedChart,
-} from 'recharts';
-import { CustomTooltip } from '@core/components/charts/custom-tooltip';
-import SimpleBar from '@core/ui/simplebar';
-import DropdownAction from '@core/components/charts/dropdown-action';
-import TrendingUpIcon from '@core/components/icons/trending-up';
 import {
   CASH_FLOW_COLORS,
   cashFlowData,
   cashFlowLegend,
   financialViewOptions,
 } from '@/data/financial-data';
+import WidgetCard from '@core/components/cards/widget-card';
+import { CustomTooltip } from '@core/components/charts/custom-tooltip';
+import DropdownAction from '@core/components/charts/dropdown-action';
+import TrendingUpIcon from '@core/components/icons/trending-up';
+import cn from '@core/utils/class-names';
+import {
+  Bar,
+  CartesianGrid,
+  ComposedChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from 'recharts';
+import { Title } from 'rizzui';
 
 export default function CashFlow({ className }: { className?: string }) {
   function handleChange(viewType: string) {
@@ -57,7 +56,7 @@ export default function CashFlow({ className }: { className?: string }) {
       </div>
       <CustomLegend className="-mt-0 mb-4 inline-flex @[28rem]:hidden" />
       <div className="w-full lg:mt-7">
-        <SimpleBar className="-mb-3 pb-3">
+        <div className="custom-scrollbar overflow-x-auto scroll-smooth -mb-3 pb-3">
           <div className="h-[24rem] w-full pt-6 @lg:pt-8">
             <ResponsiveContainer width="100%" height="100%" minWidth={1450}>
               <ComposedChart
@@ -97,7 +96,7 @@ export default function CashFlow({ className }: { className?: string }) {
               </ComposedChart>
             </ResponsiveContainer>
           </div>
-        </SimpleBar>
+        </div>
       </div>
     </WidgetCard>
   );

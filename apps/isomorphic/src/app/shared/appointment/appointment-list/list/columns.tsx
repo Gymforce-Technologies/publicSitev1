@@ -155,7 +155,7 @@ function AppointmentListActions({
     closeModal(),
       openModal({
         view: <CreateUpdateAppointmentForm />,
-        customSize: '700px',
+        customSize: 700,
       });
   }
   return (
@@ -181,7 +181,7 @@ function AppointmentListActions({
                   onEdit={handleCreateModal}
                 />
               ),
-              customSize: '900px',
+              customSize: 900,
             })
           }
         >

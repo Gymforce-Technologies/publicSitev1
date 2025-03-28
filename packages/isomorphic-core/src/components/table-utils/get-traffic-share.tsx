@@ -1,4 +1,6 @@
-import { Badge, Text } from 'rizzui';
+"use client";
+
+import { Badge, Text } from "rizzui";
 
 export function getTrafficShare(trafficShare: number) {
   if (trafficShare > 70) {
@@ -31,10 +33,10 @@ export function getTrafficShare(trafficShare: number) {
 
 export function getChartColorByTrafficShare(trafficShare: number) {
   if (trafficShare > 70) {
-    return '#16a679';
+    return "#16a679";
   }
   if (trafficShare > 40) {
-    return '#d89b0d';
+    return "#d89b0d";
   }
-  return '#c5280c';
+  return "#c5280c";
 }

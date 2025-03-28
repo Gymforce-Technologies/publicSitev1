@@ -8,7 +8,7 @@ import cn from '@core/utils/class-names';
 interface ModalButtonProps extends ButtonProps {
   label?: string;
   className?: string;
-  customSize?: string;
+  customSize?: number;
   icon?: React.ReactNode;
   view: React.ReactNode;
 }
@@ -16,7 +16,7 @@ interface ModalButtonProps extends ButtonProps {
 export default function ModalButton({
   label = 'Add New',
   className,
-  customSize = '500px',
+  customSize = 500,
   view,
   icon = <PiPlusBold className="me-1.5 h-[17px] w-[17px]" />,
   ...rest

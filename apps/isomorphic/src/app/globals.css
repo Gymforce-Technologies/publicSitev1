@@ -299,30 +299,22 @@
   @apply !w-2.5;
 }
 
-.custom-scrollbar::-webkit-scrollbar,
 .rc-table-fixed-header .rc-table-body::-webkit-scrollbar {
   @apply w-1.5 bg-transparent;
 }
 
-.custom-scrollbar::-webkit-scrollbar-track,
 .rc-table-content::-webkit-scrollbar-track,
 .rc-table-fixed-header .rc-table-body::-webkit-scrollbar-track {
   @apply bg-transparent shadow-none;
 }
 
-.custom-scrollbar::-webkit-scrollbar-thumb,
 .rc-table-content::-webkit-scrollbar-thumb,
 .rc-table-fixed-header .rc-table-body::-webkit-scrollbar-thumb {
   @apply rounded-sm bg-transparent;
 }
 
-.custom-scrollbar:hover::-webkit-scrollbar-thumb,
 .rc-table-content:hover::-webkit-scrollbar-thumb,
 .rc-table-fixed-header .rc-table-body:hover::-webkit-scrollbar-thumb {
-  @apply bg-gray-300 dark:bg-gray-300;
-}
-
-.custom-scrollbar.scrollbar-no-auto-hide::-webkit-scrollbar-thumb {
   @apply bg-gray-300 dark:bg-gray-300;
 }
 
@@ -338,7 +330,6 @@
 }
 
 /* for firefox */
-.custom-scrollbar,
 .rc-table-content {
   scrollbar-width: thin;
   scrollbar-color: rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0);
@@ -438,12 +429,19 @@ select:-webkit-autofill:focus {
   @apply hover:rounded-full hover:bg-gray-100 hover:text-gray-900;
 }
 
+.react-datepicker .react-datepicker__day:not([aria-disabled=true]):hover{
+  @apply text-gray-0 bg-gray-900;
+}
+
 /* outside month */
 .react-datepicker .react-datepicker__day--outside-month {
   @apply text-gray-500;
 }
 
 /* keyboard selected */
+/* .react-datepicker .react-datepicker__day--keyboard-selected,
+.react-datepicker
+  .react-datepicker__day--keyboard-selected:not([aria-disabled='true']):hover { */
 .react-datepicker .react-datepicker__day--keyboard-selected {
   @apply bg-gray-0;
 }
@@ -483,6 +481,10 @@ select:-webkit-autofill:focus {
 .react-datepicker .react-datepicker__day--selected {
   @apply rounded-full border-none bg-gray-900 font-normal leading-7 text-gray-0;
   @apply hover:bg-gray-900/80 hover:text-gray-0;
+}
+
+.react-datepicker .react-datepicker__month-text:not([aria-disabled=true]):hover{
+  @apply bg-gray-900 text-gray-0;
 }
 
 .react-datepicker .react-datepicker__year-text--range-end {
@@ -815,7 +817,7 @@ select:-webkit-autofill:focus {
 .date-picker-event-calendar
   .react-datepicker__week
   .react-datepicker__day.react-datepicker__day--selected {
-  @apply dark:hover:bg-gray-400;
+  /* @apply dark:hover:bg-gray-400; */
 }
 .date-picker-event-calendar
   .react-datepicker__time-container
@@ -907,7 +909,7 @@ td.rc-table-cell-fix-right {
   .rdw-editor-toolbar
   > div
   > .rdw-option-wrapper {
-  @apply h-9 w-10 w-9 border-0 border-r border-gray-100 last:border-r-0 hover:bg-gray-50 hover:shadow-none @lg:m-0;
+  @apply h-9 w-9 border-0 border-r border-gray-100 last:border-r-0 hover:bg-gray-50 hover:shadow-none @lg:m-0;
 }
 
 .text_editor
@@ -1127,7 +1129,7 @@ td.rc-table-cell-fix-right {
 
 input::placeholder,
 textarea::placeholder {
-  @apply dark:!text-gray-400;
+  @apply dark:!text-gray-300;
 }
 
 /* ................................................... */
@@ -1189,11 +1191,11 @@ div[style='z-index: 1000001;'],
 }
 
 :is(
-    .rbc-header + .rbc-header,
-    .rbc-day-bg + .rbc-day-bg,
-    .rbc-month-row + .rbc-month-row,
-    .rbc-timeslot-group
-  ) {
+  .rbc-header + .rbc-header,
+  .rbc-day-bg + .rbc-day-bg,
+  .rbc-month-row + .rbc-month-row,
+  .rbc-timeslot-group
+) {
   @apply border-muted;
 }
 
@@ -1510,4 +1512,23 @@ div[style='z-index: 1000001;'],
 
 [dir='rtl'] :is(.rizzui-checkbox-icon, .rizzui-switch-on-icon) {
   @apply -scale-x-100;
+}
+
+.custom-scrollbar {
+  --scrollbar-width: 8px;
+  --scrollbar-height: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  @apply h-[var(--scrollbar-height)] w-[var(--scrollbar-width)] rounded-md bg-gray-100/0;
+}
+.custom-scrollbar:hover::-webkit-scrollbar {
+  @apply rounded-md bg-gray-100;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  @apply rounded-md bg-gray-400/0;
+}
+.custom-scrollbar:hover::-webkit-scrollbar-thumb {
+  @apply rounded-md bg-gray-400/70;
 }

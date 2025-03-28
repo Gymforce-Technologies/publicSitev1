@@ -1,10 +1,9 @@
 'use client';
 
+import { Card } from '@/app/shared/file/manager/file-grid/grid';
+import FolderIcon from '@core/components/icons/folder-solid';
 import Link from 'next/link';
 import { Title } from 'rizzui';
-import SimpleBar from '@core/ui/simplebar';
-import FolderIcon from '@core/components/icons/folder-solid';
-import { Card } from '@/app/shared/file/manager/file-grid/grid';
 
 const recentFiles = [
   {
@@ -60,7 +59,7 @@ export default function RecentFiles({ className }: { className?: string }) {
         </Link>
       </div>
 
-      <SimpleBar>
+      <div className="custom-scrollbar overflow-x-auto">
         <div className="grid grid-flow-col gap-5">
           {recentFiles.map((item) => (
             <Card
@@ -71,7 +70,7 @@ export default function RecentFiles({ className }: { className?: string }) {
             />
           ))}
         </div>
-      </SimpleBar>
+      </div>
     </div>
   );
 }

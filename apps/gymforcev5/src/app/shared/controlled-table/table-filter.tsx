@@ -1,16 +1,12 @@
 "use client";
 
 import React, { useState } from "react";
-import dynamic from "next/dynamic";
 import { ToggleColumns } from "@/app/shared/table";
 import { PiMagnifyingGlassBold, PiFunnel, PiXBold } from "react-icons/pi";
-import { Button, ActionIcon, Input, Title } from "rizzui";
+import { Button, ActionIcon, Input, Title, Drawer } from "rizzui";
 import cn from "@core/utils/class-names";
 import { useMedia } from "@core/hooks/use-media";
 import { useTranslations } from "next-intl";
-const Drawer = dynamic(() => import("rizzui").then((module) => module.Drawer), {
-  ssr: false,
-});
 
 export function FilterDrawerView({
   isOpen,
@@ -153,17 +149,17 @@ export default function TableFilter({
           <Button
             {...(isMediumScreen || enableDrawerFilter
               ? {
-                  onClick: () => {
-                    setOpenDrawer(() => !openDrawer);
-                  },
-                }
+                onClick: () => {
+                  setOpenDrawer(() => !openDrawer);
+                },
+              }
               : { onClick: () => setShowFilters(() => !showFilters) })}
             variant={"outline"}
             className={cn(
               "me-2.5 h-9 pe-3 ps-2.5",
               !(isMediumScreen || enableDrawerFilter) &&
-                showFilters &&
-                "border-dashed border-gray-700"
+              showFilters &&
+              "border-dashed border-gray-700"
             )}
           >
             <PiFunnel

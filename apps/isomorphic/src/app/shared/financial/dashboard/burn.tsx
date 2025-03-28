@@ -2,19 +2,18 @@
 
 import WidgetCard from '@core/components/cards/widget-card';
 import DropdownAction from '@core/components/charts/dropdown-action';
-import { Title } from 'rizzui';
 import cn from '@core/utils/class-names';
-import SimpleBar from '@core/ui/simplebar';
+import { Title } from 'rizzui';
 
+import { burnData, financialViewOptions } from '@/data/financial-data';
 import { CustomTooltip } from '@core/components/charts/custom-tooltip';
 import {
   Bar,
-  XAxis,
-  Tooltip,
   ComposedChart,
   ResponsiveContainer,
+  Tooltip,
+  XAxis,
 } from 'recharts';
-import { burnData, financialViewOptions } from '@/data/financial-data';
 
 export default function Burn({ className }: { className?: string }) {
   function handleChange(viewType: string) {
@@ -42,7 +41,7 @@ export default function Burn({ className }: { className?: string }) {
     >
       <div className="flex h-full flex-col justify-between">
         <Description />
-        <SimpleBar>
+        <div className='custom-scrollbar overflow-x-auto scroll-smooth'>
           <div className="h-[20rem] w-full pt-9 @lg:pt-8">
             <ResponsiveContainer width="100%" height="100%" minWidth={400}>
               <ComposedChart
@@ -66,7 +65,7 @@ export default function Burn({ className }: { className?: string }) {
               </ComposedChart>
             </ResponsiveContainer>
           </div>
-        </SimpleBar>
+        </div>
       </div>
     </WidgetCard>
   );

@@ -1,20 +1,19 @@
 'use client';
 
-import { useState } from 'react';
 import WidgetCard from '@core/components/cards/widget-card';
-import { DatePicker } from '@core/ui/datepicker';
-import {
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-  AreaChart,
-  Area,
-} from 'recharts';
 import { CustomTooltip } from '@core/components/charts/custom-tooltip';
 import { useMedia } from '@core/hooks/use-media';
-import SimpleBar from '@core/ui/simplebar';
+import { DatePicker } from '@core/ui/datepicker';
+import { useState } from 'react';
+import {
+  Area,
+  AreaChart,
+  CartesianGrid,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from 'recharts';
 
 const data = [
   {
@@ -113,7 +112,7 @@ export default function ResponseRate({ className }: { className?: string }) {
         />
       }
     >
-      <SimpleBar>
+      <div className='custom-scrollbar overflow-x-auto scroll-smooth'>
         <div className="h-96 w-full pt-9">
           <ResponsiveContainer
             width="100%"
@@ -172,7 +171,7 @@ export default function ResponseRate({ className }: { className?: string }) {
             </AreaChart>
           </ResponsiveContainer>
         </div>
-      </SimpleBar>
+      </div>
     </WidgetCard>
   );
 }

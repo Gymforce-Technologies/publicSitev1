@@ -6,7 +6,7 @@ import { metaObject } from '@/config/site.config';
 import { Metadata } from 'next';
 
 type Props = {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 };
 
 /**
@@ -16,7 +16,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   // read route params
-  const id = params.id;
+  const id = (await params).id;
 
   return metaObject(`Edit ${id}`);
 }
@@ -68,14 +68,15 @@ const invoiceData = {
   ],
 };
 
-export default function InvoiceEditPage({ params }: any) {
+export default async function InvoiceEditPage({ params }: any) {
+  const id = (await params).id;
   return (
     <>
       <PageHeader title={pageHeader.title} breadcrumb={pageHeader.breadcrumb}>
         <ImportButton title="Upload File" className="mt-4 @lg:mt-0" />
       </PageHeader>
 
-      <CreateInvoice id={params.id} record={invoiceData} />
+      <CreateInvoice id={id} record={invoiceData} />
     </>
   );
 }

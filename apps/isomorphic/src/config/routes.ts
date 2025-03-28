@@ -56,6 +56,12 @@ export const routes = {
   affiliate: {
     dashboard: 'https://isomorphic-dnd.vercel.app',
   },
+  storeAnalytics: {
+    dashboard: '/store-analytics',
+  },
+  bidding: {
+    dashboard: '/bidding',
+  },
   executive: {
     dashboard: '/executive',
   },
@@ -72,6 +78,9 @@ export const routes = {
   analytics: '/analytics',
   financial: {
     dashboard: '/financial',
+  },
+  podcast: {
+    dashboard: '/podcast',
   },
   file: {
     dashboard: '/file',
@@ -111,6 +120,7 @@ export const routes = {
     dnd: '/tables/dnd',
   },
   multiStep: '/multi-step',
+  multiStep2: '/multi-step-2',
   forms: {
     profileSettings: '/forms/profile-settings',
     notificationPreference: '/forms/profile-settings/notification',

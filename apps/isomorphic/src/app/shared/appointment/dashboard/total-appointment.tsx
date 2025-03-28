@@ -4,22 +4,21 @@ import WidgetCard from '@core/components/cards/widget-card';
 import { CustomTooltip } from '@core/components/charts/custom-tooltip';
 import {
   Bar,
-  XAxis,
-  YAxis,
-  Tooltip,
   CartesianGrid,
   ComposedChart,
-  ResponsiveContainer,
   LabelList,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
 } from 'recharts';
 
-import SimpleBar from '@core/ui/simplebar';
 import DropdownAction from '@core/components/charts/dropdown-action';
-import { Title } from 'rizzui';
-import cn from '@core/utils/class-names';
 import TrendingUpIcon from '@core/components/icons/trending-up';
-import { useTheme } from 'next-themes';
+import cn from '@core/utils/class-names';
 import { formatNumber } from '@core/utils/format-number';
+import { useTheme } from 'next-themes';
+import { Title } from 'rizzui';
 
 const data = [
   {
@@ -121,7 +120,7 @@ export default function TotalAppointment({
         </span>
       </div>
       <CustomLegend className="mb-4 mt-0 inline-flex @[28rem]:hidden" />
-      <SimpleBar className="-mb-3 pb-3">
+      <div className="custom-scrollbar -mb-3 overflow-x-auto pb-3">
         <div className="h-[18rem] w-full pt-1">
           <ResponsiveContainer width="100%" height="100%" minWidth={800}>
             <ComposedChart
@@ -171,7 +170,7 @@ export default function TotalAppointment({
             </ComposedChart>
           </ResponsiveContainer>
         </div>
-      </SimpleBar>
+      </div>
     </WidgetCard>
   );
 }

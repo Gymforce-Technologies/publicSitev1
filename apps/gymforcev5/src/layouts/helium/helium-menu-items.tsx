@@ -48,19 +48,19 @@ export const menuItems = [
     href: routes.forms.profileSettings,
     icon: <PiUserGear />,
   },
-  // {
-  //   name: 'sidebar-menu-notification-preference',
-  //   href: routes.forms.notificationPreference,
-  //   icon: <PiBellSimpleRinging />,
-  // },
-  // {
-  //   name: 'sidebar-menu-personal-information',
-  //   href: routes.forms.personalInformation,
-  //   icon: <PiUser />,
-  // },
-  // {
-  //   name: 'sidebar-menu-newsletter',
-  //   href: routes.forms.newsletter,
-  //   icon: <PiEnvelopeSimpleOpen />,
-  // },
+  {
+    name: 'sidebar-menu-notification-preference',
+    href: routes.forms.notificationPreference,
+    icon: <PiBellSimpleRinging />,
+  },
+  {
+    name: 'sidebar-menu-personal-information',
+    href: routes.forms.personalInformation,
+    icon: <PiUser />,
+  },
+  {
+    name: 'sidebar-menu-newsletter',
+    href: routes.forms.newsletter,
+    icon: <PiEnvelopeSimpleOpen />,
+  },
 ];

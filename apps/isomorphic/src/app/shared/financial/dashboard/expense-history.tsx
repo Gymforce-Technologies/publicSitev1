@@ -1,24 +1,23 @@
 'use client';
 
-import WidgetCard from '@core/components/cards/widget-card';
-import {
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-  AreaChart,
-  Area,
-} from 'recharts';
-import { CustomTooltip } from '@core/components/charts/custom-tooltip';
-import SimpleBar from '@core/ui/simplebar';
-import DropdownAction from '@core/components/charts/dropdown-action';
-import { Title } from 'rizzui';
-import cn from '@core/utils/class-names';
 import {
   expenseHistoryData,
   financialViewOptions,
 } from '@/data/financial-data';
+import WidgetCard from '@core/components/cards/widget-card';
+import { CustomTooltip } from '@core/components/charts/custom-tooltip';
+import DropdownAction from '@core/components/charts/dropdown-action';
+import cn from '@core/utils/class-names';
+import {
+  Area,
+  AreaChart,
+  CartesianGrid,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from 'recharts';
+import { Title } from 'rizzui';
 
 export default function ExpenseHistory({ className }: { className?: string }) {
   function handleChange(viewType: string) {
@@ -45,7 +44,7 @@ export default function ExpenseHistory({ className }: { className?: string }) {
           $108.87k
         </Title>
       </div>
-      <SimpleBar className="-mb-3 pb-3">
+      <div className="custom-scrollbar overflow-x-auto scroll-smooth -mb-3 pb-3">
         <div className="h-[27.3rem] w-full pe-1 pt-9">
           <ResponsiveContainer width="100%" height="100%" minWidth={400}>
             <AreaChart
@@ -89,7 +88,7 @@ export default function ExpenseHistory({ className }: { className?: string }) {
             </AreaChart>
           </ResponsiveContainer>
         </div>
-      </SimpleBar>
+      </div>
     </WidgetCard>
   );
 }

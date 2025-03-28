@@ -44,6 +44,14 @@ export const pageLinks = [
     name: 'Financial',
     href: routes.financial.dashboard,
   },
+  {
+    name: 'Bidding',
+    href: routes.bidding.dashboard,
+  },
+  {
+    name: 'Podcast',
+    href: routes.podcast.dashboard,
+  },
   // label start
   {
     name: 'Apps',

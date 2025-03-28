@@ -1,3 +1,5 @@
+'use client';
+
 import { Input, Title } from 'rizzui';
 
 export default function ShippingForm({ register, errors }: any) {

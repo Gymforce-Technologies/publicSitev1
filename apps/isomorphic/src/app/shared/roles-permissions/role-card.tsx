@@ -124,7 +124,7 @@ export default function RoleCard({
         <span>Total {users.length} users</span>
       </div>
       <ModalButton
-        customSize="700px"
+        customSize={700}
         variant="outline"
         label="Edit Role"
         icon={<UserCog className="h-5 w-5" />}

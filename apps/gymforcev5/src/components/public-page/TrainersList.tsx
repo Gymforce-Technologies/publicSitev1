@@ -1,7 +1,6 @@
-import { MapPinIcon, PhoneIcon } from "lucide-react";
 import Image from "next/image";
 import React from "react";
-import { FaGraduationCap } from "react-icons/fa6";
+import { FaGraduationCap, FaMapPin } from "react-icons/fa6";
 import { PiCertificateLight } from "react-icons/pi";
 import { Title, Text } from "rizzui";
 // Import Swiper and required modules
@@ -113,7 +112,7 @@ export default function TrainersList({ trainers }: TrainersListProps) {
                 <div className="w-full space-y-3">
                   {trainer.address_street && (
                     <div className="flex items-center mt-4">
-                      <MapPinIcon className="size-4 sm:size-6 mr-2" />
+                      <FaMapPin className="size-4 sm:size-6 mr-2" />
                       <Text className="font-medium">
                         {trainer.address_street}
                       </Text>

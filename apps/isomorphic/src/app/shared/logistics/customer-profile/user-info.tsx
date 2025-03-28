@@ -1,12 +1,13 @@
-import Image from 'next/image';
-import { PiEnvelopeSimple, PiPhone, PiStarFill } from 'react-icons/pi';
-import { Title, Text, Button, Badge } from 'rizzui';
+'use client';
+
+import { customer, stats } from '@/app/shared/logistics/customer-profile/data';
 import cn from '@core/utils/class-names';
-import { toCurrency } from '@core/utils/to-currency';
-import SimpleBar from '@core/ui/simplebar';
 import { avatarIds } from '@core/utils/get-avatar';
 import { getRandomArrayElement } from '@core/utils/get-random-array-element';
-import { customer, stats } from '@/app/shared/logistics/customer-profile/data';
+import { toCurrency } from '@core/utils/to-currency';
+import Image from 'next/image';
+import { PiEnvelopeSimple, PiPhone, PiStarFill } from 'react-icons/pi';
+import { Badge, Button, Text, Title } from 'rizzui';
 
 interface SidebarProps {
   className?: string;
@@ -56,7 +57,7 @@ export default function UserInfo({ className }: SidebarProps) {
         </div>
       </div>
 
-      <SimpleBar>
+      <div className="custom-scrollbar overflow-x-auto scroll-smooth">
         <div className="mt-8 grid min-w-[1536px] grid-cols-7 gap-5 rounded-lg border border-muted p-8 md:mt-12">
           {stats.map((stat, index) => (
             <div key={index} className="flex items-center gap-3">
@@ -75,7 +76,7 @@ export default function UserInfo({ className }: SidebarProps) {
             </div>
           ))}
         </div>
-      </SimpleBar>
+      </div>
     </article>
   );
 }

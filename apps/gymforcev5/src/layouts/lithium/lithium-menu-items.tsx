@@ -59,21 +59,21 @@ export const lithiumMenuItems: LithiumMenuItem = {
         href: routes.forms.profileSettings,
         icon: 'UserSettingsIcon',
       },
-      // {
-      //   name: 'sidebar-menu-notification-preference',
-      //   href: routes.forms.notificationPreference,
-      //   icon: 'NotificationSettingsIcon',
-      // },
-      // {
-      //   name: 'sidebar-menu-personal-information',
-      //   href: routes.forms.personalInformation,
-      //   icon: 'UserInfoIcon',
-      // },
-      // {
-      //   name: 'sidebar-menu-newsletter',
-      //   href: routes.forms.newsletter,
-      //   icon: 'NewsletterAnnouncement',
-      // },
+      {
+        name: 'sidebar-menu-notification-preference',
+        href: routes.forms.notificationPreference,
+        icon: 'NotificationSettingsIcon',
+      },
+      {
+        name: 'sidebar-menu-personal-information',
+        href: routes.forms.personalInformation,
+        icon: 'UserInfoIcon',
+      },
+      {
+        name: 'sidebar-menu-newsletter',
+        href: routes.forms.newsletter,
+        icon: 'NewsletterAnnouncement',
+      },
     ],
   },
 };

@@ -42,9 +42,10 @@ import GallerySection, {
 import Loading from "../../app/[locale]/loading";
 
 import dynamic from "next/dynamic";
-import { AxiosPublic } from "../../app/[locale]/auth/AxiosPrivate";
+// import { AxiosPublic } from "../../app/[locale]/auth/AxiosPrivate";
 import { GlassNavigationButtons } from "@/components/public-page/SwiperNavGlass";
 import PublicHeader from "./PublicHeader";
+import { AxiosPublic } from "@/app/[locale]/auth/AxiosPrivate";
 
 const TrainersList = dynamic(
   () => import("@/components/public-page/TrainersList")

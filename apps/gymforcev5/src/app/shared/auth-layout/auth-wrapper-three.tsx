@@ -2,7 +2,7 @@
 
 import logoImg from "@public/logo-short.svg";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { Title, Button } from "rizzui";
 import { PiArrowLeftBold } from "react-icons/pi";
 import { FcGoogle } from "react-icons/fc";
@@ -10,7 +10,6 @@ import { BsFacebook } from "react-icons/bs";
 import OrSeparation from "./or-separation";
 import cn from "@core/utils/class-names";
 import { useTranslations } from "next-intl";
-// import { useTranslation } from '@/app/i18n/client';
 
 export default function AuthWrapperThree({
   children,
@@ -18,14 +17,12 @@ export default function AuthWrapperThree({
   isSocialLoginActive = false,
   isSignIn = false,
   className = "",
-  lang,
 }: {
   children: React.ReactNode;
   title: React.ReactNode;
   isSocialLoginActive?: boolean;
   isSignIn?: boolean;
   className?: string;
-  lang?: string;
 }) {
   const t = useTranslations("auth");
 
@@ -37,9 +34,7 @@ export default function AuthWrapperThree({
           className="mb:pb-3 start-4 z-10 flex items-center justify-center pb-6 pt-3 text-sm font-medium text-white/80 hover:text-white md:absolute md:top-1/2 md:-translate-y-1/2 md:rounded-full "
         >
           <PiArrowLeftBold />
-          <span className="-mt-px ms-1 font-lexend">
-            {t("auth-back-to-home")}
-          </span>
+          <span className="-mt-px ms-1 font-lexend">{t("auth-back-to-home")}</span>
         </Link>
         <div
           className={cn(
@@ -48,8 +43,15 @@ export default function AuthWrapperThree({
           )}
         >
           <div className="flex flex-col items-center">
-            <Link href={"/"} className="mb-7 inline-block max-w-[64px] lg:mb-9">
-              <Image src={logoImg} alt="Gymforce" className="dark:invert" />
+            <Link
+              href={"/"}
+              className="mb-7 inline-block max-w-[64px] lg:mb-9"
+            >
+              <Image
+                src={logoImg}
+                alt="Isomorphic"
+                className="dark:invert"
+              />
             </Link>
             <Title
               as="h2"
@@ -61,17 +63,19 @@ export default function AuthWrapperThree({
           {isSocialLoginActive && (
             <>
               <div className="flex flex-col gap-4 pb-6 md:flex-row md:gap-6 md:pb-7">
-                <Button className="h-11 w-full" variant="outline">
+                <Button
+                  className="h-11 w-full"
+                  variant="outline"
+                >
                   <BsFacebook className="me-2 h-5 w-5 shrink-0 text-primary" />
-                  <span className="truncate">
-                    {t("auth-sign-in-with-apple")}
-                  </span>
+                  <span className="truncate">{t("auth-sign-in-with-apple")}</span>
                 </Button>
-                <Button variant="outline" className="h-11 w-full">
+                <Button
+                  variant="outline"
+                  className="h-11 w-full"
+                >
                   <FcGoogle className="me-2 h-5 w-5 shrink-0" />
-                  <span className="truncate">
-                    {t("auth-sign-in-with-google")}
-                  </span>
+                  <span className="truncate">{t("auth-sign-in-with-google")}</span>
                 </Button>
               </div>
               <OrSeparation

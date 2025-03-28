@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Modal, Button, Title, Text } from "rizzui";
 import LaptopImg from "@public/welcome-laptop.png"; // Smaller version of image
 import MobileImg from "@public/welcome-mobile.png"; // Smaller version of image
-import { XIcon } from "lucide-react";
+import { FaX } from "react-icons/fa6";
 
 export default function PWAPrompt({
   show,
@@ -16,7 +16,7 @@ export default function PWAPrompt({
   return (
     <Modal isOpen={show} onClose={onClose} containerClassName="p-6">
       <div className="flex items-center justify-end">
-        <XIcon
+        <FaX
           onClick={onClose}
           className="text-primary cursor-pointer size-[30px] hover:scale-105"
         />

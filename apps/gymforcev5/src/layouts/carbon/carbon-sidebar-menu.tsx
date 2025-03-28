@@ -1,3 +1,5 @@
+'use client';
+
 import { Link } from "@/i18n/routing";
 import { usePathname } from "next/navigation";
 import React, { ElementType, Fragment, useState } from "react";

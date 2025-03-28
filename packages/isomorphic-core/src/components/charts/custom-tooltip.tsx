@@ -1,3 +1,4 @@
+"use client";
 import {
   ValueType,
   NameType,
@@ -59,7 +60,7 @@ export function CustomTooltip({
             />
             <Text>
               <Text as="span" className="capitalize">
-                {addSpacesToCamelCase(item.dataKey.split("_").join(" "))}:
+                {addSpacesToCamelCase(item.dataKey)}:
               </Text>{" "}
               <Text
                 as="span"

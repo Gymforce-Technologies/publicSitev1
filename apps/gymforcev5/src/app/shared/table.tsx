@@ -1,48 +1,39 @@
-'use client';
+"use client";
 
-import {
-  Empty,
-  ActionIcon,
-  Checkbox,
-  CheckboxGroup,
-  Popover,
-  Title,
-  Text,
-} from 'rizzui';
-import cn from '@core/utils/class-names';
-import RcTable from 'rc-table';
-import { addSpacesToCamelCase } from '@core/utils/add-spaces-to-camel-case';
-import { PiTextColumns } from 'react-icons/pi';
+import { Empty, ActionIcon, Checkbox, CheckboxGroup, Popover, Title, Text } from "rizzui";
+import cn from "@core/utils/class-names";
+import RcTable from "rc-table";
+import { addSpacesToCamelCase } from "@core/utils/add-spaces-to-camel-case";
+import { PiTextColumns } from "react-icons/pi";
+import { useTranslations } from "next-intl";
 
 export type ExtractProps<T> = T extends React.ComponentType<infer P> ? P : T;
 
 const classes = {
   table:
-    '[&_.rc-table-content]:overflow-x-auto [&_table]:w-full [&_.rc-table-row:hover]:bg-gray-50 [&_.rc-table-row-expand-icon-cell]:w-14',
+    "[&_.rc-table-content]:overflow-x-auto [&_table]:w-full [&_.rc-table-row:hover]:bg-gray-50 [&_.rc-table-row-expand-icon-cell]:w-14",
   thead:
-    '[&_thead]:text-left [&_thead]:rtl:text-right [&_th.rc-table-cell]:uppercase [&_th.rc-table-cell]:text-xs [&_th.rc-table-cell]:font-semibold [&_th.rc-table-cell]:tracking-wider [&_th.rc-table-cell]:text-gray-500',
-  tCell:
-    '[&_.rc-table-cell]:px-3 [&_th.rc-table-cell]:py-3 [&_td.rc-table-cell]:py-4',
+    "[&_thead]:text-left [&_thead]:rtl:text-right [&_th.rc-table-cell]:uppercase [&_th.rc-table-cell]:text-xs [&_th.rc-table-cell]:font-semibold [&_th.rc-table-cell]:tracking-wider [&_th.rc-table-cell]:text-gray-500",
+  tCell: "[&_.rc-table-cell]:px-3 [&_th.rc-table-cell]:py-3 [&_td.rc-table-cell]:py-4",
   variants: {
     classic:
-      '[&_thead]:bg-gray-100 [&_.rc-table-container]:border-x [&_.rc-table-container]:border-muted/70 [&_td.rc-table-cell]:border-b [&_td.rc-table-cell]:border-muted/70 [&_thead]:border-y [&_thead]:border-muted/70',
+      "[&_thead]:bg-gray-100 [&_.rc-table-container]:border-x [&_.rc-table-container]:border-muted/70 [&_td.rc-table-cell]:border-b [&_td.rc-table-cell]:border-muted/70 [&_thead]:border-y [&_thead]:border-muted/70",
     modern:
-      '[&_thead_th]:bg-gray-100 [&_td.rc-table-cell]:border-b [&_td.rc-table-cell]:border-muted/70 [&_thead_.rc-table-row-expand-icon-cell]:bg-gray-100',
+      "[&_thead_th]:bg-gray-100 [&_td.rc-table-cell]:border-b [&_td.rc-table-cell]:border-muted/70 [&_thead_.rc-table-row-expand-icon-cell]:bg-gray-100",
     minimal:
-      '[&_thead_th]:bg-gray-100 [&_thead_th:first-child]:rounded-ss-lg [&_thead_th:first-child]:rounded-es-lg [&_thead_th:last-child]:rounded-se-lg [&_thead_th:last-child]:rounded-ee-lg [&_thead_.rc-table-row-expand-icon-cell]:bg-gray-100',
+      "[&_thead_th]:bg-gray-100 [&_thead_th:first-child]:rounded-ss-lg [&_thead_th:first-child]:rounded-es-lg [&_thead_th:last-child]:rounded-se-lg [&_thead_th:last-child]:rounded-ee-lg [&_thead_.rc-table-row-expand-icon-cell]:bg-gray-100",
     elegant:
-      '[&_thead]:border-y [&_thead]:border-muted/70 [&_td.rc-table-cell]:border-b [&_td.rc-table-cell]:border-muted/70',
+      "[&_thead]:border-y [&_thead]:border-muted/70 [&_td.rc-table-cell]:border-b [&_td.rc-table-cell]:border-muted/70",
     retro:
-      '[&_thead]:border-y [&_thead]:border-muted/70 [&_tbody_tr:last-child_td.rc-table-cell]:border-b [&_tbody_tr:last-child_td.rc-table-cell]:border-muted/70',
+      "[&_thead]:border-y [&_thead]:border-muted/70 [&_tbody_tr:last-child_td.rc-table-cell]:border-b [&_tbody_tr:last-child_td.rc-table-cell]:border-muted/70",
   },
   striped:
-    '[&_.rc-table-row:nth-child(2n)_.rc-table-cell]:bg-gray-100/50 [&_.rc-table-row:hover]:bg-transparent',
+    "[&_.rc-table-row:nth-child(2n)_.rc-table-cell]:bg-gray-100/50 [&_.rc-table-row:hover]:bg-transparent",
 };
 
 type RCTableProps = ExtractProps<typeof RcTable>;
 
-export interface TableProps
-  extends Omit<RCTableProps, 'className' | 'emptyText'> {
+export interface TableProps extends Omit<RCTableProps, "className" | "emptyText"> {
   /** Set empty text, it will only appear when table has no data */
   emptyText?: React.ReactElement;
   /** The variants of the component are: */
@@ -59,7 +50,7 @@ export interface TableProps
  */
 export default function Table({
   striped,
-  variant = 'classic',
+  variant = "classic",
   emptyText,
   className,
   ...props
@@ -87,7 +78,7 @@ export default function Table({
 }
 
 // Table Header Cell Component
-type TextAlign = 'left' | 'center' | 'right';
+type TextAlign = "left" | "center" | "right";
 
 export interface HeaderCellProps {
   title: React.ReactNode;
@@ -104,49 +95,50 @@ export interface HeaderCellProps {
   iconClassName?: string;
   /** Add custom classes for extra style */
   className?: string;
+  lang?: string;
 }
 
 // A util func
 function handleTextAlignment(align: TextAlign) {
-  if (align === 'center') return 'justify-center';
-  if (align === 'right') return 'justify-end';
-  return '';
+  if (align === "center") return "justify-center";
+  if (align === "right") return "justify-end";
+  return "";
 }
 
 export function HeaderCell({
   title,
-  align = 'left',
+  align = "left",
   width,
   ellipsis,
   sortable,
   ascending,
   iconClassName,
   className,
+  lang,
 }: HeaderCellProps) {
+  const t = useTranslations("table");
   if (ellipsis && width === undefined) {
     console.warn(
-      'When ellipsis is true make sure you are using the same column width in HeaderCell component too.'
+      "When ellipsis is true make sure you are using the same column width in HeaderCell component too."
     );
   }
   if (width !== undefined && ellipsis !== true) {
-    console.warn(
-      "width prop without ellipsis won't work, please set ellipsis prop true."
-    );
+    console.warn("width prop without ellipsis won't work, please set ellipsis prop true.");
   }
   return (
     <div
       className={cn(
-        'flex items-center gap-1',
-        sortable && 'cursor-pointer',
+        "flex items-center gap-1",
+        sortable && "cursor-pointer",
         handleTextAlignment(align),
         className
       )}
     >
       <div
-        {...(ellipsis && { className: 'truncate' })}
+        {...(ellipsis && { className: "truncate" })}
         {...(ellipsis && width && { style: { width } })}
       >
-        {title}
+        {typeof title === "string" ? t(title) : title}
       </div>
       {sortable && (
         <div className="inline-flex">
@@ -154,7 +146,7 @@ export function HeaderCell({
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
-              className={cn('h-auto w-3', iconClassName)}
+              className={cn("h-auto w-3", iconClassName)}
               viewBox="0 0 16 16"
             >
               <path d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z" />
@@ -163,7 +155,7 @@ export function HeaderCell({
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
-              className={cn('h-auto w-3', iconClassName)}
+              className={cn("h-auto w-3", iconClassName)}
               viewBox="0 0 16 16"
             >
               <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
@@ -190,15 +182,27 @@ export function ToggleColumns<T>({
 }: ToggleColumnsTypes<T>) {
   return (
     <div>
-      <Popover shadow="sm" placement="bottom-end">
+      <Popover
+        shadow="sm"
+        placement="bottom-end"
+      >
         <Popover.Trigger>
-          <ActionIcon variant="outline" title={'Toggle Columns'}>
-            <PiTextColumns strokeWidth={3} className=" h-6 w-6" />
+          <ActionIcon
+            variant="outline"
+            title={"Toggle Columns"}
+          >
+            <PiTextColumns
+              strokeWidth={3}
+              className=" h-6 w-6"
+            />
           </ActionIcon>
         </Popover.Trigger>
         <Popover.Content className="z-0">
           <div className="px-0.5 pt-2 text-left rtl:text-right">
-            <Title as="h6" className="mb-1 px-0.5 text-sm font-semibold">
+            <Title
+              as="h6"
+              className="mb-1 px-0.5 text-sm font-semibold"
+            >
               Toggle Columns
             </Title>
             <CheckboxGroup
@@ -212,9 +216,7 @@ export function ToggleColumns<T>({
                   value={column.dataIndex}
                   label={addSpacesToCamelCase(column.dataIndex)}
                   labelClassName="ml-2 rtl:mr-2 text-[13px] font-medium"
-                  className={cn(
-                    hideIndex && index === hideIndex ? 'hidden' : ''
-                  )}
+                  className={cn(hideIndex && index === hideIndex ? "hidden" : "")}
                 />
               ))}
             </CheckboxGroup>

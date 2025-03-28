@@ -14,7 +14,6 @@ import {
   ComposedChart,
   ResponsiveContainer,
 } from 'recharts';
-import SimpleBar from '@core/ui/simplebar';
 import DropdownAction from '@core/components/charts/dropdown-action';
 import { Title, Text } from 'rizzui';
 import cn from '@core/utils/class-names';
@@ -263,7 +262,7 @@ export default function TotalProfitLoss({ className }: { className?: string }) {
       }
     >
       <Legend className="mt-2 flex @3xl:hidden" />
-      <SimpleBar className="-mb-3 pb-3">
+      <div className="custom-scrollbar overflow-x-auto -mb-3 pb-3">
         <div className="h-[28rem] w-full pt-6 @lg:pt-8">
           <ResponsiveContainer width="100%" height="100%" minWidth={1100}>
             <ComposedChart
@@ -315,7 +314,7 @@ export default function TotalProfitLoss({ className }: { className?: string }) {
             </ComposedChart>
           </ResponsiveContainer>
         </div>
-      </SimpleBar>
+      </div>
     </WidgetCard>
   );
 }

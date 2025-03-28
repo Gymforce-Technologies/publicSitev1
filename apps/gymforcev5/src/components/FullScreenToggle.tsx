@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { Maximize, Minimize } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { FaMaximize, FaMinimize } from "react-icons/fa6";
+// import { Maximize, Minimize } from 'lucide-react';
 
 const FullscreenToggle = () => {
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -9,8 +10,9 @@ const FullscreenToggle = () => {
       setIsFullscreen(!!document.fullscreenElement);
     };
 
-    document.addEventListener('fullscreenchange', handleFullscreenChange);
-    return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
+    document.addEventListener("fullscreenchange", handleFullscreenChange);
+    return () =>
+      document.removeEventListener("fullscreenchange", handleFullscreenChange);
   }, []);
 
   const toggleFullscreen = () => {
@@ -26,8 +28,11 @@ const FullscreenToggle = () => {
   };
 
   return (
-    <div onClick={toggleFullscreen} className='hidden hover:text-primary lg:block cursor-pointer hover:scale-105 duration-300 size-6  dark:text-primary dark:hover:text-primary-dark '>
-      {isFullscreen ? <Minimize size={24} /> : <Maximize size={24} />}
+    <div
+      onClick={toggleFullscreen}
+      className="hidden hover:text-primary lg:block cursor-pointer hover:scale-105 duration-300 size-6  dark:text-primary dark:hover:text-primary-dark "
+    >
+      {isFullscreen ? <FaMinimize size={24} /> : <FaMaximize size={24} />}
     </div>
   );
 };

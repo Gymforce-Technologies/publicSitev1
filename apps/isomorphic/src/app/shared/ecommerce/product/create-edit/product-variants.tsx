@@ -2,7 +2,7 @@
 
 import dynamic from 'next/dynamic';
 import { Controller, useFieldArray, useFormContext } from 'react-hook-form';
-import { Input, Button, ActionIcon } from 'rizzui';
+import { Input, Button, ActionIcon, Select } from 'rizzui';
 import cn from '@core/utils/class-names';
 import FormGroup from '@/app/shared/form-group';
 import { useCallback } from 'react';
@@ -13,10 +13,10 @@ import {
 import TrashIcon from '@core/components/icons/trash';
 import SelectLoader from '@core/components/loader/select-loader';
 import { PiPlusBold } from 'react-icons/pi';
-const Select = dynamic(() => import('rizzui').then((mod) => mod.Select), {
-  ssr: false,
-  loading: () => <SelectLoader />,
-});
+// const Select = dynamic(() => import('rizzui').then((mod) => mod.Select), {
+//   ssr: false,
+//   loading: () => <SelectLoader />,
+// });
 
 export default function ProductVariants({ className }: { className?: string }) {
   const {

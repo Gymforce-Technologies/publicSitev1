@@ -1,30 +1,31 @@
 import { useTheme } from 'next-themes';
 
 export const presetLight = {
-  lighter: '#FFFFFF',  // Pure white
-  light: '#FFFAFA',    // Snow white
-  default: '#F8F8FF',  // Ghost white
-  dark: '#F0F8FF',     // Alice blue
-  foreground: '#000000',
+  lighter: '#f1f1f1',
+  light: '#666666',
+  default: '#111111',
+  dark: '#000000',
+  foreground: '#ffffff',
 };
 
 export const presetDark = {
-  lighter: '#2C3E50',
-  light: '#34495E',
-  default: '#ECF0F1',
-  dark: '#FFFFFF',
-  foreground: '#1A202C',
+  lighter: '#222222',
+  light: '#929292',
+  default: '#f1f1f1',
+  dark: '#ffffff',
+  foreground: '#111111',
 };
 
+// defaults from global css line 38
 export const DEFAULT_PRESET_COLORS = {
-  lighter: '#E3F2FD',
-  light: '#64B5F6',
-  default: '#2196F3',
-  dark: '#1565C0',
-  foreground: '#FFFFFF',
+  lighter: '#d7e3fe',
+  light: '#608efb',
+  default: '#3872fa',
+  dark: '#1d58d8',
+  foreground: '#ffffff',
 };
 
-export const DEFAULT_PRESET_COLOR_NAME = 'GymForce Blue';
+export const DEFAULT_PRESET_COLOR_NAME = 'Blue';
 
 export const usePresets = () => {
   const { theme } = useTheme();
@@ -34,64 +35,55 @@ export const usePresets = () => {
       name: DEFAULT_PRESET_COLOR_NAME,
       colors: DEFAULT_PRESET_COLORS,
     },
-    // {
-    //   name: 'Monochrome',
-    //   colors: {
-    //     lighter: theme === 'light' ? presetLight.lighter : presetDark.lighter,
-    //     light: theme === 'light' ? presetLight.light : presetDark.light,
-    //     default: theme === 'light' ? presetLight.default : presetDark.default,
-    //     dark: theme === 'light' ? presetLight.dark : presetDark.dark,
-    //     foreground: theme === 'light' ? presetLight.foreground : presetDark.foreground,
-    //   },
-    // },
     {
-      name: 'Energy Green',
+      name: 'Black',
       colors: {
-        lighter: '#E8F5E9',
-        light: '#81C784',
-        default: '#4CAF50',
-        dark: '#2E7D32',
-        foreground: '#FFFFFF',
+        lighter: theme === 'light' ? presetLight.lighter : presetDark.lighter,
+        light: theme === 'light' ? presetLight.light : presetDark.light,
+        default: theme === 'light' ? presetLight.default : presetDark.default,
+        dark: theme === 'light' ? presetLight.dark : presetDark.dark,
+        foreground:
+          theme === 'light' ? presetLight.foreground : presetDark.foreground,
       },
     },
     {
-      name: 'Power Purple',
+      name: 'Teal',
       colors: {
-        lighter: '#F3E5F5',
-        light: '#BA68C8',
-        default: '#9C27B0',
-        dark: '#6A1B9A',
-        foreground: '#FFFFFF',
+        lighter: '#ccfbf1', // Teal 100
+        light: '#5eead4', // Teal 300
+        default: '#0d9488', // Teal 600
+        dark: '#115e59', // Teal 800
+        foreground: '#ffffff',
       },
     },
     {
-      name: 'Strength Red',
+      name: 'Violet',
       colors: {
-        lighter: '#FFEBEE',
-        light: '#EF5350',
-        default: '#F44336',
-        dark: '#C62828',
-        foreground: '#FFFFFF',
+        lighter: '#ede9fe', // Violet 100
+        light: '#a5b4fc', // Violet 300
+        default: '#7c3aed', // Violet 600
+        dark: '#4c1d95', // Violet 900
+        foreground: '#ffffff',
       },
     },
     {
-      name: 'Focus Orange',
+      name: 'Rose',
       colors: {
-        lighter: '#FFF3E0',
-        light: '#FFB74D',
-        default: '#FF9800',
-        dark: '#EF6C00',
-        foreground: '#FFFFFF',
+        lighter: '#ffe4e6', // Rose 100
+        light: '#fda4af', // Rose 300
+        default: '#e11d48', // Rose 600
+        dark: '#be123c', // Rose 700
+        foreground: '#ffffff',
       },
     },
     {
-      name: 'Calm Teal',
+      name: 'Yellow',
       colors: {
-        lighter: '#E0F7FA',  // Lighter teal
-        light: '#B2EBF2',    // Light teal
-        default: '#26A69A',  // Teal
-        dark: '#00796B',     // Dark teal
-        foreground: '#FFFFFF',
+        lighter: '#fef9c3', // Yellow 100
+        light: '#fde047', // Yellow 300
+        default: '#ca8a04', // Yellow 600
+        dark: '#a16207', // Yellow 800
+        foreground: '#ffffff',
       },
     },
   ];

@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import { Disclosure } from "@headlessui/react";
 import { Checkbox, CheckboxGroup, Collapse, Tooltip, Button } from "rizzui";

@@ -1,16 +1,8 @@
 'use client';
 
-import { Button, Title, ActionIcon } from 'rizzui';
-import SimpleBar from '@core/ui/simplebar';
-import { useMedia } from '@core/hooks/use-media';
-import { useFilterControls } from '@core/hooks/use-filter-control';
 import { useDrawer } from '@/app/shared/drawer-views/use-drawer';
-import ForSaleFilter from '@/app/shared/explore-listing/listing-filters/for-sale-filter';
-import PriceFilter from '@/app/shared/explore-listing/listing-filters/price-filter';
 import AccommodationFilter from '@/app/shared/explore-listing/listing-filters/accommodation-filter';
-import HometypeFilter from '@/app/shared/explore-listing/listing-filters/hometype-filter';
-import MaxHOAFilter from '@/app/shared/explore-listing/listing-filters/max-hoa-filter';
-import ListingTypeFilter from '@/app/shared/explore-listing/listing-filters/listing-type-filter';
+import BuiltYearFilter from '@/app/shared/explore-listing/listing-filters/built-year-filter';
 import {
   amenitiesOptions,
   initialState,
@@ -18,15 +10,22 @@ import {
   tourOptions,
   viewOptions,
 } from '@/app/shared/explore-listing/listing-filters/filter-utils';
-import ParkingFilter from '@/app/shared/explore-listing/listing-filters/parking-filter';
-import SquareFeetFilter from '@/app/shared/explore-listing/listing-filters/square-feet-filter';
-import LotSizeFilter from '@/app/shared/explore-listing/listing-filters/lot-size-filter';
-import SoldInFilter from '@/app/shared/explore-listing/listing-filters/sold-in-filter';
+import ForSaleFilter from '@/app/shared/explore-listing/listing-filters/for-sale-filter';
+import HometypeFilter from '@/app/shared/explore-listing/listing-filters/hometype-filter';
 import KeywordFilter from '@/app/shared/explore-listing/listing-filters/keyword-filter';
-import BuiltYearFilter from '@/app/shared/explore-listing/listing-filters/built-year-filter';
-import { PiXBold } from 'react-icons/pi';
+import ListingTypeFilter from '@/app/shared/explore-listing/listing-filters/listing-type-filter';
+import LotSizeFilter from '@/app/shared/explore-listing/listing-filters/lot-size-filter';
+import MaxHOAFilter from '@/app/shared/explore-listing/listing-filters/max-hoa-filter';
+import ParkingFilter from '@/app/shared/explore-listing/listing-filters/parking-filter';
+import PriceFilter from '@/app/shared/explore-listing/listing-filters/price-filter';
+import SoldInFilter from '@/app/shared/explore-listing/listing-filters/sold-in-filter';
+import SquareFeetFilter from '@/app/shared/explore-listing/listing-filters/square-feet-filter';
 import FilterWithSearch from '@core/components/filter-with-search';
+import { useFilterControls } from '@core/hooks/use-filter-control';
+import { useMedia } from '@core/hooks/use-media';
 import hasSearchedParams from '@core/utils/has-searched-params';
+import { PiXBold } from 'react-icons/pi';
+import { ActionIcon, Button, Title } from 'rizzui';
 
 export default function FilterDrawerView() {
   const { state, reset, applyFilter, clearFilter } = useFilterControls<
@@ -52,7 +51,7 @@ export default function FilterDrawerView() {
         </ActionIcon>
       </div>
 
-      <SimpleBar className="-mx-5 min-h-[calc(100%-10rem)]">
+      <div className="custom-scrollbar -mx-5 min-h-[calc(100%-10rem)] overflow-y-auto scroll-smooth">
         <div className="space-y-9 px-5">
           {!isWide && (
             <>
@@ -149,7 +148,7 @@ export default function FilterDrawerView() {
           <SoldInFilter state={state} applyFilter={applyFilter} />
           <KeywordFilter state={state} applyFilter={applyFilter} />
         </div>
-      </SimpleBar>
+      </div>
 
       <div className="sticky bottom-0 flex items-center justify-center gap-3 bg-white pb-3 pt-5 dark:bg-gray-50">
         {hasSearchedParams() ? (

@@ -1,12 +1,10 @@
 import { DUMMY_ID } from '@/config/constants';
 import { routes } from '@/config/routes';
-import AffiliateIcon from '@core/components/icons/affiliate';
-import CrmDashIcon from '@core/components/icons/crm-icon';
-import ProjectWriteIcon from '@core/components/icons/project-write';
 import {
   PiAirplaneTiltDuotone,
-  PiArrowsOut,
-  PiArrowsOutLineHorizontalBold,
+  PiApplePodcastsLogoDuotone,
+  PiArrowsOutDuotone,
+  PiArrowsOutLineHorizontalDuotone,
   PiBellSimpleRingingDuotone,
   PiBinocularsDuotone,
   PiBriefcaseDuotone,
@@ -16,7 +14,9 @@ import {
   PiCaretCircleUpDownDuotone,
   PiChartBarDuotone,
   PiChartLineUpDuotone,
+  PiChartPieSliceDuotone,
   PiChatCenteredDotsDuotone,
+  PiClipboardTextDuotone,
   PiCodesandboxLogoDuotone,
   PiCoinDuotone,
   PiCreditCardDuotone,
@@ -25,8 +25,10 @@ import {
   PiEnvelopeDuotone,
   PiEnvelopeSimpleOpenDuotone,
   PiFeatherDuotone,
-  PiFolder,
+  PiFolderDuotone,
   PiFolderLockDuotone,
+  PiFoldersDuotone,
+  PiFolderUserDuotone,
   PiGridFourDuotone,
   PiHammerDuotone,
   PiHeadsetDuotone,
@@ -38,14 +40,17 @@ import {
   PiNewspaperClippingDuotone,
   PiNoteBlankDuotone,
   PiPackageDuotone,
+  PiPresentationChartDuotone,
   PiPushPinDuotone,
   PiRocketLaunchDuotone,
+  PiScalesDuotone,
   PiShapesDuotone,
   PiShieldCheckDuotone,
   PiShootingStarDuotone,
   PiShoppingCartDuotone,
   PiSparkleDuotone,
   PiSquaresFourDuotone,
+  PiStairsDuotone,
   PiStepsDuotone,
   PiTableDuotone,
   PiUserCircleDuotone,
@@ -64,7 +69,7 @@ export const menuItems = [
   {
     name: 'File Manager',
     href: '/',
-    icon: <PiFolder />,
+    icon: <PiFolderDuotone />,
   },
   {
     name: 'Appointment',
@@ -79,17 +84,28 @@ export const menuItems = [
   {
     name: 'Project',
     href: routes.project.dashboard,
-    icon: <ProjectWriteIcon />,
+    icon: <PiClipboardTextDuotone />,
   },
   {
     name: 'CRM',
     href: routes.crm.dashboard,
-    icon: <CrmDashIcon />,
+    icon: <PiFolderUserDuotone />,
   },
   {
     name: 'Affiliate',
     href: routes.affiliate.dashboard,
-    icon: <AffiliateIcon />,
+    icon: <PiChartPieSliceDuotone />,
+  },
+  {
+    name: 'Store Analytics',
+    href: routes.storeAnalytics.dashboard,
+    icon: <PiPresentationChartDuotone />,
+    badge: 'NEW',
+  },
+  {
+    name: 'Bidding',
+    href: routes.bidding.dashboard,
+    icon: <PiScalesDuotone />,
     badge: 'NEW',
   },
   {
@@ -126,6 +142,12 @@ export const menuItems = [
     name: 'Support',
     href: routes.support.dashboard,
     icon: <PiHeadsetDuotone />,
+  },
+  {
+    name: 'Podcast',
+    href: routes.podcast.dashboard,
+    icon: <PiApplePodcastsLogoDuotone />,
+    badge: 'NEW',
   },
 
   // label start
@@ -287,7 +309,7 @@ export const menuItems = [
   {
     name: 'File Manager',
     href: routes.file.manager,
-    icon: <PiFolder />,
+    icon: <PiFoldersDuotone />,
   },
   {
     name: 'Event Calendar',
@@ -313,7 +335,6 @@ export const menuItems = [
     name: 'Image Viewer',
     href: routes.imageViewer,
     icon: <PiCodesandboxLogoDuotone />,
-    badge: 'NEW',
   },
   // label start
   {
@@ -401,6 +422,11 @@ export const menuItems = [
     icon: <PiStepsDuotone />,
   },
   {
+    name: 'Multi Step 2',
+    href: routes.multiStep2,
+    icon: <PiStairsDuotone />,
+  },
+  {
     name: 'Payment Checkout',
     href: routes.eCommerce.checkout,
     icon: <PiCreditCardDuotone />,
@@ -443,7 +469,7 @@ export const menuItems = [
   {
     name: 'Resizable',
     href: routes.tables.resizable,
-    icon: <PiArrowsOutLineHorizontalBold />,
+    icon: <PiArrowsOutLineHorizontalDuotone />,
   },
   {
     name: 'Pinning',
@@ -453,7 +479,7 @@ export const menuItems = [
   {
     name: 'Drag & Drop',
     href: routes.tables.dnd,
-    icon: <PiArrowsOut />,
+    icon: <PiArrowsOutDuotone />,
   },
   // label start
   {

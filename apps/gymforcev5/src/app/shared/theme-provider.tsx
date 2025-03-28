@@ -2,10 +2,10 @@
 
 import { Provider } from "jotai";
 import { siteConfig } from "@/config/site.config";
-import hideRechartsConsoleError from "@core/utils/recharts-console-error";
+// import hideRechartsConsoleError from "@core/utils/recharts-console-error";
 import { ThemeProvider as NextThemeProvider } from "next-themes";
 
-hideRechartsConsoleError();
+// hideRechartsConsoleError();
 
 export function ThemeProvider({ children }: React.PropsWithChildren<{}>) {
   return (

@@ -87,7 +87,7 @@ export default function FileStats({ className }: FileStatsType) {
       <div className="w-full overflow-hidden">
         <div
           ref={sliderEl}
-          className="custom-scrollbar-x grid grid-flow-col gap-5 overflow-x-auto scroll-smooth"
+          className="custom-scrollbar grid grid-flow-col gap-5 overflow-x-auto scroll-smooth"
         >
           {filesStatData.map((stat: any) => {
             return (

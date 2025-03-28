@@ -7,7 +7,7 @@ import CreateEditShipment from '@/app/shared/logistics/shipment/create-edit';
 import { shipmentData } from '@/app/shared/logistics/shipment/create-edit/form-utils';
 
 type Props = {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 };
 
 /**
@@ -17,7 +17,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   // read route params
-  const id = params.id;
+  const id = (await params).id;
 
   return metaObject(`Edit ${id}`);
 }
@@ -39,18 +39,15 @@ const pageHeader = {
   ],
 };
 
-export default function EditShipmentsPage({
-  params,
-}: {
-  params: { id: string };
-}) {
+export default async function EditShipmentsPage({ params }: any) {
+  const id = (await params).id;
   return (
     <>
       <PageHeader title={pageHeader.title} breadcrumb={pageHeader.breadcrumb}>
         <ImportButton title={'Import File'} />
       </PageHeader>
 
-      <CreateEditShipment id={params.id} shipment={shipmentData} />
+      <CreateEditShipment id={id} shipment={shipmentData} />
     </>
   );
 }

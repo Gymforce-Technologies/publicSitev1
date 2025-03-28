@@ -1,7 +1,6 @@
 import Image from 'next/image';
-import { Title, Text } from 'rizzui';
+import { Title, Text } from 'rizzui/typography';
 import cn from '@core/utils/class-names';
-import SimpleBar from '@core/ui/simplebar';
 import { members } from '@/data/members-data';
 import TrophyIcon from '@core/components/icons/trophy';
 import WidgetCard from '@core/components/cards/widget-card';
@@ -16,7 +15,7 @@ export default function Members({ className }: { className?: string }) {
         Members
       </Title>
       <WidgetCard title="" headerClassName="hidden" className="p-0 lg:p-0">
-        <SimpleBar style={{ maxHeight: 450 }}>
+        <div className="custom-scrollbar max-h-[450px] overflow-y-auto">
           <div className="p-5 lg:p-7">
             <div className="-me-2 grid gap-4 @sm:gap-5">
               {members.map((member) => (
@@ -53,7 +52,7 @@ export default function Members({ className }: { className?: string }) {
               ))}
             </div>
           </div>
-        </SimpleBar>
+        </div>
       </WidgetCard>
     </div>
   );

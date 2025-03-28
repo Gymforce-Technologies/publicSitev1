@@ -1,22 +1,21 @@
 'use client';
 
-import { Badge } from 'rizzui';
+import { engagementsChartData } from '@/data/social-media-dashboard-data';
 import WidgetCard from '@core/components/cards/widget-card';
+import { CustomTooltip } from '@core/components/charts/custom-tooltip';
+import { useMedia } from '@core/hooks/use-media';
+import { DatePicker } from '@core/ui/datepicker';
+import { useState } from 'react';
 import {
   Bar,
-  XAxis,
-  YAxis,
-  Tooltip,
   BarChart,
   CartesianGrid,
   ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
 } from 'recharts';
-import { useState } from 'react';
-import SimpleBar from '@core/ui/simplebar';
-import { DatePicker } from '@core/ui/datepicker';
-import { useMedia } from '@core/hooks/use-media';
-import { CustomTooltip } from '@core/components/charts/custom-tooltip';
-import { engagementsChartData } from '@/data/social-media-dashboard-data';
+import { Badge } from 'rizzui';
 
 export default function EngageMents({ className }: { className?: string }) {
   const [startDate, setStartDate] = useState(new Date());
@@ -47,7 +46,7 @@ export default function EngageMents({ className }: { className?: string }) {
       actionClassName="flex items-center gap-4"
       className={className}
     >
-      <SimpleBar>
+      <div className="custom-scrollbar overflow-x-auto scroll-smooth">
         <div className="h-96 w-full pt-9">
           <ResponsiveContainer
             width="100%"
@@ -73,7 +72,7 @@ export default function EngageMents({ className }: { className?: string }) {
             </BarChart>
           </ResponsiveContainer>
         </div>
-      </SimpleBar>
+      </div>
     </WidgetCard>
   );
 }

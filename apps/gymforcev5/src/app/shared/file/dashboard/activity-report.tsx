@@ -1,21 +1,20 @@
 "use client";
 
-import { Text } from "rizzui";
 import WidgetCard from "@core/components/cards/widget-card";
-import {
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-  AreaChart,
-  Area,
-} from "recharts";
 import { CustomTooltip } from "@core/components/charts/custom-tooltip";
-import { PiDownloadSimple, PiUploadSimple } from "react-icons/pi";
-import SimpleBar from "@core/ui/simplebar";
 import { useMedia } from "@core/hooks/use-media";
 import { useTranslations } from "next-intl";
+import { PiDownloadSimple, PiUploadSimple } from "react-icons/pi";
+import {
+  Area,
+  AreaChart,
+  CartesianGrid,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
+import { Text } from "rizzui";
 
 const data = [
   {
@@ -114,7 +113,7 @@ export default function ActivityReport({ className }: { className?: string }) {
           </div>
         </div>
       </div>
-      <SimpleBar>
+      <div className="custom-scrollbar overflow-x-auto scroll-smooth">
         <div className="h-96 w-full pt-9">
           <ResponsiveContainer
             width="100%"
@@ -129,57 +128,23 @@ export default function ActivityReport({ className }: { className?: string }) {
               className="[&_.recharts-cartesian-axis-tick-value]:fill-gray-500 rtl:[&_.recharts-cartesian-axis.yAxis]:-translate-x-12 [&_.recharts-cartesian-grid-vertical]:opacity-0"
             >
               <defs>
-                <linearGradient
-                  id="downloads"
-                  x1="0"
-                  y1="0"
-                  x2="0"
-                  y2="1"
-                >
-                  <stop
-                    offset="5%"
-                    stopColor="#6B46FF"
-                    stopOpacity={0.1}
-                  />
-                  <stop
-                    offset="95%"
-                    stopColor="#6B46FF"
-                    stopOpacity={0}
-                  />
+                <linearGradient id="downloads" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor="#6B46FF" stopOpacity={0.1} />
+                  <stop offset="95%" stopColor="#6B46FF" stopOpacity={0} />
                 </linearGradient>
-                <linearGradient
-                  id="uploads"
-                  x1="0"
-                  y1="0"
-                  x2="0"
-                  y2="1"
-                >
-                  <stop
-                    offset="5%"
-                    stopColor="#00D1FF"
-                    stopOpacity={0.1}
-                  />
-                  <stop
-                    offset="95%"
-                    stopColor="#00D1FF"
-                    stopOpacity={0}
-                  />
+                <linearGradient id="uploads" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor="#00D1FF" stopOpacity={0.1} />
+                  <stop offset="95%" stopColor="#00D1FF" stopOpacity={0} />
                 </linearGradient>
               </defs>
-              <CartesianGrid
-                strokeDasharray="8 10"
-                strokeOpacity={0.435}
-              />
+              <CartesianGrid strokeDasharray="8 10" strokeOpacity={0.435} />
               <XAxis
                 dataKey="month"
                 axisLine={false}
                 tickLine={false}
                 className=" "
               />
-              <YAxis
-                tickLine={false}
-                className=" "
-              />
+              <YAxis tickLine={false} className=" " />
               <Tooltip content={<CustomTooltip />} />
               <Area
                 type="monotone"
@@ -200,7 +165,7 @@ export default function ActivityReport({ className }: { className?: string }) {
             </AreaChart>
           </ResponsiveContainer>
         </div>
-      </SimpleBar>
+      </div>
     </WidgetCard>
   );
 }

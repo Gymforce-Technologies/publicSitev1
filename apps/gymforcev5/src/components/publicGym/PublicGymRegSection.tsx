@@ -21,19 +21,16 @@ import { DatePicker } from "@core/ui/datepicker";
 import { PhoneNumber } from "@core/ui/phone-input";
 import Loading from "@/app/[locale]/loading";
 import { MdFeedback } from "react-icons/md";
-import { FaFacebook, FaInstagram } from "react-icons/fa6";
+import { FaArrowLeft, FaFacebook, FaInstagram } from "react-icons/fa6";
 import Link from "next/link";
 import Image from "next/image";
 // import CameraCapture from "@/components/member-list/Capture";
 // import Turnstile from "react-turnstile";
 // import FeedbackModal from "@/components/public-page/FeedBack";
 import dynamic from "next/dynamic";
-const CameraCapture = dynamic(
-  () => import("@/components/Capture"),
-  {
-    ssr: false,
-  }
-);
+const CameraCapture = dynamic(() => import("@/components/Capture"), {
+  ssr: false,
+});
 const Turnstile = dynamic(() => import("react-turnstile"));
 const FeedbackModal = dynamic(
   () => import("@/components/public-page/FeedBack"),
@@ -41,7 +38,7 @@ const FeedbackModal = dynamic(
     ssr: false,
   }
 );
-import { ArrowLeft, ArrowRight, CheckCircle, Phone } from "lucide-react";
+// import { ArrowLeft, ArrowRight, CheckCircle, Phone } from "lucide-react";
 import { COUNTRY_MAPPINGS } from "@/app/[locale]/auth/Countries";
 import { AxiosPublic } from "@/app/[locale]/auth/AxiosPrivate";
 import SuccessModal from "./SuccessModal";
@@ -166,12 +163,9 @@ export default function PublicGymRegSection() {
   useEffect(() => {
     const getInitialData = async () => {
       try {
-        const resp = await AxiosPublic.get(
-          `/center/initial/${code}/`,
-          {
-            id: `Gym-${code}`,
-          }
-        );
+        const resp = await AxiosPublic.get(`/center/initial/${code}/`, {
+          id: `Gym-${code}`,
+        });
         setInitialData(resp.data);
         setGymId(resp.data.id);
         setLoading(false);
@@ -485,7 +479,7 @@ export default function PublicGymRegSection() {
           </div>
           <div className="p-4 md:p-6 mx-4 md:mx-8 flex items-center gap-4 md:gap-8">
             <Link href={`/gym/${code}`}>
-              <ArrowLeft size={18} />
+              <FaArrowLeft size={18} />
             </Link>
             <Title className="text-xl md:text-2xl font-bold">
               Register at {initialData?.name}

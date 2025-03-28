@@ -1,15 +1,14 @@
 'use client';
 
-import cn from '@core/utils/class-names';
-import { Avatar, Box, Flex, Text, Tooltip } from 'rizzui';
-import WidgetCard from '@core/components/cards/widget-card';
-import DropdownAction from '@core/components/charts/dropdown-action';
 import {
   activeTaskMonths,
   activeTasksData,
   activeTaskViewOptions,
 } from '@/data/project-dashboard';
-import SimpleBar from 'simplebar-react';
+import WidgetCard from '@core/components/cards/widget-card';
+import DropdownAction from '@core/components/charts/dropdown-action';
+import cn from '@core/utils/class-names';
+import { Avatar, Box, Flex, Text, Tooltip } from 'rizzui';
 
 export default function ProjectActiveTasks({
   className,
@@ -35,7 +34,7 @@ export default function ProjectActiveTasks({
         className
       )}
     >
-      <SimpleBar className="-mb-3 mt-6 pb-3">
+      <div className="custom-scrollbar overflow-x-auto scroll-smooth -mb-3 mt-6 pb-3">
         <Box className="min-w-[900px] space-y-2">
           {activeTasksData.map((task, index) => (
             <Box
@@ -76,7 +75,7 @@ export default function ProjectActiveTasks({
             </Box>
           </Box>
         </Box>
-      </SimpleBar>
+      </div>
     </WidgetCard>
   );
 }

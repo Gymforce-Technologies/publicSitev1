@@ -2,22 +2,21 @@
 
 import WidgetCard from '@core/components/cards/widget-card';
 import { CustomTooltip } from '@core/components/charts/custom-tooltip';
+import DropdownAction from '@core/components/charts/dropdown-action';
+import TrendingUpIcon from '@core/components/icons/trending-up';
+import { useMedia } from '@core/hooks/use-media';
+import cn from '@core/utils/class-names';
 import {
   Bar,
-  XAxis,
-  YAxis,
-  Tooltip,
   CartesianGrid,
   ComposedChart,
-  ResponsiveContainer,
   Line,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
 } from 'recharts';
-import { useMedia } from '@core/hooks/use-media';
-import SimpleBar from '@core/ui/simplebar';
-import DropdownAction from '@core/components/charts/dropdown-action';
 import { Title } from 'rizzui';
-import cn from '@core/utils/class-names';
-import TrendingUpIcon from '@core/components/icons/trending-up';
 
 const data = [
   {
@@ -91,7 +90,7 @@ export default function CashInBank({ className }: { className?: string }) {
           <span className="font-medium leading-none"> +32.40%</span>
         </span>
       </div>
-      <SimpleBar>
+      <div className='custom-scrollbar overflow-x-auto scroll-smooth'>
         <div className="h-[27.3rem] w-full pt-9 @lg:pt-8">
           <ResponsiveContainer
             width="100%"
@@ -140,7 +139,7 @@ export default function CashInBank({ className }: { className?: string }) {
             </ComposedChart>
           </ResponsiveContainer>
         </div>
-      </SimpleBar>
+      </div>
     </WidgetCard>
   );
 }

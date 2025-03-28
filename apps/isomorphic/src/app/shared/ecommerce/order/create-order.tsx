@@ -48,7 +48,7 @@ export default function CreateOrder({
   const setBillingAddress = useSetAtom(billingAddressAtom);
   const setShippingAddress = useSetAtom(shippingAddressAtom);
 
-  const methods = useForm({
+  const methods = useForm<CreateOrderInput>({
     defaultValues: defaultValues(order),
     resolver: zodResolver(orderFormSchema),
   });

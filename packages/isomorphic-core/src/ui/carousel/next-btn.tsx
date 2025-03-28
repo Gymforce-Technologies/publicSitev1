@@ -1,8 +1,10 @@
-import { Button } from 'rizzui';
-import { useSwiper } from 'swiper/react';
+"use client";
+
+import { Button } from "rizzui";
+import { useSwiper } from "swiper/react";
 
 // import icons and images
-import { PiCaretRightBold } from 'react-icons/pi';
+import { PiCaretRightBold } from "react-icons/pi";
 
 export default function NextBtn() {
   const swiper = useSwiper();

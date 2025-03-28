@@ -1,142 +1,119 @@
-// MessageDropdown.tsx
 "use client";
-import React, { useState, ReactElement } from "react";
-import { Popover, Text, Title, Button } from "rizzui";
+
+import { routes } from "@/config/routes";
+import { messagesData } from "@/data/messages";
+import { Link } from "@/i18n/routing";
+import { useMedia } from "@core/hooks/use-media";
+import cn from "@core/utils/class-names";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
-import { BiSupport } from "react-icons/bi";
-import { FaArrowRight } from "react-icons/fa6";
-import Link from "next/link";
-import CalendlyButton from "./CalendlyDynamic";
+import { useTranslations } from "next-intl";
+import { RefObject, useState } from "react";
+import { PiCheck } from "react-icons/pi";
+import { Avatar, Badge, Popover, Text, Title } from "rizzui";
 
 dayjs.extend(relativeTime);
 
-const MessagesList: React.FC<{
+function MessagesList({
+  setIsOpen,
+}: {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  setShowCalendly: React.Dispatch<React.SetStateAction<boolean>>;
-}> = ({ setIsOpen, setShowCalendly }) => {
-  const handleBookSlot = () => {
-    setIsOpen(false);
-    setShowCalendly(true);
-  };
+}) {
+  const t = useTranslations("common");
 
   return (
-    <>
-      <div className="w-[280px] text-left sm:w-[320px] 2xl:w-[360px] p-4 space-y-2.5">
-        {/* Header */}
-        <div className="bg-primary p-3 flex justify-between items-center rounded-md ">
-          <div className="flex items-center gap-4 ">
-            <BiSupport className="w-5 h-5 font-semibold text-white" />
-            <Title as="h6" className=" font-semibold text-white">
-              Customer Support
-            </Title>
-          </div>
-        </div>
-
-        {/* Content */}
-        <div className="space-y-2">
-          {/* Contact Information */}
-          <div className="space-y-1 px-2.5 py-1">
-            <Text className=" font-medium leading-relaxed">
-              Live customer support is available from Monday to Friday, 9:00 AM
-              to 9:00 PM.
-            </Text>
-            <Text className=" font-medium mt-2">
-              Call us at{" "}
-              <Link
-                href="tel:+919723462754"
-                className="text-primary hover:animate-none hover:scale-110 animate-pulse transition-all duration-500"
-              >
-                +91 972 346 2754
-              </Link>
-            </Text>
-            <Text className="font-medium mt-2">
-              Email us at{" "}
-              <Link
-                href="mailto:support@gymforce.in"
-                className="text-primary hover:scale-110 transition-all duration-500"
-              >
-                support@gymforce.in
-              </Link>
-            </Text>
-          </div>
-
-          {/* Live Demo Button */}
-          <div className="rounded-md p-2.5 space-y-2 group">
-            <Text className="font-semibold">
-              Schedule a Live Demo with our experts
-            </Text>
-            <Button
-              rounded="pill"
-              variant="flat"
-              size="sm"
-              className="text-primary flex flex-row gap-8 justify-center items-center bg-primary-lighter group-hover:bg-primary group-hover:text-white w-full"
-              onClick={handleBookSlot}
+    <div className="w-[320px] text-left sm:w-[360px] 2xl:w-[420px] rtl:text-right">
+      <div className="mb-2 flex items-center justify-between ps-6">
+        <Title as="h5" fontWeight="semibold">
+          {t("text-message")}
+        </Title>
+        <Link
+          href={routes.support.inbox}
+          onClick={() => setIsOpen(false)}
+          className="hover:underline"
+        >
+          {t("text-view-all")}
+        </Link>
+      </div>
+      <div className="custom-scrollbar overflow-y-auto scroll-smooth max-h-[406px]">
+        <div className="grid grid-cols-1 ps-4">
+          {messagesData.map((item) => (
+            <div
+              key={item.name + item.id}
+              className="group grid cursor-pointer grid-cols-[auto_minmax(0,1fr)] gap-2.5 rounded-md px-2 py-2.5 pe-3 transition-colors hover:bg-gray-100 dark:hover:bg-gray-50"
             >
-              {/* <FaCheckToSlot size={24} className="place-self-center" /> */}
-              <span className=" text-nowrap">Book Your Slot</span>
-              <FaArrowRight size={20} className="group-hover:animate-pulse" />
-            </Button>
-          </div>
-
-          {/* Support Ticket Button */}
-          <div className="rounded-md p-2.5 flex flex-col justify-center gap-4 group">
-            <Text className=" font-semibold">Raise a Support Ticket</Text>
-            <Link href="/support/create-ticket">
-              <Button
-                rounded="pill"
-                variant="flat"
-                size="sm"
-                className="text-primary flex flex-row gap-8 justify-center items-center bg-primary-lighter group-hover:bg-primary group-hover:text-white w-full"
-                onClick={() => setIsOpen(false)}
-              >
-                <span className="text-nowrap">Raising a Support Ticket</span>
-                <FaArrowRight className="group-hover:animate-pulse size-5" />
-              </Button>
-            </Link>
-          </div>
+              <div className={cn("relative", item.avatar.length > 1 && "me-1")}>
+                <Avatar
+                  src={item.avatar[0]}
+                  name={item.name}
+                  className={cn(
+                    item.avatar.length > 1 &&
+                      "relative -end-1 -top-0.5 !h-9 !w-9"
+                  )}
+                />
+                {item.avatar.length > 1 && (
+                  <Avatar
+                    src={item.avatar[1]}
+                    name={item.name}
+                    className="absolute -bottom-1 end-1.5 !h-9 !w-9 border-2 border-gray-0 dark:border-gray-100"
+                  />
+                )}
+              </div>
+              <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center">
+                <div className="w-full">
+                  <Text className="mb-0.5 w-11/12 truncate text-sm font-semibold text-gray-900 dark:text-gray-700">
+                    {item.name}
+                  </Text>
+                  <div className="flex">
+                    <Text className="w-10/12 truncate pe-7 text-xs text-gray-500">
+                      {item.message}
+                    </Text>
+                    <Text className="ms-auto whitespace-nowrap pe-8 text-xs text-gray-500">
+                      {dayjs(item.sendTime).fromNow(true)}
+                    </Text>
+                  </div>
+                </div>
+                <div className="ms-auto flex-shrink-0">
+                  {item.unRead ? (
+                    <Badge
+                      renderAsDot
+                      size="lg"
+                      color="primary"
+                      className="scale-90"
+                    />
+                  ) : (
+                    <span className="inline-block rounded-full bg-gray-100 p-0.5 dark:bg-gray-50">
+                      <PiCheck className="h-auto w-[9px]" />
+                    </span>
+                  )}
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
-    </>
+    </div>
   );
-};
-
-// Main component
-interface MessageDropdownProps {
-  children: ReactElement;
 }
 
-export default function MessageDropdown({ children }: MessageDropdownProps) {
+export default function MessagesDropdown({
+  children,
+}: {
+  children: React.ReactElement & { ref?: RefObject<any> };
+}) {
+  const isMobile = useMedia("(max-width: 480px)", false);
   const [isOpen, setIsOpen] = useState(false);
-  const [showCalendly, setShowCalendly] = useState(false);
-
   return (
-    <>
-      <Popover
-        isOpen={isOpen}
-        setIsOpen={setIsOpen}
-        shadow="sm"
-        placement="bottom-end"
-        arrowClassName="text-gray-400 "
-      >
-        <Popover.Trigger>
-          {React.cloneElement(children, {
-            onClick: () => setIsOpen(!isOpen),
-          })}
-        </Popover.Trigger>
-        <Popover.Content className="z-[9999] p-0 [&>svg]:hidden sm:[&>svg]:inline-flex ">
-          <MessagesList
-            setIsOpen={setIsOpen}
-            setShowCalendly={setShowCalendly}
-          />
-        </Popover.Content>
-      </Popover>
-
-      <CalendlyButton
-        show={showCalendly}
-        setShow={setShowCalendly}
-        buttonLink="https://calendly.com/gymforceofficial/gymforce-demo"
-      />
-    </>
+    <Popover
+      isOpen={isOpen}
+      setIsOpen={setIsOpen}
+      shadow="sm"
+      placement={isMobile ? "bottom" : "bottom-end"}
+    >
+      <Popover.Trigger>{children}</Popover.Trigger>
+      <Popover.Content className="z-[9999] pb-6 pe-6 ps-0 pt-5 dark:bg-gray-100 [&>svg]:hidden [&>svg]:dark:fill-gray-100 sm:[&>svg]:inline-flex">
+        <MessagesList setIsOpen={setIsOpen} />
+      </Popover.Content>
+    </Popover>
   );
 }

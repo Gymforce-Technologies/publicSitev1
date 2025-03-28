@@ -1,21 +1,20 @@
 'use client';
 
 import WidgetCard from '@core/components/cards/widget-card';
-import { Title, Text, Badge } from 'rizzui';
-import cn from '@core/utils/class-names';
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-} from 'recharts';
-import { useMedia } from '@core/hooks/use-media';
 import { CustomTooltip } from '@core/components/charts/custom-tooltip';
 import TrendingUpIcon from '@core/components/icons/trending-up';
-import SimpleBar from '@core/ui/simplebar';
+import { useMedia } from '@core/hooks/use-media';
+import cn from '@core/utils/class-names';
+import {
+  Bar,
+  BarChart,
+  CartesianGrid,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from 'recharts';
+import { Badge, Text, Title } from 'rizzui';
 
 const data = [
   {
@@ -157,7 +156,7 @@ export default function StorageReport({ className }: { className?: string }) {
       }
       className={className}
     >
-      <SimpleBar>
+      <div className="custom-scrollbar overflow-x-auto">
         <div className="h-96 w-full pt-9">
           <ResponsiveContainer width="100%" height="100%" minWidth={700}>
             <BarChart
@@ -183,7 +182,7 @@ export default function StorageReport({ className }: { className?: string }) {
             </BarChart>
           </ResponsiveContainer>
         </div>
-      </SimpleBar>
+      </div>
     </WidgetCard>
   );
 }

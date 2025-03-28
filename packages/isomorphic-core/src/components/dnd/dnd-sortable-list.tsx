@@ -1,7 +1,5 @@
-import { useMemo, useState } from "react";
-import type { ReactNode } from "react";
-import { DndContext, KeyboardSensor, PointerSensor, useSensor, useSensors } from "@dnd-kit/core";
-import type { Active, DragEndEvent, UniqueIdentifier } from "@dnd-kit/core";
+import { useMemo, useState, type ReactNode } from "react";
+import { DndContext, KeyboardSensor, PointerSensor, useSensor, useSensors, type Active, type DragEndEvent, type UniqueIdentifier } from "@dnd-kit/core";
 import {
   rectSortingStrategy,
   SortableContext,

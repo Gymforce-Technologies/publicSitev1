@@ -1,6 +1,6 @@
 import Image from "next/image";
 import WidgetCard from "@core/components/cards/widget-card";
-import { Title, Text } from "rizzui";
+import { Title, Text } from "rizzui/typography";
 import { PiImageDuotone } from "react-icons/pi";
 import { useTranslations } from "next-intl";
 

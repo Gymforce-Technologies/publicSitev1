@@ -1,4 +1,4 @@
-import { Badge } from 'rizzui';
+import { Badge } from 'rizzui/badge';
 
 const data = [
   {

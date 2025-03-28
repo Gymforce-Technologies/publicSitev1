@@ -1,23 +1,22 @@
 'use client';
 
-import { useState } from 'react';
 import WidgetCard from '@core/components/cards/widget-card';
 import { CustomTooltip } from '@core/components/charts/custom-tooltip';
 import { CustomYAxisTick } from '@core/components/charts/custom-yaxis-tick';
+import DropdownAction from '@core/components/charts/dropdown-action';
+import { useMedia } from '@core/hooks/use-media';
+import cn from '@core/utils/class-names';
+import { useState } from 'react';
 import {
   Bar,
-  XAxis,
-  YAxis,
-  Tooltip,
   CartesianGrid,
   ComposedChart,
-  ResponsiveContainer,
   Line,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
 } from 'recharts';
-import { useMedia } from '@core/hooks/use-media';
-import SimpleBar from '@core/ui/simplebar';
-import DropdownAction from '@core/components/charts/dropdown-action';
-import cn from '@core/utils/class-names';
 
 const dailyData = [
   {
@@ -183,7 +182,7 @@ export default function TicketActivity({ className }: { className?: string }) {
           </div>
         ))}
       </div>
-      <SimpleBar>
+      <div className="custom-scrollbar overflow-x-auto scroll-smooth">
         <div className="h-[28rem] w-full pt-6 @lg:pt-8">
           <ResponsiveContainer
             width="100%"
@@ -232,7 +231,7 @@ export default function TicketActivity({ className }: { className?: string }) {
             </ComposedChart>
           </ResponsiveContainer>
         </div>
-      </SimpleBar>
+      </div>
     </WidgetCard>
   );
 }

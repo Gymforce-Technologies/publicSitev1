@@ -1,22 +1,21 @@
 'use client';
 
-import {
-  Bar,
-  XAxis,
-  YAxis,
-  Tooltip,
-  CartesianGrid,
-  ResponsiveContainer,
-  BarChart,
-  LabelList,
-} from 'recharts';
 import WidgetCard from '@core/components/cards/widget-card';
 import { CustomTooltip } from '@core/components/charts/custom-tooltip';
-import SimpleBar from '@core/ui/simplebar';
-import { useMedia } from '@core/hooks/use-media';
-import { formatNumber } from '@core/utils/format-number';
 import { CustomYAxisTick } from '@core/components/charts/custom-yaxis-tick';
+import { useMedia } from '@core/hooks/use-media';
 import cn from '@core/utils/class-names';
+import { formatNumber } from '@core/utils/format-number';
+import {
+  Bar,
+  BarChart,
+  CartesianGrid,
+  LabelList,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from 'recharts';
 
 const data = [
   {
@@ -120,7 +119,7 @@ export default function ArrBySignUp({ className }: { className?: string }) {
         </div>
       }
     >
-      <SimpleBar className="mt-8">
+      <div className="custom-scrollbar overflow-x-auto scroll-smooth mt-8">
         <div className="h-[32rem]">
           <ResponsiveContainer
             width="100%"
@@ -185,7 +184,7 @@ export default function ArrBySignUp({ className }: { className?: string }) {
             </BarChart>
           </ResponsiveContainer>
         </div>
-      </SimpleBar>
+      </div>
     </WidgetCard>
   );
 }

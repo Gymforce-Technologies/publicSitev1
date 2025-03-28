@@ -1,3 +1,5 @@
+'use client';
+
 import { PiCaretDownBold } from "react-icons/pi";
 import Pagination, { type PaginationProps } from "@core/ui/pagination";
 import { Select } from "rizzui";
@@ -24,7 +26,7 @@ export default function TablePagination({
 
   ...props
 }: TablePaginationProps) {
-  const t = useTranslations("common");
+  const t = useTranslations("table");
 
   return (
     <div
@@ -41,8 +43,7 @@ export default function TablePagination({
         )
       ) : (
         <div className="hidden items-center sm:flex">
-          {/* {t("table-text-row-per-page")} */}
-          Page
+          {t("table-text-row-per-page")}
           <Select
             options={paginationLimitOptions}
             onChange={setPageSize}

@@ -1,11 +1,10 @@
-import Image from "next/image";
-import { Title, Text } from "rizzui";
-import cn from "@core/utils/class-names";
+import { members } from "@/data/members-data";
 import WidgetCard from "@core/components/cards/widget-card";
 import TrophyIcon from "@core/components/icons/trophy";
-import SimpleBar from "@core/ui/simplebar";
-import { members } from "@/data/members-data";
+import cn from "@core/utils/class-names";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
+import { Text, Title } from "rizzui/typography";
 
 export default function Members({ className }: { className?: string }) {
   const t = useTranslations("common");
@@ -18,12 +17,8 @@ export default function Members({ className }: { className?: string }) {
       >
         {t("text-members")}
       </Title>
-      <WidgetCard
-        title=""
-        headerClassName="hidden"
-        className="p-0 lg:p-0"
-      >
-        <SimpleBar style={{ maxHeight: 450 }}>
+      <WidgetCard title="" headerClassName="hidden" className="p-0 lg:p-0">
+        <div className="custom-scrollbar overflow-y-auto scroll-smooth h-[450px]">
           <div className="p-5 lg:p-7">
             <div className="-me-2 grid gap-4 @sm:gap-5">
               {members.map((member) => (
@@ -60,7 +55,7 @@ export default function Members({ className }: { className?: string }) {
               ))}
             </div>
           </div>
-        </SimpleBar>
+        </div>
       </WidgetCard>
     </div>
   );

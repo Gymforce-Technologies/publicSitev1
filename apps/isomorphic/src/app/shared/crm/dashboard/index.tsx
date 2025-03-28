@@ -1,4 +1,4 @@
-import { Box } from 'rizzui';
+import { Box } from 'rizzui/box';
 import CRMStats from './crm-stats';
 import TeamActivity from './team-activity';
 import CustomerList from './customer-list';

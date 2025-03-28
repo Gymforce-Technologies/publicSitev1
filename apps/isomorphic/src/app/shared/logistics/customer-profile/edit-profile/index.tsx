@@ -19,7 +19,7 @@ export default function EditProfileButton({ className }: EditProfileProps) {
       onClick={() =>
         openModal({
           view: <EditProfileForm />,
-          customSize: '850px',
+          customSize: 850,
         })
       }
     >

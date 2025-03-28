@@ -1,5 +1,7 @@
-import { useEffect, useState } from 'react';
-import { Disclosure } from '@headlessui/react';
+"use client";
+
+import { useEffect, useState } from "react";
+import { Disclosure } from "@headlessui/react";
 import {
   Title,
   Input,
@@ -9,11 +11,11 @@ import {
   Tooltip,
   Button,
   Text,
-} from 'rizzui';
-import cn from '../utils/class-names';
-import { PiMagnifyingGlassBold, PiPlusBold, PiXBold } from 'react-icons/pi';
-import { generateSlug } from '../utils/generate-slug';
-import { BsExclamationCircle } from 'react-icons/bs';
+} from "rizzui";
+import cn from "../utils/class-names";
+import { PiMagnifyingGlassBold, PiPlusBold, PiXBold } from "react-icons/pi";
+import { generateSlug } from "../utils/generate-slug";
+import { BsExclamationCircle } from "react-icons/bs";
 
 type FilterOptions = {
   name: string;
@@ -40,9 +42,9 @@ export default function FilterWithSearch({
   applyFilter,
 }: FilterWithSearchProps) {
   const [isSearchOpen, setSearchOpen] = useState(false);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const [values, setValues] = useState<string[]>(
-    state[name]?.length ? state[name].split(',') : []
+    state[name]?.length ? state[name].split(",") : []
   );
   const [event, setEvent] = useState(false);
 
@@ -61,7 +63,7 @@ export default function FilterWithSearch({
   }, [values]);
 
   const filteredData = data.filter((element) => {
-    if (searchTerm === '') {
+    if (searchTerm === "") {
       return element;
     } else {
       return element.name.toLowerCase().includes(searchTerm);
@@ -87,7 +89,7 @@ export default function FilterWithSearch({
 
         <div className="flex flex-col pt-5">
           <CheckboxGroup
-            values={state[name]?.length ? state[name].split(',') : []}
+            values={state[name]?.length ? state[name].split(",") : []}
             setValues={setValues}
             onChange={(e) => handleOnChange(e)}
             className="space-y-3.5"
@@ -115,7 +117,7 @@ export default function FilterWithSearch({
           {filteredData!.length > 5 ? (
             <CollapsibleFilterOptions data={filteredData}>
               <CheckboxGroup
-                values={state[name]?.length ? state[name].split(',') : []}
+                values={state[name]?.length ? state[name].split(",") : []}
                 setValues={setValues}
                 className="space-y-3.5 pt-3.5"
               >
@@ -170,8 +172,8 @@ function FilterOptionSearch({
   return (
     <div
       className={cn(
-        'absolute end-0 z-10 flex w-full',
-        isSearchOpen ? '-top-1' : '-top-0.5'
+        "absolute end-0 z-10 flex w-full",
+        isSearchOpen ? "-top-1" : "-top-0.5"
       )}
     >
       {isSearchOpen && (
@@ -180,7 +182,7 @@ function FilterOptionSearch({
           size="sm"
           rounded="pill"
           value={searchTerm}
-          onClear={() => setSearchTerm('')}
+          onClear={() => setSearchTerm("")}
           onChange={(event) => setSearchTerm(event.target.value)}
           placeholder={`Search for ${title.toLowerCase()}...`}
           inputClassName="ps-3 pe-9 bg-background"
@@ -190,15 +192,15 @@ function FilterOptionSearch({
 
       <ActionIcon
         size="sm"
-        variant={isSearchOpen ? 'text' : 'flat'}
+        variant={isSearchOpen ? "text" : "flat"}
         rounded="full"
         className={cn(
-          'absolute z-10 bg-opacity-95 backdrop-blur-lg transition-none',
-          isSearchOpen ? 'end-1.5 top-0.5' : 'end-0'
+          "absolute z-10 bg-opacity-95 backdrop-blur-lg transition-none",
+          isSearchOpen ? "end-1.5 top-0.5" : "end-0"
         )}
         onClick={() => {
           setSearchOpen(!isSearchOpen);
-          setSearchTerm('');
+          setSearchTerm("");
         }}
       >
         {isSearchOpen ? (

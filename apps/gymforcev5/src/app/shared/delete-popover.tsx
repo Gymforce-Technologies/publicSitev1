@@ -1,3 +1,5 @@
+'use client';
+
 import { Title, Text, ActionIcon, Button, Popover } from "rizzui";
 import TrashIcon from "@core/components/icons/trash";
 import { PiTrashFill } from "react-icons/pi";
@@ -9,11 +11,7 @@ type DeletePopoverProps = {
   onDelete: () => void;
 };
 
-export default function DeletePopover({
-  title,
-  description,
-  onDelete,
-}: DeletePopoverProps) {
+export default function DeletePopover({ title, description, onDelete }: DeletePopoverProps) {
   const t = useTranslations("table");
   return (
     <Popover placement="left">
@@ -32,16 +30,18 @@ export default function DeletePopover({
           <div className="w-56 pb-2 pt-1 text-left rtl:text-right">
             <Title
               as="h6"
-              className="mb-0.5 flex items-start text-gray-700 sm:items-center"
+              className="mb-0.5 flex items-start text-sm text-gray-700 sm:items-center"
             >
-              <PiTrashFill className="me-1 h-[17px] w-[17px]" /> {title}
+              <PiTrashFill className="me-1 h-[17px] w-[17px]" /> {t(title)}
             </Title>
-            <Text className="my-2 leading-relaxed text-gray-500">
-              {description}
-            </Text>
+            <Text className="mb-2 leading-relaxed text-gray-500">{description}</Text>
             <div className="flex items-center justify-end">
-              <Button size="sm" className="me-1.5 h-7" onClick={onDelete}>
-                Yes
+              <Button
+                size="sm"
+                className="me-1.5 h-7"
+                onClick={onDelete}
+              >
+                {t("text-yes")}
               </Button>
               <Button
                 size="sm"
@@ -49,7 +49,7 @@ export default function DeletePopover({
                 className="h-7"
                 onClick={() => setOpen(false)}
               >
-                No
+                {t("text-no")}
               </Button>
             </div>
           </div>

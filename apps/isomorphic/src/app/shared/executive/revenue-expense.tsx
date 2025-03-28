@@ -15,7 +15,6 @@ import {
 import { useMedia } from '@core/hooks/use-media';
 import { CustomYAxisTick } from '@core/components/charts/custom-yaxis-tick';
 import { CustomTooltip } from '@core/components/charts/custom-tooltip';
-import SimpleBar from '@core/ui/simplebar';
 import { Title, Text } from 'rizzui';
 import cn from '@core/utils/class-names';
 import TrendingUpIcon from '@core/components/icons/trending-up';
@@ -179,7 +178,7 @@ export default function RevenueExpense({ className }: { className?: string }) {
       className={className}
     >
       <Legend className="mt-2 flex @2xl:hidden @3xl:flex @5xl:hidden" />
-      <SimpleBar>
+      <div className="custom-scrollbar overflow-x-auto">
         <div className="h-96 w-full pt-9">
           <ResponsiveContainer
             width="100%"
@@ -255,7 +254,7 @@ export default function RevenueExpense({ className }: { className?: string }) {
             </ComposedChart>
           </ResponsiveContainer>
         </div>
-      </SimpleBar>
+      </div>
     </WidgetCard>
   );
 }

@@ -37,7 +37,7 @@ export default function TeamActivity({ className }: { className?: string }) {
 
   return (
     <WidgetCard
-      ref={ref}
+      ref={ref as React.Ref<HTMLDivElement>}
       title="Team activity"
       className={cn('@container', className)}
     >

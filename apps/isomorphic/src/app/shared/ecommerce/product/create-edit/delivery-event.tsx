@@ -1,3 +1,5 @@
+'use client';
+
 import FormGroup from '@/app/shared/form-group';
 import { Checkbox, Input } from 'rizzui';
 import cn from '@core/utils/class-names';

@@ -20,14 +20,14 @@ type Columns = {
   t?: (key: string) => string | undefined;
 };
 
-export const getColumns = ({
-  sortConfig,
-  onDeleteItem,
-  onHeaderCellClick,
-  t,
-}: Columns) => [
+export const getColumns = ({ sortConfig, onDeleteItem, onHeaderCellClick, t }: Columns) => [
   {
-    title: <HeaderCell title="table-text-name" className="ps-2" />,
+    title: (
+      <HeaderCell
+        title="table-text-name"
+        className="ps-2"
+      />
+    ),
     dataIndex: "file",
     key: "file",
     width: 220,
@@ -60,27 +60,21 @@ export const getColumns = ({
     dataIndex: "type",
     key: "type",
     width: 130,
-    render: (value: any) => (
-      <span className="capitalize text-gray-500">{value}</span>
-    ),
+    render: (value: any) => <span className="capitalize text-gray-500">{value}</span>,
   },
   {
     title: (
       <HeaderCell
         title="table-text-modified"
         sortable
-        ascending={
-          sortConfig?.direction === "asc" && sortConfig?.key === "dueDate"
-        }
+        ascending={sortConfig?.direction === "asc" && sortConfig?.key === "dueDate"}
       />
     ),
     onHeaderCell: () => onHeaderCellClick("modified"),
     dataIndex: "modified",
     key: "modified",
     width: 150,
-    render: (value: Date) => (
-      <DateCell date={value} dateFormat={"yyyy-mm-dd"} />
-    ),
+    render: (value: Date) => <DateCell date={value} />,
   },
   {
     title: <HeaderCell title="table-text-shared" />,
@@ -108,7 +102,12 @@ export const getColumns = ({
   },
   {
     // Need to avoid this issue -> <td> elements in a large <table> do not have table headers.
-    title: <HeaderCell title="table-text-action" className="opacity-0" />,
+    title: (
+      <HeaderCell
+        title="table-text-action"
+        className="opacity-0"
+      />
+    ),
     dataIndex: "action",
     key: "action",
     width: 100,
@@ -127,7 +126,10 @@ function FileMoreAction({ onDelete }: { onDelete: () => void }) {
   return (
     <Popover placement="bottom-end">
       <Popover.Trigger>
-        <ActionIcon title={"More Options"} variant="text">
+        <ActionIcon
+          title={"More Options"}
+          variant="text"
+        >
           <PiDotsThreeOutlineVerticalFill className="h-[18px] w-[18px] text-gray-500" />
         </ActionIcon>
       </Popover.Trigger>
