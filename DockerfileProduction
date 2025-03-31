@@ -27,4 +27,4 @@ EXPOSE 5023
 WORKDIR /app/apps/gymforcev5
 
 # Start the Next.js app
-CMD ["pnpm", "next", "start", "-p", "5023"]
+CMD ["pnpm", "next", "start","-H", "0.0.0.0", "-p", "5023"]
