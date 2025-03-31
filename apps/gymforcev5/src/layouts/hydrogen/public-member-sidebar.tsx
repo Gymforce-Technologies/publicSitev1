@@ -46,7 +46,7 @@ export default function MemberSidebar({
   const pathname = usePathname();
   // const { theme } = useTheme();
   // const { t } = useTranslation(lang!, "nav");
-  const t = useTranslations("nav");
+  // const t = useTranslations("nav");
   // const [member, setMember] = useState<any>(null);
   const { code } = useParams();
   const [initialData, setInitialData] = useState<any>(null);

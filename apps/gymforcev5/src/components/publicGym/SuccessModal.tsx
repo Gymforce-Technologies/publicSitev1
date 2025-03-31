@@ -57,7 +57,7 @@ const SuccessModal = ({
                 Contact Details
               </Title>
             </div>
-            <Text className="text-gray-600">
+            <div className="text-gray-600">
               Phone:{" "}
               {initialData?.contact_no ? (
                 <Link href={`tel:${initialData.contact_no}`}>
@@ -75,7 +75,7 @@ const SuccessModal = ({
                   </Text>
                 </Link>
               )}
-            </Text>
+            </div>
           </div>
         </div>
 

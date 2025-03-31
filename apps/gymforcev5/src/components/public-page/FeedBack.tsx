@@ -85,8 +85,9 @@ const FeedbackModal: React.FC<FeedbackModalProps> = ({
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      containerClassName="p-8"
+      containerClassName="p-8 lg:min-w-[456px]"
       className="z-[9999999]"
+      customSize="500px"
     >
       <Title as="h3" className="pb-4">
         Feedback
