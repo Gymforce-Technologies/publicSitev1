@@ -83,7 +83,7 @@ const SuccessModal = ({
           <Button
             variant="solid"
             className="bg-primary hover:bg-primary-dark"
-            onClick={() => (window.location.href = `/gym/${code}`)}
+            onClick={() => (window.location.href = `/${code}`)}
           >
             Go to Homepage
           </Button>

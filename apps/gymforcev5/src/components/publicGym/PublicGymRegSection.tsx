@@ -19,7 +19,7 @@ import {
 } from "rizzui";
 import { DatePicker } from "@core/ui/datepicker";
 import { PhoneNumber } from "@core/ui/phone-input";
-import Loading from "@/app/[locale]/loading";
+
 import { MdFeedback } from "react-icons/md";
 import { FaArrowLeft, FaFacebook, FaInstagram } from "react-icons/fa6";
 import Link from "next/link";
@@ -43,6 +43,7 @@ import { COUNTRY_MAPPINGS } from "@/app/[locale]/auth/Countries";
 import { AxiosPublic } from "@/app/[locale]/auth/AxiosPrivate";
 import SuccessModal from "./SuccessModal";
 import PublicHeader from "./PublicHeader";
+import Loader from "@/app/[locale]/loading";
 
 interface RegistrationData {
   name: string;
@@ -468,7 +469,7 @@ export default function PublicGymRegSection() {
   return (
     <div className="min-h-screen bg-gray-50 relative">
       {loading || !initialData ? (
-        <Loading />
+        <Loader />
       ) : (
         <>
           <div className="bg-primary text-gray-100 py-3 md:py-6 sticky top-0 z-[99999]">
@@ -477,8 +478,8 @@ export default function PublicGymRegSection() {
               setIsModalOpen={setIsModalOpen}
             />
           </div>
-          <div className="p-4 md:p-6 mx-4 md:mx-8 flex items-center gap-4 md:gap-8">
-            <Link href={`/gym/${code}`}>
+          <div className="p-4 md:p-6 mx-4 md:mx-8 lg:mx-16 flex items-center gap-4 md:gap-8">
+            <Link href={`/${code}`}>
               <FaArrowLeft size={18} />
             </Link>
             <Title className="text-xl md:text-2xl font-bold">

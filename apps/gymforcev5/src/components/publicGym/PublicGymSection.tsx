@@ -342,7 +342,7 @@ export default function PublicGymSection() {
                     <Button
                       className="flex gap-2 items-center self-end"
                       onClick={() => {
-                        router.push(`/gym/${code}/registration`);
+                        router.push(`/${code}/registration`);
                       }}
                     >
                       Continue
@@ -380,7 +380,7 @@ export default function PublicGymSection() {
                     <Button
                       className="flex gap-2 items-center"
                       onClick={() => {
-                        router.push(`/gym/${code}/login`);
+                        router.push(`/${code}/login`);
                       }}
                     >
                       Continue

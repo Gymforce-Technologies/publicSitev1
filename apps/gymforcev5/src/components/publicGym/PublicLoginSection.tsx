@@ -61,7 +61,7 @@ export default function PublicLoginSection() {
         setMemberToken(resp.data.token);
         toast.success("Logged In successfully");
         setLoading(true);
-        router.push(`/gym/${code}/member`);
+        router.push(`/${code}/member`);
       });
     } catch (error) {
       console.error("Error verifying member:", error);
