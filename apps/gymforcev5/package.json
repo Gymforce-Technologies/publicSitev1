@@ -101,7 +101,8 @@
     "tailwind-merge": "^2.6.0",
     "typescript": "5.7.3",
     "uploadthing": "^7.5.2",
-    "zod": "^3.24.2"
+    "zod": "^3.24.2",
+    "@ducanh2912/next-pwa": "^10.2.9"
   },
   "devDependencies": {
     "@hookform/devtools": "^4.3.3",

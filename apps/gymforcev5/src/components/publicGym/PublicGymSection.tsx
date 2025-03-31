@@ -39,7 +39,7 @@ import "swiper/css/pagination";
 import GallerySection, {
   GalleryItemProps,
 } from "@/components/public-page/Gallery";
-import Loading from "../../app/[locale]/loading";
+import Loader from "../../app/[locale]/loading";
 
 import dynamic from "next/dynamic";
 // import { AxiosPublic } from "../../app/[locale]/auth/AxiosPrivate";
@@ -110,12 +110,9 @@ export default function PublicGymSection() {
   useEffect(() => {
     const getInitialData = async () => {
       try {
-        const resp = await AxiosPublic.get(
-          `/center/initial/${code}/`,
-          {
-            id: `Gym-${code}`,
-          }
-        );
+        const resp = await AxiosPublic.get(`/center/initial/${code}/`, {
+          id: `Gym-${code}`,
+        });
         setInitialData(resp.data);
         setGymId(resp.data.id);
         await getGallery(resp.data.id);
@@ -133,23 +130,17 @@ export default function PublicGymSection() {
   }, []);
 
   const getGallery = async (gymId: string) => {
-    const resp = await AxiosPublic.get(
-      `/center/list-gallery/${gymId}/`,
-      {
-        id: `Gym-${gymId}-Gallery`,
-      }
-    );
+    const resp = await AxiosPublic.get(`/center/list-gallery/${gymId}/`, {
+      id: `Gym-${gymId}-Gallery`,
+    });
     console.log(resp.data);
     setGalleryData(resp.data);
   };
 
   const getTrainerDetails = async (gymId: string) => {
-    const resp = await AxiosPublic.get(
-      `/center/list-trainer/${gymId}/`,
-      {
-        id: `Gym-${gymId}-Trainers`,
-      }
-    );
+    const resp = await AxiosPublic.get(`/center/list-trainer/${gymId}/`, {
+      id: `Gym-${gymId}-Trainers`,
+    });
     setTrainers(resp.data);
     // console.log(resp.data)
   };
@@ -190,12 +181,9 @@ export default function PublicGymSection() {
 
   const getOffers = async (gymId: string) => {
     try {
-      const resp = await AxiosPublic.get(
-        `/center/list-offers/${gymId}/`,
-        {
-          id: `Gym-${gymId}-Offers`,
-        }
-      );
+      const resp = await AxiosPublic.get(`/center/list-offers/${gymId}/`, {
+        id: `Gym-${gymId}-Offers`,
+      });
       setOfferList(resp.data);
     } catch (error) {
       console.error("Error fetching offers:", error);
@@ -327,7 +315,7 @@ export default function PublicGymSection() {
   return (
     <div className="min-h-screen bg-gray-50 relative">
       {loading || !initialData ? (
-        <Loading />
+        <Loader />
       ) : (
         <>
           {/* Header Section */}
