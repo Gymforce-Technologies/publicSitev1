@@ -1,6 +1,6 @@
 "use client";
 import { AxiosPublic } from "@/app/[locale]/auth/AxiosPrivate";
-import Loading from "@/app/[locale]/loading";
+import Loader from "@/app/[locale]/loading";
 import { formatDate } from "@core/utils/format-date";
 import Image from "next/image";
 import Link from "next/link";
@@ -50,7 +50,7 @@ export default function PublicMemberSection() {
   }, []);
 
   if (!data) {
-    return <Loading />;
+    return <Loader />;
   }
 
   return (

@@ -2,7 +2,7 @@
 
 import { AxiosPublic } from "@/app/[locale]/auth/AxiosPrivate";
 import { COUNTRY_MAPPINGS } from "@/app/[locale]/auth/Countries";
-import Loading from "@/app/[locale]/loading";
+import Loader from "@/app/[locale]/loading";
 import FeedbackModal from "@/components/public-page/FeedBack";
 // import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
@@ -15,7 +15,6 @@ import {
   FaInstagram,
   FaSquarePhone,
 } from "react-icons/fa6";
-import { MdFeedback } from "react-icons/md";
 import {
   AdvancedRadio,
   Avatar,
@@ -51,12 +50,9 @@ export default function PublicLoginSection() {
       };
     }
     try {
-      const resp = await AxiosPublic.post(
-        `/center/verify-member/${gymId}/`,
-        {
-          ...data,
-        }
-      ).then((resp) => {
+      const resp = await AxiosPublic.post(`/center/verify-member/${gymId}/`, {
+        ...data,
+      }).then((resp) => {
         console.log(resp);
         setMemberToken(resp.data.token);
         toast.success("Logged In successfully");
@@ -72,12 +68,9 @@ export default function PublicLoginSection() {
   useEffect(() => {
     const getInitialData = async () => {
       try {
-        const resp = await AxiosPublic.get(
-          `/center/initial/${code}/`,
-          {
-            id: `Gym-${code}`,
-          }
-        );
+        const resp = await AxiosPublic.get(`/center/initial/${code}/`, {
+          id: `Gym-${code}`,
+        });
         setInitialData(resp.data);
         setGymId(resp.data.id);
         setLoading(false);
@@ -94,7 +87,7 @@ export default function PublicLoginSection() {
   return (
     <div className="min-h-screen bg-gray-50 relative">
       {loading || !initialData ? (
-        <Loading />
+        <Loader />
       ) : (
         <>
           {/* Header Section */}
@@ -119,22 +112,23 @@ export default function PublicLoginSection() {
               </Title>
               <div className="flex flex-row gap-6 items-center ">
                 <AdvancedRadio
-                  value={typeVal}
-                  onClick={() => setTypeVal("phone")}
+                  value="phone"
+                  checked={typeVal === "phone"}
+                  onChange={() => setTypeVal("phone")}
                   contentClassName="flex flex-row items-center gap-2 p-2"
                   alignment="center"
-                  checked={typeVal === "phone"}
                   size="sm"
                 >
                   <FaSquarePhone size={18} />
                   <Text>Phone</Text>
                 </AdvancedRadio>
+
                 <AdvancedRadio
-                  value={typeVal}
-                  alignment="center"
+                  value="id"
                   checked={typeVal === "id"}
-                  onClick={() => setTypeVal("id")}
+                  onChange={() => setTypeVal("id")}
                   contentClassName="flex flex-row items-center gap-2 p-2"
+                  alignment="center"
                   size="sm"
                 >
                   <FaIdBadge size={18} />
