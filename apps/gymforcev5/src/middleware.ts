@@ -9,16 +9,35 @@ const intlMiddleware = createMiddleware({
 export default function middleware(req: NextRequest) {
   const host = req.headers.get("host") || "";
   const url = req.nextUrl.clone();
-
+  console.log(host, url.pathname);
   // Handle the app.gymforce.in domain
-  if (host.includes("app.gymforce.in") || host.includes("localhost")) {
+  if (host.includes("app.gymforce")) {
     const name = url.searchParams.get("name");
 
     if (name) {
-      // Create the new URL with subdomain format
-      // Keep the full pathname to preserve all path segments
-      const newHost = `www.${name}.gymforce.in`;
+      const newHost = `${name}.gymforce.in`;
       const newUrl = new URL(`https://${newHost}${url.pathname}`);
+
+      // Copy any other query parameters except 'name'
+      url.searchParams.forEach((value, key) => {
+        if (key !== "name") {
+          newUrl.searchParams.set(key, value);
+        }
+      });
+
+      return NextResponse.redirect(newUrl);
+    }
+  } else if (host.includes("localhost")) {
+    const name = url.searchParams.get("name");
+
+    if (name) {
+      // Fix: properly format the localhost URL with the port
+      const [hostname, port] = host.split(":");
+      const newHost = `${name}.localhost`;
+
+      // Make sure we include the port if it exists
+      const portSuffix = port ? `:${port}` : "";
+      const newUrl = new URL(`http://${newHost}${portSuffix}${url.pathname}`);
 
       // Copy any other query parameters except 'name'
       url.searchParams.forEach((value, key) => {
