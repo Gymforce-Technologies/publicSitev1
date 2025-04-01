@@ -21,10 +21,10 @@ RUN turbo run build --filter=intl...
 RUN pnpm install --prod --frozen-lockfile --filter=intl...
 
 # Expose the port the app runs on
-EXPOSE 5024
+EXPOSE 5023
 
 # Set working directory to gymforcev5
 WORKDIR /app/apps/gymforcev5
 
 # Start the Next.js app
-CMD ["pnpm", "next", "start", "-p", "5023"]
+CMD ["pnpm", "next", "start","-H", "0.0.0.0", "-p", "5023"]
