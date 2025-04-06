@@ -1,21 +1,16 @@
 # Use Node.js 18 Alpine as the base image
-FROM node:18-alpine
+FROM node:20-alpine
 
 # Set working directory
 WORKDIR /app
-
-RUN apk add --no-cache curl wget
-
 
 RUN npm install -g pnpm turbo
 
 # Copy the entire project
 COPY . .
-
+    
 # Install all dependencies
 RUN pnpm install --no-frozen-lockfile
-
-
 
 # Build the intl app using TurboRepo
 RUN turbo run build --filter=intl...
@@ -26,11 +21,8 @@ RUN pnpm install --prod --frozen-lockfile --filter=intl...
 # Expose the port the app runs on
 EXPOSE 5023
 
-RUN echo "Checking files..." && ls -l /app/apps/gymforcev5
-
 # Set working directory to gymforcev5
 WORKDIR /app/apps/gymforcev5
 
 # Start the Next.js app
-CMD ["pnpm", "run", "start"]
-
+CMD ["pnpm", "next", "start", "-p", "5023"]
