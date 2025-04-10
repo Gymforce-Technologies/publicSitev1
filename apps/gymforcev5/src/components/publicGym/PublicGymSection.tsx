@@ -53,7 +53,7 @@ import GymImg3 from "@/../public/staticImg/gym/image2.webp";
 import GymImg4 from "@/../public/staticImg/gym/image3.webp";
 
 import DanceImg1 from "@/../public/staticImg/dance/dance.webp";
-import DanceImg2 from "@/../public/staticImg/Dance/dance1.webp";
+import DanceImg2 from "@/../public/staticImg/dance/dance1.webp";
 
 import LibraryImg1 from "@/../public/staticImg/library/library.webp";
 import LibraryImg2 from "@/../public/staticImg/library/libarry2.webp";
