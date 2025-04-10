@@ -63,6 +63,7 @@ import dynamic from "next/dynamic";
 import { GlassNavigationButtons } from "@/components/public-page/SwiperNavGlass";
 import PublicHeader from "./PublicHeader";
 import { AxiosPublic } from "@/app/[locale]/auth/AxiosPrivate";
+import { StaticImageData } from "next/image";
 
 const TrainersList = dynamic(
   () => import("@/components/public-page/TrainersList")
@@ -80,7 +81,7 @@ interface Offer {
   id: number;
   title: string;
   description: string;
-  image: string;
+  image: string | StaticImageData;
   offer_startDate: string;
   offer_endDate: string;
   is_active: boolean;
@@ -105,11 +106,13 @@ const Offers = [
 const GymStaticImages = [GymImg1, GymImg2, GymImg3, GymImg4];
 const DanceStaticImages = [DanceImg1, DanceImg2];
 const LibraryStaticImages = [LibraryImg1, LibraryImg2];
+
 const StaticImages = {
   Gym: GymStaticImages,
   Library: LibraryStaticImages,
   Dance: DanceStaticImages,
 };
+
 export default function PublicGymSection() {
   const { code } = useParams();
   const [initialData, setInitialData] = useState<any>(null);
@@ -142,9 +145,71 @@ export default function PublicGymSection() {
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
 
   const contactSectionRef = useRef<HTMLFormElement>(null);
-  const [offerList, setOfferList] = useState<Offer[]>([]);
   const params = useSearchParams();
-  const [galleryData, setGalleryData] = useState<GalleryItemProps[]>([]);
+  // Update the galleryData state initialization to include proper static image reference
+  const [galleryData, setGalleryData] = useState<GalleryItemProps[]>([
+    {
+      description: "Sample Gallery Description",
+      id: 1,
+      image: GymImg1, // Using static image from imports
+      title: "Sample Gallery Title 1",
+    },
+    {
+      description: "Fitness Area",
+      id: 2,
+      image: GymImg2,
+      title: "Sample Gallery Title 2",
+    },
+    {
+      description: "Workout Space",
+      id: 3,
+      image: GymImg3,
+      title: "Sample Gallery Title 3",
+    },
+  ]);
+
+  // Update the offerList state initialization with proper static images
+  const [offerList, setOfferList] = useState<Offer[]>([
+    {
+      description: "This is a Sample Description of Offer",
+      image: Offers[0].img, // Already uses GymImageOffer from imports
+      discounts: "10%",
+      gym: 1,
+      id: 1,
+      is_active: true,
+      offer_endDate: new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000)
+        .toISOString()
+        .split("T")[0],
+      offer_startDate: new Date().toISOString().split("T")[0],
+      title: "Sample Offer",
+    },
+    {
+      description: "Limited time library membership discount",
+      image: Offers[1].img, // Uses LibraryImageOffer
+      discounts: "15%",
+      gym: 2,
+      id: 2,
+      is_active: true,
+      offer_endDate: new Date(new Date().getTime() + 14 * 24 * 60 * 60 * 1000)
+        .toISOString()
+        .split("T")[0],
+      offer_startDate: new Date().toISOString().split("T")[0],
+      title: "Library Special",
+    },
+    {
+      description: "Join our dance classes with special introductory rate",
+      image: Offers[2].img, // Uses DanceImageOffer
+      discounts: "20%",
+      gym: 3,
+      id: 3,
+      is_active: true,
+      offer_endDate: new Date(new Date().getTime() + 10 * 24 * 60 * 60 * 1000)
+        .toISOString()
+        .split("T")[0],
+      offer_startDate: new Date().toISOString().split("T")[0],
+      title: "Dance Class Promotion",
+    },
+  ]);
   const [trainers, setTrainers] = useState<any>([]);
 
   useEffect(() => {
@@ -174,7 +239,9 @@ export default function PublicGymSection() {
       id: `Gym-${gymId}-Gallery`,
     });
     console.log(resp.data);
-    setGalleryData(resp.data);
+    if (resp.data.length) {
+      setGalleryData(resp.data);
+    }
   };
 
   const getTrainerDetails = async (gymId: string) => {
@@ -224,7 +291,9 @@ export default function PublicGymSection() {
       const resp = await AxiosPublic.get(`/center/list-offers/${gymId}/`, {
         id: `Gym-${gymId}-Offers`,
       });
-      setOfferList(resp.data);
+      if (resp.data.length) {
+        setOfferList(resp.data);
+      }
     } catch (error) {
       console.error("Error fetching offers:", error);
       toast.error("Failed to load offers");

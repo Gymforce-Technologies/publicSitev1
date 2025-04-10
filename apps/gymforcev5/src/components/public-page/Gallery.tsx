@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { Swiper, SwiperSlide, SwiperRef } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -9,7 +9,7 @@ import { Button, Text, Title } from "rizzui";
 export interface GalleryItemProps {
   id: number;
   title: string;
-  image: string;
+  image: string | StaticImageData;
   description: string;
   subtitle?: string;
   is_featured?: boolean;

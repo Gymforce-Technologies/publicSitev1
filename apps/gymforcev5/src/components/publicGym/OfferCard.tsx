@@ -1,12 +1,12 @@
 import { FaFireAlt, FaDumbbell } from "react-icons/fa";
 import { Badge, Button, Text, Title } from "rizzui";
 import DateCell from "@core/ui/date-cell";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 interface Offer {
   id: number;
   title: string;
   description: string;
-  image: string;
+  image: string | StaticImageData;
   offer_startDate: string;
   offer_endDate: string;
   is_active: boolean;
