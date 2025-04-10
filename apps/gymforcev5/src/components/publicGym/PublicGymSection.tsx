@@ -64,6 +64,7 @@ import { GlassNavigationButtons } from "@/components/public-page/SwiperNavGlass"
 import PublicHeader from "./PublicHeader";
 import { AxiosPublic } from "@/app/[locale]/auth/AxiosPrivate";
 import { StaticImageData } from "next/image";
+import { getCenterCode } from "@/app/[locale]/auth/Info";
 
 const TrainersList = dynamic(
   () => import("@/components/public-page/TrainersList")
@@ -114,7 +115,6 @@ const StaticImages = {
 };
 
 export default function PublicGymSection() {
-  const { code } = useParams();
   const [initialData, setInitialData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [activeOffer, setActiveOffer] = useState<Offer | null>(null);
@@ -143,7 +143,18 @@ export default function PublicGymSection() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [gymId, setGymId] = useState<any>(null);
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
-
+  // useEffect(() => {
+  //   const getData = async () => {
+  //     try {
+  //       const subdomain = window.origin;
+  //       console.log(subdomain);
+  //       const resp = await AxiosPublic.post("/center/tenant/higym/");
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+  //   getData();
+  // }, []);
   const contactSectionRef = useRef<HTMLFormElement>(null);
   const params = useSearchParams();
   // Update the galleryData state initialization to include proper static image reference
@@ -215,6 +226,7 @@ export default function PublicGymSection() {
   useEffect(() => {
     const getInitialData = async () => {
       try {
+        const code = await getCenterCode();
         const resp = await AxiosPublic.get(`/center/initial/${code}/`, {
           id: `Gym-${code}`,
         });
@@ -451,7 +463,7 @@ export default function PublicGymSection() {
                     <Button
                       className="flex gap-2 items-center self-end"
                       onClick={() => {
-                        router.push(`/${code}/registration`);
+                        router.push(`/registration`);
                       }}
                     >
                       Continue
@@ -489,7 +501,7 @@ export default function PublicGymSection() {
                     <Button
                       className="flex gap-2 items-center"
                       onClick={() => {
-                        router.push(`/${code}/login`);
+                        router.push(`/login`);
                       }}
                     >
                       Continue

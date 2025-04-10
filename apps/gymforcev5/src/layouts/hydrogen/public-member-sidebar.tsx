@@ -30,6 +30,7 @@ import { TbGymnastics } from "react-icons/tb";
 // import { MdClass } from "react-icons/md";
 import toast from "react-hot-toast";
 import { MdFeedback } from "react-icons/md";
+import { getCenterCode } from "@/app/[locale]/auth/Info";
 // import { getMemberToken } from "@/app/[locale]/[code]/Member";
 
 export default function MemberSidebar({
@@ -48,7 +49,7 @@ export default function MemberSidebar({
   // const { t } = useTranslation(lang!, "nav");
   // const t = useTranslations("nav");
   // const [member, setMember] = useState<any>(null);
-  const { code } = useParams();
+  // const { code } = useParams();
   const [initialData, setInitialData] = useState<any>(null);
 
   const getmember = async () => {
@@ -70,12 +71,10 @@ export default function MemberSidebar({
   useEffect(() => {
     const getInitialData = async () => {
       try {
-        const resp = await AxiosPublic.get(
-          `/center/initial/${code}/`,
-          {
-            id: `Gym-${code}`,
-          }
-        );
+        const code = await getCenterCode();
+        const resp = await AxiosPublic.get(`/center/initial/${code}`, {
+          id: `Gym-${code}`,
+        });
         setInitialData(resp.data);
         // setGymId(resp.data.id);
         // setLoading(false);
@@ -91,38 +90,38 @@ export default function MemberSidebar({
   const profileMenuItems = [
     {
       name: "Profile",
-      href: `/${code}/member`,
+      href: `/member`,
       icon: <FaUserCircle />,
       //   level: ["admin", "manager", "trainer", "receptionist"],
     },
     {
       name: "Attendance",
-      href: `/${code}/member/attendance`,
+      href: `/member/attendance`,
       icon: <PiCalendarCheck />,
       //   level: ["admin", "manager", "trainer"],
     },
     {
       name: "Memberships",
-      href: `/${code}/member/memberships`,
+      href: `/member/memberships`,
       icon: <PiCreditCard />,
       //   level: ["admin", "manager", "receptionist"],
     },
 
     {
       name: "Diet Plan",
-      href: `/${code}/member/diet`,
+      href: `/member/diet`,
       icon: <PiBowlFoodFill />,
       //   level: ["admin", "manager", "trainer"],
     },
     {
       name: "Workout Plan",
-      href: `/${code}/member/workout`,
+      href: `/member/workout`,
       icon: <TbGymnastics />,
       level: ["admin", "manager", "trainer"],
     },
     {
       name: "Feedback",
-      href: `/${code}/member/feedback`,
+      href: `/member/feedback`,
       icon: <MdFeedback />,
       //   level: ["admin", "manager", "trainer"],
     },
@@ -176,7 +175,7 @@ export default function MemberSidebar({
     >
       <div className="flex-shrink-0 sticky top-0 z-50 backdrop-blur-3xl">
         <div className="hidden lg:block px-6 pt-5 2xl:px-8 2xl:pt-6 pb-2">
-          <Link href={`/${code}`} aria-label="GymForce">
+          <Link href={`/`} aria-label="GymForce">
             <div className="flex items-center gap-4">
               <Avatar
                 src={initialData?.gym_image || ""}
@@ -189,7 +188,7 @@ export default function MemberSidebar({
           </Link>
         </div>
         <Link
-          href={`/${code}`}
+          href={`/`}
           className={cn(
             `group relative mx-5 my-0.5 flex items-center rounded-md px-3 py-2 font-medium capitalize lg:my-1 2xl:mx-8 2xl:my-2`,
             "text-gray-700  transition-colors duration-200 hover:bg-primary/10 hover:text-primary "

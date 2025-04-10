@@ -6,14 +6,14 @@ import { Button, Modal, Text, Title } from "rizzui";
 
 const SuccessModal = ({
   setShowSuccessModal,
-  code,
+  // code,
   initialData,
   showSuccessModal,
 }: {
   showSuccessModal: boolean;
   setShowSuccessModal: Dispatch<SetStateAction<boolean>>;
   initialData: any;
-  code: string;
+  // code: string;
 }) => {
   return (
     <Modal
@@ -83,7 +83,7 @@ const SuccessModal = ({
           <Button
             variant="solid"
             className="bg-primary hover:bg-primary-dark"
-            onClick={() => (window.location.href = `/${code}`)}
+            onClick={() => (window.location.href = `/}`)}
           >
             Go to Homepage
           </Button>

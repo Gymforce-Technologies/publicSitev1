@@ -26,9 +26,10 @@ import {
 } from "rizzui";
 import { setMemberToken } from "./Member";
 import PublicHeader from "./PublicHeader";
+import { getCenterCode } from "@/app/[locale]/auth/Info";
 
 export default function PublicLoginSection() {
-  const { code } = useParams();
+  // const { code } = useParams();
   const [initialData, setInitialData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -57,7 +58,7 @@ export default function PublicLoginSection() {
         setMemberToken(resp.data.token);
         toast.success("Logged In successfully");
         setLoading(true);
-        router.push(`/${code}/member`);
+        router.push(`/member`);
       });
     } catch (error) {
       console.error("Error verifying member:", error);
@@ -68,6 +69,7 @@ export default function PublicLoginSection() {
   useEffect(() => {
     const getInitialData = async () => {
       try {
+        const code = await getCenterCode();
         const resp = await AxiosPublic.get(`/center/initial/${code}/`, {
           id: `Gym-${code}`,
         });

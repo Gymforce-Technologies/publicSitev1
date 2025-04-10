@@ -44,6 +44,7 @@ import { AxiosPublic } from "@/app/[locale]/auth/AxiosPrivate";
 import SuccessModal from "./SuccessModal";
 import PublicHeader from "./PublicHeader";
 import Loader from "@/app/[locale]/loading";
+import { getCenterCode } from "@/app/[locale]/auth/Info";
 
 interface RegistrationData {
   name: string;
@@ -69,7 +70,7 @@ interface RegistrationData {
 }
 
 export default function PublicGymRegSection() {
-  const { code } = useParams(); // dynamic URL part
+  // const { code } = useParams(); // dynamic URL part
   const params = useSearchParams();
   const [initialData, setInitialData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
@@ -164,6 +165,7 @@ export default function PublicGymRegSection() {
   useEffect(() => {
     const getInitialData = async () => {
       try {
+        const code = await getCenterCode();
         const resp = await AxiosPublic.get(`/center/initial/${code}/`, {
           id: `Gym-${code}`,
         });
@@ -479,7 +481,7 @@ export default function PublicGymRegSection() {
             />
           </div>
           <div className="p-4 md:p-6 mx-4 md:mx-8 lg:mx-16 flex items-center gap-4 md:gap-8">
-            <Link href={`/${code}`}>
+            <Link href={`/`}>
               <FaArrowLeft size={18} />
             </Link>
             <Title className="text-xl md:text-2xl font-bold">
@@ -616,7 +618,7 @@ export default function PublicGymRegSection() {
           </div>
           {isSubmitted && (
             <SuccessModal
-              code={code as string}
+              // code={code as string}
               initialData={initialData}
               setShowSuccessModal={setShowSuccessModal}
               showSuccessModal={showSuccessModal}

@@ -20,6 +20,7 @@ import MemberSidebar from "./public-member-sidebar";
 import { useEffect, useState } from "react";
 import { AxiosPublic } from "@/app/[locale]/auth/AxiosPrivate";
 import { Avatar, Title } from "rizzui";
+import { getCenterCode } from "@/app/[locale]/auth/Info";
 
 export default function PublicHeader({
   lang,
@@ -29,19 +30,17 @@ export default function PublicHeader({
   memberId?: string;
 }) {
   // const { t } = useTranslation(lang!, "common");
-  const pathname = usePathname();
-  const t = useTranslations("common");
-  const { code } = useParams();
+  // const pathname = usePathname();
+  // const t = useTranslations("common");
+  // const { code } = useParams();
   const [initialData, setInitialData] = useState<any>(null);
   useEffect(() => {
     const getInitialData = async () => {
       try {
-        const resp = await AxiosPublic.get(
-          `/center/initial/${code}/`,
-          {
-            id: `Gym-${code}`,
-          }
-        );
+        const code = await getCenterCode();
+        const resp = await AxiosPublic.get(`/center/initial/${code}/`, {
+          id: `Gym-${code}`,
+        });
         setInitialData(resp.data);
         // setGymId(resp.data.id);
         // setLoading(false);
