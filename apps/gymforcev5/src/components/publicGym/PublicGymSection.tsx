@@ -728,7 +728,7 @@ export default function PublicGymSection() {
                   </ActionIcon>
                   <div className="flex flex-col gap-1">
                     <Text className="sm:text-base font-medium">Location</Text>
-                    <Text>Visit our fitness center</Text>
+                    <Text>Visit Us</Text>
                     <Text className="text-sm text-primary capitalize">
                       {initialData.street}, {initialData.city}{" "}
                       {initialData.zip_code}, {initialData.state},{" "}

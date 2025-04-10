@@ -16,7 +16,10 @@ export function getSubdomain(): string | null {
   try {
     const hostname = window.location.hostname;
     const parts = hostname.split(".");
-
+    console.log(hostname, parts);
+    if (process.env.NODE_ENV === "development") {
+      return "higym";
+    }
     if (parts.length >= 3) {
       return parts[0];
     }
@@ -72,16 +75,10 @@ export async function getCenterInfo(): Promise<{
   try {
     let centerType = sessionStorage.getItem(CENTER_TYPE_KEY);
     let centerCode = sessionStorage.getItem(CENTER_CODE_KEY);
-
+    const subdomain = getSubdomain();
+    console.log(subdomain);
     if (!centerType || !centerCode) {
-      //   const subdomain = getSubdomain();
-
-      //   if (!subdomain) {
-      //     console.error("Error: Could not determine subdomain");
-      //     return { centerType: null, centerCode: null };
-      //   }
-      //   console.log(subdomain);
-      const { data } = await AxiosPublic.post(`/center/tenant/higym/`);
+      const { data } = await AxiosPublic.post(`/center/tenant/${subdomain}/`);
 
       if (data && data.center !== undefined && data.code) {
         setCenterType(data.center);
