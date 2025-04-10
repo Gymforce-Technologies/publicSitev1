@@ -56,7 +56,7 @@ import DanceImg1 from "@/../public/staticImg/dance/dance.webp";
 import DanceImg2 from "@/../public/staticImg/Dance/dance1.webp";
 
 import LibraryImg1 from "@/../public/staticImg/library/library.webp";
-import LibraryImg2 from "@/../public/staticImg/library/library2.webp";
+import LibraryImg2 from "@/../public/staticImg/library/libarry2.webp";
 
 import dynamic from "next/dynamic";
 // import { AxiosPublic } from "../../app/[locale]/auth/AxiosPrivate";
