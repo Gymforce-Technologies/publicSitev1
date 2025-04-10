@@ -41,6 +41,23 @@ import GallerySection, {
 } from "@/components/public-page/Gallery";
 import Loader from "../../app/[locale]/loading";
 
+// Static Offer Images
+import GymImageOffer from "@/../public/staticImg/gym/offer.png";
+import LibraryImageOffer from "@/../public/staticImg/library/offer.png";
+import DanceImageOffer from "@/../public/staticImg/dance/offer.png";
+
+// Staic Gallery
+import GymImg1 from "@/../public/staticImg/gym/image.webp";
+import GymImg2 from "@/../public/staticImg/gym/image1.webp";
+import GymImg3 from "@/../public/staticImg/gym/image2.webp";
+import GymImg4 from "@/../public/staticImg/gym/image3.webp";
+
+import DanceImg1 from "@/../public/staticImg/dance/dance.webp";
+import DanceImg2 from "@/../public/staticImg/Dance/dance1.webp";
+
+import LibraryImg1 from "@/../public/staticImg/library/library.webp";
+import LibraryImg2 from "@/../public/staticImg/library/library2.webp";
+
 import dynamic from "next/dynamic";
 // import { AxiosPublic } from "../../app/[locale]/auth/AxiosPrivate";
 import { GlassNavigationButtons } from "@/components/public-page/SwiperNavGlass";
@@ -70,7 +87,29 @@ interface Offer {
   discounts: string;
   gym: number;
 }
+const Offers = [
+  {
+    center: "Gym",
+    img: GymImageOffer,
+  },
+  {
+    center: "Library",
+    img: LibraryImageOffer,
+  },
+  {
+    center: "Dance",
+    img: DanceImageOffer,
+  },
+];
 
+const GymStaticImages = [GymImg1, GymImg2, GymImg3, GymImg4];
+const DanceStaticImages = [DanceImg1, DanceImg2];
+const LibraryStaticImages = [LibraryImg1, LibraryImg2];
+const StaticImages = {
+  Gym: GymStaticImages,
+  Library: LibraryStaticImages,
+  Dance: DanceStaticImages,
+};
 export default function PublicGymSection() {
   const { code } = useParams();
   const [initialData, setInitialData] = useState<any>(null);
@@ -90,6 +129,7 @@ export default function PublicGymSection() {
     address_zip_code: "",
     address_street: "",
   });
+  const [centerType, setCenterType] = useState(0);
   const {
     sliderEl,
     sliderPrevBtn,
@@ -450,12 +490,9 @@ export default function PublicGymSection() {
                   className="capitalize text-2xl sm:text-3xl md:text-4xl "
                 >
                   Exclusive{" "}
-                  <Title
-                    as="h2"
-                    className="text-blue-500 inline text-2xl sm:text-3xl md:text-4xl "
-                  >
+                  <span className="text-blue-500 inline text-2xl sm:text-3xl md:text-4xl ">
                     Offers
-                  </Title>{" "}
+                  </span>{" "}
                   - Grab Yours Now!
                 </Title>
                 <div className="-mt-2">
