@@ -167,7 +167,7 @@ export default function PublicGymRegSection() {
       try {
         const code = await getCenterCode();
         const resp = await AxiosPublic.get(`/center/initial/${code}/`, {
-          id: `Gym-${code}`,
+          id: `Center-${code}`,
         });
         setInitialData(resp.data);
         setGymId(resp.data.id);

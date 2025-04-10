@@ -64,7 +64,7 @@ import { GlassNavigationButtons } from "@/components/public-page/SwiperNavGlass"
 import PublicHeader from "./PublicHeader";
 import { AxiosPublic } from "@/app/[locale]/auth/AxiosPrivate";
 import { StaticImageData } from "next/image";
-import { getCenterCode } from "@/app/[locale]/auth/Info";
+import { getCenterCode, getCenterType } from "@/app/[locale]/auth/Info";
 
 const TrainersList = dynamic(
   () => import("@/components/public-page/TrainersList")
@@ -132,7 +132,7 @@ export default function PublicGymSection() {
     address_zip_code: "",
     address_street: "",
   });
-  const [centerType, setCenterType] = useState(0);
+  const [centerType, setCenterType] = useState("0");
   const {
     sliderEl,
     sliderPrevBtn,
@@ -228,7 +228,7 @@ export default function PublicGymSection() {
       try {
         const code = await getCenterCode();
         const resp = await AxiosPublic.get(`/center/initial/${code}/`, {
-          id: `Gym-${code}`,
+          id: `Center-${code}`,
         });
         setInitialData(resp.data);
         setGymId(resp.data.id);
@@ -242,13 +242,19 @@ export default function PublicGymSection() {
         toast.error("Failed to load gym data");
       }
     };
-
+    const getCenterTypeVal = async () => {
+      const type = await getCenterType();
+      if (type) {
+        setCenterType(type);
+      }
+    };
+    getCenterTypeVal();
     getInitialData();
   }, []);
 
   const getGallery = async (gymId: string) => {
     const resp = await AxiosPublic.get(`/center/list-gallery/${gymId}/`, {
-      id: `Gym-${gymId}-Gallery`,
+      id: `Center-${gymId}-Gallery`,
     });
     console.log(resp.data);
     if (resp.data.length) {
@@ -258,7 +264,7 @@ export default function PublicGymSection() {
 
   const getTrainerDetails = async (gymId: string) => {
     const resp = await AxiosPublic.get(`/center/list-trainer/${gymId}/`, {
-      id: `Gym-${gymId}-Trainers`,
+      id: `Center-${gymId}-Trainers`,
     });
     setTrainers(resp.data);
     // console.log(resp.data)
@@ -301,7 +307,7 @@ export default function PublicGymSection() {
   const getOffers = async (gymId: string) => {
     try {
       const resp = await AxiosPublic.get(`/center/list-offers/${gymId}/`, {
-        id: `Gym-${gymId}-Offers`,
+        id: `Center-${gymId}-Offers`,
       });
       if (resp.data.length) {
         setOfferList(resp.data);
@@ -458,7 +464,12 @@ export default function PublicGymSection() {
 
                   <div className="flex items-center min-w-full justify-between">
                     <Text className="text-[13px]">
-                      Provide the Details to Join the Gym
+                      Provide the Details to Join the{" "}
+                      {centerType === "0"
+                        ? "Gym"
+                        : centerType === "1"
+                          ? "Library"
+                          : "Dance"}
                     </Text>{" "}
                     <Button
                       className="flex gap-2 items-center self-end"

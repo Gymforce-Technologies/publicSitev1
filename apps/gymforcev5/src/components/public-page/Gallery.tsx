@@ -5,6 +5,7 @@ import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Button, Text, Title } from "rizzui";
+import { getCenterType } from "@/app/[locale]/auth/Info";
 
 export interface GalleryItemProps {
   id: number;
@@ -18,7 +19,7 @@ export interface GalleryItemProps {
 const GallerySection = ({ items }: { items: GalleryItemProps[] }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const swiperRef = useRef<SwiperRef>(null);
-
+  const [centerType, setCenterType] = useState("0");
   const [featuredImage, setFeaturedImage] = useState<GalleryItemProps | null>(
     null
   );
@@ -37,6 +38,13 @@ const GallerySection = ({ items }: { items: GalleryItemProps[] }) => {
         setFeaturedImage(item);
       }
     });
+    const getCenterTypeVal = async () => {
+      const type = await getCenterType();
+      if (type) {
+        setCenterType(type);
+      }
+    };
+    getCenterTypeVal();
   }, []);
 
   return (
@@ -46,7 +54,12 @@ const GallerySection = ({ items }: { items: GalleryItemProps[] }) => {
           Our Gallery
         </Text>
         <Title className="text-2xl sm:text-3xl md:text-4xl mb-8">
-          Gym <span className="text-blue-500">Highlights</span>
+          {centerType === "0"
+            ? "Gym"
+            : centerType === "1"
+              ? "Library"
+              : "Dance"}
+          <span className="text-blue-500">Highlights</span>
         </Title>
 
         {items.length > 0 && (

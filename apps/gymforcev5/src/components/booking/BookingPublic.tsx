@@ -36,7 +36,7 @@ export default function PublicBooking({
       const resp = await AxiosPublic.get(
         `/api/classes/available/v2/?gym_id=${gymId}&end_date=${formatDate(selectedDate, "YYYY-MM-DD")}`,
         {
-          id: `Gym-${gymId}-${formatDate(selectedDate, "YYYY-MM-DD")}`,
+          id: `Center-${gymId}-${formatDate(selectedDate, "YYYY-MM-DD")}`,
         }
       );
       console.log(resp.data);
