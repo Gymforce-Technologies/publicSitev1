@@ -72,8 +72,8 @@ export const createAxiosPublic = (): AxiosCacheInstance => {
 
   // Setup cache
   const cacheAxiosPublic = setupCache(axiosPublic, {
-    // Cache for 15 minutes
-    ttl: 15 * 60 * 1000,
+    // Cache for 1 minutes
+    ttl: 1 * 60 * 1000,
     // Use session storage if in browser
     storage:
       typeof window !== "undefined"

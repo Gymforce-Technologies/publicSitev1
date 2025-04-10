@@ -1,3 +1,4 @@
+"use client";
 import { redirect } from "next/navigation";
 import { AxiosPublic } from "./AxiosPrivate";
 
@@ -73,14 +74,14 @@ export async function getCenterInfo(): Promise<{
     let centerCode = sessionStorage.getItem(CENTER_CODE_KEY);
 
     if (!centerType || !centerCode) {
-      const subdomain = getSubdomain();
+      //   const subdomain = getSubdomain();
 
-      if (!subdomain) {
-        console.error("Error: Could not determine subdomain");
-        return { centerType: null, centerCode: null };
-      }
-      console.log(subdomain);
-      const { data } = await AxiosPublic.get(`/center/tenant/higym`);
+      //   if (!subdomain) {
+      //     console.error("Error: Could not determine subdomain");
+      //     return { centerType: null, centerCode: null };
+      //   }
+      //   console.log(subdomain);
+      const { data } = await AxiosPublic.post(`/center/tenant/higym/`);
 
       if (data && data.center !== undefined && data.code) {
         setCenterType(data.center);
