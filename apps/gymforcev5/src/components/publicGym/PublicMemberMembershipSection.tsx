@@ -46,6 +46,7 @@ interface MembershipData {
   due_date: string;
   paid_amount: number;
   offer_price: number;
+  encrypted_code: string;
   sessions: string;
   member_details: {
     name: string;
@@ -255,7 +256,8 @@ const PublicMemberMembershipSection = () => {
               color="invert"
             >
               <Link
-                href={`/invoice/hy$39-${record.id}-091$u/?member=?member=i9$rw-${record.member_details.id}-7y$72&page=member_profile`}
+                href={`https:frontendv5production.gymforce.in/en/i/${record.encrypted_code}`}
+                target="_blank"
               >
                 <ActionIcon
                   as="span"
