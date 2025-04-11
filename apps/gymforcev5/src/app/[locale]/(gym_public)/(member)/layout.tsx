@@ -1,11 +1,22 @@
+"use client";
+import { getMemberToken } from "@/components/publicGym/Member";
 import PublicHeader from "@/layouts/hydrogen/public-header";
 import MemberSidebar from "@/layouts/hydrogen/public-member-sidebar";
+import { useEffect } from "react";
+import toast from "react-hot-toast";
 
 export default function PublicMemberLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  useEffect(() => {
+    const memberToke = getMemberToken();
+    if (!memberToke) {
+      toast.error("Please login to access ...");
+      window.location.href = "/";
+    }
+  }, []);
   return (
     <div className="flex flex-grow">
       <MemberSidebar

@@ -61,8 +61,12 @@ export default function PublicLoginSection() {
         router.push(`/member`);
       });
     } catch (error) {
-      console.error("Error verifying member:", error);
-      toast.error("Failed to verify member");
+      console.log("Error verifying member:", error);
+      toast.error("Failed to login", {
+        style: {
+          marginTop: "100px",
+        },
+      });
     }
   };
 
@@ -116,7 +120,10 @@ export default function PublicLoginSection() {
                 <AdvancedRadio
                   value="phone"
                   checked={typeVal === "phone"}
-                  onChange={() => setTypeVal("phone")}
+                  onChange={() => {
+                    setTypeVal("phone");
+                    setValue("");
+                  }}
                   contentClassName="flex flex-row items-center gap-2 p-2"
                   alignment="center"
                   size="sm"
@@ -128,7 +135,10 @@ export default function PublicLoginSection() {
                 <AdvancedRadio
                   value="id"
                   checked={typeVal === "id"}
-                  onChange={() => setTypeVal("id")}
+                  onChange={() => {
+                    setTypeVal("id");
+                    setValue("");
+                  }}
                   contentClassName="flex flex-row items-center gap-2 p-2"
                   alignment="center"
                   size="sm"
@@ -149,6 +159,7 @@ export default function PublicLoginSection() {
               labelClassName="text-[15px] font-medium"
               label={typeVal === "phone" ? "Phone" : "Member ID"}
               value={value}
+              maxLength={typeVal === "id" ? 10 : 15}
               onChange={(e) => setValue(e.target.value)}
             />
             <Button
