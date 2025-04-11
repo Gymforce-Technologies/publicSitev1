@@ -1,4 +1,8 @@
 "use client";
+
+import { useTheme } from "next-themes";
+import { useEffect } from "react";
+
 // import { Metadata } from "next";
 // import logoImg from "@public/svg/Live_Logo.png";
 // import { AxiosPublic } from "../auth/AxiosPrivate";
@@ -66,5 +70,10 @@ type Props = {
 // }
 
 export default function PublicGymLayout({ children }: Props) {
+  const { theme, setTheme } = useTheme();
+  useEffect(() => {
+    console.log(theme);
+    setTheme("light");
+  }, []);
   return <div>{children}</div>;
 }

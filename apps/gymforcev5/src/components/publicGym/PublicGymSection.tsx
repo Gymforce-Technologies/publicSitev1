@@ -113,7 +113,47 @@ const StaticImages = {
   Library: LibraryStaticImages,
   Dance: DanceStaticImages,
 };
-
+const staticOfferList = [
+  {
+    description: "Limited Offer for Gym Membership",
+    image: Offers[0].img, // Already uses GymImageOffer from imports
+    discounts: "10%",
+    gym: 1,
+    id: 1,
+    is_active: false,
+    offer_endDate: new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000)
+      .toISOString()
+      .split("T")[0],
+    offer_startDate: new Date().toISOString().split("T")[0],
+    title: "Gym Special Offer",
+  },
+  {
+    description: "Limited time library membership discount",
+    image: Offers[1].img, // Uses LibraryImageOffer
+    discounts: "15%",
+    gym: 2,
+    id: 2,
+    is_active: false,
+    offer_endDate: new Date(new Date().getTime() + 14 * 24 * 60 * 60 * 1000)
+      .toISOString()
+      .split("T")[0],
+    offer_startDate: new Date().toISOString().split("T")[0],
+    title: "Library Special",
+  },
+  {
+    description: "Join our dance classes with special introductory rate",
+    image: Offers[2].img, // Uses DanceImageOffer
+    discounts: "20%",
+    gym: 3,
+    id: 3,
+    is_active: false,
+    offer_endDate: new Date(new Date().getTime() + 10 * 24 * 60 * 60 * 1000)
+      .toISOString()
+      .split("T")[0],
+    offer_startDate: new Date().toISOString().split("T")[0],
+    title: "Dance Class Promotion",
+  },
+];
 export default function PublicGymSection() {
   const [initialData, setInitialData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
@@ -143,84 +183,32 @@ export default function PublicGymSection() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [gymId, setGymId] = useState<any>(null);
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
-  // useEffect(() => {
-  //   const getData = async () => {
-  //     try {
-  //       const subdomain = window.origin;
-  //       console.log(subdomain);
-  //       const resp = await AxiosPublic.post("/center/tenant/higym/");
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-  //   getData();
-  // }, []);
   const contactSectionRef = useRef<HTMLFormElement>(null);
   const params = useSearchParams();
   // Update the galleryData state initialization to include proper static image reference
   const [galleryData, setGalleryData] = useState<GalleryItemProps[]>([
     {
-      description: "Sample Gallery Description",
+      description: "Gym Area",
       id: 1,
       image: GymImg1, // Using static image from imports
-      title: "Sample Gallery Title 1",
+      title: "",
     },
     {
       description: "Fitness Area",
       id: 2,
       image: GymImg2,
-      title: "Sample Gallery Title 2",
+      title: "",
     },
     {
       description: "Workout Space",
       id: 3,
       image: GymImg3,
-      title: "Sample Gallery Title 3",
+      title: "",
     },
   ]);
 
   // Update the offerList state initialization with proper static images
-  const [offerList, setOfferList] = useState<Offer[]>([
-    {
-      description: "This is a Sample Description of Offer",
-      image: Offers[0].img, // Already uses GymImageOffer from imports
-      discounts: "10%",
-      gym: 1,
-      id: 1,
-      is_active: true,
-      offer_endDate: new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000)
-        .toISOString()
-        .split("T")[0],
-      offer_startDate: new Date().toISOString().split("T")[0],
-      title: "Sample Offer",
-    },
-    {
-      description: "Limited time library membership discount",
-      image: Offers[1].img, // Uses LibraryImageOffer
-      discounts: "15%",
-      gym: 2,
-      id: 2,
-      is_active: true,
-      offer_endDate: new Date(new Date().getTime() + 14 * 24 * 60 * 60 * 1000)
-        .toISOString()
-        .split("T")[0],
-      offer_startDate: new Date().toISOString().split("T")[0],
-      title: "Library Special",
-    },
-    {
-      description: "Join our dance classes with special introductory rate",
-      image: Offers[2].img, // Uses DanceImageOffer
-      discounts: "20%",
-      gym: 3,
-      id: 3,
-      is_active: true,
-      offer_endDate: new Date(new Date().getTime() + 10 * 24 * 60 * 60 * 1000)
-        .toISOString()
-        .split("T")[0],
-      offer_startDate: new Date().toISOString().split("T")[0],
-      title: "Dance Class Promotion",
-    },
-  ]);
+  const [offerList, setOfferList] = useState<Offer[]>([]);
   const [trainers, setTrainers] = useState<any>([]);
 
   useEffect(() => {
@@ -311,6 +299,15 @@ export default function PublicGymSection() {
       });
       if (resp.data.length) {
         setOfferList(resp.data);
+      } else {
+        const typeVal = await getCenterType();
+        if (typeVal === "0") {
+          setOfferList([staticOfferList[0]]);
+        } else if (typeVal === "1") {
+          setOfferList([staticOfferList[1]]);
+        } else {
+          setOfferList([staticOfferList[2]]);
+        }
       }
     } catch (error) {
       console.error("Error fetching offers:", error);
@@ -466,10 +463,10 @@ export default function PublicGymSection() {
                     <Text className="text-[13px]">
                       Provide the Details to Join the{" "}
                       {centerType === "0"
-                        ? "Gym"
+                        ? "Gym "
                         : centerType === "1"
-                          ? "Library"
-                          : "Dance"}
+                          ? "Library "
+                          : "Dance "}
                     </Text>{" "}
                     <Button
                       className="flex gap-2 items-center self-end"
