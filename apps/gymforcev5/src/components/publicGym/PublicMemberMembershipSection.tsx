@@ -256,7 +256,7 @@ const PublicMemberMembershipSection = () => {
               color="invert"
             >
               <Link
-                href={`https:frontendv5production.gymforce.in/en/i/${record.encrypted_code}`}
+                href={`https://frontendv5production.gymforce.in/en/i/${record.encrypted_code}`}
                 target="_blank"
               >
                 <ActionIcon
