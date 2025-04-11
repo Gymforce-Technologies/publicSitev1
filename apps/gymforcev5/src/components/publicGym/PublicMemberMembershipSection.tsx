@@ -196,10 +196,10 @@ const PublicMemberMembershipSection = () => {
               <div className=" flex flex-col items-start justify-center gap-2 p-2 my-2">
                 <div className="flex flex-row w-full items-center flex-nowrap gap-2">
                   <Text className=" font-semibold">Membership Status :</Text>
-                  <div className=" flex flex-row gap-1 items-center">
+                  <span className=" flex flex-row gap-1 items-center">
                     <Badge renderAsDot color="danger" />
                     <Text className="text-red-500 font-medium">Cancelled</Text>
-                  </div>
+                  </span>
                 </div>
                 <div className="flex flex-col w-full items-start flex-nowrap gap-1">
                   <Text className="text-nowrap font-semibold">Reason :</Text>
@@ -208,7 +208,7 @@ const PublicMemberMembershipSection = () => {
               </div>
             }
           >
-            <div>
+            <span>
               <Badge
                 variant="flat"
                 color={
@@ -224,7 +224,7 @@ const PublicMemberMembershipSection = () => {
               >
                 {getMembershipStatus(record, memberships)}
               </Badge>
-            </div>
+            </span>
           </Tooltip>
         ),
       },
@@ -284,7 +284,9 @@ const PublicMemberMembershipSection = () => {
       <div className="grid grid-cols-4">
         <MetricCard
           title={"Membership Renewals"}
-          metric={new Intl.NumberFormat().format(renewalCount)}
+          metric={
+            renewalCount ? new Intl.NumberFormat().format(renewalCount) : "N/A"
+          }
           className="shadow  border-none dark:border-solid transform transition-transform duration-200 ease-in-out delay-50 !p-4 group"
           iconClassName="text-primary duration-200 transition-all group-hover:text-white group-hover:bg-primary"
           titleClassName="text-nowrap font-medium"
@@ -322,6 +324,7 @@ const PublicMemberMembershipSection = () => {
             data={memberships}
             //@ts-ignore
             columns={columns}
+            rowKey={"id"}
             scroll={{ y: 500 }}
             className="text-sm mt-4 md:mt-6 rounded-sm [&_.rc-table-row:hover]:bg-gray-50 "
             // rowClassName="!dark:bg-inherit "
